@@ -18,3 +18,4 @@ php artisan make:livewire CandidatoCrear
 php artisan make:livewire CandidatoEditar
 
 php artisan make:migration create_candidato_encuesta_table
+php artisan make:seeder CandidatoEncuestaSeeder

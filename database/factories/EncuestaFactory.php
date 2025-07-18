@@ -16,13 +16,16 @@ class EncuestaFactory extends Factory
      */
     public function definition(): array
     {
-        $inicio = fake()->dateTimeBetween('-1 week', '+1 week');
+       
+        $fechaInicio = $this->faker->dateTimeBetween('-1 month', 'now');
+        $fechaFin = (clone $fechaInicio)->modify('+7 days');
+
         return [
-            'titulo' => 'Elección ' . fake()->word(),
-            'categoria_id' => Categoria::factory(),
-            'fecha_inicio' => $inicio,
-            'fecha_fin' => (clone $inicio)->modify('+3 days'),
-            'activa' => true,
+            'titulo' => $this->faker->sentence(4),
+            'categoria_id' => Categoria::factory(), // relaciona con una categoría
+            'fecha_inicio' => $fechaInicio,
+            'fecha_fin' => $fechaFin,
+            'activa' => $this->faker->boolean(80), // 80% de probabilidad de ser true
         ];
     }
 }

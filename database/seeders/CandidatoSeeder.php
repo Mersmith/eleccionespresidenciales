@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Candidato;
 
 class CandidatoSeeder extends Seeder
 {
@@ -12,6 +13,6 @@ class CandidatoSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Candidato::factory(35)->create();
     }
 }

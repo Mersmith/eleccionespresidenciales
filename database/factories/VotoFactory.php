@@ -18,15 +18,7 @@ class VotoFactory extends Factory
      */
     public function definition(): array
     {
-        $encuesta = Encuesta::inRandomOrder()->first() ?? Encuesta::factory()->create();
-        $candidato = Candidato::where('encuesta_id', $encuesta->id)->inRandomOrder()->first() ?? Candidato::factory()->create(['encuesta_id' => $encuesta->id]);
-        $user = User::inRandomOrder()->first() ?? User::factory()->create();
-
         return [
-            'user_id' => $user->id,
-            'encuesta_id' => $encuesta->id,
-            'candidato_id' => $candidato->id,
-            'fecha_voto' => now(),
         ];
     }
 }

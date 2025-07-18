@@ -14,24 +14,25 @@ class VotoSeeder extends Seeder
      */
     public function run(): void
     {
-        $users = User::all();
-        $encuestas = Encuesta::all();
+        foreach (User::all() as $user) {
+            // Elegimos una encuesta aleatoria
+            $encuesta = Encuesta::inRandomOrder()->first();
 
-        foreach ($users as $user) {
-            foreach ($encuestas as $encuesta) {
-                // 50% de probabilidad de votar
-                if (rand(0, 1)) {
-                    $candidato = $encuesta->candidatos()->inRandomOrder()->first();
+            // Buscamos los candidatos relacionados a esa encuesta
+            $candidatos = $encuesta->candidatos;
 
-                    if ($candidato) {
-                        Voto::create([
-                            'user_id' => $user->id,
-                            'encuesta_id' => $encuesta->id,
-                            'candidato_id' => $candidato->id,
-                            'fecha_voto' => now(),
-                        ]);
-                    }
-                }
+            // Si hay candidatos disponibles para esa encuesta
+            if ($candidatos->isNotEmpty()) {
+                // Elegimos un candidato aleatoriamente
+                $candidato = $candidatos->random();
+
+                // Creamos el voto
+                Voto::create([
+                    'user_id' => $user->id,
+                    'encuesta_id' => $encuesta->id,
+                    'candidato_id' => $candidato->id,
+                    'fecha_voto' => now(),
+                ]);
             }
         }
     }

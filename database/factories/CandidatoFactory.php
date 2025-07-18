@@ -17,10 +17,9 @@ class CandidatoFactory extends Factory
     public function definition(): array
     {
         return [
-            'nombre' => fake()->name(),
-            'descripcion' => fake()->sentence(),
-            'foto' => null, // opcional
-            'encuesta_id' => Encuesta::factory(),
+            'nombre' => $this->faker->name,
+            'descripcion' => $this->faker->paragraph,
+            'foto' => $this->faker->imageUrl(300, 300, 'people', true, 'candidato'), // URL de imagen aleatoria
         ];
     }
 }
