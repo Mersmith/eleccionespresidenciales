@@ -30,6 +30,8 @@
                     </td>
                     <td class="border px-4 py-2">
                         <a href="{{ route('encuesta.editar', $encuesta->id) }}" class="text-blue-600 hover:underline">Editar</a>
+                        <a href="{{ route('encuesta.candidato.lista', $encuesta->id) }}" class="text-blue-600 hover:underline">Candidatos</a>
+
                     </td>
                 </tr>
             @empty
