@@ -118,6 +118,18 @@ new #[Layout('components.layouts.auth')] class extends Component {
         </div>
     </form>
 
+    <div class="space-x-1 rtl:space-x-reverse text-center text-sm text-zinc-600 dark:text-zinc-400">     
+        <x-link href="{{ route('auth.redirect', 'google') }}">
+            Google
+        </x-link>
+        <x-link href="{{ route('auth.redirect', 'github') }}">
+            GitHub
+        </x-link>
+        <x-link href="{{ route('auth.redirect', 'facebook') }}">
+            Facebook
+        </x-link>
+    </div>
+
     @if (Route::has('register'))
         <div class="space-x-1 rtl:space-x-reverse text-center text-sm text-zinc-600 dark:text-zinc-400">
             <span>{{ __('Don\'t have an account?') }}</span>

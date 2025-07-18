@@ -2,10 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use App\Http\Controllers\Socialite\ProviderRedirectController;
+use App\Http\Controllers\Socialite\ProviderCallbackController;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+Route::get('/auth/{provider}/redirect', ProviderRedirectController::class)->name('auth.redirect');
+Route::get('/auth/{provider}/callback', ProviderCallbackController::class)->name('auth.callback');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

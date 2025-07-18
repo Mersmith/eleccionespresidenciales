@@ -1,0 +1,8 @@
+php artisan make:migration add_provider_to_users_table --table=users
+
+php artisan migrate:fresh --seed
+
+php artisan make:controller Socialite/ProviderRedirectController --invokable
+php artisan make:controller Socialite/ProviderCallbackController --invokable
+
+composer require laravel/socialite
