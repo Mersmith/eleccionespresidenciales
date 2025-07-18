@@ -18,15 +18,17 @@ class Encuesta extends Model
         'activa',
     ];
 
-    public function categoria() {
+    public function categoria()
+    {
         return $this->belongsTo(Categoria::class);
     }
-    
-    public function candidatos() {
-        return $this->hasMany(Candidato::class);
+    public function candidatos()
+    {
+        return $this->belongsToMany(Candidato::class, 'candidato_encuesta');
     }
-    
-    public function votos() {
+
+    public function votos()
+    {
         return $this->hasMany(Voto::class);
     }
 }

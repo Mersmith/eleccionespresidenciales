@@ -14,13 +14,12 @@ class Candidato extends Model
         'nombre',
         'descripcion',
         'foto',
-        'encuesta_id',
     ];
 
-    public function encuesta() {
-        return $this->belongsTo(Encuesta::class);
+    public function encuestas() {
+        return $this->belongsToMany(Encuesta::class, 'candidato_encuesta');
     }
-    
+
     public function votos() {
         return $this->hasMany(Voto::class);
     }

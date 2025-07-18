@@ -12,3 +12,9 @@ php artisan make:livewire CategoriaCrud
 php artisan make:livewire EncuestaCrear
 php artisan make:livewire EncuestaEditar
 php artisan make:livewire EncuestaLista
+
+php artisan make:livewire CandidatoLista
+php artisan make:livewire CandidatoCrear
+php artisan make:livewire CandidatoEditar
+
+php artisan make:migration create_candidato_encuesta_table
