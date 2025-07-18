@@ -6,3 +6,9 @@ php artisan make:controller Socialite/ProviderRedirectController --invokable
 php artisan make:controller Socialite/ProviderCallbackController --invokable
 
 composer require laravel/socialite
+
+php artisan make:livewire CategoriaCrud
+
+php artisan make:livewire EncuestaCrear
+php artisan make:livewire EncuestaEditar
+php artisan make:livewire EncuestaLista
