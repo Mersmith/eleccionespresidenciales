@@ -7,7 +7,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\Attributes\Layout;
 
-#[Layout('components.layouts.auth')]
+#[Layout('components.layouts.admin.admin')]
 class CategoriaCrud extends Component
 {
     use WithPagination;
