@@ -13,6 +13,6 @@ class CandidatoSeeder extends Seeder
      */
     public function run(): void
     {
-        Candidato::factory(35)->create();
+        Candidato::factory(80)->create();
     }
 }

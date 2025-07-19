@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use App\Models\Candidato;
 use App\Models\Encuesta;
-use Illuminate\Support\Facades\DB;
+use App\Models\CandidatoEncuesta;
+use Illuminate\Database\Seeder;
 
 class CandidatoEncuestaSeeder extends Seeder
 {
@@ -15,19 +14,20 @@ class CandidatoEncuestaSeeder extends Seeder
      */
     public function run(): void
     {
-        $candidatos = Candidato::all();
         $encuestas = Encuesta::all();
 
-        // A cada encuesta le asignamos entre 2 y 5 candidatos aleatorios (sin repetir el mismo en la misma encuesta)
-        foreach ($encuestas as $encuesta) {
-            $candidatosRandom = $candidatos->random(rand(20, 30)); // elige entre 2 y 5 candidatos
+        // Solo candidatos que tengan al menos un cargo asignado
+        $candidatosConCargo = Candidato::has('cargos')->get(); // asumiendo relación cargos()
 
-            foreach ($candidatosRandom as $candidato) {
-                DB::table('candidato_encuesta')->insert([
+        foreach ($candidatosConCargo as $candidato) {
+            // Puedes decidir cuántas encuestas le asignas a cada candidato
+            $encuestasAleatorias = $encuestas->random(rand(1, min(2, $encuestas->count())));
+
+            foreach ($encuestasAleatorias as $encuesta) {
+                // Verificamos que no esté duplicado
+                CandidatoEncuesta::firstOrCreate([
                     'candidato_id' => $candidato->id,
                     'encuesta_id' => $encuesta->id,
-                    'created_at' => now(),
-                    'updated_at' => now(),
                 ]);
             }
         }

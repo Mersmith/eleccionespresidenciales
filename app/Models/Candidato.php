@@ -17,11 +17,13 @@ class Candidato extends Model
         'partido_id',
     ];
 
-    public function encuestas() {
+    public function encuestas()
+    {
         return $this->belongsToMany(Encuesta::class, 'candidato_encuesta');
     }
 
-    public function votos() {
+    public function votos()
+    {
         return $this->hasMany(Voto::class);
     }
 
@@ -30,11 +32,13 @@ class Candidato extends Model
         return $this->belongsTo(Partido::class);
     }
 
-    public function cargo()
+    public function cargos()
     {
-        return $this->belongsTo(Cargo::class);
+        return $this->belongsToMany(Cargo::class, 'candidato_cargo')
+            ->withPivot(['eleccion_id', 'partido_id', 'region_id', 'provincia_id', 'distrito_id'])
+            ->withTimestamps();
     }
-
+    
     public function eleccion()
     {
         return $this->belongsTo(Eleccion::class);
