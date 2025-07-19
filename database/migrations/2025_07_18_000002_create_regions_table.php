@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('candidatos', function (Blueprint $table) {
-            $table->id();
-
+        Schema::create('regions', function (Blueprint $table) {
+            $table->id();            
             $table->string('nombre');
-            $table->text('descripcion')->nullable();
-            $table->string('foto')->nullable();
-            $table->foreignId('partido_id')->constrained()->onDelete('cascade');
-            
-            $table->timestamps();
+            $table->unsignedBigInteger('pais_id');
+            $table->foreign('pais_id')->references('id')->on('pais')->onDelete('cascade');
         });
     }
 
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('candidatos');
+        Schema::dropIfExists('regions');
     }
 };

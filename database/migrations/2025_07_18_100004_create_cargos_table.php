@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('candidatos', function (Blueprint $table) {
+        Schema::create('cargos', function (Blueprint $table) {
             $table->id();
 
-            $table->string('nombre');
-            $table->text('descripcion')->nullable();
-            $table->string('foto')->nullable();
-            $table->foreignId('partido_id')->constrained()->onDelete('cascade');
-            
+            $table->string('nombre'); // Presidente, Diputado, Alcalde, etc.
+            $table->enum('nivel', ['nacional', 'regional', 'provincial', 'distrital']);
+
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('candidatos');
+        Schema::dropIfExists('cargos');
     }
 };

@@ -14,6 +14,7 @@ class Candidato extends Model
         'nombre',
         'descripcion',
         'foto',
+        'partido_id',
     ];
 
     public function encuestas() {
@@ -22,5 +23,20 @@ class Candidato extends Model
 
     public function votos() {
         return $this->hasMany(Voto::class);
+    }
+
+    public function partido()
+    {
+        return $this->belongsTo(Partido::class);
+    }
+
+    public function cargo()
+    {
+        return $this->belongsTo(Cargo::class);
+    }
+
+    public function eleccion()
+    {
+        return $this->belongsTo(Eleccion::class);
     }
 }

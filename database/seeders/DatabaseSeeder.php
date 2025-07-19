@@ -11,11 +11,15 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
-            CategoriaSeeder::class,
-            EncuestaSeeder::class,
-            CandidatoSeeder::class,
-            CandidatoEncuestaSeeder::class,
-            VotoSeeder::class,
+            PaisSeeder::class,
+            RegionSeeder::class,
+            ProvinciaSeeder::class,
+            DistritoSeeder::class,   
+            //CategoriaSeeder::class,
+            //EncuestaSeeder::class,
+            //CandidatoSeeder::class,
+            //CandidatoEncuestaSeeder::class,
+            //VotoSeeder::class,
         ]);
     }
 }
