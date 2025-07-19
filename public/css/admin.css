@@ -1,61 +1,139 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+/* --- Variables CSS --- */
+:root {
+    /* Colores primarios */
+    --color-primary: #2c3e50;         /* Azul oscuro del header */
+    --color-secondary: #34495e;       /* Gris azulado de la sidebar */
+    --color-accent: #2980b9;          /* Azul vibrante para elementos activos */
+    --color-accent-light: #3498db;    /* Borde del elemento activo */
+
+    /* Colores de texto y fondo */
+    --color-text-light: #ecf0f1;      /* Texto claro para fondos oscuros */
+    --color-text-dark: #333;          /* Texto oscuro para fondos claros */
+    --color-bg-light: #f0f2f5;        /* Fondo principal muy claro */
+    --color-bg-content: #fcfcfc;      /* Fondo del contenido principal */
+
+    /* Sombras */
+    --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --shadow-md: 2px 0 8px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 2px 0 10px rgba(0, 0, 0, 0.2);
+
+    /* Espaciado */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+
+    /* Tamaños de fuente */
+    --font-size-base: 1rem;
+    --font-size-lg: 1.5rem;
+    --font-size-xl: 1.8rem;
+
+    /* Transiciones */
+    --transition-ease: 0.3s ease;
+    --transition-ease-in-out: 0.3s ease-in-out;
 }
 
-.header {
+/* --- Resto de tu CSS, usando las variables --- */
+
+/* Base */
+.admin-body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-bg-light); /* Usando variable */
+    color: var(--color-text-dark); /* Usando variable */
+}
+
+/* Header */
+.admin-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #2d3748;
-    color: white;
-    padding: 1rem;
+    background-color: var(--color-primary); /* Usando variable */
+    color: var(--color-text-light); /* Usando variable */
+    padding: var(--spacing-sm) var(--spacing-lg); /* Usando variables */
+    box-shadow: var(--shadow-sm); /* Usando variable */
+    z-index: 1000;
+    position: sticky;
+    top: 0;
 }
 
-.logo {
-    font-size: 1.25rem;
-    font-weight: bold;
+.admin-logo {
+    font-size: var(--font-size-lg); /* Usando variable */
+    font-weight: 600;
+    margin: 0;
 }
 
 .menu-toggle {
     background: none;
     border: none;
-    color: white;
-    font-size: 1.5rem;
+    color: var(--color-text-light); /* Usando variable */
+    font-size: var(--font-size-xl); /* Usando variable */
+    cursor: pointer;
+    padding: var(--spacing-xs); /* Usando variable */
+    border-radius: 5px;
+    transition: background-color var(--transition-ease); /* Usando variable */
     display: none;
 }
 
-.layout {
+.menu-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Layout */
+.admin-layout {
     display: flex;
-    min-height: 100vh;
+    min-height: calc(100vh - 70px); /* Esto aún puede ser un valor fijo o una variable para la altura del header */
+    position: relative;
 }
 
-.sidebar {
-    width: 200px;
-    background-color: #e2e8f0;
-    padding: 1rem;
+/* Sidebar */
+.admin-sidebar {
+    width: 250px;
+    background-color: var(--color-secondary); /* Usando variable */
+    padding: var(--spacing-md) 0; /* Usando variable */
+    box-shadow: var(--shadow-md); /* Usando variable */
+    color: var(--color-text-light); /* Usando variable */
+    transition: transform var(--transition-ease-in-out); /* Usando variable */
 }
 
-.sidebar ul {
+.admin-sidebar ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
-.sidebar a {
+.admin-sidebar li {
+    margin-bottom: var(--spacing-xs); /* Usando variable */
+}
+
+.admin-sidebar a {
     text-decoration: none;
-    color: #2d3748;
-    display: block;
-    padding: 0.5rem 0;
+    color: var(--color-text-light); /* Usando variable */
+    display: flex;
+    align-items: center;
+    padding: 0.8rem var(--spacing-lg); /* Usando variable */
+    transition: background-color var(--transition-ease), color var(--transition-ease); /* Usando variable */
+    border-left: 5px solid transparent;
 }
 
-.sidebar a:hover {
-    color: #4a5568;
+.admin-sidebar a:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: white;
 }
 
-.main-content {
+.admin-sidebar a.active {
+    background-color: var(--color-accent); /* Usando variable */
+    border-left-color: var(--color-accent-light); /* Usando variable */
+    font-weight: bold;
+    color: white;
+}
+
+/* Main Content */
+.admin-main-content {
     flex-grow: 1;
-    padding: 2rem;
-    background-color: #f7fafc;
+    padding: var(--spacing-lg); /* Usando variable */
+    background-color: var(--color-bg-content); /* Usando variable */
+    overflow-y: auto;
 }
 
 /* Responsive */
@@ -64,21 +142,26 @@ body {
         display: block;
     }
 
-    .sidebar {
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 200px;
-        background-color: #e2e8f0;
-        display: none;
-        z-index: 1000;
-    }
-
-    .sidebar.show {
-        display: block;
-    }
-
-    .layout {
+    .admin-layout {
         flex-direction: column;
+    }
+
+    .admin-sidebar {
+        position: absolute;
+        top: 70px; /* Esto podría ser una variable si la altura del header es variable */
+        left: 0;
+        height: calc(100vh - 70px); /* Idem */
+        transform: translateX(-100%);
+        z-index: 999;
+        box-shadow: var(--shadow-lg); /* Usando variable */
+    }
+
+    .admin-sidebar.show {
+        transform: translateX(0);
+    }
+
+    .admin-main-content {
+        width: 100%;
+        padding-top: var(--spacing-sm); /* Usando variable */
     }
 }
