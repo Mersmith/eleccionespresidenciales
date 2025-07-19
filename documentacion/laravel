@@ -35,6 +35,11 @@ php artisan make:model Distrito -mfs
 php artisan make:migration create_candidato_cargo_table
 php artisan make:model CandidatoCargo -m
 
+php artisan make:middleware CheckAdmin
+php artisan make:middleware CheckVotante
+php artisan make:middleware CheckCandidato
+
+http://localhost:8000/admin/categoria
 
 ALCALDIA
 SAN JUAN DE LURIGANCHO

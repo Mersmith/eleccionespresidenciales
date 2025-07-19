@@ -34,17 +34,4 @@ Route::middleware(['auth'])->group(function () {
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
 });
 
-Route::get('/categoria', CategoriaCrud::class)->name('categoria');
-
-Route::get('/encuesta', EncuestaLista::class)->name('encuesta.lista');
-Route::get('/encuesta/crear', EncuestaCrear::class)->name('encuesta.crear');
-Route::get('/encuesta/editar/{id}', EncuestaEditar::class)->name('encuesta.editar');
-Route::get('/encuesta/{id}/candidato', EncuestaCandidatoLista::class)->name('encuesta.candidato.lista');
-Route::get('/encuesta/{id}/votacion', EncuestaVotacion::class)->name('encuesta.votacion');
-Route::get('/encuesta/{id}/resultado', EncuestaResultado::class)->name('encuesta.resultado');
-
-Route::get('/candidato', CandidatoLista::class)->name('candidato.lista');
-Route::get('/candidato/crear', CandidatoCrear::class)->name('candidato.crear');
-Route::get('/candidato/editar/{id}', CandidatoEditar::class)->name('candidato.editar');
-
 require __DIR__.'/auth.php';

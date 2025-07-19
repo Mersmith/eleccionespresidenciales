@@ -18,18 +18,11 @@ class UserSeeder extends Seeder
             User::create([
                 'name' => "Admin $i",
                 'email' => "admin$i@example.com",
-                'password' => Hash::make('password'), // puedes cambiar la contraseña
+                'password' => Hash::make('123456'), // puedes cambiar la contraseña
                 'role' => 'admin',
             ]);
         }
 
         User::factory()->count(50)->create();
-
-        // User::factory(10)->create();
-
-        /*User::factory()->create([
-    'name' => 'Test User',
-    'email' => 'test@example.com',
-    ]);*/
     }
 }
