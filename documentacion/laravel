@@ -34,3 +34,31 @@ php artisan make:model Distrito -mfs
 
 php artisan make:migration create_candidato_cargo_table
 php artisan make:model CandidatoCargo -m
+
+
+ALCALDIA
+SAN JUAN DE LURIGANCHO
+DISTRITO: 1369
+PROVINCIA: 135
+REGION: 14
+PAIS: 1
+
+ALCALDIA
+LIMA
+PROVINCIA: 135
+REGION: 14
+PAIS: 1
+
+DIPUTADO
+LIMA
+REGION: 14
+PAIS: 1
+
+SENADO
+LIMA
+REGION: 14
+PAIS: 1
+
+PRESIDENTE
+PERU
+PAIS: 1

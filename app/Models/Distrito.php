@@ -9,4 +9,9 @@ class Distrito extends Model
 {
     /** @use HasFactory<\Database\Factories\DistritoFactory> */
     use HasFactory;
+
+    public function provincia()
+    {
+        return $this->belongsTo(Provincia::class);
+    }
 }

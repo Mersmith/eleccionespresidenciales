@@ -12,7 +12,19 @@ class CategoriaSeeder extends Seeder
      */
     public function run(): void
     {
-        // Crear 3 categorías
-        Categoria::factory(25)->create();
+        $categorias = [
+            [
+                'nombre' => 'Político',
+                'descripcion' => 'Noticias, entrevistas y perfiles del ámbito político.',
+            ],
+            [
+                'nombre' => 'Opinión',
+                'descripcion' => 'Análisis y columnas de opinión sobre temas de actualidad.',
+            ],
+        ];
+
+        foreach ($categorias as $categoria) {
+            Categoria::create($categoria);
+        }
     }
 }

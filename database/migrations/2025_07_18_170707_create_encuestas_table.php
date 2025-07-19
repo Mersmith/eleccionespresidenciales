@@ -15,11 +15,20 @@ return new class extends Migration
             $table->id();
 
             $table->string('titulo');
-            $table->foreignId('categoria_id')->constrained()->onDelete('cascade');
+
+            $table->foreignId('categoria_id')->nullable()->constrained()->onDelete('set null');
+
+            $table->foreignId('cargo_id')->constrained()->onDelete('cascade');
+
+            $table->foreignId('region_id')->nullable()->constrained()->onDelete('set null');
+            $table->foreignId('provincia_id')->nullable()->constrained()->onDelete('set null');
+            $table->foreignId('distrito_id')->nullable()->constrained()->onDelete('set null');
+
             $table->dateTime('fecha_inicio');
             $table->dateTime('fecha_fin');
+
             $table->boolean('activa')->default(true);
-            
+
             $table->timestamps();
         });
     }

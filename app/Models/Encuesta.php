@@ -13,6 +13,10 @@ class Encuesta extends Model
     protected $fillable = [
         'titulo',
         'categoria_id',
+        'cargo_id',
+        'region_id',
+        'provincia_id',
+        'distrito_id',
         'fecha_inicio',
         'fecha_fin',
         'activa',
@@ -22,6 +26,27 @@ class Encuesta extends Model
     {
         return $this->belongsTo(Categoria::class);
     }
+
+    public function cargo()
+    {
+        return $this->belongsTo(Cargo::class);
+    }
+
+    public function region()
+    {
+        return $this->belongsTo(Region::class);
+    }
+
+    public function provincia()
+    {
+        return $this->belongsTo(Provincia::class);
+    }
+
+    public function distrito()
+    {
+        return $this->belongsTo(Distrito::class);
+    }
+
     public function candidatos()
     {
         return $this->belongsToMany(Candidato::class, 'candidato_encuesta');
