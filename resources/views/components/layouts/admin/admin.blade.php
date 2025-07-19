@@ -3,30 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Panel Admin</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     @livewireStyles
 </head>
-<body class="bg-gray-100 text-gray-900">
+<body>
 
-    {{-- Barra superior, menú lateral, etc. --}}
-    <header class="bg-white shadow p-4">
-        <h1 class="text-xl font-bold">Panel Administrativo</h1>
+    <!-- Header -->
+    <header class="header">
+        <h1 class="logo">Panel Administrativo</h1>
+        <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
     </header>
 
-    <div class="flex">
-        {{-- Sidebar o menú lateral --}}
-        <aside class="w-64 bg-gray-200 min-h-screen p-4">
+    <!-- Layout -->
+    <div class="layout">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar">
             <ul>
-                {{-- Agrega más links aquí --}}
+                <li><a href="{{ route('admin.categoria') }}">Categorías</a></li>
+                <li><a href="{{ route('admin.encuesta.lista') }}">Encuestas</a></li>
+                <li><a href="{{ route('admin.candidato.lista') }}">Candidatos</a></li>
             </ul>
         </aside>
 
-        {{-- Contenido dinámico del componente Livewire --}}
-        <main class="flex-1 p-6">
+        <!-- Contenido principal -->
+        <main class="main-content">
             {{ $slot }}
         </main>
     </div>
 
     @livewireScripts
+    <script src="{{ asset('js/admin.js') }}"></script>
 </body>
 </html>
