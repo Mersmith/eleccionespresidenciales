@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use App\Livewire\Admin\Eleccion\EleccionTodasLivewire;
+use App\Livewire\Admin\Eleccion\EleccionCrearLivewire;
+use App\Livewire\Admin\Eleccion\EleccionEditarLivewire;
 use App\Livewire\CategoriaCrud;
 use App\Livewire\EncuestaCrear;
 use App\Livewire\EncuestaEditar;
@@ -12,6 +15,10 @@ use App\Livewire\EncuestaResultado;
 use App\Livewire\CandidatoLista;
 use App\Livewire\CandidatoCrear;
 use App\Livewire\CandidatoEditar;
+
+Route::get('/eleccion', EleccionTodasLivewire::class)->name('eleccion.vista.todas');
+Route::get('/eleccion/crear', EleccionCrearLivewire::class)->name('eleccion.vista.crear');
+Route::get('/eleccion/editar/{id}', EleccionEditarLivewire::class)->name('eleccion.vista.editar');
 
 Route::get('/categoria', CategoriaCrud::class)->name('categoria');
 

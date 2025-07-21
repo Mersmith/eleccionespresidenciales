@@ -9,9 +9,9 @@
         "submenus": [
             {
                 "id": 11,
-                "nombre": "Locales",
-                "ruta": "admin.categoria",
-                "url": "/erp/categoria",
+                "nombre": "Eleccion",
+                "ruta": "admin.eleccion.vista.todas",
+                "url": "/admin/eleccion",
                 "icono": "fa-solid fa-tree-city",
                 "nivel": 2,
                 "submenus": []

@@ -9,6 +9,11 @@ composer require laravel/socialite
 
 php artisan make:livewire CategoriaCrud
 
+php artisan make:livewire Admin/Eleccion/EleccionTodasLivewire
+php artisan make:livewire Admin/Eleccion/EleccionCrearLivewire
+php artisan make:livewire Admin/Eleccion/EleccionEditarLivewire
+
+
 php artisan make:livewire EncuestaCrear
 php artisan make:livewire EncuestaEditar
 php artisan make:livewire EncuestaLista
