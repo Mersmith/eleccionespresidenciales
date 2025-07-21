@@ -15,16 +15,16 @@ class EleccionSeeder extends Seeder
     {
         DB::table('eleccions')->insert([
             [
-                'nombre' => 'Elección Presidencial 2026',
-                'tipo' => 'presidencial',
-                'fecha' => Carbon::create(2026, 4, 10), // Ejemplo de fecha
+                'nombre' => 'ELECCIONES GENERALES 2026',
+                'tipo' => 'GENERALES',
+                'fecha' => Carbon::create(2026, 4, 10),
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'nombre' => 'Elección Municipal 2026',
-                'tipo' => 'municipal',
-                'fecha' => Carbon::create(2026, 10, 9), // Ejemplo de fecha
+                'nombre' => 'ELECCIONES REGIONALES Y MUNICIPALES 2026',
+                'tipo' => 'REGIONALES Y MUNICIPALES',
+                'fecha' => Carbon::create(2026, 10, 9),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]

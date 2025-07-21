@@ -15,6 +15,15 @@
                 "icono": "fa-solid fa-tree-city",
                 "nivel": 2,
                 "submenus": []
+            },
+            {
+                "id": 12,
+                "nombre": "Cargo",
+                "ruta": "admin.cargo.vista.todas",
+                "url": "/admin/cargo",
+                "icono": "fa-solid fa-tree-city",
+                "nivel": 2,
+                "submenus": []
             }
         ]
     }

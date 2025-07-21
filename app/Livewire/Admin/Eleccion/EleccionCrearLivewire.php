@@ -2,14 +2,15 @@
 
 namespace App\Livewire\Admin\Eleccion;
 
-use Livewire\Component;
-use Livewire\Attributes\Layout;
 use App\Models\Eleccion;
+use Illuminate\Support\Str;
+use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 #[Layout('components.layouts.admin.layout-admin')]
 class EleccionCrearLivewire extends Component
 {
-    public $tipo = 'presidencial';
+    public $tipo = 'generales';
     public $anio;
     public $nombre;
     public $fecha_votacion;
@@ -24,7 +25,7 @@ class EleccionCrearLivewire extends Component
     protected function rules()
     {
         return [
-            'tipo' => 'required|in:presidencial,municipal',
+            'tipo' => 'required|in:generales,regionales_y_municipales',
             'anio' => 'required|integer|min:2024|max:2100',
             'nombre' => 'required|unique:eleccions,nombre',
             'fecha_votacion' => 'required|date|after_or_equal:' . $this->anio . '-01-01|before_or_equal:' . $this->anio . '-12-31',
@@ -33,22 +34,21 @@ class EleccionCrearLivewire extends Component
 
     protected $messages = [
         'tipo.required' => 'El :attribute es obligatorio.',
-        'tipo.in' => 'El :attribute debe ser "presidencial" o "municipal".',
-    
+        'tipo.in' => 'El tipo de elección debe ser "generales" o "regionales y municipales".',
+
         'anio.required' => 'El :attribute es obligatorio.',
         'anio.integer' => 'El :attribute debe ser un número entero.',
         'anio.min' => 'El :attribute no puede ser menor a 2024.',
         'anio.max' => 'El :attribute no puede ser mayor a 2100.',
-    
+
         'nombre.required' => 'El :attribute es obligatorio.',
         'nombre.unique' => 'El :attribute ya está registrado.',
-    
+
         'fecha_votacion.required' => 'La :attribute es obligatoria.',
         'fecha_votacion.date' => 'La :attribute debe ser una fecha válida.',
         'fecha_votacion.after_or_equal' => 'La :attribute debe ser desde el 1 de enero del año seleccionado.',
         'fecha_votacion.before_or_equal' => 'La :attribute no puede ser después del 31 de diciembre del año seleccionado.',
     ];
-    
 
     public function updatedTipo()
     {
@@ -64,7 +64,8 @@ class EleccionCrearLivewire extends Component
     public function actualizarNombre()
     {
         if ($this->tipo && $this->anio) {
-            $this->nombre = $this->tipo . ' ' . $this->anio;
+            $tipo_formateado = Str::of($this->tipo)->replace('_', ' ')->upper();
+            $this->nombre = 'ELECCIONES ' . $tipo_formateado . ' ' . $this->anio;
         }
     }
 
@@ -74,9 +75,17 @@ class EleccionCrearLivewire extends Component
 
         $this->validate();
 
+        if ($this->tipo === 'generales') {
+            $tipo_db = 'GENERALES';
+        } elseif ($this->tipo === 'regionales_y_municipales') {
+            $tipo_db = 'REGIONALES Y MUNICIPALES';
+        } else {
+            $tipo_db = null;
+        }
+
         Eleccion::create([
             'nombre' => $this->nombre,
-            'tipo' => $this->tipo,
+            'tipo' => $tipo_db,
             'fecha' => $this->fecha_votacion,
         ]);
 
@@ -84,7 +93,7 @@ class EleccionCrearLivewire extends Component
 
         return redirect()->route('admin.eleccion.vista.todas');
     }
-    
+
     public function render()
     {
         return view('livewire.admin.eleccion.eleccion-crear-livewire');

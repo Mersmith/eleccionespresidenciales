@@ -14,7 +14,7 @@ class CargoSeeder extends Seeder
     {
         DB::table('cargos')->insert([
             [
-                'nombre' => 'Presidente',
+                'nombre' => 'Presidente de la República',
                 'nivel' => 'nacional',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -26,31 +26,61 @@ class CargoSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'nombre' => 'Senado',
+                'nombre' => 'Senador',
                 'nivel' => 'regional',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'nombre' => 'Parlamento Andino',
+                'nombre' => 'Representante al Parlamento Andino',
                 'nivel' => 'nacional',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'nombre' => 'Presidente Regional',
+                'nombre' => 'Gobernador regional',
                 'nivel' => 'regional',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'nombre' => 'Alcalde Provincial',
+                'nombre' => 'Alcalde provincial',
                 'nivel' => 'provincial',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'nombre' => 'Alcalde Distrital',
+                'nombre' => 'Alcalde distrital',
+                'nivel' => 'distrital',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],  
+            [
+                'nombre' => 'Vicepresidente de la República',
+                'nivel' => 'nacional',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'nombre' => 'Vicegobernador regional',
+                'nivel' => 'regional',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'nombre' => 'Consejero regional',
+                'nivel' => 'regional',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'nombre' => 'Regidor provincial',
+                'nivel' => 'provincial',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'nombre' => 'Regidor distrital',
                 'nivel' => 'distrital',
                 'created_at' => now(),
                 'updated_at' => now(),

@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\Eleccion;
 use App\Models\Eleccion;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use Illuminate\Support\Str;
 
 #[Layout('components.layouts.admin.layout-admin')]
 class EleccionEditarLivewire extends Component
@@ -25,7 +26,7 @@ class EleccionEditarLivewire extends Component
     protected function rules()
     {
         return [
-            'tipo' => 'required|in:presidencial,municipal',
+            'tipo' => 'required|in:generales,regionales_y_municipales',
             'anio' => 'required|integer|min:2024|max:2100',
             'nombre' => 'required|unique:eleccions,nombre,' . $this->eleccionId,
             'fecha_votacion' => 'required|date|after_or_equal:' . $this->anio . '-01-01|before_or_equal:' . $this->anio . '-12-31',
@@ -34,7 +35,7 @@ class EleccionEditarLivewire extends Component
 
     protected $messages = [
         'tipo.required' => 'El :attribute es obligatorio.',
-        'tipo.in' => 'El :attribute debe ser "presidencial" o "municipal".',
+        'tipo.in' => 'El tipo de elección debe ser "generales" o "regionales y municipales".',
 
         'anio.required' => 'El :attribute es obligatorio.',
         'anio.integer' => 'El :attribute debe ser un número entero.',
@@ -54,8 +55,13 @@ class EleccionEditarLivewire extends Component
     {
         $this->eleccionId = $id;
         $eleccion = Eleccion::findOrFail($id);
-
-        $this->tipo = $eleccion->tipo;
+    
+        if ($eleccion->tipo === 'GENERALES') {
+            $this->tipo = 'generales';
+        } elseif ($eleccion->tipo === 'REGIONALES Y MUNICIPALES') {
+            $this->tipo = 'regionales_y_municipales';
+        }
+    
         $this->anio = date('Y', strtotime($eleccion->fecha));
         $this->nombre = $eleccion->nombre;
         $this->fecha_votacion = $eleccion->fecha;
@@ -75,7 +81,8 @@ class EleccionEditarLivewire extends Component
     public function actualizarNombre()
     {
         if ($this->tipo && $this->anio) {
-            $this->nombre = $this->tipo . ' ' . $this->anio;
+            $tipo_formateado = Str::of($this->tipo)->replace('_', ' ')->upper();
+            $this->nombre = 'ELECCIONES ' . $tipo_formateado . ' ' . $this->anio;
         }
     }
 
@@ -85,15 +92,23 @@ class EleccionEditarLivewire extends Component
 
         $this->validate();
 
+        if ($this->tipo === 'generales') {
+            $tipo_db = 'GENERALES';
+        } elseif ($this->tipo === 'regionales_y_municipales') {
+            $tipo_db = 'REGIONALES Y MUNICIPALES';
+        } else {
+            $tipo_db = null;
+        }
+
         $eleccion = Eleccion::findOrFail($this->eleccionId);
         $eleccion->update([
             'nombre' => $this->nombre,
-            'tipo' => $this->tipo,
+            'tipo' => $tipo_db,
             'fecha' => $this->fecha_votacion,
         ]);
 
-        $this->dispatch('alertaLivewire', 'Actualizado correctamente');
-        return redirect()->route('admin.eleccion.vista.todas');
+        $this->dispatch('alertaLivewire', 'Actualizado');
+        //return redirect()->route('admin.eleccion.vista.todas');
     }
     public function render()
     {

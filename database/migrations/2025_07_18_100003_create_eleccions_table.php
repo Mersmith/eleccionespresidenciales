@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('eleccions', function (Blueprint $table) {
             $table->id();
 
-            $table->string('nombre'); // Presidencial 2026, Municipal 2026, etc.
-            $table->enum('tipo', ['presidencial', 'municipal']);
+            $table->string('nombre');
+            $table->enum('tipo', ['GENERALES', 'REGIONALES Y MUNICIPALES']);
             $table->date('fecha');
             
             $table->timestamps();

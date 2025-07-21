@@ -39,8 +39,8 @@
                     <div class="g_margin_bottom_20">
                         <label for="tipo">Región <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
                         <select id="tipo" name="tipo" wire:model.live="tipo" required>
-                            <option value="presidencial">Presidencial</option>
-                            <option value="municipal">Municipal</option>
+                            <option value="generales">GENERALES</option>
+                            <option value="regionales_y_municipales">REGIONALES Y MUNICIPALES</option>
                         </select>
                         </select>
                         @error('tipo')

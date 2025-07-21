@@ -5,6 +5,9 @@ use Livewire\Volt\Volt;
 use App\Livewire\Admin\Eleccion\EleccionTodasLivewire;
 use App\Livewire\Admin\Eleccion\EleccionCrearLivewire;
 use App\Livewire\Admin\Eleccion\EleccionEditarLivewire;
+use App\Livewire\Admin\Cargo\CargoTodasLivewire;
+use App\Livewire\Admin\Cargo\CargoCrearLivewire;
+use App\Livewire\Admin\Cargo\CargoEditarLivewire;
 use App\Livewire\CategoriaCrud;
 use App\Livewire\EncuestaCrear;
 use App\Livewire\EncuestaEditar;
@@ -19,6 +22,10 @@ use App\Livewire\CandidatoEditar;
 Route::get('/eleccion', EleccionTodasLivewire::class)->name('eleccion.vista.todas');
 Route::get('/eleccion/crear', EleccionCrearLivewire::class)->name('eleccion.vista.crear');
 Route::get('/eleccion/editar/{id}', EleccionEditarLivewire::class)->name('eleccion.vista.editar');
+
+Route::get('/cargo', CargoTodasLivewire::class)->name('cargo.vista.todas');
+Route::get('/cargo/crear', CargoCrearLivewire::class)->name('cargo.vista.crear');
+Route::get('/cargo/editar/{id}', CargoEditarLivewire::class)->name('cargo.vista.editar');
 
 Route::get('/categoria', CategoriaCrud::class)->name('categoria');
 
