@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
             DistritoSeeder::class,
             EleccionSeeder::class,
             CargoSeeder::class,
-            //PartidoSeeder::class,
+            PartidoSeeder::class,
             //CategoriaSeeder::class,
             //EncuestaSeeder::class,
             //CandidatoSeeder::class,

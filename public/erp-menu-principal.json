@@ -24,6 +24,15 @@
                 "icono": "fa-solid fa-tree-city",
                 "nivel": 2,
                 "submenus": []
+            },
+            {
+                "id": 13,
+                "nombre": "Partido",
+                "ruta": "admin.partido.vista.todas",
+                "url": "/admin/partido",
+                "icono": "fa-solid fa-tree-city",
+                "nivel": 2,
+                "submenus": []
             }
         ]
     }

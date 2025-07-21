@@ -17,6 +17,10 @@ php artisan make:livewire Admin/Cargo/CargoTodasLivewire
 php artisan make:livewire Admin/Cargo/CargoCrearLivewire
 php artisan make:livewire Admin/Cargo/CargoEditarLivewire
 
+php artisan make:livewire Admin/Partido/PartidoTodasLivewire
+php artisan make:livewire Admin/Partido/PartidoCrearLivewire
+php artisan make:livewire Admin/Partido/PartidoEditarLivewire
+
 php artisan make:livewire EncuestaCrear
 php artisan make:livewire EncuestaEditar
 php artisan make:livewire EncuestaLista
