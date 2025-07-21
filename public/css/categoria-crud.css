@@ -1,0 +1,276 @@
+/* --- Component Specific Styles for CategoriaCrud --- */
+
+/* You'll need to ensure your variables from :root in admin.css are accessible here.
+   If admin.css is imported into app.css, they will be. */
+
+.section-title {
+    font-size: var(--font-size-2xl);
+    font-weight: bold;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-primary);
+    text-align: center;
+    /* Center the title for better aesthetics */
+}
+
+/* --- Alerts --- */
+.alert {
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-base);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.alert-success {
+    background-color: var(--color-success-bg);
+    color: var(--color-success-text);
+    border: 1px solid #a3e6b4;
+    /* Specific border color */
+}
+
+.alert-close-btn {
+    background: none;
+    border: none;
+    font-size: var(--font-size-md);
+    cursor: pointer;
+    color: inherit;
+    /* Inherit color from parent alert */
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.alert-close-btn:hover {
+    opacity: 1;
+}
+
+/* --- Form Styles --- */
+.form-container {
+    background-color: var(--color-bg-content);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    /* Spacing between form groups */
+}
+
+.form-group {
+    margin-bottom: var(--spacing-sm);
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-base);
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-sizing: border-box;
+    /* Ensures padding/border are included in width */
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(var(--color-accent-light), 0.2);
+}
+
+/* Livewire error state */
+.form-input.is-invalid,
+.form-textarea.is-invalid {
+    border-color: var(--color-danger-text);
+}
+
+.error-message {
+    color: var(--color-danger-text);
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-xs);
+    display: block;
+}
+
+.form-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+}
+
+/* --- Buttons --- */
+.btn {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    font-size: var(--font-size-base);
+    transition: background-color var(--transition-ease), color var(--transition-ease);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    /* Space for icons */
+}
+
+.btn-primary {
+    background-color: var(--color-accent);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #246fa1;
+    /* A slightly darker blue */
+}
+
+.btn-text-link {
+    /* Used for the Cancel button */
+    background: none;
+    border: none;
+    color: var(--color-text-dark);
+    text-decoration: underline;
+    font-size: var(--font-size-sm);
+    padding: 0;
+}
+
+.btn-text-link:hover {
+    color: var(--color-primary);
+}
+
+.btn-icon {
+    /* Base style for icon buttons */
+    padding: 0.5rem;
+    /* Make them square */
+    border-radius: 50%;
+    /* Circular buttons for icons */
+}
+
+.btn-edit {
+    background-color: #ffc107;
+    /* Yellow */
+    color: var(--color-text-dark);
+}
+
+.btn-edit:hover {
+    background-color: #e0a800;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    /* Red */
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
+
+/* --- Table Styles --- */
+.table-wrapper {
+    overflow-x: auto;
+    background-color: var(--color-bg-content);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-header-row {
+    background-color: #e9ecef;
+}
+
+.table-header-cell {
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    text-align: left;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.table-cell {
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    vertical-align: top;
+}
+
+.data-table tbody tr:nth-child(even) {
+    background-color: #f7f7f7;
+}
+
+.data-table tbody tr:hover {
+    background-color: #eef2f6;
+}
+
+.table-actions-cell {
+    white-space: nowrap;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm);
+}
+
+.table-no-data {
+    text-align: center;
+    font-style: italic;
+    color: #666;
+    padding: var(--spacing-md) !important;
+}
+
+/* --- Pagination --- */
+.pagination-controls {
+    margin-top: var(--spacing-md);
+    display: flex;
+    justify-content: center;
+}
+
+/* Specific styles for Livewire/Laravel pagination links */
+.pagination-controls nav {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.pagination-controls span,
+.pagination-controls a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    text-decoration: none;
+    color: var(--color-primary);
+    background-color: white;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.pagination-controls a:hover {
+    background-color: #e9ecef;
+    border-color: var(--color-accent-light);
+}
+
+.pagination-controls span.active {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: white;
+    font-weight: bold;
+    cursor: default;
+}
+
+.pagination-controls span.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #f0f2f5;
+    color: #888;
+}

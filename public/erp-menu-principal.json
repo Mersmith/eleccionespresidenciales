@@ -1,0 +1,21 @@
+[
+    {
+        "id": 1,
+        "nombre": "1",
+        "ruta": "#",
+        "url": "#",
+        "icono": "fa-solid fa-city",
+        "nivel": 1,
+        "submenus": [
+            {
+                "id": 11,
+                "nombre": "Locales",
+                "ruta": "admin.categoria",
+                "url": "/erp/categoria",
+                "icono": "fa-solid fa-tree-city",
+                "nivel": 2,
+                "submenus": []
+            }
+        ]
+    }
+]

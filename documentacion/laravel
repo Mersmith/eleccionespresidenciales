@@ -39,6 +39,9 @@ php artisan make:middleware CheckAdmin
 php artisan make:middleware CheckVotante
 php artisan make:middleware CheckCandidato
 
+php artisan make:livewire Admin/Header/AdminHeaderLivewire
+
+
 http://localhost:8000/admin/categoria
 
 ALCALDIA

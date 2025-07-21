@@ -1,50 +1,71 @@
 <div>
-    <h2 class="text-xl font-bold mb-4">Gestión de Categorías</h2>
+    <h2 class="section-title">Gestión de Categorías</h2>
 
     @if (session()->has('mensaje'))
-        <div class="bg-green-200 text-green-800 p-2 rounded mb-3">
-            {{ session('mensaje') }}
+        <div class="alert alert-success">
+            {{-- Using an Alpine.js component for dismissable alerts is great here --}}
+            <div x-data="{ open: true }" x-show="open" class="alert-content">
+                {{ session('mensaje') }}
+                <button type="button" @click="open = false" class="alert-close-btn">&times;</button>
+            </div>
         </div>
     @endif
 
-    <form wire:submit.prevent="{{ $modoEditar ? 'actualizar' : 'guardar' }}" class="mb-4">
-        <input type="text" wire:model="nombre" placeholder="Nombre" class="border p-2 w-full mb-2">
-        <textarea wire:model="descripcion" placeholder="Descripción" class="border p-2 w-full mb-2"></textarea>
+    <form wire:submit.prevent="{{ $modoEditar ? 'actualizar' : 'guardar' }}" class="form-container">
+        <div class="form-group">
+            <input type="text" wire:model.live="nombre" placeholder="Nombre de la categoría" class="form-input {{ $errors->has('nombre') ? 'is-invalid' : '' }}">
+            @error('nombre') <span class="error-message">{{ $message }}</span> @enderror
+        </div>
 
-        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">
-            {{ $modoEditar ? 'Actualizar' : 'Crear' }}
-        </button>
+        <div class="form-group">
+            <textarea wire:model.live="descripcion" placeholder="Descripción de la categoría (opcional)" class="form-textarea {{ $errors->has('descripcion') ? 'is-invalid' : '' }}"></textarea>
+            @error('descripcion') <span class="error-message">{{ $message }}</span> @enderror
+        </div>
 
-        @if($modoEditar)
-            <button type="button" wire:click="resetCampos" class="ml-2 text-sm underline">Cancelar</button>
-        @endif
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                {{ $modoEditar ? 'Actualizar Categoría' : 'Crear Categoría' }}
+            </button>
+
+            @if($modoEditar)
+                <button type="button" wire:click="resetCampos" class="btn btn-text-link">Cancelar</button>
+            @endif
+        </div>
     </form>
 
-    <table class="w-full table-auto border-collapse">
-        <thead>
-            <tr class="bg-gray-200">
-                <th class="p-2 border">ID</th>
-                <th class="p-2 border">Nombre</th>
-                <th class="p-2 border">Descripción</th>
-                <th class="p-2 border">Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($categorias as $cat)
-                <tr>
-                    <td class="p-2 border">{{ $cat->id }}</td>
-                    <td class="p-2 border">{{ $cat->nombre }}</td>
-                    <td class="p-2 border">{{ $cat->descripcion }}</td>
-                    <td class="p-2 border">
-                        <button wire:click="editar({{ $cat->id }})" class="text-blue-600">Editar</button>
-                        <button wire:click="eliminar({{ $cat->id }})" class="text-red-600 ml-2" onclick="confirm('¿Eliminar?') || event.stopImmediatePropagation()">Eliminar</button>
-                    </td>
+    <div class="table-wrapper">
+        <table class="data-table">
+            <thead>
+                <tr class="table-header-row">
+                    <th class="table-header-cell">ID</th>
+                    <th class="table-header-cell">Nombre</th>
+                    <th class="table-header-cell">Descripción</th>
+                    <th class="table-header-cell">Acciones</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @forelse ($categorias as $cat)
+                    <tr wire:key="{{ $cat->id }}">
+                        <td class="table-cell">{{ $cat->id }}</td>
+                        <td class="table-cell">{{ $cat->nombre }}</td>
+                        <td class="table-cell">{{ $cat->descripcion }}</td>
+                        <td class="table-actions-cell">
+                            <button wire:click="editar({{ $cat->id }})" class="btn btn-icon btn-edit" title="Editar Categoría">
+                                <i class="fas fa-pencil-alt"></i> </button>
+                            <button wire:click="eliminar({{ $cat->id }})" class="btn btn-icon btn-delete" wire:confirm="¿Estás seguro de que quieres eliminar esta categoría?" title="Eliminar Categoría">
+                                <i class="fas fa-trash-alt"></i> </button>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="4" class="table-cell table-no-data">No hay categorías para mostrar.</td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
 
-    <div class="mt-4">
+    <div class="pagination-controls">
         {{ $categorias->links() }}
     </div>
 </div>
