@@ -33,6 +33,15 @@
                 "icono": "fa-solid fa-tree-city",
                 "nivel": 2,
                 "submenus": []
+            },
+            {
+                "id": 14,
+                "nombre": "Categoria",
+                "ruta": "admin.categoria.vista.todas",
+                "url": "/admin/categoria",
+                "icono": "fa-solid fa-tree-city",
+                "nivel": 2,
+                "submenus": []
             }
         ]
     }
