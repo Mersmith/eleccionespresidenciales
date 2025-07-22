@@ -8,6 +8,16 @@ class CandidatoCargo extends Model
 {
     protected $table = 'candidato_cargo';
 
+    protected $fillable = [
+        'candidato_id',
+        'cargo_id',
+        'eleccion_id',
+        'partido_id',
+        'region_id',
+        'provincia_id',
+        'distrito_id',
+    ];
+
     public function candidato()
     {
         return $this->belongsTo(Candidato::class);

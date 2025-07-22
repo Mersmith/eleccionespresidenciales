@@ -10,10 +10,14 @@
             <a href="{{ route('admin.candidato.vista.todas') }}" class="g_boton g_boton_light">
                 Inicio <i class="fa-solid fa-house"></i></a>
 
+            <a href="{{ route('admin.candidato.cargo.editar', $candidatoId) }}" class="g_boton g_boton_primary">
+                Cargo <i class="fa-solid fa-square-plus"></i></a>
+
             <a href="{{ route('admin.candidato.vista.todas') }}" class="g_boton g_boton_darkt">
                 <i class="fa-solid fa-arrow-left"></i> Regresar</a>
         </div>
     </div>
+
     <!--FORMULARIO-->
     <div class="formulario">
 
@@ -77,6 +81,41 @@
                 <button wire:click="crearPartido" class="guardar">Guardar</button>
 
                 <a href="{{ route('admin.candidato.vista.todas') }}" class="cancelar">Cancelar</a>
+            </div>
+        </div>
+    </div>
+
+    <!--TABLA-->
+    <div class="g_panel">
+        <!--TABLA CONTENIDO-->
+        <div class="tabla_contenido g_margin_bottom_20">
+            <div class="contenedor_tabla">
+                <table class="tabla">
+                    <thead>
+                        <tr>
+                            <th>Nº</th>
+                            <th>Cargo</th>
+                            <th>Elección</th>
+                            <th>Partido</th>
+                            <th>Ubicación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($historial as $index => $item)
+                        <tr>
+                            <td> {{ $index + 1 }} </td>
+                            <td class="g_resaltar">{{ $item->cargo->nombre  }}</td>
+                            <td>{{ $item->eleccion->nombre }}</td>
+                            <td>{{ $item->partido->nombre }}</td>
+                            <td>
+                                {{ $item->region->nombre ?? '-' }}
+                                {{ $item->provincia->nombre ?? '' }}
+                                {{ $item->distrito->nombre ?? '' }}
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\Candidato;
 
 use App\Models\Candidato;
+use App\Models\CandidatoCargo;
 use App\Models\Partido;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -14,6 +15,8 @@ class CandidatoEditarLivewire extends Component
 
     public $nombre, $descripcion, $foto, $partido_id = "";
     public $partidos;
+
+    public $historial = [];
 
     protected $validationAttributes = [
         'nombre' => 'nombre',
@@ -54,6 +57,8 @@ class CandidatoEditarLivewire extends Component
         $this->partido_id = $candidato->partido_id;
 
         $this->partidos = Partido::all();
+
+        $this->cargarHistorial();
     }
 
     public function crearPartido()
@@ -71,6 +76,14 @@ class CandidatoEditarLivewire extends Component
         $this->dispatch('alertaLivewire', "Creado");
 
         return redirect()->route('admin.candidato.vista.todas');
+    }
+
+    public function cargarHistorial()
+    {
+        $this->historial = CandidatoCargo::with(['cargo', 'eleccion', 'partido', 'region', 'provincia', 'distrito'])
+            ->where('candidato_id', $this->candidatoId)
+            ->orderByDesc('created_at')
+            ->get();
     }
 
     public function render()

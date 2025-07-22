@@ -19,7 +19,6 @@ return new class extends Migration
             $table->foreignId('eleccion_id')->constrained('eleccions')->onDelete('cascade');
             $table->foreignId('partido_id')->constrained('partidos')->onDelete('cascade');
         
-            // Ubicación geográfica según el cargo (nullable para cargos nacionales)
             $table->foreignId('region_id')->nullable()->constrained('regions')->onDelete('set null');
             $table->foreignId('provincia_id')->nullable()->constrained('provincias')->onDelete('set null');
             $table->foreignId('distrito_id')->nullable()->constrained('distritos')->onDelete('set null');
