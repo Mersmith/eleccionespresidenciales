@@ -51,6 +51,15 @@
                 "icono": "fa-solid fa-tree-city",
                 "nivel": 2,
                 "submenus": []
+            },
+            {
+                "id": 16,
+                "nombre": "Candidato",
+                "ruta": "admin.candidato.vista.todas",
+                "url": "/admin/candidato",
+                "icono": "fa-solid fa-tree-city",
+                "nivel": 2,
+                "submenus": []
             }
         ]
     }

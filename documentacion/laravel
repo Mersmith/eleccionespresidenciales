@@ -29,6 +29,10 @@ php artisan make:livewire Admin/Encuesta/EncuestaTodasLivewire
 php artisan make:livewire Admin/Encuesta/EncuestaCrearLivewire
 php artisan make:livewire Admin/Encuesta/EncuestaEditarLivewire
 
+php artisan make:livewire Admin/Candidato/CandidatoTodasLivewire
+php artisan make:livewire Admin/Candidato/CandidatoCrearLivewire
+php artisan make:livewire Admin/Candidato/CandidatoEditarLivewire
+
 php artisan make:livewire EncuestaCrear
 php artisan make:livewire EncuestaEditar
 php artisan make:livewire EncuestaLista
