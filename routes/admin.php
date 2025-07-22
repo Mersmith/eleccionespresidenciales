@@ -14,6 +14,9 @@ use App\Livewire\Admin\Partido\PartidoEditarLivewire;
 use App\Livewire\Admin\Categoria\CategoriaTodasLivewire;
 use App\Livewire\Admin\Categoria\CategoriaCrearLivewire;
 use App\Livewire\Admin\Categoria\CategoriaEditarLivewire;
+use App\Livewire\Admin\Encuesta\EncuestaTodasLivewire;
+use App\Livewire\Admin\Encuesta\EncuestaCrearLivewire;
+use App\Livewire\Admin\Encuesta\EncuestaEditarLivewire;
 use App\Livewire\CategoriaCrud;
 use App\Livewire\EncuestaCrear;
 use App\Livewire\EncuestaEditar;
@@ -41,9 +44,9 @@ Route::get('/categoria', CategoriaTodasLivewire::class)->name('categoria.vista.t
 Route::get('/categoria/crear', CategoriaCrearLivewire::class)->name('categoria.vista.crear');
 Route::get('/categoria/editar/{id}', CategoriaEditarLivewire::class)->name('categoria.vista.editar');
 
-Route::get('/encuesta', EncuestaLista::class)->name('encuesta.lista');
-Route::get('/encuesta/crear', EncuestaCrear::class)->name('encuesta.crear');
-Route::get('/encuesta/editar/{id}', EncuestaEditar::class)->name('encuesta.editar');
+Route::get('/encuesta', EncuestaTodasLivewire::class)->name('encuesta.vista.todas');
+Route::get('/encuesta/crear', EncuestaCrearLivewire::class)->name('encuesta.vista.crear');
+Route::get('/encuesta/editar/{id}', EncuestaEditarLivewire::class)->name('encuesta.vista.editar');
 Route::get('/encuesta/{id}/candidato', EncuestaCandidatoLista::class)->name('encuesta.candidato.lista');
 Route::get('/encuesta/{id}/votacion', EncuestaVotacion::class)->name('encuesta.votacion');
 Route::get('/encuesta/{id}/resultado', EncuestaResultado::class)->name('encuesta.resultado');

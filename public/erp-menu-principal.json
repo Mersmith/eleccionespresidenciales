@@ -42,6 +42,15 @@
                 "icono": "fa-solid fa-tree-city",
                 "nivel": 2,
                 "submenus": []
+            },
+            {
+                "id": 15,
+                "nombre": "Encuesta",
+                "ruta": "admin.encuesta.vista.todas",
+                "url": "/admin/encuesta",
+                "icono": "fa-solid fa-tree-city",
+                "nivel": 2,
+                "submenus": []
             }
         ]
     }
