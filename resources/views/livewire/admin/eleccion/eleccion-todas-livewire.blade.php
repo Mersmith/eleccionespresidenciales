@@ -21,58 +21,61 @@
     <!--TABLA-->
     <div class="g_panel">
         @if ($elecciones->count())
-        <div class="tabla_cabecera">
-            <div class="tabla_cabecera_buscar">
-                <form action="">
-                    <input type="text" wire:model.live.debounce.1300ms="buscar" id="buscar" name="buscar" placeholder="Buscar...">
+            <div class="tabla_cabecera">
+                <div class="tabla_cabecera_buscar">
+                    <input type="text" wire:model.live.debounce.500ms="buscar" placeholder="Buscar por nombre...">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                </form>
+                </div>
             </div>
-        </div>
-
-        <!--TABLA CONTENIDO-->
-        <div class="tabla_contenido g_margin_bottom_20">
-            <div class="contenedor_tabla">
-                <table class="tabla">
-                    <thead>
-                        <tr>
-                            <th>Nº</th>
-                            <th>Nombre</th>
-                            <th>Tipo</th>
-                            <th>Fecha votación</th>
-                            <th>Acción</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($elecciones as $index => $item)
-                        <tr>
-                            <td> {{ $index + 1 }} </td>
-                            <td class="g_resaltar">{{ $item->nombre }}</td>
-                            <td>{{ $item->tipo }}</td>
-                            <td>{{ $item->fecha }}</td>
-                            <td class="centrar_iconos">
-                                <a href="{{ route('admin.eleccion.vista.editar', $item) }}" class="g_accion_editar">
-                                    <span><i class="fa-solid fa-pencil"></i></span>
-                                </a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+    
+            <div class="tabla_contenido g_margin_bottom_20">
+                <div class="contenedor_tabla">
+                    <table class="tabla">
+                        <thead>
+                            <tr>
+                                <th>Nº</th>
+                                <th>Nombre</th>
+                                <th>Tipo</th>
+                                <th>Fecha de votación</th>
+                                <th>Activo</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($elecciones as $index => $item)
+                                <tr>
+                                    <td>{{ ($elecciones->currentPage() - 1) * $elecciones->perPage() + $loop->iteration }}</td>
+                                    <td class="g_resaltar">{{ $item->nombre }}</td>
+                                    <td>{{ $item->tipo }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($item->fecha_votacion)->format('d/m/Y') }}</td>
+                                    <td>
+                                        <span class="{{ $item->activo ? 'text-green-600' : 'text-red-600' }}">
+                                            {{ $item->activo ? 'Sí' : 'No' }}
+                                        </span>
+                                    </td>
+                                    <td class="centrar_iconos">
+                                        <a href="{{ route('admin.eleccion.vista.editar', $item) }}" class="g_accion_editar">
+                                            <span><i class="fa-solid fa-pencil"></i></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-
-        @if ($elecciones->hasPages())
-        <div>
-            {{ $elecciones->onEachSide(1)->links() }}
-        </div>
-        @endif
-
+    
+            @if ($elecciones->hasPages())
+                <div class="mt-4">
+                    {{ $elecciones->onEachSide(1)->links() }}
+                </div>
+            @endif
         @else
-        <div class="g_vacio">
-            <p>No hay locales disponibles.</p>
-            <i class="fa-regular fa-face-grin-wink"></i>
-        </div>
+            <div class="g_vacio">
+                <p>No hay elecciones registradas.</p>
+                <i class="fa-regular fa-face-grin-wink"></i>
+            </div>
         @endif
     </div>
+    
 </div>

@@ -11,16 +11,11 @@ use App\Models\Eleccion;
 class EleccionTodasLivewire extends Component
 {
     use WithPagination;
-    public $buscar;
 
-    protected $paginate = 10;
+    public $buscar = '';
+    public $perPage = 10;
 
     public function updatingBuscar()
-    {
-        $this->resetPage();
-    }
-
-    public function updatingPaginacion()
     {
         $this->resetPage();
     }
@@ -28,11 +23,9 @@ class EleccionTodasLivewire extends Component
     public function render()
     {
         $elecciones = Eleccion::where('nombre', 'like', '%' . $this->buscar . '%')
-        ->orderBy('created_at', 'desc')
-        ->paginate(10);
+            ->orderBy('created_at', 'desc')
+            ->paginate($this->perPage);
 
-        return view('livewire.admin.eleccion.eleccion-todas-livewire', [
-            'elecciones' => $elecciones,
-        ]);
+        return view('livewire.admin.eleccion.eleccion-todas-livewire', compact('elecciones'));
     }
 }

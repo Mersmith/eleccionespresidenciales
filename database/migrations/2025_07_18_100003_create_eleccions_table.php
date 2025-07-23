@@ -14,9 +14,13 @@ return new class extends Migration
         Schema::create('eleccions', function (Blueprint $table) {
             $table->id();
 
-            $table->string('nombre');
+            $table->string('nombre')->unique();
+            $table->string('slug')->unique();
+            $table->text('descripcion')->nullable();
             $table->enum('tipo', ['GENERALES', 'REGIONALES Y MUNICIPALES']);
-            $table->date('fecha');
+            $table->string('imagen_ruta')->nullable();
+            $table->date('fecha_votacion');
+            $table->boolean('activo')->default(false)->comment('1 ACTIVADO, 0 DESACTIVADO');
             
             $table->timestamps();
         });

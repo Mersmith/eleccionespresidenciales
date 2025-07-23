@@ -10,10 +10,19 @@ class Eleccion extends Model
     /** @use HasFactory<\Database\Factories\EleccionFactory> */
     use HasFactory;
 
-    protected $fillable = ['nombre', 'tipo', 'fecha'];
+    const GENERAL = 'GENERALES';
+    const MUNICIPAL = 'REGIONALES Y MUNICIPALES';
+
+    protected $guarded = ['id', 'created_at', 'update_at'];
 
     public function candidatos()
     {
         return $this->hasMany(Candidato::class);
+    }
+
+    //URL AMIGABLE
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }
