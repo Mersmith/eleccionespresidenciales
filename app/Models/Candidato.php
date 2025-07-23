@@ -43,6 +43,11 @@ class Candidato extends Model
         return $this->belongsTo(Distrito::class);
     }
 
+    public function cargo()
+    {
+        return $this->belongsTo(Cargo::class);
+    }
+
     public function cargos()
     {
         return $this->belongsToMany(Cargo::class, 'candidato_cargo')

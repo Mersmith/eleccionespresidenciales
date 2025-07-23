@@ -27,7 +27,7 @@ class Eleccion extends Model
 
     public function candidatos()
     {
-        return $this->hasMany(Candidato::class);
+        return $this->hasManyThrough(Candidato::class, Cargo::class);
     }
 
     //URL AMIGABLE

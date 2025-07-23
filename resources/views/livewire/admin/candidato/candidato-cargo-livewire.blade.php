@@ -7,34 +7,19 @@
 
         <!--BOTONES-->
         <div class="cabecera_titulo_botones">
-            <a href="{{ route('admin.encuesta.vista.todas') }}" class="g_boton g_boton_light">
+            <a href="{{ route('admin.candidato.vista.editar', $candidatoId) }}" class="g_boton g_boton_light">
                 Inicio <i class="fa-solid fa-house"></i></a>
 
-            <a href="{{ route('admin.encuesta.vista.todas') }}" class="g_boton g_boton_darkt">
+            <a href="{{ route('admin.candidato.vista.editar', $candidatoId) }}" class="g_boton g_boton_darkt">
                 <i class="fa-solid fa-arrow-left"></i> Regresar</a>
         </div>
     </div>
+
     <!--FORMULARIO-->
     <div class="formulario">
         <div class="g_fila">
             <div class="g_columna_8">
                 <div class="g_panel">
-                    <!--CARGOS-->
-                    <div class="g_margin_bottom_20">
-                        <label for="cargo_id">Cargo <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
-                        <select id="cargo_id" name="cargo_id" wire:model.live="cargo_id" required>
-                            <option value="" selected disabled>Seleccionar un cargo</option>
-                            @if ($cargos)
-                            @foreach ($cargos as $cargo)
-                            <option value="{{ $cargo->id }}">{{ $cargo->nombre }}</option>
-                            @endforeach
-                            @endif
-                        </select>
-                        @error('cargo_id')
-                        <p class="mensaje_error">{{ $message }}</p>
-                        @enderror
-                    </div>
-
                     <!--ELECCIONES-->
                     <div class="g_margin_bottom_20">
                         <label for="eleccion_id">Elección <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
@@ -47,6 +32,22 @@
                             @endif
                         </select>
                         @error('eleccion_id')
+                        <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!--CARGOS-->
+                    <div class="g_margin_bottom_20">
+                        <label for="cargo_id">Cargo <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
+                        <select id="cargo_id" name="cargo_id" wire:model.live="cargo_id" required>
+                            <option value="" selected disabled>Seleccionar un cargo</option>
+                            @if ($cargos)
+                            @foreach ($cargos as $cargo)
+                            <option value="{{ $cargo->id }}">{{ $cargo->nombre }}</option>
+                            @endforeach
+                            @endif
+                        </select>
+                        @error('cargo_id')
                         <p class="mensaje_error">{{ $message }}</p>
                         @enderror
                     </div>
@@ -70,7 +71,7 @@
                 </div>
             </div>
 
-            <div class="g_columna_4">            
+            <div class="g_columna_4">
 
                 <div class="g_panel">
                     <!--TITULO-->

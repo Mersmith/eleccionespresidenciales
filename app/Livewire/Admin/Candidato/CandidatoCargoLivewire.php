@@ -29,10 +29,19 @@ class CandidatoCargoLivewire extends Component
         $this->candidatoId = $id;
         $candidato = Candidato::findOrFail($id);
 
-        $this->cargos = Cargo::all();
         $this->elecciones = Eleccion::all();
         $this->partidos = Partido::all();
         $this->regiones = Region::all();
+    }
+
+    public function updatedEleccionId($value)
+    {
+        $this->cargo_id = '';
+        $this->cargos = [];
+
+        if ($value) {
+            $this->cargos = Cargo::where('eleccion_id', $value)->get();
+        }
     }
 
     public function updatedRegionId($value)
@@ -86,7 +95,7 @@ class CandidatoCargoLivewire extends Component
 
         $this->dispatch('alertaLivewire', "Creado");
 
-        return redirect()->route('admin.candidato.vista.editar', $this->candidatoId );
+        return redirect()->route('admin.candidato.vista.editar', $this->candidatoId);
     }
 
     public function render()

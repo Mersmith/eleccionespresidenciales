@@ -15,7 +15,7 @@ class Cargo extends Model
         'nivel',
         'eleccion_id',
     ];
-    
+
     public function eleccion()
     {
         return $this->belongsTo(Eleccion::class);
@@ -28,6 +28,8 @@ class Cargo extends Model
 
     public function candidatos()
     {
-        return $this->hasMany(Candidato::class);
+        return $this->belongsToMany(Candidato::class, 'candidato_cargo')
+            ->withPivot('eleccion_id', 'partido_id', 'region_id', 'provincia_id', 'distrito_id')
+            ->withTimestamps();
     }
 }
