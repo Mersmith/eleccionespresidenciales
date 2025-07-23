@@ -16,6 +16,11 @@ class Cargo extends Model
         'eleccion_id',
     ];
 
+    public function nivel()
+    {
+        return $this->belongsTo(Nivel::class);
+    }
+
     public function eleccion()
     {
         return $this->belongsTo(Eleccion::class);
