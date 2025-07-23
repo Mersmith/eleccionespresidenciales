@@ -4,16 +4,6 @@ use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 use App\Http\Controllers\Socialite\ProviderRedirectController;
 use App\Http\Controllers\Socialite\ProviderCallbackController;
-use App\Livewire\CategoriaCrud;
-use App\Livewire\EncuestaCrear;
-use App\Livewire\EncuestaEditar;
-use App\Livewire\EncuestaLista;
-use App\Livewire\EncuestaCandidatoLista;
-use App\Livewire\EncuestaVotacion;
-use App\Livewire\EncuestaResultado;
-use App\Livewire\CandidatoLista;
-use App\Livewire\CandidatoCrear;
-use App\Livewire\CandidatoEditar;
 
 Route::get('/', function () {
     return view('welcome');
