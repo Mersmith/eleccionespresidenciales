@@ -54,7 +54,7 @@
                                         </span>
                                     </td>
                                     <td class="centrar_iconos">
-                                        <a href="{{ route('admin.eleccion.vista.editar', $item) }}" class="g_accion_editar">
+                                        <a href="{{ route('admin.eleccion.vista.editar', $item->id) }}" class="g_accion_editar">
                                             <span><i class="fa-solid fa-pencil"></i></span>
                                         </a>
                                     </td>

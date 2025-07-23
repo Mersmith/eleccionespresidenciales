@@ -3,39 +3,52 @@
 namespace App\Livewire\Admin\Eleccion;
 
 use App\Models\Eleccion;
+use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
-use Illuminate\Support\Str;
 
 #[Layout('components.layouts.admin.layout-admin')]
 class EleccionEditarLivewire extends Component
 {
-    public $eleccionId;
-    public $tipo;
-    public $anio;
+    public $eleccion;
+
     public $nombre;
+    public $slug;
+    public $descripcion;
+    public $tipo;
+    public $imagen_ruta;
     public $fecha_votacion;
+    public $activo;
+    public $anio;
 
     protected $validationAttributes = [
-        'tipo' => 'tipo elección',
+        'tipo' => 'tipo de elección',
         'anio' => 'año',
-        'nombre' => 'nombre elección',
-        'fecha_votacion' => 'fecha votación',
+        'nombre' => 'nombre de la elección',
+        'slug' => 'slug',
+        'descripcion' => 'descripción',
+        'imagen_ruta' => 'URL de la imagen',
+        'fecha_votacion' => 'fecha de votación',
+        'activo' => 'estado activo',
     ];
 
     protected function rules()
     {
         return [
+            'nombre' => 'required|unique:eleccions,nombre,' . $this->eleccion->id,
+            'slug' => 'required|unique:eleccions,slug,' . $this->eleccion->id,
+            'descripcion' => 'required|min:3|max:255',
             'tipo' => 'required|in:generales,regionales_y_municipales',
-            'anio' => 'required|integer|min:2024|max:2100',
-            'nombre' => 'required|unique:eleccions,nombre,' . $this->eleccionId,
+            'imagen_ruta' => 'nullable|url',
             'fecha_votacion' => 'required|date|after_or_equal:' . $this->anio . '-01-01|before_or_equal:' . $this->anio . '-12-31',
+            'activo' => 'required|numeric|regex:/^\d{1}$/',
+            'anio' => 'required|integer|min:2024|max:2100',
         ];
     }
 
     protected $messages = [
         'tipo.required' => 'El :attribute es obligatorio.',
-        'tipo.in' => 'El tipo de elección debe ser "generales" o "regionales y municipales".',
+        'tipo.in' => 'El :attribute debe ser "generales" o "regionales y municipales".',
 
         'anio.required' => 'El :attribute es obligatorio.',
         'anio.integer' => 'El :attribute debe ser un número entero.',
@@ -45,26 +58,45 @@ class EleccionEditarLivewire extends Component
         'nombre.required' => 'El :attribute es obligatorio.',
         'nombre.unique' => 'El :attribute ya está registrado.',
 
+        'slug.required' => 'El :attribute es obligatorio.',
+        'slug.unique' => 'El :attribute ya está registrado.',
+
+        'descripcion.required' => 'La :attribute es obligatoria.',
+        'descripcion.min' => 'La :attribute debe tener al menos :min caracteres.',
+        'descripcion.max' => 'La :attribute no debe exceder los :max caracteres.',
+
+        'imagen_ruta.url' => 'La :attribute debe ser una URL válida.',
+
         'fecha_votacion.required' => 'La :attribute es obligatoria.',
         'fecha_votacion.date' => 'La :attribute debe ser una fecha válida.',
         'fecha_votacion.after_or_equal' => 'La :attribute debe ser desde el 1 de enero del año seleccionado.',
         'fecha_votacion.before_or_equal' => 'La :attribute no puede ser después del 31 de diciembre del año seleccionado.',
+
+        'activo.required' => 'El :attribute es obligatorio.',
+        'activo.numeric' => 'El :attribute debe ser un número.',
+        'activo.regex' => 'El :attribute debe ser 0 o 1.',
+
+        'imagen_ruta.image' => 'La :attribute debe ser un archivo de imagen válido.',
     ];
 
     public function mount($id)
     {
-        $this->eleccionId = $id;
-        $eleccion = Eleccion::findOrFail($id);
-    
-        if ($eleccion->tipo === 'GENERALES') {
+        $this->eleccion = Eleccion::findOrFail($id);
+        $this->nombre = $this->eleccion->nombre;
+        $this->slug = $this->eleccion->slug;
+        $this->descripcion = $this->eleccion->descripcion;
+
+        if ($this->eleccion->tipo === 'GENERALES') {
             $this->tipo = 'generales';
-        } elseif ($eleccion->tipo === 'REGIONALES Y MUNICIPALES') {
+        } elseif ($this->eleccion->tipo === 'REGIONALES Y MUNICIPALES') {
             $this->tipo = 'regionales_y_municipales';
         }
-    
-        $this->anio = date('Y', strtotime($eleccion->fecha));
-        $this->nombre = $eleccion->nombre;
-        $this->fecha_votacion = $eleccion->fecha;
+
+        $this->imagen_ruta = $this->eleccion->imagen_ruta;
+        $this->fecha_votacion = $this->eleccion->fecha_votacion;
+        $this->activo = $this->eleccion->activo;
+
+        $this->anio = date('Y', strtotime($this->eleccion->fecha_votacion));
     }
 
     public function updatedTipo()
@@ -83,6 +115,7 @@ class EleccionEditarLivewire extends Component
         if ($this->tipo && $this->anio) {
             $tipo_formateado = Str::of($this->tipo)->replace('_', ' ')->upper();
             $this->nombre = 'ELECCIONES ' . $tipo_formateado . ' ' . $this->anio;
+            $this->slug = Str::slug($this->nombre);
         }
     }
 
@@ -100,11 +133,14 @@ class EleccionEditarLivewire extends Component
             $tipo_db = null;
         }
 
-        $eleccion = Eleccion::findOrFail($this->eleccionId);
-        $eleccion->update([
+        $this->eleccion->update([
             'nombre' => $this->nombre,
+            'slug' => $this->slug,
+            'descripcion' => $this->descripcion,
             'tipo' => $tipo_db,
-            'fecha' => $this->fecha_votacion,
+            'imagen_ruta' => $this->imagen_ruta,
+            'fecha_votacion' => $this->fecha_votacion,
+            'activo' => $this->activo,
         ]);
 
         $this->dispatch('alertaLivewire', 'Actualizado');
