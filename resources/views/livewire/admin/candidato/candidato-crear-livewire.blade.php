@@ -29,6 +29,16 @@
                         @enderror
                     </div>
 
+                    <!--SLUG-->
+                    <div class="g_margin_bottom_20">
+                        <label for="slug">Slug <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
+                        <input type="text" id="slug" name="slug" wire:model.live="slug" required disabled>
+                        <p class="leyenda">Se genera automático</p>
+                        @error('slug')
+                        <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
                     <!--DESCRIPCION-->
                     <div class="g_margin_bottom_20">
                         <label for="descripcion">Descripcion <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
@@ -38,7 +48,7 @@
                         @enderror
                     </div>
 
-                    <!--LOGO-->
+                    <!--FOTO-->
                     <div class="g_margin_bottom_20">
                         <label for="foto">Foto <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
                         <input type="text" id="foto" name="foto" wire:model.live="foto" required>
@@ -62,11 +72,91 @@
                         <p class="mensaje_error">{{ $message }}</p>
                         @enderror
                     </div>
+
+                    <!--CARGO-->
+                    <div class="g_margin_bottom_20">
+                        <label for="cargo_id">Cargo <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
+                        <select id="cargo_id" name="cargo_id" wire:model.live="cargo_id" required>
+                            <option value="" selected disabled>Seleccionar un cargo</option>
+                            @if ($cargos)
+                            @foreach ($cargos as $cargo)
+                            <option value="{{ $cargo->id }}">{{ $cargo->nombre }}</option>
+                            @endforeach
+                            @endif
+                        </select>
+                        @error('cargo_id')
+                        <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
             </div>
 
             <div class="g_columna_4">
                 <div class="g_panel">
+                    <!--TITULO-->
+                    <h4 class="g_panel_titulo">Activo</h4>
+
+                    <!--ACTIVO-->
+                    <select id="activo" name="activo" wire:model="activo">
+                        <option value="0" selected>DESACTIVADO</option>
+                        <option value="1">ACTIVO</option>
+                    </select>
+                    @error('activo')
+                    <p class="mensaje_error">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="g_panel">
+                    <!--TITULO-->
+                    <h4 class="g_panel_titulo">Vive</h4>
+
+                    <!--REGION-->
+                    <div class="g_margin_bottom_20">
+                        <label for="region_id">Región <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
+                        <select id="region_id" name="region_id" wire:model.live="region_id" required>
+                            <option value="" selected disabled>Seleccionar una región</option>
+                            @if ($regiones)
+                            @foreach ($regiones as $region)
+                            <option value="{{ $region->id }}">{{ $region->nombre }}</option>
+                            @endforeach
+                            @endif
+                        </select>
+                        @error('region_id')
+                        <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!--PROVINCIA-->
+                    <div class="g_margin_bottom_20">
+                        <label for="provincia_id">Provincia <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
+                        <select id="provincia_id" name="provincia_id" wire:model.live="provincia_id" required>
+                            <option value="" selected disabled>Seleccionar una pronvincia</option>
+                            @if ($provincias)
+                            @foreach ($provincias as $provincia)
+                            <option value="{{ $provincia->id }}">{{ $provincia->nombre }}</option>
+                            @endforeach
+                            @endif
+                        </select>
+                        @error('provincia_id')
+                        <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!--DISTRITO-->
+                    <div>
+                        <label for="distrito_id">Distrito <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
+                        <select id="distrito_id" name="distrito_id" wire:model.live="distrito_id" required>
+                            <option value="">Seleccionar un distrito</option>
+                            @if ($distritos)
+                            @foreach ($distritos as $distrito)
+                            <option value="{{ $distrito->id }}">{{ $distrito->nombre }}</option>
+                            @endforeach
+                            @endif
+                        </select>
+                        @error('distrito_id')
+                        <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
 
                 </div>
             </div>

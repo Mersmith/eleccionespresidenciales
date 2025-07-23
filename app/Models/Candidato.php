@@ -12,10 +12,43 @@ class Candidato extends Model
 
     protected $fillable = [
         'nombre',
+        'slug',
         'descripcion',
         'foto',
         'partido_id',
+        'region_id',
+        'provincia_id',
+        'distrito_id',
+        'cargo_id',
+        'activo',
     ];
+
+    public function partido()
+    {
+        return $this->belongsTo(Partido::class);
+    }
+
+    public function region()
+    {
+        return $this->belongsTo(Region::class);
+    }
+
+    public function provincia()
+    {
+        return $this->belongsTo(Provincia::class);
+    }
+
+    public function distrito()
+    {
+        return $this->belongsTo(Distrito::class);
+    }
+
+    public function cargos()
+    {
+        return $this->belongsToMany(Cargo::class, 'candidato_cargo')
+            ->withPivot('eleccion_id', 'partido_id', 'region_id', 'provincia_id', 'distrito_id')
+            ->withTimestamps();
+    }
 
     public function encuestas()
     {
@@ -27,20 +60,10 @@ class Candidato extends Model
         return $this->hasMany(Voto::class);
     }
 
-    public function partido()
+    public function elecciones()
     {
-        return $this->belongsTo(Partido::class);
-    }
-
-    public function cargos()
-    {
-        return $this->belongsToMany(Cargo::class, 'candidato_cargo')
-            ->withPivot(['eleccion_id', 'partido_id', 'region_id', 'provincia_id', 'distrito_id'])
+        return $this->belongsToMany(Eleccion::class, 'candidato_cargo')
+            ->withPivot('cargo_id', 'partido_id', 'region_id', 'provincia_id', 'distrito_id')
             ->withTimestamps();
-    }
-    
-    public function eleccion()
-    {
-        return $this->belongsTo(Eleccion::class);
     }
 }

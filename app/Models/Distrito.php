@@ -19,4 +19,9 @@ class Distrito extends Model
     {
         return $this->hasMany(Encuesta::class);
     }
+
+    public function candidatos()
+    {
+        return $this->hasMany(Candidato::class);
+    }
 }
