@@ -11,20 +11,30 @@ class Encuesta extends Model
     use HasFactory;
 
     protected $fillable = [
-        'titulo',
+        'nombre',
+        'slug',
+        'descripcion',
+        'imagen_url',
         'categoria_id',
+        'eleccion_id',
         'cargo_id',
         'region_id',
         'provincia_id',
         'distrito_id',
         'fecha_inicio',
         'fecha_fin',
-        'activa',
+        'estado',
+        'activo',
     ];
 
     public function categoria()
     {
         return $this->belongsTo(Categoria::class);
+    }
+
+    public function eleccion()
+    {
+        return $this->belongsTo(Eleccion::class);
     }
 
     public function cargo()

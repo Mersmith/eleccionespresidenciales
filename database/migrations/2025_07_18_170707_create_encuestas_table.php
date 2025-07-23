@@ -14,10 +14,13 @@ return new class extends Migration
         Schema::create('encuestas', function (Blueprint $table) {
             $table->id();
 
-            $table->string('titulo');
+            $table->string('nombre')->unique();
+            $table->string('slug')->unique();
+            $table->text('descripcion')->nullable();
+            $table->string('imagen_url')->nullable();
 
             $table->foreignId('categoria_id')->nullable()->constrained()->onDelete('set null');
-
+            $table->foreignId('eleccion_id')->nullable()->constrained()->onDelete('set null');
             $table->foreignId('cargo_id')->constrained()->onDelete('cascade');
 
             $table->foreignId('region_id')->nullable()->constrained()->onDelete('set null');
@@ -27,7 +30,8 @@ return new class extends Migration
             $table->dateTime('fecha_inicio');
             $table->dateTime('fecha_fin');
 
-            $table->boolean('activa')->default(true);
+            $table->enum('estado', ['pendiente', 'iniciada', 'finalizada'])->default('pendiente');
+            $table->boolean('activo')->default(false)->comment('1 ACTIVADO, 0 DESACTIVADO');
 
             $table->timestamps();
         });

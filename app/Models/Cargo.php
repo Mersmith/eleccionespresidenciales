@@ -21,6 +21,11 @@ class Cargo extends Model
         return $this->belongsTo(Eleccion::class);
     }
 
+    public function encuestas()
+    {
+        return $this->hasMany(Encuesta::class);
+    }
+
     public function candidatos()
     {
         return $this->hasMany(Candidato::class);

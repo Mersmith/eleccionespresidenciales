@@ -20,6 +20,11 @@ class Eleccion extends Model
         return $this->hasMany(Cargo::class);
     }
 
+    public function encuestas()
+    {
+        return $this->hasMany(Encuesta::class);
+    }
+
     public function candidatos()
     {
         return $this->hasMany(Candidato::class);

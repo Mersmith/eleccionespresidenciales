@@ -1,4 +1,4 @@
-@section('tituloPagina', 'Encuesta')
+@section('tituloPagina', 'Crear Encuesta')
 <div>
     <!--CABECERA TITULO PAGINA-->
     <div class="g_panel cabecera_titulo_pagina">
@@ -14,20 +14,12 @@
                 <i class="fa-solid fa-arrow-left"></i> Regresar</a>
         </div>
     </div>
+
     <!--FORMULARIO-->
     <div class="formulario">
         <div class="g_fila">
             <div class="g_columna_8">
                 <div class="g_panel">
-                    <!--TITULO-->
-                    <div class="g_margin_bottom_20">
-                        <label for="titulo">Titulo <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
-                        <input type="text" id="titulo" name="titulo" wire:model.live="titulo" required>
-                        @error('titulo')
-                        <p class="mensaje_error">{{ $message }}</p>
-                        @enderror
-                    </div>
-
                     <!--CATEGORIA-->
                     <div class="g_margin_bottom_20">
                         <label for="categoria_id">Categoria <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
@@ -40,6 +32,22 @@
                             @endif
                         </select>
                         @error('categoria_id')
+                        <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!--ELECCION-->
+                    <div class="g_margin_bottom_20">
+                        <label for="eleccion_id">Tipo elección <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
+                        <select id="eleccion_id" name="eleccion_id" wire:model.live="eleccion_id" required>
+                            <option value="" selected disabled>Seleccionar una elección</option>
+                            @if ($elecciones)
+                            @foreach ($elecciones as $eleccion)
+                            <option value="{{ $eleccion->id }}">{{ $eleccion->nombre }}</option>
+                            @endforeach
+                            @endif
+                        </select>
+                        @error('eleccion_id')
                         <p class="mensaje_error">{{ $message }}</p>
                         @enderror
                     </div>
@@ -77,6 +85,46 @@
                         <p class="mensaje_error">{{ $message }}</p>
                         @enderror
                     </div>
+
+                    <!--NOMBRE-->
+                    <div class="g_margin_bottom_20">
+                        <label for="nombre">Nombre <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
+                        <input type="text" id="nombre" name="nombre" wire:model.live="nombre" required disabled>
+                        <p class="leyenda">Se genera automático</p>
+                        @error('nombre')
+                        <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!--SLUG-->
+                    <div class="g_margin_bottom_20">
+                        <label for="slug">Slug <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
+                        <input type="text" id="slug" name="slug" wire:model.live="slug" required disabled>
+                        <p class="leyenda">Se genera automático</p>
+                        @error('slug')
+                        <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!--DESCRIPCION-->
+                    <div class="g_margin_bottom_20">
+                        <label for="descripcion">Descripción <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
+                        <textarea id="descripcion" name="descripcion" wire:model.live="descripcion" rows="3"></textarea>
+                        <p class="leyenda">Se mostrará en el SEO.</p>
+                        @error('descripcion')
+                        <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!--IMAGEN-->
+                    <div class="g_margin_bottom_20">
+                        <label for="imagen_url">Imagen</label>
+                        <input type="text" id="imagen_url" name="imagen_url" wire:model.live="imagen_url">
+                        <p class="leyenda">El logo de la elección</p>
+                        @error('imagen_url')
+                        <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
             </div>
 
@@ -86,11 +134,27 @@
                     <h4 class="g_panel_titulo">Activo</h4>
 
                     <!--ACTIVO-->
-                    <select id="activa" name="activa" wire:model="activa">
+                    <select id="activo" name="activo" wire:model="activo">
                         <option value="0" selected>DESACTIVADO</option>
                         <option value="1">ACTIVO</option>
                     </select>
-                    @error('activa')
+                    @error('activo')
+                    <p class="mensaje_error">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="g_panel">
+                    <!--TITULO-->
+                    <h4 class="g_panel_titulo">Estado</h4>
+
+                    <!--ESTADO-->
+                    <select id="estado" name="estado" wire:model.live="estado" required>
+                        <option value="pendiente">PENDIENTE</option>
+                        <option value="iniciada">INICIADA</option>
+                        <option value="finalizada">FINALIZADA</option>
+                    </select>
+                    </select>
+                    @error('estado')
                     <p class="mensaje_error">{{ $message }}</p>
                     @enderror
                 </div>
@@ -159,5 +223,4 @@
             </div>
         </div>
     </div>
-
 </div>

@@ -37,8 +37,8 @@
                     <thead>
                         <tr>
                             <th>Nº</th>
-                            <th>Título</th>
                             <th>Categoría</th>
+                            <th>Elección</th>
                             <th>Cargo</th>
                             <th>Región</th>
                             <th>Provincia</th>
@@ -46,6 +46,7 @@
                             <th>Fecha Inicio</th>
                             <th>Fecha Fin</th>
                             <th>Estado</th>
+                            <th>Activo</th>
                             <th>Acción</th>
                         </tr>
                     </thead>
@@ -53,14 +54,15 @@
                         @foreach ($encuestas as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td class="g_resaltar">{{ $item->titulo }}</td>
                                 <td>{{ $item->categoria->nombre ?? '-' }}</td>
+                                <td>{{ $item->eleccion->nombre ?? '-' }}</td>
                                 <td>{{ $item->cargo->nombre ?? '-' }}</td>
                                 <td>{{ $item->region->nombre ?? '-' }}</td>
                                 <td>{{ $item->provincia->nombre ?? '-' }}</td>
                                 <td>{{ $item->distrito->nombre ?? '-' }}</td>
                                 <td>{{ $item->fecha_inicio }}</td>
                                 <td>{{ $item->fecha_fin }}</td>
+                                <td>{{ $item->estado }}</td>
                                 <td>
                                     @if ($item->activa)
                                         <span class="badge badge-success">Activa</span>

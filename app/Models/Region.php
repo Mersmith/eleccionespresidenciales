@@ -19,4 +19,9 @@ class Region extends Model
     {
         return $this->hasMany(Provincia::class);
     }
+
+    public function encuestas()
+    {
+        return $this->hasMany(Encuesta::class);
+    }
 }
