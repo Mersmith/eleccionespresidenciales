@@ -16,9 +16,18 @@
         <div class="g_fila">
             <div class="g_columna_8">
                 <div class="g_panel">
-                    <!--CARGO-->
+                    <!--NOMBRE-->
                     <div class="g_margin_bottom_20">
-                        <label for="nivel">Región <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
+                        <label for="nombre">Nombre <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
+                        <input type="text" id="nombre" name="nombre" wire:model.live="nombre" required>
+                        @error('nombre')
+                        <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!--NIVEL-->
+                    <div class="g_margin_bottom_20">
+                        <label for="nivel">Nivel <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
                         <select id="nivel" name="nivel" wire:model.live="nivel" required>
                             <option value="nacional">NACIONAL</option>
                             <option value="regional">REGIONAL</option>
@@ -30,11 +39,18 @@
                         @enderror
                     </div>
 
-                    <!--NOMBRE-->
+                    <!--ELECCIONES-->
                     <div class="g_margin_bottom_20">
-                        <label for="nombre">Nombre <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
-                        <input type="text" id="nombre" name="nombre" wire:model.live="nombre" required>
-                        @error('nombre')
+                        <label for="eleccion_id">Tipo elección <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
+                        <select id="eleccion_id" name="eleccion_id" wire:model.live="eleccion_id" required>
+                            <option value="" selected disabled>Seleccionar una elección</option>
+                            @if ($elecciones)
+                            @foreach ($elecciones as $categoria)
+                            <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
+                            @endforeach
+                            @endif
+                        </select>
+                        @error('eleccion_id')
                         <p class="mensaje_error">{{ $message }}</p>
                         @enderror
                     </div>

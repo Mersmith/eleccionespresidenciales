@@ -2,19 +2,24 @@
 
 namespace App\Livewire\Admin\Cargo;
 
-use Livewire\Component;
 use App\Models\Cargo;
+use App\Models\Eleccion;
 use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 #[Layout('components.layouts.admin.layout-admin')]
 class CargoCrearLivewire extends Component
 {
-    public $nivel = 'nacional';
+    public $elecciones;
+
     public $nombre;
+    public $nivel = 'nacional';
+    public $eleccion_id = "";
 
     protected $validationAttributes = [
-        'nivel' => 'tipo elección',
-        'nombre' => 'nombre elección',
+        'nivel' => 'nivel de elección',
+        'nombre' => 'nombre del cargo',
+        'eleccion_id' => 'elección asociada',
     ];
 
     protected function rules()
@@ -22,24 +27,34 @@ class CargoCrearLivewire extends Component
         return [
             'nivel' => 'required|in:nacional,regional,provincial,distrital',
             'nombre' => 'required|unique:cargos,nombre',
+            'eleccion_id' => 'required|exists:eleccions,id',
         ];
     }
 
     protected $messages = [
         'nivel.required' => 'El :attribute es obligatorio.',
-        'nivel.in' => 'El tipo de elección debe ser "nacional", "regional", "provincial" o "distrital".',
+        'nivel.in' => 'El :attribute debe ser "nacional", "regional", "provincial" o "distrital".',
 
         'nombre.required' => 'El :attribute es obligatorio.',
         'nombre.unique' => 'El :attribute ya está registrado.',
+
+        'eleccion_id.required' => 'La :attribute es obligatoria.',
+        'eleccion_id.exists' => 'La :attribute seleccionada no es válida.',
     ];
-   
+
+    public function mount()
+    {
+        $this->elecciones = Eleccion::all();
+    }
+
     public function crearCargo()
     {
-        $this->validate();      
+        $this->validate();
 
         Cargo::create([
             'nombre' => $this->nombre,
-            'nivel' =>$this->nivel,
+            'nivel' => $this->nivel,
+            'eleccion_id' => $this->eleccion_id,
         ]);
 
         $this->dispatch('alertaLivewire', "Creado");

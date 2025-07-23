@@ -39,6 +39,7 @@
                             <th>Nº</th>
                             <th>Nombre</th>
                             <th>Nivel</th>
+                            <th>Elección</th>
                             <th>Acción</th>
                         </tr>
                     </thead>
@@ -48,6 +49,7 @@
                             <td> {{ $index + 1 }} </td>
                             <td class="g_resaltar">{{ $item->nombre }}</td>
                             <td>{{ $item->nivel }}</td>
+                            <td>{{ $item->eleccion->nombre ?? '—' }}</td>
                             <td class="centrar_iconos">
                                 <a href="{{ route('admin.cargo.vista.editar', $item) }}" class="g_accion_editar">
                                     <span><i class="fa-solid fa-pencil"></i></span>

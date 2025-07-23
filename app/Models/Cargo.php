@@ -10,7 +10,16 @@ class Cargo extends Model
     /** @use HasFactory<\Database\Factories\CargoFactory> */
     use HasFactory;
 
-    protected $fillable = ['nombre', 'nivel'];
+    protected $fillable = [
+        'nombre',
+        'nivel',
+        'eleccion_id',
+    ];
+    
+    public function eleccion()
+    {
+        return $this->belongsTo(Eleccion::class);
+    }
 
     public function candidatos()
     {

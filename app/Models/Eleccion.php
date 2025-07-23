@@ -15,6 +15,11 @@ class Eleccion extends Model
 
     protected $guarded = ['id', 'created_at', 'update_at'];
 
+    public function cargos()
+    {
+        return $this->hasMany(Cargo::class);
+    }
+
     public function candidatos()
     {
         return $this->hasMany(Candidato::class);

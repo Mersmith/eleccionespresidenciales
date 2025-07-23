@@ -16,6 +16,7 @@ return new class extends Migration
 
             $table->string('nombre'); // Presidente, Diputado, Alcalde, etc.
             $table->enum('nivel', ['nacional', 'regional', 'provincial', 'distrital']);
+            $table->foreignId('eleccion_id')->constrained('eleccions')->onDelete('cascade');
 
             $table->timestamps();
         });
