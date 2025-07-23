@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Partido;
+use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class PartidoSeeder extends Seeder
 {
@@ -12,6 +14,8 @@ class PartidoSeeder extends Seeder
      */
     public function run(): void
     {
+        $faker = Faker::create();
+
         $partidos = [
             'Acción Popular',
             'Ahora Nación',
@@ -61,8 +65,11 @@ class PartidoSeeder extends Seeder
         foreach ($partidos as $nombre) {
             Partido::create([
                 'nombre' => $nombre,
+                'slug' => Str::slug($nombre),
                 'sigla' => null,
+                'descripcion' => $faker->sentence,
                 'logo' => 'https://example.com/logos/' . '.png',
+                'activo' => true,
             ]);
         }
     }

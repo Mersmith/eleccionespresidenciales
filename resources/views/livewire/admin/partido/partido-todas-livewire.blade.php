@@ -39,7 +39,9 @@
                             <th>Nº</th>
                             <th>Nombre</th>
                             <th>Sigla</th>
+                            <th>Descripcion</th>
                             <th>Logo</th>
+                            <th>Activo</th>
                             <th>Acción</th>
                         </tr>
                     </thead>
@@ -49,8 +51,14 @@
                             <td> {{ $index + 1 }} </td>
                             <td class="g_resaltar">{{ $item->nombre }}</td>
                             <td>{{ $item->sigla }}</td>
+                            <td>{{ $item->descripcion }}</td>
                             <td>
                                 <img src="{{ $item->logo }}" alt="{{ $item->nombre }}">    
+                            </td>
+                            <td>
+                                <span class="{{ $item->activo ? 'text-green-600' : 'text-red-600' }}">
+                                    {{ $item->activo ? 'Sí' : 'No' }}
+                                </span>
                             </td>
                             <td class="centrar_iconos">
                                 <a href="{{ route('admin.partido.vista.editar', $item) }}" class="g_accion_editar">

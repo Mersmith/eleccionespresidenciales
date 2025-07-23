@@ -10,8 +10,15 @@ class Partido extends Model
     /** @use HasFactory<\Database\Factories\PartidoFactory> */
     use HasFactory;
 
-    protected $fillable = ['nombre', 'sigla', 'logo'];
-
+    protected $fillable = [
+        'nombre',
+        'sigla',
+        'slug',
+        'logo',
+        'descripcion',
+        'activo',
+    ];
+    
     public function candidatos()
     {
         return $this->hasMany(Candidato::class);

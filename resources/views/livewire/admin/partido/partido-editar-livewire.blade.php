@@ -21,17 +21,37 @@
                     <!--NOMBRE-->
                     <div class="g_margin_bottom_20">
                         <label for="nombre">Nombre <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
-                        <input type="text" id="nombre" wire:model.live="nombre" required>
+                        <input type="text" id="nombre" name="nombre" wire:model.live="nombre" required>
                         @error('nombre')
                         <p class="mensaje_error">{{ $message }}</p>
                         @enderror
                     </div>
 
-                    <!--SIGLA-->
+                    <!--SLUG-->
+                    <div class="g_margin_bottom_20">
+                        <label for="slug">Slug <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
+                        <input type="text" id="slug" name="slug" wire:model.live="slug" required disabled>
+                        <p class="leyenda">Se genera automático</p>
+                        @error('slug')
+                        <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!--SIGLAS-->
                     <div class="g_margin_bottom_20">
                         <label for="sigla">Sigla <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
-                        <input type="text" id="sigla" wire:model.live="sigla" required>
+                        <input type="text" id="sigla" name="sigla" wire:model.live="sigla" required>
                         @error('sigla')
+                        <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!--DESCRIPCION-->
+                    <div class="g_margin_bottom_20">
+                        <label for="descripcion">Descripción <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
+                        <textarea id="descripcion" name="descripcion" wire:model.live="descripcion" rows="3"></textarea>
+                        <p class="leyenda">Se mostrará en el SEO.</p>
+                        @error('descripcion')
                         <p class="mensaje_error">{{ $message }}</p>
                         @enderror
                     </div>
@@ -39,7 +59,7 @@
                     <!--LOGO-->
                     <div class="g_margin_bottom_20">
                         <label for="logo">Logo <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
-                        <input type="text" id="logo" wire:model.live="logo" required>
+                        <input type="text" id="logo" name="logo" wire:model.live="logo" required>
                         @error('logo')
                         <p class="mensaje_error">{{ $message }}</p>
                         @enderror
@@ -49,7 +69,17 @@
 
             <div class="g_columna_4">
                 <div class="g_panel">
-                    <!-- Espacio para vista previa de logo u otra info -->
+                    <!--TITULO-->
+                    <h4 class="g_panel_titulo">Activo</h4>
+
+                    <!--ACTIVO-->
+                    <select id="activo" name="activo" wire:model="activo">
+                        <option value="0" selected>DESACTIVADO</option>
+                        <option value="1">ACTIVO</option>
+                    </select>
+                    @error('activo')
+                    <p class="mensaje_error">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
         </div>

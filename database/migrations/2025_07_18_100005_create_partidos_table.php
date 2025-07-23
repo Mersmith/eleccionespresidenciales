@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('partidos', function (Blueprint $table) {
             $table->id();
 
-            $table->string('nombre');
+            $table->string('nombre')->unique();
+            $table->string('slug')->unique();
             $table->string('sigla')->nullable();
+            $table->text('descripcion')->nullable();
             $table->string('logo')->nullable();
+            $table->boolean('activo')->default(false)->comment('1 ACTIVADO, 0 DESACTIVADO');
 
             $table->timestamps();
         });
