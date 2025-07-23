@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\Eleccion;
 
 use App\Models\Eleccion;
+use App\Models\TipoEleccion;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -10,19 +11,21 @@ use Livewire\Component;
 #[Layout('components.layouts.admin.layout-admin')]
 class EleccionEditarLivewire extends Component
 {
+    public $tipo_elecciones;
+
     public $eleccion;
 
     public $nombre;
     public $slug;
     public $descripcion;
-    public $tipo;
+    public $tipo_eleccion_id;
     public $imagen_ruta;
     public $fecha_votacion;
     public $activo;
     public $anio;
 
     protected $validationAttributes = [
-        'tipo' => 'tipo de elección',
+        'tipo_eleccion_id' => 'tipo de elección',
         'anio' => 'año',
         'nombre' => 'nombre de la elección',
         'slug' => 'slug',
@@ -38,7 +41,7 @@ class EleccionEditarLivewire extends Component
             'nombre' => 'required|unique:eleccions,nombre,' . $this->eleccion->id,
             'slug' => 'required|unique:eleccions,slug,' . $this->eleccion->id,
             'descripcion' => 'required|min:3|max:255',
-            'tipo' => 'required|in:generales,regionales_y_municipales',
+            'tipo_eleccion_id' => 'required|exists:tipo_eleccions,id',
             'imagen_ruta' => 'nullable|url',
             'fecha_votacion' => 'required|date|after_or_equal:' . $this->anio . '-01-01|before_or_equal:' . $this->anio . '-12-31',
             'activo' => 'required|numeric|regex:/^\d{1}$/',
@@ -47,8 +50,8 @@ class EleccionEditarLivewire extends Component
     }
 
     protected $messages = [
-        'tipo.required' => 'El :attribute es obligatorio.',
-        'tipo.in' => 'El :attribute debe ser "generales" o "regionales y municipales".',
+        'tipo_eleccion_id.required' => 'La :attribute es obligatoria.',
+        'tipo_eleccion_id.exists' => 'La :attribute seleccionada no es válida.',
 
         'anio.required' => 'El :attribute es obligatorio.',
         'anio.integer' => 'El :attribute debe ser un número entero.',
@@ -81,17 +84,13 @@ class EleccionEditarLivewire extends Component
 
     public function mount($id)
     {
+        $this->tipo_elecciones = TipoEleccion::all();
+
         $this->eleccion = Eleccion::findOrFail($id);
         $this->nombre = $this->eleccion->nombre;
         $this->slug = $this->eleccion->slug;
         $this->descripcion = $this->eleccion->descripcion;
-
-        if ($this->eleccion->tipo === 'GENERALES') {
-            $this->tipo = 'generales';
-        } elseif ($this->eleccion->tipo === 'REGIONALES Y MUNICIPALES') {
-            $this->tipo = 'regionales_y_municipales';
-        }
-
+        $this->tipo_eleccion_id = $this->eleccion->tipo_eleccion_id;
         $this->imagen_ruta = $this->eleccion->imagen_ruta;
         $this->fecha_votacion = $this->eleccion->fecha_votacion;
         $this->activo = $this->eleccion->activo;
@@ -112,9 +111,10 @@ class EleccionEditarLivewire extends Component
 
     public function actualizarNombre()
     {
-        if ($this->tipo && $this->anio) {
-            $tipo_formateado = Str::of($this->tipo)->replace('_', ' ')->upper();
-            $this->nombre = 'ELECCIONES ' . $tipo_formateado . ' ' . $this->anio;
+        if ($this->tipo_eleccion_id && $this->anio) {
+            $tipo_eleccion = TipoEleccion::find($this->tipo_eleccion_id);
+
+            $this->nombre = strtoupper($tipo_eleccion->nombre) . ' ' . $this->anio;
             $this->slug = Str::slug($this->nombre);
         }
     }
@@ -123,21 +123,13 @@ class EleccionEditarLivewire extends Component
     {
         $this->actualizarNombre();
 
-        $this->validate();
-
-        if ($this->tipo === 'generales') {
-            $tipo_db = 'GENERALES';
-        } elseif ($this->tipo === 'regionales_y_municipales') {
-            $tipo_db = 'REGIONALES Y MUNICIPALES';
-        } else {
-            $tipo_db = null;
-        }
+        $this->validate(); 
 
         $this->eleccion->update([
             'nombre' => $this->nombre,
             'slug' => $this->slug,
             'descripcion' => $this->descripcion,
-            'tipo' => $tipo_db,
+            'tipo_eleccion_id' => $this->tipo_eleccion_id,
             'imagen_ruta' => $this->imagen_ruta,
             'fecha_votacion' => $this->fecha_votacion,
             'activo' => $this->activo,

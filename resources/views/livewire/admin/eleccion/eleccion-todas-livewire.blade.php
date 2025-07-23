@@ -46,7 +46,7 @@
                                 <tr>
                                     <td>{{ ($elecciones->currentPage() - 1) * $elecciones->perPage() + $loop->iteration }}</td>
                                     <td class="g_resaltar">{{ $item->nombre }}</td>
-                                    <td>{{ $item->tipo }}</td>
+                                    <td>{{ $item->tipoEleccion->nombre }}</td>
                                     <td>{{ \Carbon\Carbon::parse($item->fecha_votacion)->format('d/m/Y') }}</td>
                                     <td>
                                         <span class="{{ $item->activo ? 'text-green-600' : 'text-red-600' }}">

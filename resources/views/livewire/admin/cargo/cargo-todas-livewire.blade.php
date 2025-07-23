@@ -48,7 +48,7 @@
                         <tr>
                             <td> {{ $index + 1 }} </td>
                             <td class="g_resaltar">{{ $item->nombre }}</td>
-                            <td>{{ $item->nivel }}</td>
+                            <td>{{ $item->nivel->nomobre }}</td>
                             <td>{{ $item->eleccion->nombre ?? '—' }}</td>
                             <td class="centrar_iconos">
                                 <a href="{{ route('admin.cargo.vista.editar', $item) }}" class="g_accion_editar">

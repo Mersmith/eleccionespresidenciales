@@ -27,7 +27,7 @@ class CargoTodasLivewire extends Component
 
     public function render()
     {
-        $cargos = Cargo::with('eleccion') // ← Carga la relación
+        $cargos = Cargo::with('eleccion')
             ->where('nombre', 'like', '%' . $this->buscar . '%')
             ->orderBy('created_at', 'desc')
             ->paginate(10);

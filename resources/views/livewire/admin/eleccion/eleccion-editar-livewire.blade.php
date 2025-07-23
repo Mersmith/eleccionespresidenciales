@@ -22,6 +22,22 @@
         <div class="g_fila">
             <div class="g_columna_8">
                 <div class="g_panel">
+                    <!--ELECCIONES-->
+                    <div class="g_margin_bottom_20">
+                        <label for="tipo_eleccion_id">Tipo elección <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
+                        <select id="tipo_eleccion_id" name="tipo_eleccion_id" wire:model.live="tipo_eleccion_id" required>
+                            <option value="" selected disabled>Seleccionar una elección</option>
+                            @if ($tipo_elecciones)
+                            @foreach ($tipo_elecciones as $eleccion)
+                            <option value="{{ $eleccion->id }}">{{ $eleccion->nombre }}</option>
+                            @endforeach
+                            @endif
+                        </select>
+                        @error('tipo_eleccion_id')
+                        <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
                     <!--AÑO DE VOTACIÓN-->
                     <div class="g_margin_bottom_20">
                         <label for="anio">Año de votación <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
@@ -33,19 +49,6 @@
                         </select>
                         </select>
                         @error('anio')
-                        <p class="mensaje_error">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <!--TIPO-->
-                    <div class="g_margin_bottom_20">
-                        <label for="tipo">Tipo de elección <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
-                        <select id="tipo" name="tipo" wire:model.live="tipo" required>
-                            <option value="generales">GENERALES</option>
-                            <option value="regionales_y_municipales">REGIONALES Y MUNICIPALES</option>
-                        </select>
-                        </select>
-                        @error('tipo')
                         <p class="mensaje_error">{{ $message }}</p>
                         @enderror
                     </div>
