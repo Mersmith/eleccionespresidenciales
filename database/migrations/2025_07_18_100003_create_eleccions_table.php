@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nombre')->unique();
             $table->string('slug')->unique();
             $table->text('descripcion')->nullable();
-            $table->enum('tipo', ['GENERALES', 'REGIONALES Y MUNICIPALES']);
+            $table->foreignId('tipo_eleccion_id')->constrained('tipo_eleccions')->onDelete('restrict');
             $table->string('imagen_ruta')->nullable();
             $table->date('fecha_votacion');
             $table->boolean('activo')->default(false)->comment('1 ACTIVADO, 0 DESACTIVADO');

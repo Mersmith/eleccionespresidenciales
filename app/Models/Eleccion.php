@@ -15,6 +15,11 @@ class Eleccion extends Model
 
     protected $guarded = ['id', 'created_at', 'update_at'];
 
+    public function tipoEleccion()
+    {
+        return $this->belongsTo(TipoEleccion::class, 'tipo_eleccion_id');
+    }
+
     public function cargos()
     {
         return $this->hasMany(Cargo::class);

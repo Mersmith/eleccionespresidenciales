@@ -16,11 +16,7 @@ class CategoriaSeeder extends Seeder
             [
                 'nombre' => 'Político',
                 'descripcion' => 'Noticias, entrevistas y perfiles del ámbito político.',
-            ],
-            [
-                'nombre' => 'Opinión',
-                'descripcion' => 'Análisis y columnas de opinión sobre temas de actualidad.',
-            ],
+            ]
         ];
 
         foreach ($categorias as $categoria) {

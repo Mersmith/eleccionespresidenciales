@@ -21,9 +21,9 @@ class Cargo extends Model
         return $this->belongsTo(Nivel::class);
     }
 
-    public function eleccion()
+    public function tipoEleccion()
     {
-        return $this->belongsTo(Eleccion::class);
+        return $this->belongsTo(TipoEleccion::class, 'tipo_eleccion_id');
     }
 
     public function encuestas()

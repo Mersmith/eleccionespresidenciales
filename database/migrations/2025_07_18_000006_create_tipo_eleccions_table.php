@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cargos', function (Blueprint $table) {
+        Schema::create('tipo_eleccions', function (Blueprint $table) {
             $table->id();
-
-            $table->string('nombre'); // Presidente, Diputado, Alcalde, etc.
-            $table->foreignId('nivel_id')->constrained('nivels')->onDelete('restrict');
-            $table->foreignId('tipo_eleccion_id')->constrained('tipo_eleccions')->onDelete('restrict');
             
+            $table->string('nombre');
+
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cargos');
+        Schema::dropIfExists('tipo_eleccions');
     }
 };
