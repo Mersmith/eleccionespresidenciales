@@ -37,9 +37,9 @@
                     <thead>
                         <tr>
                             <th>Nº</th>
-                            <th>Categoría</th>
                             <th>Elección</th>
                             <th>Cargo</th>
+                            <th>Nivel</th>
                             <th>Pais</th>
                             <th>Región</th>
                             <th>Provincia</th>
@@ -55,9 +55,9 @@
                         @foreach ($encuestas as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->categoria->nombre ?? '-' }}</td>
                                 <td>{{ $item->eleccion->nombre ?? '-' }}</td>
                                 <td>{{ $item->cargo->nombre ?? '-' }}</td>
+                                <td>{{ $item->nivel->nombre ?? '-' }}</td>
                                 <td>{{ $item->pais->nombre ?? '-' }}</td>
                                 <td>{{ $item->region->nombre ?? '-' }}</td>
                                 <td>{{ $item->provincia->nombre ?? '-' }}</td>

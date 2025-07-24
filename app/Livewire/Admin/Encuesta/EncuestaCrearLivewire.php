@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\Encuesta;
 use App\Models\Cargo;
 use App\Models\Categoria;
 use App\Models\Distrito;
+use App\Models\TipoEleccion;
 use App\Models\Eleccion;
 use App\Models\Encuesta;
 use App\Models\Nivel;
@@ -130,18 +131,6 @@ class EncuestaCrearLivewire extends Component
         $this->paises = Pais::all();
     }
 
-    public function updatedtipoEleccionId($value)
-    {
-        $this->actualizarNombre();
-
-        $this->eleccion_id = '';
-        $this->elecciones = [];
-
-        if ($value) {
-            $this->elecciones = Eleccion::where('tipo_eleccion_id', $value)->get();
-        }
-    }
-
     public function updatedNivelId($value)
     {
         $this->cargo_id = '';
@@ -153,15 +142,12 @@ class EncuestaCrearLivewire extends Component
         $this->distrito_id = "";
 
         if ($value) {
-            $this->cargos = Cargo::where('nivel_id', $value)->get();
-
-           
+            $this->cargos = Cargo::where('nivel_id', $value)->get();           
         }
     }
 
     public function updatedCargoId($value)
     {
-
         $cargo = Cargo::find($value);
 
         $this->eleccion_id = '';
@@ -172,7 +158,6 @@ class EncuestaCrearLivewire extends Component
         }
 
         $this->actualizarNombre();
-
     }
 
     public function updatedEleccionId($value)

@@ -36,18 +36,18 @@
                         @enderror
                     </div>
 
-                    <!--ELECCION-->
+                    <!--NIVELES-->
                     <div class="g_margin_bottom_20">
-                        <label for="eleccion_id">Tipo elección <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
-                        <select id="eleccion_id" name="eleccion_id" wire:model.live="eleccion_id" required>
-                            <option value="" selected disabled>Seleccionar una elección</option>
-                            @if ($elecciones)
-                            @foreach ($elecciones as $eleccion)
-                            <option value="{{ $eleccion->id }}">{{ $eleccion->nombre }}</option>
+                        <label for="nivel_id">Nivel <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
+                        <select id="nivel_id" name="nivel_id" wire:model.live="nivel_id" required>
+                            <option value="" selected disabled>Seleccionar un nivel</option>
+                            @if ($niveles)
+                            @foreach ($niveles as $nivel)
+                            <option value="{{ $nivel->id }}">{{ $nivel->nombre }}</option>
                             @endforeach
                             @endif
                         </select>
-                        @error('eleccion_id')
+                        @error('nivel_id')
                         <p class="mensaje_error">{{ $message }}</p>
                         @enderror
                     </div>
@@ -64,6 +64,22 @@
                             @endif
                         </select>
                         @error('cargo_id')
+                        <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!--ELECCIONES-->
+                    <div class="g_margin_bottom_20">
+                        <label for="eleccion_id">Elección <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
+                        <select id="eleccion_id" name="eleccion_id" wire:model.live="eleccion_id" required>
+                            <option value="" selected disabled>Seleccionar una elección</option>
+                            @if ($elecciones)
+                            @foreach ($elecciones as $eleccion)
+                            <option value="{{ $eleccion->id }}">{{ $eleccion->nombre }}</option>
+                            @endforeach
+                            @endif
+                        </select>
+                        @error('eleccion_id')
                         <p class="mensaje_error">{{ $message }}</p>
                         @enderror
                     </div>
@@ -161,7 +177,23 @@
 
                 <div class="g_panel">
                     <!--TITULO-->
-                    <h4 class="g_panel_titulo">Ugigeo</h4>
+                    <h4 class="g_panel_titulo">Alcance</h4>
+
+                    <!--PAIS-->
+                    <div class="g_margin_bottom_20">
+                        <label for="pais_id">Pais <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
+                        <select id="pais_id" name="pais_id" wire:model.live="pais_id" required>
+                            <option value="" selected disabled>Seleccionar un pais</option>
+                            @if ($paises)
+                            @foreach ($paises as $pais)
+                            <option value="{{ $pais->id }}">{{ $pais->nombre }}</option>
+                            @endforeach
+                            @endif
+                        </select>
+                        @error('pais_id')
+                        <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
 
                     <!--REGION-->
                     <div class="g_margin_bottom_20">

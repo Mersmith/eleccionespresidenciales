@@ -84,8 +84,6 @@
                         @enderror
                     </div>
 
-
-
                     <!--FECHA INICIO-->
                     <div class="g_margin_bottom_20">
                         <label for="fecha_inicio">Fecha inicio <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
