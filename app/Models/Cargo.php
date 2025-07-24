@@ -12,8 +12,8 @@ class Cargo extends Model
 
     protected $fillable = [
         'nombre',
-        'nivel',
-        'eleccion_id',
+        'nivel_id',
+        'tipo_eleccion_id',
     ];
 
     public function nivel()

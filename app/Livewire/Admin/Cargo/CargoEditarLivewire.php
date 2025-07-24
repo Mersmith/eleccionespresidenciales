@@ -4,44 +4,46 @@ namespace App\Livewire\Admin\Cargo;
 
 use App\Models\Cargo;
 use App\Models\Eleccion;
+use App\Models\TipoEleccion;
+use App\Models\Nivel;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 
 #[Layout('components.layouts.admin.layout-admin')]
 class CargoEditarLivewire extends Component
 {
-    public $elecciones;
+    public $niveles,  $tipo_elecciones;
 
     public $cargo;
 
     public $nombre;
-    public $nivel;
-    public $eleccion_id;
+    public $nivel_id = '';
+    public $tipo_eleccion_id = "";
 
     protected $validationAttributes = [
-        'nivel' => 'tipo elección',
-        'nombre' => 'nombre elección',
-        'eleccion_id' => 'elección asociada',
+        'nivel_id' => 'nivel de elección',
+        'nombre' => 'nombre del cargo',
+        'tipo_eleccion_id' => 'elección asociada',
     ];
 
     protected function rules()
     {
         return [
-            'nivel' => 'required|in:nacional,regional,provincial,distrital',
             'nombre' => 'required|unique:cargos,nombre,' . $this->cargo->id,
-            'eleccion_id' => 'required|exists:eleccions,id',
+            'nivel_id' => 'required|exists:nivels,id',
+            'tipo_eleccion_id' => 'required|exists:tipo_eleccions,id',
         ];
     }
 
     protected $messages = [
-        'nivel.required' => 'El :attribute es obligatorio.',
-        'nivel.in' => 'El tipo de elección debe ser "nacional", "regional", "provincial" o "distrital".',
+        'nivel_id.required' => 'La :attribute es obligatoria.',
+        'nivel_id.exists' => 'La :attribute seleccionada no es válida.',
 
         'nombre.required' => 'El :attribute es obligatorio.',
         'nombre.unique' => 'El :attribute ya está registrado.',
 
-        'eleccion_id.required' => 'La :attribute es obligatoria.',
-        'eleccion_id.exists' => 'La :attribute seleccionada no es válida.',
+        'tipo_eleccion_id.required' => 'La :attribute es obligatoria.',
+        'tipo_eleccion_id.exists' => 'La :attribute seleccionada no es válida.',
     ];
 
     public function mount($id)
@@ -49,10 +51,11 @@ class CargoEditarLivewire extends Component
         $this->cargo = Cargo::findOrFail($id);
 
         $this->nombre =  $this->cargo->nombre;
-        $this->nivel =  $this->cargo->nivel;
-        $this->eleccion_id =  $this->cargo->eleccion_id;
+        $this->nivel_id =  $this->cargo->nivel_id;
+        $this->tipo_eleccion_id =  $this->cargo->tipo_eleccion_id;
 
-        $this->elecciones = Eleccion::all();
+        $this->niveles = Nivel::all();
+        $this->tipo_elecciones = TipoEleccion::all();
 
     }
 
@@ -62,8 +65,8 @@ class CargoEditarLivewire extends Component
 
         $this->cargo->update([
             'nombre' => $this->nombre,
-            'nivel' => $this->nivel,
-            'eleccion_id' => $this->eleccion_id,
+            'nivel_id' => $this->nivel_id,
+            'tipo_eleccion_id' => $this->tipo_eleccion_id,
         ]);
 
         $this->dispatch('alertaLivewire', "Actualizado");

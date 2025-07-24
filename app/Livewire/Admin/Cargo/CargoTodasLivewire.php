@@ -11,29 +11,21 @@ use Livewire\WithPagination;
 class CargoTodasLivewire extends Component
 {
     use WithPagination;
-    public $buscar;
 
-    protected $paginate = 10;
+    public $buscar = '';
+    public $perPage = 10;
 
     public function updatingBuscar()
     {
         $this->resetPage();
     }
 
-    public function updatingPaginacion()
-    {
-        $this->resetPage();
-    }
-
     public function render()
     {
-        $cargos = Cargo::with('eleccion')
-            ->where('nombre', 'like', '%' . $this->buscar . '%')
+        $cargos = Cargo::where('nombre', 'like', '%' . $this->buscar . '%')
             ->orderBy('created_at', 'desc')
             ->paginate(10);
 
-        return view('livewire.admin.cargo.cargo-todas-livewire', [
-            'cargos' => $cargos,
-        ]);
+        return view('livewire.admin.cargo.cargo-todas-livewire', compact('cargos'));
     }
 }

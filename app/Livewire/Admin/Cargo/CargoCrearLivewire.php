@@ -3,6 +3,8 @@
 namespace App\Livewire\Admin\Cargo;
 
 use App\Models\Cargo;
+use App\Models\TipoEleccion;
+use App\Models\Nivel;
 use App\Models\Eleccion;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -10,41 +12,42 @@ use Livewire\Component;
 #[Layout('components.layouts.admin.layout-admin')]
 class CargoCrearLivewire extends Component
 {
-    public $elecciones;
+    public $niveles,  $tipo_elecciones;
 
     public $nombre;
-    public $nivel = 'nacional';
-    public $eleccion_id = "";
+    public $nivel_id = '';
+    public $tipo_eleccion_id = "";
 
     protected $validationAttributes = [
-        'nivel' => 'nivel de elección',
+        'nivel_id' => 'nivel de elección',
         'nombre' => 'nombre del cargo',
-        'eleccion_id' => 'elección asociada',
+        'tipo_eleccion_id' => 'elección asociada',
     ];
 
     protected function rules()
     {
         return [
-            'nivel' => 'required|in:nacional,regional,provincial,distrital',
             'nombre' => 'required|unique:cargos,nombre',
-            'eleccion_id' => 'required|exists:eleccions,id',
+            'nivel_id' => 'required|exists:nivels,id',
+            'tipo_eleccion_id' => 'required|exists:tipo_eleccions,id',
         ];
     }
 
     protected $messages = [
-        'nivel.required' => 'El :attribute es obligatorio.',
-        'nivel.in' => 'El :attribute debe ser "nacional", "regional", "provincial" o "distrital".',
+        'nivel_id.required' => 'La :attribute es obligatoria.',
+        'nivel_id.exists' => 'La :attribute seleccionada no es válida.',
 
         'nombre.required' => 'El :attribute es obligatorio.',
         'nombre.unique' => 'El :attribute ya está registrado.',
 
-        'eleccion_id.required' => 'La :attribute es obligatoria.',
-        'eleccion_id.exists' => 'La :attribute seleccionada no es válida.',
+        'tipo_eleccion_id.required' => 'La :attribute es obligatoria.',
+        'tipo_eleccion_id.exists' => 'La :attribute seleccionada no es válida.',
     ];
 
     public function mount()
     {
-        $this->elecciones = Eleccion::all();
+        $this->niveles = Nivel::all();
+        $this->tipo_elecciones = TipoEleccion::all();
     }
 
     public function crearCargo()
@@ -53,8 +56,8 @@ class CargoCrearLivewire extends Component
 
         Cargo::create([
             'nombre' => $this->nombre,
-            'nivel' => $this->nivel,
-            'eleccion_id' => $this->eleccion_id,
+            'nivel_id' => $this->nivel_id,
+            'tipo_eleccion_id' => $this->tipo_eleccion_id,
         ]);
 
         $this->dispatch('alertaLivewire', "Creado");

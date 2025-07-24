@@ -30,33 +30,34 @@
                         @enderror
                     </div>
 
-                    <!--NIVEL-->
+                    <!--ELECCIONES-->
                     <div class="g_margin_bottom_20">
-                        <label for="nivel">Nivel <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
-                        <select id="nivel" name="nivel" wire:model.live="nivel" required>
-                            <option value="nacional">NACIONAL</option>
-                            <option value="regional">REGIONAL</option>
-                            <option value="provincial">PROVINCIAL</option>
-                            <option value="distrital">DISTRITAL</option>
+                        <label for="tipo_eleccion_id">Tipo elección <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
+                        <select id="tipo_eleccion_id" name="tipo_eleccion_id" wire:model.live="tipo_eleccion_id" required>
+                            <option value="" selected disabled>Seleccionar una elección</option>
+                            @if ($tipo_elecciones)
+                            @foreach ($tipo_elecciones as $eleccion)
+                            <option value="{{ $eleccion->id }}">{{ $eleccion->nombre }}</option>
+                            @endforeach
+                            @endif
                         </select>
-                        </select>
-                        @error('nivel')
+                        @error('tipo_eleccion_id')
                         <p class="mensaje_error">{{ $message }}</p>
                         @enderror
                     </div>
 
-                    <!--ELECCIONES-->
+                    <!--NIVELES-->
                     <div class="g_margin_bottom_20">
-                        <label for="eleccion_id">Tipo elección <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
-                        <select id="eleccion_id" name="eleccion_id" wire:model.live="eleccion_id" required>
-                            <option value="" selected disabled>Seleccionar una elección</option>
-                            @if ($elecciones)
-                            @foreach ($elecciones as $categoria)
-                            <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
+                        <label for="nivel_id">Nivel <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
+                        <select id="nivel_id" name="nivel_id" wire:model.live="nivel_id" required>
+                            <option value="" selected disabled>Seleccionar un nivel</option>
+                            @if ($niveles)
+                            @foreach ($niveles as $nivel)
+                            <option value="{{ $nivel->id }}">{{ $nivel->nombre }}</option>
                             @endforeach
                             @endif
                         </select>
-                        @error('eleccion_id')
+                        @error('nivel_id')
                         <p class="mensaje_error">{{ $message }}</p>
                         @enderror
                     </div>
