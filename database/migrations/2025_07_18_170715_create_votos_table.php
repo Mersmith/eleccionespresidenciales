@@ -16,7 +16,7 @@ return new class extends Migration
 
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('encuesta_id')->constrained()->onDelete('cascade');
-            $table->foreignId('candidato_id')->constrained()->onDelete('cascade');
+            $table->foreignId('candidato_cargo_id')->constrained('candidato_cargo')->onDelete('cascade');
             $table->dateTime('fecha_voto')->useCurrent();
 
             $table->timestamps();

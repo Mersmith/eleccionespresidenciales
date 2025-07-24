@@ -65,4 +65,9 @@ class Candidato extends Model
             ->withPivot('cargo_id', 'partido_id', 'region_id', 'provincia_id', 'distrito_id')
             ->withTimestamps();
     }
+
+    public function eleccion()
+    {
+        return $this->belongsTo(Eleccion::class);
+    }
 }

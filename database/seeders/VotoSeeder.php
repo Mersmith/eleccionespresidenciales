@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Encuesta;
 use App\Models\User;
+use App\Models\Encuesta;
 use App\Models\Voto;
 use Illuminate\Database\Seeder;
 
@@ -15,24 +15,24 @@ class VotoSeeder extends Seeder
     public function run(): void
     {
         $usuarios = User::all();
-        $encuestas = Encuesta::all();
+        $encuestas = Encuesta::with('candidatoCargos')->get(); // asumimos que esta relación existe
 
         foreach ($usuarios as $usuario) {
-            // El usuario intentará votar en 2 encuestas aleatorias
-            $encuestasAleatorias = $encuestas->random(rand(1, 2));
+            // El usuario vota en 1 o 2 encuestas aleatorias
+            $encuestasAleatorias = $encuestas->random(rand(1, min(2, $encuestas->count())));
 
             foreach ($encuestasAleatorias as $encuesta) {
-                // Obtener los candidatos relacionados con esta encuesta
-                $candidatos = $encuesta->candidatos;
+                // Suponemos que la relación en Encuesta es llamada candidatosCargo
+                $candidatoCargos = $encuesta->candidatoCargos;
 
-                if ($candidatos->isNotEmpty()) {
+                if ($candidatoCargos->isNotEmpty()) {
                     Voto::updateOrCreate(
                         [
                             'user_id' => $usuario->id,
                             'encuesta_id' => $encuesta->id,
                         ],
                         [
-                            'candidato_id' => $candidatos->random()->id,
+                            'candidato_cargo_id' => $candidatoCargos->random()->id,
                             'fecha_voto' => now()->subDays(rand(0, 10)),
                         ]
                     );

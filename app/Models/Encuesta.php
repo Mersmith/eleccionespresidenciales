@@ -80,16 +80,16 @@ class Encuesta extends Model
             ->withTimestamps();
     }
 
+    // Relación para acceder directamente a los candidatos a través de la elección
     public function candidatos()
     {
-        return $this->hasManyThrough(
-            Candidato::class,
-            CandidatoCargo::class,
-            'id', // foreign key on CandidatoCargo
-            'id', // foreign key on Candidato
-            null,
-            'candidato_id' // key on CandidatoCargo
-        );
+        return $this->eleccion?->candidatos();
+    }
+
+    public function candidatoCargos()
+    {
+        return $this->belongsToMany(CandidatoCargo::class, 'candidato_encuesta', 'encuesta_id', 'candidato_cargo_id')
+            ->withTimestamps();
     }
 
     public function votos()
