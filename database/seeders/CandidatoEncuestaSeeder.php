@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Candidato;
 use App\Models\Encuesta;
+use App\Models\CandidatoCargo;
 use App\Models\CandidatoEncuesta;
 use Illuminate\Database\Seeder;
 
@@ -16,17 +16,14 @@ class CandidatoEncuestaSeeder extends Seeder
     {
         $encuestas = Encuesta::all();
 
-        // Solo candidatos que tengan al menos un cargo asignado
-        $candidatosConCargo = Candidato::has('cargos')->get(); // asumiendo relación cargos()
+        $postulaciones = CandidatoCargo::all();
 
-        foreach ($candidatosConCargo as $candidato) {
-            // Puedes decidir cuántas encuestas le asignas a cada candidato
+        foreach ($postulaciones as $postulacion) {
             $encuestasAleatorias = $encuestas->random(rand(1, min(2, $encuestas->count())));
 
             foreach ($encuestasAleatorias as $encuesta) {
-                // Verificamos que no esté duplicado
                 CandidatoEncuesta::firstOrCreate([
-                    'candidato_id' => $candidato->id,
+                    'candidato_cargo_id' => $postulacion->id,
                     'encuesta_id' => $encuesta->id,
                 ]);
             }

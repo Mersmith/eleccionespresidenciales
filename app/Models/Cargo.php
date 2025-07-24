@@ -34,7 +34,7 @@ class Cargo extends Model
     public function candidatos()
     {
         return $this->belongsToMany(Candidato::class, 'candidato_cargo')
-            ->withPivot('eleccion_id', 'partido_id', 'region_id', 'provincia_id', 'distrito_id')
+            ->withPivot(['eleccion_id', 'partido_id', 'pais_id', 'region_id', 'provincia_id', 'distrito_id', 'principal', 'electo'])
             ->withTimestamps();
     }
 }

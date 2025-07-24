@@ -25,8 +25,6 @@ return new class extends Migration
             $table->foreignId('provincia_id')->nullable()->constrained()->onDelete('set null');
             $table->foreignId('distrito_id')->nullable()->constrained()->onDelete('set null');
 
-            $table->foreignId('cargo_id')->nullable()->constrained()->onDelete('set null');
-
             $table->boolean('activo')->default(false)->comment('1 ACTIVADO, 0 DESACTIVADO');
 
             $table->timestamps();

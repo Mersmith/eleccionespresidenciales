@@ -5,11 +5,11 @@
         <input type="text" wire:model.live="searchAgregados" placeholder="Buscar..." class="w-full border p-2 mb-3">
 
         <ul class="space-y-2">
-            @foreach ($candidatosAgregados as $candidato)
-                <li class="flex justify-between items-center bg-gray-100 p-2 rounded">
-                    <span>{{ $candidato->nombre }}</span>
-                    <button wire:click="quitarCandidato({{ $candidato->id }})" class="text-red-600">Quitar</button>
-                </li>
+            @foreach($candidatosAgregados as $postulacion)
+            <div>
+                {{ $postulacion->candidato->nombre }} - {{ $postulacion->cargo->nombre }}
+                <button wire:click="quitarCandidato({{ $postulacion->id }})">Quitar</button>
+            </div>
             @endforeach
         </ul>
     </div>
@@ -20,11 +20,11 @@
         <input type="text" wire:model.live="searchDisponibles" placeholder="Buscar..." class="w-full border p-2 mb-3">
 
         <ul class="space-y-2">
-            @foreach ($candidatosDisponibles as $candidato)
-                <li class="flex justify-between items-center bg-gray-100 p-2 rounded">
-                    <span>{{ $candidato->nombre }}</span>
-                    <button wire:click="agregarCandidato({{ $candidato->id }})" class="text-green-600">Agregar</button>
-                </li>
+            @foreach($candidatosDisponibles as $postulacion)
+            <div>
+                {{ $postulacion->candidato->nombre }} - {{ $postulacion->cargo->nombre }}
+                <button wire:click="agregarCandidato({{ $postulacion->id }})">Agregar</button>
+            </div>
             @endforeach
         </ul>
     </div>

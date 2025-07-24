@@ -44,7 +44,7 @@ class EncuestaSeeder extends Seeder
                 'nombre' => 'DIPUTADO LIMA PERU 2026',
                 'categoria_id' => 1,
                 'nivel_id' => 2,
-                'cargo_id' => 3,
+                'cargo_id' => 4,
                 'eleccion_id' => 1,
                 'pais_id' => null,
                 'region_id' => 14,

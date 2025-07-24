@@ -69,9 +69,27 @@ class Encuesta extends Model
         return $this->belongsTo(Distrito::class);
     }
 
+    public function candidatoEncuestas()
+    {
+        return $this->hasMany(CandidatoEncuesta::class);
+    }
+
+    public function candidatosPostulantes()
+    {
+        return $this->belongsToMany(CandidatoCargo::class, 'candidato_encuesta', 'encuesta_id', 'candidato_cargo_id')
+            ->withTimestamps();
+    }
+
     public function candidatos()
     {
-        return $this->belongsToMany(Candidato::class, 'candidato_encuesta');
+        return $this->hasManyThrough(
+            Candidato::class,
+            CandidatoCargo::class,
+            'id', // foreign key on CandidatoCargo
+            'id', // foreign key on Candidato
+            null,
+            'candidato_id' // key on CandidatoCargo
+        );
     }
 
     public function votos()

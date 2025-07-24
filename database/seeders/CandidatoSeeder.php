@@ -49,7 +49,6 @@ class CandidatoSeeder extends Seeder
                 'region_id' => $region->id,
                 'provincia_id' => $provincia->id,
                 'distrito_id' => $distrito->id,
-                'cargo_id' => fake()->randomElement($cargos),
                 'activo' => fake()->boolean(80),
             ]);
         }

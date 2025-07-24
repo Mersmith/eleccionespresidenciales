@@ -23,7 +23,13 @@ class Nivel extends Model
         return $this->hasMany(Cargo::class);
     }
 
-    public function encuestas() {
+    public function encuestas()
+    {
         return $this->hasMany(Encuesta::class);
+    }
+
+    public function candidatoCargos()
+    {
+        return $this->hasMany(CandidatoCargo::class);
     }
 }

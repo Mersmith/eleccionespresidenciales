@@ -9,14 +9,23 @@ class CandidatoCargo extends Model
     protected $table = 'candidato_cargo';
 
     protected $fillable = [
+        'nivel_id',
         'candidato_id',
         'cargo_id',
         'eleccion_id',
         'partido_id',
+        'pais_id',
         'region_id',
         'provincia_id',
         'distrito_id',
+        'principal',
+        'electo',
     ];
+
+    public function nivel()
+    {
+        return $this->belongsTo(Nivel::class);
+    }
 
     public function candidato()
     {
@@ -36,6 +45,11 @@ class CandidatoCargo extends Model
     public function partido()
     {
         return $this->belongsTo(Partido::class);
+    }
+
+    public function pais()
+    {
+        return $this->belongsTo(Pais::class);
     }
 
     public function region()
