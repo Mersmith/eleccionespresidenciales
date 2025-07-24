@@ -7,6 +7,8 @@ use App\Models\Categoria;
 use App\Models\Distrito;
 use App\Models\Eleccion;
 use App\Models\Encuesta;
+use App\Models\Nivel;
+use App\Models\Pais;
 use App\Models\Provincia;
 use App\Models\Region;
 use Carbon\Carbon;
@@ -17,7 +19,10 @@ use Livewire\Component;
 #[Layout('components.layouts.admin.layout-admin')]
 class EncuestaCrearLivewire extends Component
 {
-    public $regiones = [], $provincias = [], $distritos = [];
+    public $niveles;
+    public $nivel_id = "";
+
+    public $paises = [], $regiones = [], $provincias = [], $distritos = [];
     public $categorias, $elecciones, $cargos = [];
 
     public $nombre;
@@ -27,6 +32,7 @@ class EncuestaCrearLivewire extends Component
     public $categoria_id = "";
     public $eleccion_id = "";
     public $cargo_id = "";
+    public $pais_id = "";
     public $region_id = "";
     public $provincia_id = "";
     public $distrito_id = "";
@@ -55,6 +61,7 @@ class EncuestaCrearLivewire extends Component
     protected function rules()
     {
         return [
+            'nivel_id' => 'required',
             'nombre' => 'required|unique:encuestas,nombre',
             'slug' => 'required|unique:encuestas,slug',
             'descripcion' => 'required|min:3|max:255',
@@ -62,9 +69,10 @@ class EncuestaCrearLivewire extends Component
             'categoria_id' => 'required|exists:categorias,id',
             'eleccion_id' => 'required|exists:eleccions,id',
             'cargo_id' => 'required|exists:cargos,id',
-            'region_id' => 'required',
-            'provincia_id' => 'required',
-            'distrito_id' => 'required|exists:distritos,id',
+            'pais_id' => 'required_if:nivel_id,1|nullable|exists:pais,id',
+            'region_id' => 'required_if:nivel_id,2|nullable|exists:regions,id',
+            'provincia_id' => 'required_if:nivel_id,3|nullable|exists:provincias,id',
+            'distrito_id' => 'required_if:nivel_id,4|nullable|exists:distritos,id',
             'fecha_inicio' => 'required|date',
             'fecha_fin' => 'required|date|after_or_equal:fecha_inicio',
             'estado' => 'required|in:pendiente,iniciada,finalizada',
@@ -117,24 +125,57 @@ class EncuestaCrearLivewire extends Component
 
     public function mount()
     {
+        $this->niveles = Nivel::all();
         $this->categorias = Categoria::all();
-        $this->elecciones = Eleccion::all();
-        $this->regiones = Region::all();
+        $this->paises = Pais::all();
     }
 
-    public function updatedEleccionId($value)
+    public function updatedtipoEleccionId($value)
     {
         $this->actualizarNombre();
 
+        $this->eleccion_id = '';
+        $this->elecciones = [];
+
+        if ($value) {
+            $this->elecciones = Eleccion::where('tipo_eleccion_id', $value)->get();
+        }
+    }
+
+    public function updatedNivelId($value)
+    {
         $this->cargo_id = '';
         $this->cargos = [];
 
+        $this->pais_id = "";
+        $this->region_id = "";
+        $this->provincia_id = "";
+        $this->distrito_id = "";
+
         if ($value) {
-            $this->cargos = Cargo::where('eleccion_id', $value)->get();
+            $this->cargos = Cargo::where('nivel_id', $value)->get();
+
+           
         }
     }
 
     public function updatedCargoId($value)
+    {
+
+        $cargo = Cargo::find($value);
+
+        $this->eleccion_id = '';
+        $this->elecciones = [];
+
+        if ($value) {
+            $this->elecciones = Eleccion::where('tipo_eleccion_id', $cargo->tipo_eleccion_id)->get();
+        }
+
+        $this->actualizarNombre();
+
+    }
+
+    public function updatedEleccionId($value)
     {
         $this->actualizarNombre();
     }
@@ -147,6 +188,20 @@ class EncuestaCrearLivewire extends Component
     public function updatedFechaFin($value)
     {
         $this->actualizarNombre();
+    }
+
+    public function updatedPaisId($value)
+    {
+        $this->region_id = "";
+        $this->regiones = [];
+        $this->provincia_id = "";
+        $this->provincias = [];
+        $this->distrito_id = "";
+        $this->distritos = [];
+
+        if ($value) {
+            $this->loadRegiones();
+        }
     }
 
     public function updatedRegionId($value)
@@ -168,6 +223,13 @@ class EncuestaCrearLivewire extends Component
 
         if ($value) {
             $this->loadDistritos();
+        }
+    }
+
+    public function loadRegiones()
+    {
+        if (!is_null($this->pais_id)) {
+            $this->regiones = Region::where('pais_id', $this->pais_id)->get();
         }
     }
 
@@ -203,17 +265,34 @@ class EncuestaCrearLivewire extends Component
     {
         $this->validate();
 
+        $pais_id = null;
+        $region_id = null;
+        $provincia_id = null;
+        $distrito_id = null;
+    
+        if ($this->nivel_id == 1) {
+            $pais_id = $this->pais_id;
+        } elseif ($this->nivel_id == 2) {
+            $region_id = $this->region_id;
+        } elseif ($this->nivel_id == 3) {
+            $provincia_id = $this->provincia_id;
+        } elseif ($this->nivel_id == 4) {
+            $distrito_id = $this->distrito_id;
+        }
+
         Encuesta::create([
             'nombre' => $this->nombre,
             'slug' => $this->slug,
             'descripcion' => $this->descripcion,
             'imagen_url' => $this->imagen_url,
             'categoria_id' => $this->categoria_id,
-            'eleccion_id' => $this->eleccion_id,
+            'nivel_id' => $this->nivel_id,
             'cargo_id' => $this->cargo_id,
-            'region_id' => $this->region_id,
-            'provincia_id' => $this->provincia_id,
-            'distrito_id' => $this->distrito_id,
+            'eleccion_id' => $this->eleccion_id,
+            'pais_id' => $pais_id,
+            'region_id' => $region_id,
+            'provincia_id' => $provincia_id,
+            'distrito_id' => $distrito_id,
             'fecha_inicio' => $this->fecha_inicio,
             'fecha_fin' => $this->fecha_fin,
             'estado' => $this->estado,

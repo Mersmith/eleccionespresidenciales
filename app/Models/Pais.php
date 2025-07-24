@@ -16,4 +16,9 @@ class Pais extends Model
     {
         return $this->hasMany(Region::class);
     }
+
+    public function encuestas()
+    {
+        return $this->hasMany(Encuesta::class);
+    }
 }

@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\Encuesta;
-use Illuminate\Database\Seeder;
 use Carbon\Carbon;
-use Illuminate\Support\Str;
 use Faker\Factory as Faker;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class EncuestaSeeder extends Seeder
 {
@@ -21,8 +21,10 @@ class EncuestaSeeder extends Seeder
             [
                 'nombre' => 'PRESIDENTE PERU 2026',
                 'categoria_id' => 1,
-                'eleccion_id' => 1,
+                'nivel_id' => 1,
                 'cargo_id' => 1,
+                'eleccion_id' => 1,
+                'pais_id' => 1,
                 'region_id' => null,
                 'provincia_id' => null,
                 'distrito_id' => null,
@@ -30,8 +32,10 @@ class EncuestaSeeder extends Seeder
             [
                 'nombre' => 'SENADO LIMA PERU 2026',
                 'categoria_id' => 1,
-                'eleccion_id' => 1,
+                'nivel_id' => 2,
                 'cargo_id' => 3,
+                'eleccion_id' => 1,
+                'pais_id' => null,
                 'region_id' => 14,
                 'provincia_id' => null,
                 'distrito_id' => null,
@@ -39,8 +43,10 @@ class EncuestaSeeder extends Seeder
             [
                 'nombre' => 'DIPUTADO LIMA PERU 2026',
                 'categoria_id' => 1,
-                'eleccion_id' => 1,
+                'nivel_id' => 2,
                 'cargo_id' => 3,
+                'eleccion_id' => 1,
+                'pais_id' => null,
                 'region_id' => 14,
                 'provincia_id' => null,
                 'distrito_id' => null,
@@ -48,19 +54,23 @@ class EncuestaSeeder extends Seeder
             [
                 'nombre' => 'ALCALDIA LIMA 2026',
                 'categoria_id' => 1,
-                'eleccion_id' => 2,
+                'nivel_id' => 3,
                 'cargo_id' => 6,
-                'region_id' => 14,
+                'eleccion_id' => 2,
+                'pais_id' => null,
+                'region_id' => null,
                 'provincia_id' => 135,
                 'distrito_id' => null,
             ],
             [
                 'nombre' => 'ALCALDIA SAN JUAN DE LURIGANCHO 2026',
                 'categoria_id' => 1,
-                'eleccion_id' => 2,
+                'nivel_id' => 4,
                 'cargo_id' => 7,
-                'region_id' => 14,
-                'provincia_id' => 135,
+                'eleccion_id' => 2,
+                'pais_id' => null,
+                'region_id' => null,
+                'provincia_id' => null,
                 'distrito_id' => 1369,
             ],
         ];
@@ -72,8 +82,10 @@ class EncuestaSeeder extends Seeder
                 'descripcion' => $faker->sentence,
                 'imagen_url' => null,
                 'categoria_id' => $e['categoria_id'],
-                'eleccion_id' => $e['eleccion_id'],
+                'nivel_id' => $e['nivel_id'],
                 'cargo_id' => $e['cargo_id'],
+                'eleccion_id' => $e['eleccion_id'],
+                'pais_id' => $e['pais_id'],
                 'region_id' => $e['region_id'],
                 'provincia_id' => $e['provincia_id'],
                 'distrito_id' => $e['distrito_id'],

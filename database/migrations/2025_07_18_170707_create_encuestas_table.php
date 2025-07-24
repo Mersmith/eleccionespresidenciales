@@ -20,9 +20,11 @@ return new class extends Migration
             $table->string('imagen_url')->nullable();
 
             $table->foreignId('categoria_id')->nullable()->constrained()->onDelete('set null');
-            $table->foreignId('eleccion_id')->nullable()->constrained()->onDelete('set null');
+            $table->foreignId('nivel_id')->nullable()->constrained()->onDelete('set null');
             $table->foreignId('cargo_id')->constrained()->onDelete('cascade');
+            $table->foreignId('eleccion_id')->nullable()->constrained()->onDelete('set null');
 
+            $table->foreignId('pais_id')->nullable()->constrained()->onDelete('set null');
             $table->foreignId('region_id')->nullable()->constrained()->onDelete('set null');
             $table->foreignId('provincia_id')->nullable()->constrained()->onDelete('set null');
             $table->foreignId('distrito_id')->nullable()->constrained()->onDelete('set null');

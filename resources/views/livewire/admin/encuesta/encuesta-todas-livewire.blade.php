@@ -1,4 +1,4 @@
-@section('tituloPagina', 'Encuesta')
+ @section('tituloPagina', 'Encuesta')
 
 @section('anchoPantalla', '100%')
 
@@ -40,6 +40,7 @@
                             <th>Categoría</th>
                             <th>Elección</th>
                             <th>Cargo</th>
+                            <th>Pais</th>
                             <th>Región</th>
                             <th>Provincia</th>
                             <th>Distrito</th>
@@ -57,6 +58,7 @@
                                 <td>{{ $item->categoria->nombre ?? '-' }}</td>
                                 <td>{{ $item->eleccion->nombre ?? '-' }}</td>
                                 <td>{{ $item->cargo->nombre ?? '-' }}</td>
+                                <td>{{ $item->pais->nombre ?? '-' }}</td>
                                 <td>{{ $item->region->nombre ?? '-' }}</td>
                                 <td>{{ $item->provincia->nombre ?? '-' }}</td>
                                 <td>{{ $item->distrito->nombre ?? '-' }}</td>

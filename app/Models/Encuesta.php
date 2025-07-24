@@ -16,8 +16,10 @@ class Encuesta extends Model
         'descripcion',
         'imagen_url',
         'categoria_id',
-        'eleccion_id',
+        'nivel_id',
         'cargo_id',
+        'eleccion_id',
+        'pais_id',
         'region_id',
         'provincia_id',
         'distrito_id',
@@ -40,6 +42,16 @@ class Encuesta extends Model
     public function cargo()
     {
         return $this->belongsTo(Cargo::class);
+    }
+
+    public function nivel()
+    {
+        return $this->belongsTo(Nivel::class);
+    }
+
+    public function pais()
+    {
+        return $this->belongsTo(Pais::class);
     }
 
     public function region()
