@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Candidato;
 
+use App\Models\Candidato;
 use App\Models\CandidatoCargo;
 use App\Models\Cargo;
 use App\Models\Distrito;
@@ -51,7 +52,8 @@ class CandidatoCargoLivewire extends Component
     public function mount($id)
     {
         $this->candidatoId = $id;
-        //$candidato = Candidato::findOrFail($id);
+        $candidato = Candidato::findOrFail($id);
+        $this->partido_id = $candidato->partido_id ?? '';
 
         $this->niveles = Nivel::all();
         $this->partidos = Partido::all();

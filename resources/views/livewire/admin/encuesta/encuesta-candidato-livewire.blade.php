@@ -18,7 +18,7 @@
             <ul class="space-y-2">
                 @foreach($candidatosAgregados as $postulacion)
                 <div>
-                    {{ $postulacion->candidato->nombre }} - {{ $postulacion->cargo->nombre }}
+                    {{ $postulacion->candidato->nombre }} - {{ $postulacion->cargo->nombre }} - {{ $postulacion->partido?->nombre ?? 'Sin partido' }}
                     <button wire:click="quitarCandidato({{ $postulacion->id }})">Quitar</button>
                 </div>
                 @endforeach
@@ -33,7 +33,7 @@
             <ul class="space-y-2">
                 @foreach($candidatosDisponibles as $postulacion)
                 <div>
-                    {{ $postulacion->candidato->nombre }} - {{ $postulacion->cargo->nombre }}
+                    {{ $postulacion->candidato->nombre }} - {{ $postulacion->cargo->nombre }} - {{ $postulacion->partido?->nombre ?? 'Sin partido' }}
                     <button wire:click="agregarCandidato({{ $postulacion->id }})">Agregar</button>
                 </div>
                 @endforeach

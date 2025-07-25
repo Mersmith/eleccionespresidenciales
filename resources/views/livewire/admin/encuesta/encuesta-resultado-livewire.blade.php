@@ -7,6 +7,7 @@
             <div class="border p-4 rounded shadow">
                 <div class="flex justify-between items-center">
                     <span class="text-lg font-semibold">{{ $item['nombre'] }}</span>
+                    <span class="text-lg font-semibold">{{ $item['partido'] }}</span>
                     <span class="text-xl font-bold text-blue-600">{{ $item['votos'] }} votos</span>
                 </div>
             </div>

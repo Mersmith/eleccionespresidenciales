@@ -31,6 +31,7 @@ class EncuestaResultadoLivewire extends Component
             $candidatoCargo = $candidatoEncuesta->candidatoCargo;
             return [
                 'nombre' => $candidatoCargo->candidato->nombre,
+                'partido' => $candidatoCargo->partido->nombre,
                 'votos' => $votosPorCandidato[$candidatoCargo->id] ?? 0,
             ];
         })->sortByDesc('votos')->values();
