@@ -49,7 +49,7 @@
                         @foreach ($partidos as $index => $item)
                         <tr>
                             <td> {{ $index + 1 }} </td>
-                            <td class="g_resaltar">{{ $item->nombre }}</td>
+                            <td class="g_resaltar">{{ $item->id }}: {{ $item->nombre }}</td>
                             <td>{{ $item->sigla }}</td>
                             <td>{{ $item->descripcion }}</td>
                             <td>
