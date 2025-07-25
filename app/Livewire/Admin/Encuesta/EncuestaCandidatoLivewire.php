@@ -2,12 +2,12 @@
 
 namespace App\Livewire\Admin\Encuesta;
 
+use App\Models\CandidatoCargo;
+use App\Models\CandidatoEncuesta;
 use App\Models\Encuesta;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\CandidatoCargo;
-use App\Models\CandidatoEncuesta;
 
 #[Layout('components.layouts.admin.layout-admin')]
 class EncuestaCandidatoLivewire extends Component
@@ -67,6 +67,12 @@ class EncuestaCandidatoLivewire extends Component
         $candidatosDisponibles = CandidatoCargo::with('candidato', 'cargo')
             ->whereNotIn('id', $idsAgregados)
             ->where('cargo_id', $this->encuesta->cargo_id)
+            ->where(function ($query) {
+                $query->where('pais_id', $this->encuesta->pais_id)
+                    ->where('region_id', $this->encuesta->region_id)
+                    ->where('provincia_id', $this->encuesta->provincia_id)
+                    ->where('distrito_id', $this->encuesta->distrito_id);
+            })
             ->whereHas('candidato', function ($query) {
                 $query->where('nombre', 'like', '%' . $this->searchDisponibles . '%');
             })
