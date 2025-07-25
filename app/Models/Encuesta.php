@@ -29,71 +29,61 @@ class Encuesta extends Model
         'activo',
     ];
 
-    public function categoria()
+    public function categoria() //ok
     {
         return $this->belongsTo(Categoria::class);
     }
 
-    public function eleccion()
-    {
-        return $this->belongsTo(Eleccion::class);
-    }
-
-    public function cargo()
-    {
-        return $this->belongsTo(Cargo::class);
-    }
-
-    public function nivel()
+    public function nivel() //ok
     {
         return $this->belongsTo(Nivel::class);
     }
 
-    public function pais()
+    public function cargo() //ok
+    {
+        return $this->belongsTo(Cargo::class);
+    }
+
+    public function eleccion() //ok
+    {
+        return $this->belongsTo(Eleccion::class);
+    }
+
+    public function pais() //ok
     {
         return $this->belongsTo(Pais::class);
     }
 
-    public function region()
+    public function region() //ok
     {
         return $this->belongsTo(Region::class);
     }
 
-    public function provincia()
+    public function provincia() //ok
     {
         return $this->belongsTo(Provincia::class);
     }
 
-    public function distrito()
+    public function distrito() //ok
     {
         return $this->belongsTo(Distrito::class);
     }
 
-    public function candidatoEncuestas()
+    public function candidatoCargos() //ok
     {
-        return $this->hasMany(CandidatoEncuesta::class);
+        return $this->belongsToMany(CandidatoCargo::class, 'candidato_encuesta')
+            ->withTimestamps()
+            ->withPivot('id');
     }
 
-    public function candidatosPostulantes()
-    {
-        return $this->belongsToMany(CandidatoCargo::class, 'candidato_encuesta', 'encuesta_id', 'candidato_cargo_id')
-            ->withTimestamps();
-    }
-
-    // Relación para acceder directamente a los candidatos a través de la elección
-    public function candidatos()
-    {
-        return $this->eleccion?->candidatos();
-    }
-
-    public function candidatoCargos()
-    {
-        return $this->belongsToMany(CandidatoCargo::class, 'candidato_encuesta', 'encuesta_id', 'candidato_cargo_id')
-            ->withTimestamps();
-    }
-
-    public function votos()
+    public function votos() //ok
     {
         return $this->hasMany(Voto::class);
     }
+
+    public function candidatoEncuestas() //ok
+    {
+        return $this->hasMany(CandidatoEncuesta::class);
+    }
+    
 }

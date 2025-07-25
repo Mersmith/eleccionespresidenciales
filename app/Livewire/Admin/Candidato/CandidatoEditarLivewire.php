@@ -4,7 +4,6 @@ namespace App\Livewire\Admin\Candidato;
 
 use App\Models\Candidato;
 use App\Models\CandidatoCargo;
-use App\Models\Cargo;
 use App\Models\Distrito;
 use App\Models\Partido;
 use App\Models\Provincia;
@@ -18,7 +17,7 @@ class CandidatoEditarLivewire extends Component
 {
     public $candidato;
 
-    public $partidos, $cargos;
+    public $partidos;
     public $regiones = [], $provincias = [], $distritos = [];
 
     public $nombre;
@@ -29,7 +28,6 @@ class CandidatoEditarLivewire extends Component
     public $region_id;
     public $provincia_id;
     public $distrito_id;
-    public $cargo_id;
     public $activo;
 
     public $historial = [];
@@ -43,7 +41,6 @@ class CandidatoEditarLivewire extends Component
         'region_id' => 'región',
         'provincia_id' => 'provincia',
         'distrito_id' => 'distrito',
-        'cargo_id' => 'cargo',
         'activo' => 'estado',
     ];
 
@@ -54,11 +51,10 @@ class CandidatoEditarLivewire extends Component
             'slug' => 'required|unique:candidatos,slug,' . $this->candidato->id,
             'descripcion' => 'required|min:3|max:255',
             'foto' => 'nullable|url',
-            'partido_id' => 'required|exists:partidos,id',
+            'partido_id' => 'nullable|exists:partidos,id',
             'region_id' => 'required',
             'provincia_id' => 'required',
             'distrito_id' => 'required|exists:distritos,id',
-            'cargo_id' => 'required|exists:cargos,id',
             'activo' => 'required|numeric|regex:/^\d{1}$/',
         ];
     }
@@ -85,9 +81,6 @@ class CandidatoEditarLivewire extends Component
         'distrito_id.required' => 'El :attribute es obligatorio.',
         'distrito_id.exists' => 'El :attribute seleccionado no es válido.',
 
-        'cargo_id.required' => 'El :attribute es obligatorio.',
-        'cargo_id.exists' => 'El :attribute seleccionado no es válido.',
-
         'activo.required' => 'El :attribute es obligatorio.',
         'activo.numeric' => 'El :attribute debe ser un número.',
         'activo.regex' => 'El :attribute debe ser 0 o 1.',
@@ -101,15 +94,13 @@ class CandidatoEditarLivewire extends Component
         $this->slug = $this->candidato->slug;
         $this->descripcion = $this->candidato->descripcion;
         $this->foto = $this->candidato->foto;
-        $this->partido_id = $this->candidato->partido_id;
+        $this->partido_id = $this->candidato->partido_id ?? '';
         $this->region_id = $this->candidato->region_id ?? '';
         $this->provincia_id = $this->candidato->provincia_id ?? '';
         $this->distrito_id = $this->candidato->distrito_id ?? '';
-        $this->cargo_id = $this->candidato->cargo_id;
         $this->activo = $this->candidato->activo;
 
         $this->partidos = Partido::all();
-        $this->cargos = Cargo::all();
         $this->regiones = Region::all();
 
         $this->loadProvincias();
@@ -165,14 +156,19 @@ class CandidatoEditarLivewire extends Component
 
         $this->candidato->update([
             'nombre' => $this->nombre,
+            'slug' => $this->slug,
             'descripcion' => $this->descripcion,
             'foto' => $this->foto,
-            'partido_id' => $this->partido_id,
+            'partido_id' => $this->partido_id ?: null,
+            'region_id' => $this->region_id,
+            'provincia_id' => $this->provincia_id,
+            'distrito_id' => $this->distrito_id,
+            'activo' => $this->activo,
         ]);
 
         $this->dispatch('alertaLivewire', "Creado");
 
-        return redirect()->route('admin.candidato.vista.todas');
+        //return redirect()->route('admin.candidato.vista.todas');
     }
 
     public function cargarHistorial()

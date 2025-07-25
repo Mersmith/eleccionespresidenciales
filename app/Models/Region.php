@@ -10,17 +10,17 @@ class Region extends Model
     /** @use HasFactory<\Database\Factories\RegionFactory> */
     use HasFactory;
 
-    public function pais()
+    public function pais()//ok
     {
-        return $this->belongsTo(Pais::class);
+        return $this->belongsTo(Pais::class, 'pais_id');
     }
 
-    public function provincias()
+    public function provincias()//ok
     {
-        return $this->hasMany(Provincia::class);
+        return $this->hasMany(Provincia::class, 'region_id');
     }
 
-    public function encuestas()
+    public function encuestas() //ok
     {
         return $this->hasMany(Encuesta::class);
     }

@@ -1,5 +1,5 @@
 <div class="max-w-2xl mx-auto p-4">
-    <h1 class="text-2xl font-bold mb-4">{{ $encuesta->titulo }}</h1>
+    <h1 class="text-2xl font-bold mb-4">{{ $encuesta->nombre }}</h1>
     <p class="mb-6 text-gray-600">{{ $encuesta->descripcion }}</p>
 
     <div class="space-y-4">

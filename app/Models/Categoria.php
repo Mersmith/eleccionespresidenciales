@@ -15,7 +15,7 @@ class Categoria extends Model
         'descripcion',
     ];
 
-    public function encuestas() {
+    public function encuestas() { //ok
         return $this->hasMany(Encuesta::class);
     }
 

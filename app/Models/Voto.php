@@ -17,17 +17,17 @@ class Voto extends Model
         'fecha_voto',
     ];
 
-    public function user()
+    public function user() //ok
     {
         return $this->belongsTo(User::class);
     }
 
-    public function encuesta()
+    public function encuesta() //ok
     {
         return $this->belongsTo(Encuesta::class);
     }
 
-    public function candidatoCargo()
+    public function candidatoCargo() //ok
     {
         return $this->belongsTo(CandidatoCargo::class);
     }

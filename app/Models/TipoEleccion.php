@@ -16,12 +16,12 @@ class TipoEleccion extends Model
         'nombre',
     ];
 
-    public function eleccions()
+    public function eleccions() //ok
     {
         return $this->hasMany(Eleccion::class, 'tipo_eleccion_id');
     }
 
-    public function cargos()
+    public function cargos() //ok
     {
         return $this->hasMany(Cargo::class, 'tipo_eleccion_id');
     }

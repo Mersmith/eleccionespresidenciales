@@ -22,52 +22,28 @@ class Candidato extends Model
         'activo',
     ];
 
-    public function partido()
+    public function partido() //ok
     {
         return $this->belongsTo(Partido::class);
     }
 
-    public function region()
+    public function region() //ok
     {
         return $this->belongsTo(Region::class);
     }
 
-    public function provincia()
+    public function provincia() //ok
     {
         return $this->belongsTo(Provincia::class);
     }
 
-    public function distrito()
+    public function distrito() //ok
     {
         return $this->belongsTo(Distrito::class);
     }
 
-    public function cargos()
+    public function cargos() //ok
     {
-        return $this->belongsToMany(Cargo::class, 'candidato_cargo')
-            ->withPivot(['eleccion_id', 'partido_id', 'pais_id', 'region_id', 'provincia_id', 'distrito_id', 'principal', 'electo'])
-            ->withTimestamps();
-    }
-
-    public function encuestas()
-    {
-        return $this->belongsToMany(Encuesta::class, 'candidato_encuesta');
-    }
-
-    public function votos()
-    {
-        return $this->hasMany(Voto::class);
-    }
-
-    public function elecciones()
-    {
-        return $this->belongsToMany(Eleccion::class, 'candidato_cargo')
-            ->withPivot('cargo_id', 'partido_id', 'region_id', 'provincia_id', 'distrito_id')
-            ->withTimestamps();
-    }
-
-    public function eleccion()
-    {
-        return $this->belongsTo(Eleccion::class);
+        return $this->hasMany(CandidatoCargo::class);
     }
 }

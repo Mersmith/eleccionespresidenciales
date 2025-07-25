@@ -13,24 +13,12 @@ class CandidatoEncuesta extends Model
         'encuesta_id',
     ];
 
-    public function candidato()
+    public function candidatoCargo() //ok
     {
-        return $this->hasOneThrough(
-            Candidato::class,
-            CandidatoCargo::class,
-            'id', // CandidatoCargo id
-            'id', // Candidato id
-            'candidato_cargo_id', // Foreign key on this model
-            'candidato_id' // Foreign key on CandidatoCargo
-        );
+        return $this->belongsTo(CandidatoCargo::class, 'candidato_cargo_id');
     }
 
-    public function candidatoCargo()
-    {
-        return $this->belongsTo(CandidatoCargo::class);
-    }
-
-    public function encuesta()
+    public function encuesta() //ok
     {
         return $this->belongsTo(Encuesta::class);
     }

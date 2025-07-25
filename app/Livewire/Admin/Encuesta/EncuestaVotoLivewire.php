@@ -12,12 +12,12 @@ use Illuminate\Support\Facades\Auth;
 class EncuestaVotoLivewire extends Component
 {
     public Encuesta $encuesta;
-    public ?int $selectedCandidatoId = null;
+    public ?int $candidato_cargo_id = null;
     public bool $yaVoto = false;
 
     public function mount($id)
     {
-        $this->encuesta = Encuesta::with('candidatos')->findOrFail($id);
+        $this->encuesta = Encuesta::with('candidatoCargos.candidato')->findOrFail($id);
 
         if (Auth::check()) {
             $this->yaVoto = Voto::where('user_id', Auth::id())
@@ -38,7 +38,7 @@ class EncuestaVotoLivewire extends Component
             return;
         }
 
-        if (!$this->selectedCandidatoId) {
+        if (!$this->candidato_cargo_id) {
             session()->flash('error', 'Selecciona un candidato para votar.');
             return;
         }
@@ -46,7 +46,7 @@ class EncuestaVotoLivewire extends Component
         Voto::create([
             'user_id' => Auth::id(),
             'encuesta_id' => $this->encuesta->id,
-            'candidato_id' => $this->selectedCandidatoId,
+            'candidato_cargo_id' => $this->candidato_cargo_id,
             'fecha_voto' => now(),
         ]);
 
@@ -58,7 +58,7 @@ class EncuestaVotoLivewire extends Component
     public function render()
     {
         return view('livewire.admin.encuesta.encuesta-voto-livewire', [
-            'candidatos' => $this->encuesta->candidatos,
+            'candidatos' => $this->encuesta->candidatoCargos,
         ]);
     }
 }

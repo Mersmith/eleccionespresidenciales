@@ -22,48 +22,60 @@ class CandidatoCargo extends Model
         'electo',
     ];
 
-    public function nivel()
+    public function nivel() //ok
     {
         return $this->belongsTo(Nivel::class);
     }
 
-    public function candidato()
+    public function candidato() //ok
     {
         return $this->belongsTo(Candidato::class);
     }
 
-    public function cargo()
+    public function cargo() //ok
     {
         return $this->belongsTo(Cargo::class);
     }
 
-    public function eleccion()
+    public function eleccion() //ok
     {
         return $this->belongsTo(Eleccion::class);
     }
 
-    public function partido()
+    public function partido() //ok
     {
         return $this->belongsTo(Partido::class);
     }
 
-    public function pais()
+    public function pais() //ok
     {
         return $this->belongsTo(Pais::class);
     }
 
-    public function region()
+    public function region() //ok
     {
         return $this->belongsTo(Region::class);
     }
 
-    public function provincia()
+    public function provincia() //ok
     {
         return $this->belongsTo(Provincia::class);
     }
 
-    public function distrito()
+    public function distrito() //ok
     {
         return $this->belongsTo(Distrito::class);
+    }
+
+    public function encuestas() //ok
+    {
+        return $this->belongsToMany(Encuesta::class, 'candidato_encuesta')
+            ->withTimestamps()
+            ->withPivot('id');
+    }
+
+    public function votos() //ok
+    {
+        return $this->hasMany(Voto::class);
     }
 }

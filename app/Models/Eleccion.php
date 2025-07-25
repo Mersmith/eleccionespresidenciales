@@ -13,26 +13,29 @@ class Eleccion extends Model
     const GENERAL = 'GENERALES';
     const MUNICIPAL = 'REGIONALES Y MUNICIPALES';
 
-    protected $guarded = ['id', 'created_at', 'update_at'];
+    protected $fillable = [
+        'nombre', 'slug', 'descripcion', 'tipo_eleccion_id',
+        'imagen_ruta', 'fecha_votacion', 'activo',
+    ];
 
-    public function tipoEleccion()
+    public function tipoEleccion() //ok
     {
         return $this->belongsTo(TipoEleccion::class, 'tipo_eleccion_id');
     }
 
-    public function cargos()
+    public function cargos() //ok
     {
         return $this->hasMany(Cargo::class);
     }
 
-    public function encuestas()
+    public function encuestas() //ok
     {
         return $this->hasMany(Encuesta::class);
     }
 
-    public function candidatos()
+    public function candidatoCargos() //ok
     {
-        return $this->hasMany(Candidato::class);
+        return $this->hasMany(CandidatoCargo::class);
     }
 
     //URL AMIGABLE

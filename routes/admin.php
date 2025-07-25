@@ -29,17 +29,17 @@ Route::get('/eleccion', EleccionTodasLivewire::class)->name('eleccion.vista.toda
 Route::get('/eleccion/crear', EleccionCrearLivewire::class)->name('eleccion.vista.crear');
 Route::get('/eleccion/editar/{id}', EleccionEditarLivewire::class)->name('eleccion.vista.editar');
 
-Route::get('/cargo', CargoTodasLivewire::class)->name('cargo.vista.todas');
-Route::get('/cargo/crear', CargoCrearLivewire::class)->name('cargo.vista.crear');
-Route::get('/cargo/editar/{id}', CargoEditarLivewire::class)->name('cargo.vista.editar');
+//Route::get('/cargo', CargoTodasLivewire::class)->name('cargo.vista.todas');
+//Route::get('/cargo/crear', CargoCrearLivewire::class)->name('cargo.vista.crear');
+//Route::get('/cargo/editar/{id}', CargoEditarLivewire::class)->name('cargo.vista.editar');
 
 Route::get('/partido', PartidoTodasLivewire::class)->name('partido.vista.todas');
 Route::get('/partido/crear', PartidoCrearLivewire::class)->name('partido.vista.crear');
 Route::get('/partido/editar/{id}', PartidoEditarLivewire::class)->name('partido.vista.editar');
 
-Route::get('/categoria', CategoriaTodasLivewire::class)->name('categoria.vista.todas');
-Route::get('/categoria/crear', CategoriaCrearLivewire::class)->name('categoria.vista.crear');
-Route::get('/categoria/editar/{id}', CategoriaEditarLivewire::class)->name('categoria.vista.editar');
+//Route::get('/categoria', CategoriaTodasLivewire::class)->name('categoria.vista.todas');
+//Route::get('/categoria/crear', CategoriaCrearLivewire::class)->name('categoria.vista.crear');
+//Route::get('/categoria/editar/{id}', CategoriaEditarLivewire::class)->name('categoria.vista.editar');
 
 Route::get('/encuesta', EncuestaTodasLivewire::class)->name('encuesta.vista.todas');
 Route::get('/encuesta/crear', EncuestaCrearLivewire::class)->name('encuesta.vista.crear');

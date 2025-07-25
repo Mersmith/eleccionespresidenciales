@@ -76,22 +76,6 @@
                         <p class="mensaje_error">{{ $message }}</p>
                         @enderror
                     </div>
-
-                    <!--CARGO-->
-                    <div class="g_margin_bottom_20">
-                        <label for="cargo_id">Cargo <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
-                        <select id="cargo_id" name="cargo_id" wire:model.live="cargo_id" required>
-                            <option value="" selected disabled>Seleccionar un cargo</option>
-                            @if ($cargos)
-                            @foreach ($cargos as $cargo)
-                            <option value="{{ $cargo->id }}">{{ $cargo->nombre }}</option>
-                            @endforeach
-                            @endif
-                        </select>
-                        @error('cargo_id')
-                        <p class="mensaje_error">{{ $message }}</p>
-                        @enderror
-                    </div>
                 </div>
             </div>
 
@@ -196,7 +180,7 @@
                             <td> {{ $index + 1 }} </td>
                             <td class="g_resaltar">{{ $item->cargo->nombre  }}</td>
                             <td>{{ $item->eleccion->nombre }}</td>
-                            <td>{{ $item->partido->nombre }}</td>
+                            <td>{{ $item->partido->nombre ?? '-' }}</td>
                             <td>
                                 {{ $item->region->nombre ?? '-' }}
                                 {{ $item->provincia->nombre ?? '' }}

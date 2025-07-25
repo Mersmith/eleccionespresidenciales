@@ -18,12 +18,12 @@ class Nivel extends Model
         'distrito',
     ];
 
-    public function cargos()
+    public function cargos() //ok
     {
         return $this->hasMany(Cargo::class);
     }
 
-    public function encuestas()
+    public function encuestas() //ok
     {
         return $this->hasMany(Encuesta::class);
     }

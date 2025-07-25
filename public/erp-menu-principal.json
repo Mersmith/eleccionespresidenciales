@@ -17,28 +17,10 @@
                 "submenus": []
             },
             {
-                "id": 12,
-                "nombre": "Cargo",
-                "ruta": "admin.cargo.vista.todas",
-                "url": "/admin/cargo",
-                "icono": "fa-solid fa-tree-city",
-                "nivel": 2,
-                "submenus": []
-            },
-            {
                 "id": 13,
                 "nombre": "Partido",
                 "ruta": "admin.partido.vista.todas",
                 "url": "/admin/partido",
-                "icono": "fa-solid fa-tree-city",
-                "nivel": 2,
-                "submenus": []
-            },
-            {
-                "id": 14,
-                "nombre": "Categoria",
-                "ruta": "admin.categoria.vista.todas",
-                "url": "/admin/categoria",
                 "icono": "fa-solid fa-tree-city",
                 "nivel": 2,
                 "submenus": []

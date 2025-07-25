@@ -12,12 +12,12 @@ class Pais extends Model
 
     protected $table = 'pais'; // Especificamos el nombre porque no es plural
 
-    public function regiones()
+    public function regiones() //ok
     {
         return $this->hasMany(Region::class);
     }
 
-    public function encuestas()
+    public function encuestas() //ok
     {
         return $this->hasMany(Encuesta::class);
     }

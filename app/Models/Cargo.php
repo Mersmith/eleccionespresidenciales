@@ -16,25 +16,19 @@ class Cargo extends Model
         'tipo_eleccion_id',
     ];
 
-    public function nivel()
+    public function nivel() //ok
     {
         return $this->belongsTo(Nivel::class);
     }
 
-    public function tipoEleccion()
+    public function tipoEleccion() //ok
     {
         return $this->belongsTo(TipoEleccion::class, 'tipo_eleccion_id');
     }
 
-    public function encuestas()
+    public function encuestas() //ok
     {
         return $this->hasMany(Encuesta::class);
     }
 
-    public function candidatos()
-    {
-        return $this->belongsToMany(Candidato::class, 'candidato_cargo')
-            ->withPivot(['eleccion_id', 'partido_id', 'pais_id', 'region_id', 'provincia_id', 'distrito_id', 'principal', 'electo'])
-            ->withTimestamps();
-    }
 }

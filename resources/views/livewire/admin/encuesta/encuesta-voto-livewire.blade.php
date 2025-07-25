@@ -20,10 +20,10 @@
     @else
         <form wire:submit.prevent="votar">
             <div class="space-y-4">
-                @foreach ($candidatos as $candidato)
+                @foreach ($candidatos as $candidatoCargo)
                     <label class="flex items-center space-x-2">
-                        <input type="radio" wire:model="selectedCandidatoId" value="{{ $candidato->id }}">
-                        <span>{{ $candidato->nombre }}</span>
+                        <input type="radio" wire:model="candidato_cargo_id" value="{{ $candidatoCargo->id }}">
+                        <span>{{ $candidatoCargo->candidato->nombre }}</span>
                     </label>
                 @endforeach
             </div>

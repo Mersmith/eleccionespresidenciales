@@ -41,6 +41,11 @@ class User extends Authenticatable
         'provider_refresh_token',
     ];
 
+    public function votos()
+    {
+        return $this->hasMany(Voto::class);
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -62,7 +67,7 @@ class User extends Authenticatable
         return Str::of($this->name)
             ->explode(' ')
             ->take(2)
-            ->map(fn ($word) => Str::substr($word, 0, 1))
+            ->map(fn($word) => Str::substr($word, 0, 1))
             ->implode('');
     }
 }

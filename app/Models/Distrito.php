@@ -10,12 +10,12 @@ class Distrito extends Model
     /** @use HasFactory<\Database\Factories\DistritoFactory> */
     use HasFactory;
 
-    public function provincia()
+    public function provincia()//ok
     {
-        return $this->belongsTo(Provincia::class);
+        return $this->belongsTo(Provincia::class, 'provincia_id');
     }
 
-    public function encuestas()
+    public function encuestas() //ok
     {
         return $this->hasMany(Encuesta::class);
     }

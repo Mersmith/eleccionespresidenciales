@@ -13,21 +13,33 @@ class EncuestaResultadoLivewire extends Component
 
     public function mount($id)
     {
-        $this->encuesta = Encuesta::with(['eleccion.candidatos', 'votos'])->findOrFail($id);
+        $this->encuesta = Encuesta::with([
+            'candidatoEncuestas.candidatoCargo.candidato',
+            'votos',
+        ])->findOrFail($id);
+
+        //dd($this->encuesta);
     }
 
     public function render()
     {
-        $resultados = $this->encuesta->eleccion->candidatos->map(function ($candidato) {
-            $votos = $candidato->votos()->where('encuesta_id', $this->encuesta->id)->count();
+        $votosPorCandidato = $this->encuesta->votos
+            ->groupBy('candidato_cargo_id')
+            ->map->count();
+
+        $resultados = $this->encuesta->candidatoEncuestas->map(function ($candidatoEncuesta) use ($votosPorCandidato) {
+            $candidatoCargo = $candidatoEncuesta->candidatoCargo;
             return [
-                'nombre' => $candidato->nombre,
-                'votos' => $votos,
+                'nombre' => $candidatoCargo->candidato->nombre,
+                'votos' => $votosPorCandidato[$candidatoCargo->id] ?? 0,
             ];
         })->sortByDesc('votos')->values();
 
+        // dd($resultados);
+
         return view('livewire.admin.encuesta.encuesta-resultado-livewire', [
             'resultados' => $resultados,
+            'encuesta' => $this->encuesta,
         ]);
     }
 }

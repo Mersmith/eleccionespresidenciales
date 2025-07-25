@@ -3,7 +3,6 @@
 namespace App\Livewire\Admin\Candidato;
 
 use App\Models\Candidato;
-use App\Models\Cargo;
 use App\Models\Distrito;
 use App\Models\Partido;
 use App\Models\Provincia;
@@ -15,7 +14,7 @@ use Livewire\Component;
 #[Layout('components.layouts.admin.layout-admin')]
 class CandidatoCrearLivewire extends Component
 {
-    public $partidos, $cargos;
+    public $partidos;
     public $regiones = [], $provincias = [], $distritos = [];
 
     public $nombre;
@@ -26,7 +25,6 @@ class CandidatoCrearLivewire extends Component
     public $region_id = "";
     public $provincia_id = "";
     public $distrito_id = "";
-    public $cargo_id = "";
     public $activo = "0";
 
     protected $validationAttributes = [
@@ -38,7 +36,6 @@ class CandidatoCrearLivewire extends Component
         'region_id' => 'región',
         'provincia_id' => 'provincia',
         'distrito_id' => 'distrito',
-        'cargo_id' => 'cargo',
         'activo' => 'estado',
     ];
 
@@ -49,11 +46,10 @@ class CandidatoCrearLivewire extends Component
             'slug' => 'required|unique:candidatos,slug',
             'descripcion' => 'required|min:3|max:255',
             'foto' => 'nullable|url',
-            'partido_id' => 'required|exists:partidos,id',
+            'partido_id' => 'nullable|exists:partidos,id',
             'region_id' => 'required',
             'provincia_id' => 'required',
             'distrito_id' => 'required|exists:distritos,id',
-            'cargo_id' => 'required|exists:cargos,id',
             'activo' => 'required|numeric|regex:/^\d{1}$/',
         ];
     }
@@ -80,9 +76,6 @@ class CandidatoCrearLivewire extends Component
         'distrito_id.required' => 'El :attribute es obligatorio.',
         'distrito_id.exists' => 'El :attribute seleccionado no es válido.',
 
-        'cargo_id.required' => 'El :attribute es obligatorio.',
-        'cargo_id.exists' => 'El :attribute seleccionado no es válido.',
-
         'activo.required' => 'El :attribute es obligatorio.',
         'activo.numeric' => 'El :attribute debe ser un número.',
         'activo.regex' => 'El :attribute debe ser 0 o 1.',
@@ -91,7 +84,6 @@ class CandidatoCrearLivewire extends Component
     public function mount()
     {
         $this->partidos = Partido::all();
-        $this->cargos = Cargo::all();
         $this->regiones = Region::all();
     }
 
@@ -145,11 +137,10 @@ class CandidatoCrearLivewire extends Component
             'slug' => $this->slug,
             'descripcion' => $this->descripcion,
             'foto' => $this->foto,
-            'partido_id' => $this->partido_id,
+            'partido_id' => $this->partido_id ?: null,
             'region_id' => $this->region_id,
             'provincia_id' => $this->provincia_id,
             'distrito_id' => $this->distrito_id,
-            'cargo_id' => $this->cargo_id,
             'activo' => $this->activo,
         ]);
 

@@ -53,7 +53,7 @@
                             <td>
                                 <img src="{{ $item->foto }}" alt="{{ $item->nombre }}">
                             </td>                          
-                            <td>{{ $item->partido->nombre }}</td>
+                            <td>{{ $item->partido->nombre ?? '-' }}</td>
                             <td class="centrar_iconos">
                                 <a href="{{ route('admin.candidato.vista.editar', $item) }}" class="g_accion_editar">
                                     <span><i class="fa-solid fa-pencil"></i></span>

@@ -18,7 +18,12 @@ class Partido extends Model
         'descripcion',
         'activo',
     ];
-    
+
+    public function encuestas() //ok
+    {
+        return $this->hasMany(Encuesta::class);
+    }
+
     public function candidatos()
     {
         return $this->hasMany(Candidato::class);
