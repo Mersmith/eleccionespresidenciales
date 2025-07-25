@@ -66,6 +66,7 @@ class EncuestaCandidatoLivewire extends Component
         // Disponibles = los que no han sido asignados aún
         $candidatosDisponibles = CandidatoCargo::with('candidato', 'cargo')
             ->whereNotIn('id', $idsAgregados)
+            ->where('cargo_id', $this->encuesta->cargo_id)
             ->whereHas('candidato', function ($query) {
                 $query->where('nombre', 'like', '%' . $this->searchDisponibles . '%');
             })

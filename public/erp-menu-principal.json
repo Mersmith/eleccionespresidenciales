@@ -17,7 +17,7 @@
                 "submenus": []
             },
             {
-                "id": 13,
+                "id": 12,
                 "nombre": "Partido",
                 "ruta": "admin.partido.vista.todas",
                 "url": "/admin/partido",
@@ -26,19 +26,19 @@
                 "submenus": []
             },
             {
-                "id": 15,
-                "nombre": "Encuesta",
-                "ruta": "admin.encuesta.vista.todas",
-                "url": "/admin/encuesta",
+                "id": 13,
+                "nombre": "Candidato",
+                "ruta": "admin.candidato.vista.todas",
+                "url": "/admin/candidato",
                 "icono": "fa-solid fa-tree-city",
                 "nivel": 2,
                 "submenus": []
             },
             {
-                "id": 16,
-                "nombre": "Candidato",
-                "ruta": "admin.candidato.vista.todas",
-                "url": "/admin/candidato",
+                "id": 14,
+                "nombre": "Encuesta",
+                "ruta": "admin.encuesta.vista.todas",
+                "url": "/admin/encuesta",
                 "icono": "fa-solid fa-tree-city",
                 "nivel": 2,
                 "submenus": []

@@ -21,11 +21,11 @@ class DatabaseSeeder extends Seeder
             CargoSeeder::class,
             PartidoSeeder::class,
             CategoriaSeeder::class,
-            EncuestaSeeder::class,
             CandidatoSeeder::class,
             CandidatoCargoSeeder::class,
-            CandidatoEncuestaSeeder::class,
-            VotoSeeder::class,
+            EncuestaSeeder::class,
+            //CandidatoEncuestaSeeder::class,
+            //VotoSeeder::class,
         ]);
     }
 }
