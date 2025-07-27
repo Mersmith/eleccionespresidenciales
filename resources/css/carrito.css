@@ -1,0 +1,225 @@
+/* CARRITO */
+.g_carrito {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: var(--color-fondo-terciario);
+    gap: 15px;
+}
+
+.g_carrito .item_producto {
+    display: flex;
+    gap: 10px;
+}
+
+.g_carrito .info_producto {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.g_carrito .contenedor_imagen {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.g_carrito .contenedor_imagen img {
+    width: 100px;
+    height: auto;
+    object-fit: cover;
+    max-height: 100%;
+}
+
+.g_carrito .contenedor_informacion {
+    display: flex;
+    flex-direction: column;
+}
+
+.g_carrito .contenedor_informacion .producto_nombre {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-texto-secundario);
+}
+
+.g_carrito .contenedor_informacion .marca_nombre {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.733333px;
+    color: var(--color-texto-secundario);
+}
+
+.g_carrito .contenedor_informacion .variacion {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-texto-septenario);
+}
+
+.g_carrito .contenedor_informacion .variacion span {
+    color: var(--color-texto-septenario);
+    font-weight: 700;
+}
+
+.g_carrito .contenedor_precios .precio {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.g_carrito .contenedor_precios .descuento {
+    background-color: var(--color-fondo-primario);
+    color: var(--color-texto-terciario);
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.g_carrito .contenedor_precios .precio_oferta {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-texto-secundario);
+}
+
+.g_carrito .contenedor_precios .precio_normal {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-texto-septenario);
+}
+
+.g_carrito .contenedor_precios .precio_antiguo {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-texto-septenario);
+    text-decoration: line-through;
+}
+
+.g_carrito .controles {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 18px;
+}
+
+.g_carrito .control_cantidad {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: var(--color-texto-secundario);
+}
+
+.g_carrito .control_cantidad button {
+    background-color: var(--color-fondo-quinario);
+    border-radius: 2px;
+    width: 30px;
+    height: 30px;
+}
+
+.g_carrito .enlaces {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-texto-secundario);
+}
+
+/* RESUMEN PAGO */
+.g_resumen_pagar .contenedor_pagar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.g_resumen_pagar .monto {
+    display: flex;
+    justify-content: space-between;
+}
+
+.g_resumen_pagar .texto {
+    font-size: 14px;
+    color: var(--color-texto-secundario);
+    font-weight: 700;
+}
+
+.g_resumen_pagar .numero {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 14px;
+    color: var(--color-texto-secundario);
+    font-weight: 700;
+}
+
+.g_resumen_pagar .continuar_compra {
+    font-weight: bold;
+    line-height: 23px;
+    letter-spacing: 0.5px;
+    color: var(--color-texto-terciario);
+    border-radius: 30px;
+    background-color: var(--color-fondo-primario);
+    text-transform: none;
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+    padding: 10px 0px;
+    margin-top: 20px;
+}
+
+/* ICONO RESUMEN PAGO */
+.g_icono_resumen_pago {
+    display: none;
+    cursor: pointer;
+    justify-content: center;
+    position: absolute;
+    top: -20px;
+}
+
+.g_icono_resumen_pago span {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 700px) {
+
+    /* CARRITO */
+    .g_carrito .info_producto {
+        flex-direction: column;
+    }
+
+    .g_carrito .controles {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    /* RESUMEN PAGO */
+    .g_resumen_pagar .ocultar_pagar {
+        display: none;
+    }
+
+    /* ICONO RESUMEN PAGO */
+    .g_icono_resumen_pago {
+        display: flex;
+    }
+
+    /* SIDEBAR RESUMEN PEDIDO*/
+    .g_sidebar_resumen_pedido {
+        box-shadow: var(--sombra-secundario-arriba);
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        z-index: 19;
+        width: 100%;
+        background-color: white;
+    }
+
+}

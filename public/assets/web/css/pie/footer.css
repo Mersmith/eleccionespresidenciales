@@ -1,0 +1,93 @@
+.footer {
+    width: 100%;
+    background-color: #0c2941;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+}
+
+/* CONTENEDOR REDES - TERMINOS */
+.footer .contenedor_redes_terminos {
+    display: flex;
+    align-items: center;
+    padding: 10px 0px;
+    border-bottom: 1px solid #495867;
+}
+
+/* CONTENEDOR REDES */
+.footer .contenedor_redes {
+    width: 20%;
+    display: flex;
+    gap: 10px;
+    padding: 10px 0px;
+}
+
+.footer .contenedor_redes a {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #495867;
+    border-radius: 50%;
+    text-decoration: none;
+    color: #fff;
+}
+
+.footer .contenedor_redes a:hover {
+    background-color: #6c7883;
+}
+
+/* CONTENEDOR TERMINOS */
+.footer .contenedor_terminos {
+    width: 80%;
+    display: flex;
+    gap: 20px;
+    padding: 10px 0px;
+}
+
+.footer .contenedor_terminos a {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .2px;
+}
+
+/* CONTENEDOR DERECHOS */
+.footer .contenedor_derechos {
+    padding: 20px 0px;
+}
+
+.footer .contenedor_derechos p {
+    text-align: left;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: .2px;
+}
+
+.footer .contenedor_derechos span {
+    text-align: left;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: .2px;
+}
+
+@media (max-width: 900px) {
+
+    /* CONTENEDOR REDES - TERMINOS */
+    .footer .contenedor_redes_terminos {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* CONTENEDOR TERMINOS */
+    .footer .contenedor_terminos {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+}

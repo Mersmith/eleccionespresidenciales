@@ -1,0 +1,90 @@
+.partials_contenedor_slider_principal {
+    width: 100%;
+    position: relative;
+}
+
+.partials_contenedor_slider_principal .swiper {
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.partials_contenedor_slider_principal .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* IMAGEN */
+.partials_contenedor_slider_principal .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.partials_contenedor_slider_principal .imagen_movil {
+    display: none;
+}
+
+/* CCONTROLES */
+.partials_contenedor_slider_principal .swiper-button-next,
+.partials_contenedor_slider_principal .swiper-button-prev {
+    background: transparent;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: var(--color-texto-senario);
+}
+
+.partials_contenedor_slider_principal .swiper-button-next:hover,
+.partials_contenedor_slider_principal .swiper-button-prev:hover {
+    background: var(--color-fondo-senario);
+    color: var(--color-texto-septenario);
+}
+
+.partials_contenedor_slider_principal .swiper-button-next:after,
+.partials_contenedor_slider_principal .swiper-button-prev:after {
+    font-size: 16px;
+}
+
+.partials_contenedor_slider_principal .swiper-button-prev {
+    left: 10px;
+    box-shadow: var(--sombra-secundario-izquierda)
+}
+
+.partials_contenedor_slider_principal .swiper-button-next {
+    right: 10px;
+    box-shadow: var(--sombra-secundario-derecha)
+}
+
+/* SLIDER THUMBNAILS */
+.partials_contenedor_slider_principal .swiper-pagination {
+    position: initial;
+}
+
+.partials_contenedor_slider_principal .swiper-pagination-bullet {
+    background-color: var(--color-fondo-senario);
+    width: 8px;
+    height: 8px;
+    opacity: 1;
+    border-radius: 50%;
+}
+
+.partials_contenedor_slider_principal .swiper-pagination-bullet-active {
+    background-color: var(--color-fondo-septenario);
+}
+
+@media (max-width: 700px) {
+
+    .partials_contenedor_slider_principal .imagen_computadora {
+        display: none;
+    }
+
+    .partials_contenedor_slider_principal .imagen_movil {
+        display: block;
+    }
+
+}

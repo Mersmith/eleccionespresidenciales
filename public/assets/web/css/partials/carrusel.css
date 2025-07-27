@@ -1,0 +1,189 @@
+.partials_contenedor_carrusel {
+    width: 65%;
+    padding: 8px 12px 0 32px;
+}
+
+/* IMAGEN SELECCIONADA */
+.partials_contenedor_carrusel_cabecera .contenedor_seleccionado {
+    position: relative;
+    height: 500px;
+    width: 500px;
+}
+
+.partials_contenedor_carrusel_cabecera .swiper-slide {
+    display: flex;
+}
+
+.partials_contenedor_carrusel_cabecera .swiper-slide .contenedor_imagen {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    /*border: 1px solid var(--color-borde-terciario);*/
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.partials_contenedor_carrusel_cabecera .swiper-slide img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 100%;
+}
+
+/* CONTROLES */
+.partials_contenedor_carrusel_cabecera .swiper-button-next,
+.partials_contenedor_carrusel_cabecera .swiper-button-prev {
+    background: transparent;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: var(--color-texto-senario);
+}
+
+.partials_contenedor_carrusel_cabecera .swiper-button-next:hover,
+.partials_contenedor_carrusel_cabecera .swiper-button-prev:hover {
+    background: var(--color-fondo-senario);
+    color: var(--color-texto-septenario);
+}
+
+.partials_contenedor_carrusel_cabecera .swiper-button-next:after,
+.partials_contenedor_carrusel_cabecera .swiper-button-prev:after {
+    font-size: 16px;
+}
+
+.partials_contenedor_carrusel_cabecera .swiper-button-prev {
+    left: 10px;
+    box-shadow: var(--sombra-secundario-izquierda)
+}
+
+.partials_contenedor_carrusel_cabecera .swiper-button-next {
+    right: 10px;
+    box-shadow: var(--sombra-secundario-derecha)
+}
+
+/* SLIDER THUMBNAILS */
+.partials_contenedor_carrusel_pie .contenedor_seleccionado {
+    position: relative;
+    height: 80px;
+    width: 80px;
+}
+
+.partials_contenedor_carrusel_pie .swiper-slide {
+    display: flex;
+}
+
+.partials_contenedor_carrusel_pie .swiper-slide .contenedor_imagen {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid;
+    border-color: transparent;
+}
+
+.partials_contenedor_carrusel_pie .swiper-slide img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 100%;
+}
+
+.partials_contenedor_carrusel_pie .swiper-slide-selected .contenedor_imagen {
+    border-color: var(--color-borde-senario);
+}
+
+.partials_contenedor_carrusel_pie .swiper-slide-thumb-active .contenedor_imagen {
+    border-color: var(--color-borde-senario);
+}
+
+.partials_contenedor_carrusel_pie .swiper-button-next,
+.partials_contenedor_carrusel_pie .swiper-button-prev,
+.partials_contenedor_carrusel_pie .swiper-pagination {
+    display: none;
+}
+
+.partials_contenedor_carrusel_pie .swiper-pagination {
+    margin-top: 15px;
+    position: inherit;
+}
+
+.partials_contenedor_carrusel_pie .swiper-pagination-bullet {
+    background-color: var(--color-fondo-senario);
+    width: 8px;
+    height: 8px;
+    opacity: 1;
+    border-radius: 50%;
+}
+
+.partials_contenedor_carrusel_pie .swiper-pagination-bullet-active {
+    background-color: var(--color-fondo-septenario);
+}
+
+@media (min-width: 1000px) {
+
+    .partials_contenedor_carrusel {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
+
+    .partials_contenedor_carrusel_pie {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .partials_contenedor_carrusel_pie .swiperThumbnails {
+        height: 500px;
+        width: auto;
+        overflow: hidden;
+    }
+
+}
+
+@media (max-width:1130px) {
+
+    .partials_contenedor_carrusel_cabecera .contenedor_seleccionado {
+        height: 440px;
+        width: 440px;
+    }
+
+}
+
+@media (max-width:1000px) {
+
+    .partials_contenedor_carrusel_cabecera {
+        margin-bottom: 20px;
+    }
+
+    .partials_contenedor_carrusel_pie .swiper-pagination {
+        display: block;
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .partials_contenedor_carrusel {
+        width: 100%;
+        padding: 10px;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .partials_contenedor_carrusel_cabecera .contenedor_seleccionado {
+        position: relative;
+        height: 380px;
+        width: 380px;
+    }
+
+}

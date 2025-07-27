@@ -1,0 +1,28 @@
+.titulo_simple {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.titulo_simple h3 {
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.2;
+}
+
+.titulo_icono {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.titulo_icono h3 {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+}
+
+.titulo_icono img {
+    width: 20px;
+    margin-right: 10px;
+    display: inline;
+}

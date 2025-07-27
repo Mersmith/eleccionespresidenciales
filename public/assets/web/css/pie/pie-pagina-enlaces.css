@@ -1,0 +1,97 @@
+.contenedor_enlaces_rapidos {
+    width: 100%;
+    padding-top: 40px;
+    padding-bottom: 30px;
+    background-color: #1e364b;
+}
+
+/* GRID CONTENEDOR ITEMS */
+.contenedor_enlaces_rapidos .grid_contenedor_items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+
+/* CONTENEDOR TITULO */
+.contenedor_enlaces_rapidos .contenedor_titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contenedor_enlaces_rapidos .contenedor_titulo p {
+    margin: 0;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: .2px;
+    color: #fff;
+}
+
+.contenedor_enlaces_rapidos .contenedor_titulo span {
+    display: none;
+    font-weight: 800;
+    font-size: 20px;
+    color: #fff;
+}
+
+/* CONTENEDOR ACORDEON */
+.contenedor_enlaces_rapidos .contenedor_acordeon {
+    padding-top: 20px;
+}
+
+.contenedor_enlaces_rapidos .contenedor_acordeon li {
+    padding: 10px 0px;
+}
+
+.contenedor_enlaces_rapidos .contenedor_acordeon li a {
+    font-weight: 400;
+    font-size: 14px;
+    color: #fff;
+}
+
+/* RESPONSIVE TABLET */
+@media (max-width: 1000px) {
+
+    .contenedor_enlaces_rapidos .contenedor_enlaces_rapidos {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+
+    /* GRID CONTENEDOR ITEMS */
+    .contenedor_enlaces_rapidos .grid_contenedor_items {
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 0px;
+    }
+
+    /* CONTENEDOR ITEM */
+    .contenedor_enlaces_rapidos .contenedor_item {
+        cursor: pointer;
+    }
+
+    /* CONTENEDOR TITULO */
+    .contenedor_enlaces_rapidos .contenedor_titulo {
+        padding: 20px 0px;
+        border-bottom: 1px solid #6c7883;
+    }
+
+    .contenedor_enlaces_rapidos .contenedor_titulo span {
+        display: block;
+    }
+
+    /* CONTENEDOR ACORDEON */
+    .contenedor_enlaces_rapidos .contenedor_acordeon {
+        display: none;
+        padding-bottom: 20px;
+    }
+
+    .contenedor_enlaces_rapidos .contenedor_acordeon li {
+        padding-left: 16px;
+    }
+
+    .contenedor_enlaces_rapidos .contenedor_acordeon.mostrar {
+        display: block;
+        border-bottom: 1px solid #6c7883;
+    }
+
+}

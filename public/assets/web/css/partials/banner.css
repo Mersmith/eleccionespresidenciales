@@ -1,0 +1,27 @@
+.partials_contenedor_banner {
+    width: 100%;
+}
+
+.partials_contenedor_banner a {
+    display: flex;
+}
+
+.partials_contenedor_banner img {
+    width: 100%;
+}
+
+.partials_contenedor_banner .imagen_movil {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+
+    .partials_contenedor_banner .imagen_computadora {
+        display: none;
+    }
+
+    .partials_contenedor_banner .imagen_movil {
+        display: block;
+    }
+
+}

@@ -1,0 +1,67 @@
+:root {
+
+    /* COLORES */
+    --color-fondo-primario: #392385;/*ofi*/
+    --color-fondo-secundario: #ffffff;/*ofi*/
+    --color-fondo-terciario: #1c1c1d;/*ofi*/
+    --color-fondo-cuaternario: #252728;/*ofi*/
+    --color-fondo-quinario: #3a3c3d;/*ofi*/
+    --color-fondo-senario: #c0c0c0;
+    --color-fondo-septenario: #778089;
+    --color-fondo-octanario: #3b3d3e;/*ofi*/
+
+    --color-texto-primario: #392385;
+    --color-texto-secundario: #ffffff;
+    --color-texto-terciario: #1c1c1d;
+    --color-texto-cuaternario: #252728;
+    --color-texto-quinario: #3a3c3d;
+    --color-texto-senario: #c0c0c0;
+    --color-texto-septenario: #778089;
+    --color-texto-octanario: #3b3d3e;
+
+    --color-borde-primario: #392385;
+    --color-borde-secundario: #ffffff;
+    --color-borde-terciario: #1c1c1d;
+    --color-borde-cuaternario: #252728;
+    --color-borde-quinario: #3d3a3d;
+    --color-borde-senario: #c0c0c0;
+    --color-borde-septenario: #778089;
+    --color-borde-octanario: #3b3d3e;
+
+    /* BREACKPOINT */
+    --breakpoint-computadora: 1024px;
+    --breakpoint-tablet: 700px;
+    --breakpoint-movil: 500px;
+
+    /* ALTURAS */
+    --altura-header-principal-computadora: 140px;
+    --altura-menu-principal-arriba-computadora: 90px;
+    --altura-menu-principal-abajo-computadora: 50px;
+
+    --altura-header-principal-movil: 170px;
+    --altura-menu-principal-arriba-movil: 120px;
+    --altura-menu-principal-abajo-movil: 50px;
+
+    /* ANCHOS */
+    --ancho-espacio-pagina-computadora: 50px;
+    --ancho-espacio-pagina-movil: 10px;
+
+    --ancho-sidebar-categoria: 300px;
+    --ancho-sidebar-subcategoria: calc(700px);
+    --altura-sidebar-cabecara: 56px;
+
+    /* SOMBRAS */
+    --sombra: 0 5px 20px rgba(0, 0, 0, .2);
+    --sombra-secundario-izquierda: 2px 0 5px -2px rgba(0, 0, 0, 0.2);
+    --sombra-secundario-derecha: -2px 0 5px -2px rgba(0, 0, 0, 0.2);
+    --sombra-secundario-arriba: rgba(0, 0, 0, 0.1) 0px -3px 26px;
+
+    /* SLIDE PRODUCTOS */
+    /*6 ELEMENTOS*/
+    --slide-productos-computadora: 16.6%;
+    /*2 ELEMENTOS*/
+    --slide-productos-tablet: 45%;
+    /*1 ELEMENTO*/
+    --slide-productos-movil: 95%;
+
+}

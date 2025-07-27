@@ -61,8 +61,6 @@ php artisan make:livewire Admin/Candidato/CandidatoCargoLivewire
 php artisan make:migration create_candidato_encuesta_table
 php artisan make:seeder CandidatoEncuestaSeeder
 
-
-
 PAGINAS
 ELECCION OK
 PARTIDO OK
@@ -72,35 +70,44 @@ CANDIDATOCARGO OK
 CANDIDATOENCUESTA OK
 VOTO OK
 
+php artisan make:controller Web/Inicio/WebInicioController
 
+MENU
+LOGO
+PRESIDENCIAL
+ALCALDIA LIMA
+DISTRITOS LIMA
+CALLAO
+REGIONES
+PARTICIPA COMO CANDIDATO
+HAGAMOS NEGOCIOS
+CONTACTO
 
+INICIO
+PRESIDENCIAL
+ALCALDIA LIMA
+DISTRITOS LIMA
+CALLAO
+REGIONES
+PARTICIPA COMO CANDIDATO
+CONTACTO
+TU PUBLICIDAD AQUI
 
+MENU
+CARGOS
+PRESIDENCIAL->PAIS
+PARLAMENTO ANDINO->PAIS
+SEDADORES->PAIS-REGION
+DIPUTADOS->PAIS-REGION
+GOBERNADOR REGIONAL->PAIS-REGION
+ALCALDE PROVINCIAL->PAIS-REGION-PROVINCIA
+ALCALDE DISTRITAL->PAIS-REGION-PROVINCIA-DISTRITO
 
-http://localhost:8000/admin/categoria
+-----------
+Aceptar ubigeo en encuesta y candidato-Cargo
+Las encuestas deben ser mensuales recomendado
+Suscripcion de votantes, candidatos
+Candidato hoja de vida, propuestas, celular, dni
+-----------
 
-ALCALDIA
-SAN JUAN DE LURIGANCHO
-DISTRITO: 1369
-PROVINCIA: 135
-REGION: 14
-PAIS: 1
-
-ALCALDIA
-LIMA
-PROVINCIA: 135
-REGION: 14
-PAIS: 1
-
-DIPUTADO
-LIMA
-REGION: 14
-PAIS: 1
-
-SENADO
-LIMA
-REGION: 14
-PAIS: 1
-
-PRESIDENTE
-PERU
-PAIS: 1
+php artisan make:livewire Web/Header/WebHeaderLivewire
