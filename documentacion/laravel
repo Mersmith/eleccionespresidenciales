@@ -111,3 +111,7 @@ Candidato hoja de vida, propuestas, celular, dni
 -----------
 
 php artisan make:livewire Web/Header/WebHeaderLivewire
+
+php artisan make:model Slider -mfsc
+
+php artisan make:model Banner -mfsc

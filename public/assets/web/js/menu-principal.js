@@ -30,7 +30,7 @@ function xDataLayoutEcommerce() {
 function xDataMenuEcommerce() {
 
     return {
-        estadoAsideAbierto: true,
+        estadoAsideAbierto: false,
         initMenuEcommerce() {
             this.$watch('estadoAsideAbierto', value => {
                 document.body.style.overflow = value ? 'hidden' : 'auto';

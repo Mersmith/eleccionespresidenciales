@@ -8,7 +8,7 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <!----------------------ESTILOS---------------------->
 <!--GENERAL-->
-<link rel="stylesheet" href="{{ asset('assets/css/general.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/web/css/general.css') }}">
 
 <!----------------------web---------------------->
 <!--ESTILOS-->
