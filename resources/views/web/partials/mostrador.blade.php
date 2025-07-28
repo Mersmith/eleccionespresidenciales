@@ -11,7 +11,7 @@
             <div class="grid_mostrador" :class="{ 'mostrar_todos': mostrarTodos }">
                 @foreach ($p_elemento['partidos'] as $index => $item)
                     <div class="item">
-                        <a href="#">
+                        <a href="{{ route('partido', ['id' => $item->id, 'slug' => $item->slug]) }}">
                             <!-- IMAGENES -->
                             <img src="{{ $item->logo }}" alt="" />
                              <p>{{ $item->nombre }}</p>

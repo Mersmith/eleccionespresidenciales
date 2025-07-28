@@ -28,4 +28,10 @@ class Partido extends Model
     {
         return $this->hasMany(Candidato::class);
     }
+
+    //URL AMIGABLE
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
