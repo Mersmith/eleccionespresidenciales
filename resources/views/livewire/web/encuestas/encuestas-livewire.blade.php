@@ -1,97 +1,86 @@
 <div>
     <div>
+        <button wire:click="limpiarFiltros" type="button" class="px-3 py-1 bg-gray-300 text-black rounded">
+            Limpiar filtros
+        </button>
+
         <h2>Tipos elecciones</h2>
-        <ul>
-            @foreach ($tipos_elecciones as $index => $tipo)
-            <li class="ml-2 font-semibold text-blue-600">
-                <button wire:click="seleccionarTipoEleccion({{ $tipo->id }})" class="text-blue-600 hover:underline ml-2">
-                    {{ $tipo->id }}- {{ $tipo->nombre }}
-                </button>
-            </li>
+
+        <select wire:model.live="tipoEleccionSeleccionada">
+            <option value="">Selecciona tipo de elección</option>
+            @foreach ($tipos_elecciones as $tipo)
+            <option value="{{ $tipo->id }}">{{ $tipo->nombre }}</option>
             @endforeach
-        </ul>
+        </select>
+
 
         @if ($tipoEleccionSeleccionada)
         <h3 class="text-lg font-semibold text-gray-700">
             Elecciones:
         </h3>
-        <ul>
-            @forelse ($elecciones as $eleccion)
-            <li class="ml-4 text-green-700">
-                <button wire:click="seleccionarEleccion({{ $eleccion->id }})" class="text-blue-600 hover:underline ml-2">
-                    {{ $eleccion->id }}- {{ $eleccion->nombre }}
-                </button>
-            </li>
-            @empty
-            <li class="ml-4 text-red-600">No hay cargos.</li>
-            @endforelse
-        </ul>
+
+        <select wire:model.live="eleccionSeleccionada">
+            <option value="">Selecciona elección</option>
+            @foreach ($elecciones as $eleccion)
+            <option value="{{ $eleccion->id }}">{{ $eleccion->nombre }}</option>
+            @endforeach
+        </select>
+        @endif
 
         @if ($eleccionSeleccionada)
         <h3 class="text-lg font-semibold text-gray-700">
             Cargos segun tipo eleccion:
         </h3>
 
-        <ul>
-            @foreach ($cargos as $index => $cargo)
-            <li class="ml-2 font-semibold text-blue-600">
-                <button wire:click="seleccionarCargo({{ $cargo->id }})" class="text-blue-600 hover:underline ml-2">
-                    {{ $cargo->id }}- {{ $cargo->nombre }}
-                </button>
-            </li>
+        <select wire:model.live="cargoSeleccionada">
+            <option value="">Selecciona cargo</option>
+            @foreach ($cargos as $cargo)
+            <option value="{{ $cargo->id }}">{{ $cargo->nombre }}</option>
             @endforeach
-        </ul>
+        </select>
+        @endif
+
+
         @if ($cargoSeleccionada)
         <h3 class="text-lg font-semibold text-gray-700">
             Regiones con encuestas:
         </h3>
-        <ul>
-            @foreach ($regiones as $index => $region)
-            <li class="ml-2 font-semibold text-blue-600">
-                <button wire:click="seleccionarRegion({{ $region->id }})" class="text-blue-600 hover:underline ml-2">
-                    {{ $region->id }}- {{ $region->nombre }}
-                </button>
-            </li>
+
+
+        <select wire:model.live="regionSeleccionada">
+            <option value="">Selecciona region</option>
+            @foreach ($regiones as $region)
+            <option value="{{ $region->id }}">{{ $region->nombre }}</option>
             @endforeach
-        </ul>
+        </select>
+        @endif
 
         @if ($regionSeleccionada)
         <h3 class="text-lg font-semibold text-gray-700">
             Provincias con encuestas en la región seleccionada:
         </h3>
-        <ul>
-            @forelse ($provincias as $provincia)
-            <li class="ml-4 text-green-700">
-                <button wire:click="seleccionarProvincia({{ $provincia->id }})" class="text-blue-600 hover:underline ml-2">
-                    {{ $provincia->id }}- {{ $provincia->nombre }}
-                </button>
-            </li>
-            @empty
-            <li class="ml-4 text-red-600">No hay provincias con encuestas.</li>
-            @endforelse
-        </ul>
+
+        <select wire:model.live="provinciaSeleccionada">
+            <option value="">Selecciona provincia</option>
+            @foreach ($provincias as $provincia)
+            <option value="{{ $provincia->id }}">{{ $provincia->nombre }}</option>
+            @endforeach
+        </select>
+        @endif
 
         @if ($provinciaSeleccionada)
         <h3 class="text-lg font-semibold text-gray-700">
             Distritos con encuestas en la provincia seleccionada:
         </h3>
-        <ul>
-            @forelse ($distritos as $distrito)
-            <li class="ml-4 text-green-700">
-                <button wire:click="seleccionarDistrito({{ $distrito->id }})" class="text-blue-600 hover:underline ml-2">
-                    {{ $distrito->id }}- {{ $distrito->nombre }}
-                </button>
-            </li>
-            @empty
-            <li class="ml-4 text-red-600">No hay distritos con encuestas.</li>
-            @endforelse
-        </ul>
-        @endif
-        @endif
+
+        <select wire:model.live="distritoSeleccionada">
+            <option value="">Selecciona distrito</option>
+            @foreach ($distritos as $distrito)
+            <option value="{{ $distrito->id }}">{{ $distrito->nombre }}</option>
+            @endforeach
+        </select>
         @endif
 
-        @endif
-        @endif
     </div>
 
     <div>
@@ -103,12 +92,14 @@
                 <div class="titulo">{{ $item->nombre }}</div>
                 <a href="{{ route('encuesta', ['id' => $item->id, 'slug' => $item->slug]) }}">
                     <div class="contenedor_imagen">
-                            <img src="{{ $item->eleccion->imagen_ruta }}"  alt="" style="width: 70px;">                               
+                        <img src="{{ $item->eleccion->imagen_ruta }}" alt="" style="width: 70px;">
                     </div>
                 </a>
             </div>
         </div>
-    @endforeach
+        @endforeach
+
+        {{ $encuestas->links() }}
     </div>
 
 </div>

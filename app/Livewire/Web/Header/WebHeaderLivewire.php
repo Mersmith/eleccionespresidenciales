@@ -10,8 +10,8 @@ use Livewire\Component;
 
 class WebHeaderLivewire extends Component
 {
-    public $eleccion_id = null;
     public $tipo_eleccion_id = null;
+    public $eleccion_id = null;
 
     public $cargos;
     public $cargo_id = null;
@@ -36,21 +36,29 @@ class WebHeaderLivewire extends Component
 
         if ($cargo->tipo_eleccion_id == 1) {
             $this->eleccion_id = 1;
+            $this->tipo_eleccion_id = 1;
         } elseif ($cargo->tipo_eleccion_id == 2) {
             $this->eleccion_id = 2;
+            $this->tipo_eleccion_id = 2;
         }
 
         $this->cargo_id = $cargo_id;
         $this->cargo_nivel_id = $cargo->nivel_id;
 
-        $this->regiones = Region::join('encuestas', 'regions.id', '=', 'encuestas.region_id')
+        return redirect()->route('encuestas', [
+            'tipoEleccionSeleccionada' => $this->tipo_eleccion_id,
+            'eleccionSeleccionada' => $this->eleccion_id,
+            'cargoSeleccionada' => $this->cargo_id,
+        ]);
+
+        /*$this->regiones = Region::join('encuestas', 'regions.id', '=', 'encuestas.region_id')
             ->where('encuestas.eleccion_id', $this->eleccion_id)
             ->where('encuestas.nivel_id', $this->cargo_nivel_id)
             ->where('encuestas.cargo_id', $this->cargo_id)
             ->select('regions.id', 'regions.nombre')
             ->distinct()
             ->orderBy('regions.nombre')
-            ->get();
+            ->get();*/
     }
 
     public function seleccionarRegion($region_id)

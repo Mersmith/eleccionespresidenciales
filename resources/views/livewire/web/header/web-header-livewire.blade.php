@@ -116,15 +116,15 @@
                         <li>
                             <div class="sidebar_cotenido_elemento" wire:click="seleccionarCargo({{ $cargo->id }})">
                                 <i class="fas fa-user-tie"></i>
-                                <a href="#">
+                                <a>
                                     <span>{{ $cargo->nombre }}</span>
-                                    @if ($cargo->nivel_id > 1)
+                                    {{--@if ($cargo->nivel_id > 1)
                                     <i class="fa-solid fa-angle-right"></i>
-                                    @endif
+                                    @endif--}}
                                 </a>
                             </div>
 
-                            <!-- REGIONES - NIVEL 2 -->
+                            {{--<!-- REGIONES - NIVEL 2 -->
                             @if ($cargo_id == $cargo->id && $cargo_nivel_id >= 2 && $regiones->count())
                             <ul class="sidebar_cotenido_item_ul">
                                 <h5>Regiones</h5>
@@ -184,7 +184,7 @@
                                 </li>
                                 @endforeach
                             </ul>
-                            @endif
+                            @endif--}}
 
                         </li>
                         @endforeach
