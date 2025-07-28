@@ -3,19 +3,28 @@
 namespace App\Http\Controllers\Web\Inicio;
 
 use App\Http\Controllers\Controller;
+use App\Models\Banner;
+use App\Models\Partido;
 use App\Models\CandidatoCargo;
 use App\Models\Distrito;
 use App\Models\Encuesta;
 use App\Models\Provincia;
 use App\Models\Region;
+use App\Models\Slider;
 use Illuminate\Support\Facades\DB;
 
 class WebInicioController extends Controller
 {
     public function __invoke()
     {
-        $data_candidatos_presidenciales = $this->getCandidatosPresidenciales();
-        $data_candidatos_alcaldia_lima = $this->getCandidatosAlcaldiaLima();
+        $data_baner_1 = $this->getWebBanner(1);
+        $data_sliders_principal_1 = $this->getWebSlidersPrincipal(1);
+
+        $data_candidatos_presidenciales = $this->getWebCandidatosPresidenciales();
+        $data_candidatos_alcaldia_lima = $this->getWebCandidatosAlcaldiaLima();
+
+        $data_partidos_politicos = $this->getWebpartidosPoliticos();
+
         $data_encuesta_presidencial = $this->getWebEncuestaPresidencial();
         $data_encuesta_alcaldia_provincial_lima = $this->getWebEncuestaAlcaldiaProvincialLima();
         $data_encuesta_alcaldia_provincial_callao = $this->getWebEncuestaAlcaldiaProvincialCallao();
@@ -30,40 +39,93 @@ class WebInicioController extends Controller
         return view(
             'web.inicio.index',
             compact(
+                'data_baner_1',
+                'data_sliders_principal_1',
                 'data_candidatos_presidenciales',
                 'data_candidatos_alcaldia_lima',
+                'data_partidos_politicos',
             )
         );
     }
 
-    public function getCandidatosPresidenciales()
+    public function getWebBanner($id)
     {
-        //eleccion_id = 1 -> generales
-        //nivel_id = 1 -> nacional
-        //cargo_id = 1 -> presidente
+        $banner = Banner::where('id', $id)
+            ->where('activo', true)
+            ->first();
 
-        $candidatos = CandidatoCargo::with(['candidato', 'partido'])
-            ->where('eleccion_id', 1)
-            ->where('nivel_id', 1)
-            ->where('cargo_id', 1)
-            ->get();
-
-        return $candidatos;
+        return $banner;
     }
 
-    public function getCandidatosAlcaldiaLima()
+    public function getWebSlidersPrincipal($id)
     {
-        //eleccion_id = 2 -> municipales
-        //nivel_id = 3 -> provincial
-        //cargo_id = 9 -> alcaldía provincial
+        $sliders = Slider::where('id', $id)
+            ->where('activo', true)
+            ->first();
+        if ($sliders) {
+            $sliders->imagenes = json_decode($sliders->imagenes, true);
+        } else {
+            $sliders = null;
+        }
+
+        return $sliders;
+    }
+
+    public function getWebCandidatosPresidenciales()
+    {
+        $eleccion_id = 1; //generales
+        $nivel_id = 1; //nacional
+        $cargo_id = 1; // presidente
+
+        $titulo = 'Candidatos a la presidencia';
 
         $candidatos = CandidatoCargo::with(['candidato', 'partido'])
-            ->where('eleccion_id', 2)
-            ->where('nivel_id', 3)
-            ->where('cargo_id', 9)
+            ->where('eleccion_id', $eleccion_id)
+            ->where('nivel_id', $nivel_id)
+            ->where('cargo_id', $cargo_id)
             ->get();
 
-        return $candidatos;
+        return [
+            'id' => $eleccion_id . $nivel_id . $cargo_id,
+            'titulo' => $titulo,
+            'candidatos' => $candidatos,
+        ];
+    }
+
+    public function getWebCandidatosAlcaldiaLima()
+    {
+        $eleccion_id = 2; //municipales
+        $nivel_id = 3; //provincial
+        $cargo_id = 9; // alcaldía provincial
+
+        $titulo = 'Candidatos a la alcaldía de Lima';
+
+        $candidatos = CandidatoCargo::with(['candidato', 'partido'])
+            ->where('eleccion_id', $eleccion_id)
+            ->where('nivel_id', $nivel_id)
+            ->where('cargo_id', $cargo_id)
+            ->get();
+
+        return [
+            'id' => $eleccion_id . $nivel_id . $cargo_id,
+            'titulo' => $titulo,
+            'candidatos' => $candidatos,
+        ];
+    }
+
+    public function getWebpartidosPoliticos()
+    {
+        $consulta_id = 1;
+
+        $titulo = 'Partidos políticos';
+
+        $partidos = Partido::all();
+
+        return [
+            'id' => $consulta_id,
+            'titulo' => $titulo,
+            'partidos' => $partidos,
+        ];
     }
 
     public function getWebEncuestaPresidencial()

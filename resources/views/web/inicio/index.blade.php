@@ -6,59 +6,23 @@
 @section('content')
 <div class="g_contenedor_pagina">
 
-    @include('web.partials.banner')
+    @include('web.partials.banner', ['p_elemento' => $data_baner_1])
 
-
-    @include('web.partials.slider-principal')
+    @include('web.partials.slider-principal', ['p_elemento' => $data_sliders_principal_1])
 
     <div class="g_centrar_pagina">
 
-        <div>
-            <h2>Presidentes</h2>
-            @foreach ($data_candidatos_presidenciales as $postulacion)
-            @if ($postulacion && $postulacion->candidato)
-            <div>
-                <strong>{{ $postulacion->candidato->nombre }}</strong><br>
+        @include('web.partials.aviso', [
+        'p_elemento' => $data_candidatos_presidenciales,
+        ])
 
-                @if ($postulacion->partido)
-                Partido: {{ $postulacion->partido->nombre }}
-                @else
-                Partido: Sin partido
-                @endif
-                <br>
+        @include('web.partials.aviso', [
+        'p_elemento' => $data_candidatos_alcaldia_lima,
+        ])
 
-                @if ($postulacion->candidato->foto)
-                <img src="{{ asset('storage/' . $postulacion->candidato->foto) }}" width="100">
-                @endif
-            </div>
-            @endif
-            @endforeach
-        </div>
-
-
-        <div>
-            <h2>Lima</h2>
-
-            @foreach ($data_candidatos_alcaldia_lima as $postulacion)
-                @if ($postulacion && $postulacion->candidato)
-                <div>
-                    <strong>{{ $postulacion->candidato->nombre }}</strong><br>
-                
-                    @if ($postulacion->partido)
-                    Partido: {{ $postulacion->partido->nombre }}
-                    @else
-                    Partido: Sin partido
-                    @endif
-                    <br>
-                
-                    @if ($postulacion->candidato->foto)
-                    <img src="{{ asset('storage/' . $postulacion->candidato->foto) }}" width="100">
-                    @endif
-                </div>
-                @endif
-            @endforeach
-        </div>
-
+        @include('web.partials.mostrador', [
+        'p_elemento' => $data_partidos_politicos,
+        ])
 
     </div>
 </div>
