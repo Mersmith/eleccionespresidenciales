@@ -30,7 +30,7 @@
         </div>
 
         <div class="partials_contenedor_slider_temporizador">
-            <a href="#">
+            <a href="{{ route('encuesta', ['id' => $p_elemento->id, 'slug' => $p_elemento->slug]) }}">
                 <img src="{{ $p_elemento->eleccion?->imagen_ruta }} " alt="{{ $p_elemento->nombre }}" />
             </a>
         </div>

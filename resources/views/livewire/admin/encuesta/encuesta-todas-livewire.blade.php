@@ -73,16 +73,16 @@
                                     @endif
                                 </td>
                                 <td class="centrar_iconos">
-                                    <a href="{{ route('admin.encuesta.vista.editar', $item) }}" class="g_accion_editar">
+                                    <a href="{{ route('admin.encuesta.vista.editar', $item->id) }}" class="g_accion_editar">
                                         <span><i class="fa-solid fa-pencil"></i></span>
                                     </a>
-                                    <a href="{{ route('admin.encuesta.candidato.editar', $item) }}" class="g_accion_editar">
+                                    <a href="{{ route('admin.encuesta.candidato.editar', $item->id) }}" class="g_accion_editar">
                                         <span><i class="fa-solid fa-pencil"></i></span>
                                     </a>
-                                    <a href="{{ route('admin.encuesta.voto.editar', $item) }}" class="g_accion_editar">
+                                    <a href="{{ route('admin.encuesta.voto.editar', $item->id) }}" class="g_accion_editar">
                                         <span><i class="fa-solid fa-pencil"></i></span>
                                     </a>
-                                    <a href="{{ route('admin.encuesta.resultado.editar', $item) }}" class="g_accion_editar">
+                                    <a href="{{ route('admin.encuesta.resultado.editar', $item->id) }}" class="g_accion_editar">
                                         <span><i class="fa-solid fa-pencil"></i></span>
                                     </a>
                                 </td>

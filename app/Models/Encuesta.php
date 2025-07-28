@@ -85,5 +85,11 @@ class Encuesta extends Model
     {
         return $this->hasMany(CandidatoEncuesta::class);
     }
+
+    //URL AMIGABLE
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
     
 }
