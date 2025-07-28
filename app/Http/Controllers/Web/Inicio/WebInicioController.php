@@ -19,6 +19,8 @@ class WebInicioController extends Controller
     public function __invoke()
     {
         $data_baner_1 = $this->getWebBanner(1);
+        $data_banner_2 = $this->getWebBanner(2);
+
         $data_sliders_principal_1 = $this->getWebSlidersPrincipal(1);
 
         $data_candidatos_presidenciales = $this->getWebCandidatosPresidenciales();
@@ -29,18 +31,22 @@ class WebInicioController extends Controller
         $data_encuesta_presidencial = $this->getWebEncuestaPresidencial();
         $data_encuesta_alcaldia_provincial_lima = $this->getWebEncuestaAlcaldiaProvincialLima();
 
-        //dd($data_encuesta_presidencial);
+        $data_encuestas_alcaldia_distritos_lima = $this->getWebEncuestasAlcaldiaDistritosLima();
+
+        //dd($data_encuestas_alcaldia_distritos_lima);
 
         return view(
             'web.inicio.index',
             compact(
                 'data_baner_1',
+                'data_banner_2',
                 'data_sliders_principal_1',
                 'data_candidatos_presidenciales',
                 'data_candidatos_alcaldia_lima',
                 'data_partidos_politicos',
                 'data_encuesta_presidencial',
                 'data_encuesta_alcaldia_provincial_lima',
+                'data_encuestas_alcaldia_distritos_lima',
             )
         );
     }
@@ -189,6 +195,37 @@ class WebInicioController extends Controller
         return $encuesta;
     }
 
+    public function getWebEncuestasAlcaldiaDistritosLima()
+    {
+        $eleccion_id = 2; //municipales
+        $nivel_id = 4; // distrital
+        $cargo_id = 11; //alcaldia distrital
+        $provincia_id = 135; //lima
+
+        $titulo = 'Encuestas alcaldía distritos de Lima';
+
+        $subquery = DB::table('encuestas')
+            ->select(DB::raw('MAX(id) as id'))
+            ->where('eleccion_id', $eleccion_id)
+            ->where('nivel_id', $nivel_id)
+            ->where('cargo_id', $cargo_id)
+            ->where('provincia_id', $provincia_id)
+            ->where('estado', 'iniciada')
+            ->where('activo', true)
+            ->whereYear('fecha_inicio', now()->year)
+            ->whereMonth('fecha_inicio', now()->month)
+            ->whereDate('fecha_fin', '>=', now())
+            ->groupBy('distrito_id');
+
+        $encuestas = Encuesta::whereIn('id', $subquery)->orderBy('fecha_inicio', 'desc')->take(5)->get();
+
+        return [
+            'id' => $eleccion_id . $nivel_id . $cargo_id,
+            'titulo' => $titulo,
+            'encuestas' => $encuestas,
+        ];
+    }
+
     public function getWebEncuestasPresidenciales()
     {
         //eleccion_id = 1 -> generales
@@ -254,31 +291,6 @@ class WebInicioController extends Controller
             ->orderBy('fecha_inicio', 'desc')
             ->take(5)
             ->get();
-
-        return $encuestas;
-    }
-
-    public function getWebEncuestaAlcaldiaDistritosLima()
-    {
-        //eleccion_id = 2 -> munipales
-        //nivel_id = 4 -> distrital
-        //cargo_id = 11 -> alcaldia distrital
-        //provincia_id = 135 -> lima
-
-        $subquery = DB::table('encuestas')
-            ->select(DB::raw('MAX(id) as id'))
-            ->where('eleccion_id', 2)
-            ->where('nivel_id', 4)
-            ->where('cargo_id', 11)
-            ->where('provincia_id', 135)
-            ->where('estado', 'iniciada')
-            ->where('activo', true)
-            ->whereYear('fecha_inicio', now()->year)
-            ->whereMonth('fecha_inicio', now()->month)
-            ->whereDate('fecha_fin', '>=', now())
-            ->groupBy('distrito_id');
-
-        $encuestas = Encuesta::whereIn('id', $subquery)->orderBy('fecha_inicio', 'desc')->take(5)->get();
 
         return $encuestas;
     }

@@ -16,20 +16,26 @@
         'p_elemento' => $data_candidatos_presidenciales,
         ])
 
-        @include('web.partials.aviso', [
-        'p_elemento' => $data_candidatos_alcaldia_lima,
-        ])
-
-        @include('web.partials.mostrador', [
-        'p_elemento' => $data_partidos_politicos,
-        ])
-
         @include('web.partials.temporizador', [
         'p_elemento' => $data_encuesta_presidencial,
         ])
 
+        @include('web.partials.aviso', [
+        'p_elemento' => $data_candidatos_alcaldia_lima,
+        ])
+
         @include('web.partials.temporizador', [
         'p_elemento' => $data_encuesta_alcaldia_provincial_lima,
+        ])
+
+        @include('web.partials.slider-productos', [
+        'p_elemento' => $data_encuestas_alcaldia_distritos_lima,
+        ])
+
+        @include('web.partials.banner', ['p_elemento' => $data_banner_2])
+
+        @include('web.partials.mostrador', [
+        'p_elemento' => $data_partidos_politicos,
         ])
 
     </div>

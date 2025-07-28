@@ -1,7 +1,7 @@
-@if (!empty($p_elemento) && $p_elemento['productos']->isNotEmpty())
+@if (!empty($p_elemento) && $p_elemento['encuestas']->isNotEmpty())
     <div>
-        @include('ecommerce.partials.titulo', [
-            'p_contenido' => $p_elemento['slider']['titulo'],
+        @include('web.partials.titulo', [
+            'p_contenido' => $p_elemento['titulo'],
             'p_alineacion' => 'left',
             'p_color' => '#000000',
         ])
@@ -10,45 +10,18 @@
             <!-- Swiper -->
             <div class="swiper SwiperSliderProducto-{{ $p_elemento['id'] }}">
                 <div class="swiper-wrapper">
-                    @foreach ($p_elemento['productos'] as $index => $producto)
+                    @foreach ($p_elemento['encuestas'] as $index => $item)
                         <div class="swiper-slide">
                             <div>
-                                <a href="{{ url('product/' . $producto->producto_id . '/' . $producto->producto_url) }}">
+                                <a href="#">
                                     <div class="contenedor_imagen">
-                                        @if ($producto->imagen_url)
-                                            <img src="{{ $producto->imagen_url }}"
-                                                alt="{{ $producto->imagen_descripcion }}">
-                                        @else
-                                            <img src="{{ asset('assets/imagenes/producto/producto-tipo-1-1.jpg') }}"
-                                                alt="">
-                                        @endif
-
-                                        @if ($producto->porcentaje_descuento)
-                                            <span>{{ $producto->porcentaje_descuento }}%</span>
-                                        @endif
+                                            <img src="{{ $item->eleccion->imagen_ruta }}"
+                                                alt="">     
+                                                
+                                                <span>{{ $item->distrito->nombre }}</span>
                                     </div>
                                 </a>
-                                <div class="marca">{{ $producto->marca_nombre }}</div>
-                                <div class="titulo">{{ $producto->producto_id . '' . $producto->producto_nombre }}</div>
-
-                                @if ($producto->precio_oferta)
-                                    <div class="precio_oferta">
-                                        <span>S/.</span>
-                                        <span>{{ $producto->precio_oferta }}</span>
-                                    </div>
-                                @endif
-                                @if ($producto->precio_normal)
-                                    <div class="precio_real">
-                                        <span>S/.</span>
-                                        <span>{{ $producto->precio_normal }}</span>
-                                    </div>
-                                @endif
-                                @if ($producto->precio_antiguo)
-                                    <div class="precio_antiguo">
-                                        <span>S/.</span>
-                                        <span>{{ $producto->precio_antiguo }}</span>
-                                    </div>
-                                @endif
+                                <div class="titulo">{{ $item->nombre }}</div>
                             </div>
                         </div>
                     @endforeach
