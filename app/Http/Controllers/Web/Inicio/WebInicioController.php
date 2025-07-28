@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Web\Inicio;
 
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
-use App\Models\Partido;
 use App\Models\CandidatoCargo;
 use App\Models\Distrito;
 use App\Models\Encuesta;
+use App\Models\Partido;
 use App\Models\Provincia;
 use App\Models\Region;
 use App\Models\Slider;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class WebInicioController extends Controller
@@ -27,14 +28,8 @@ class WebInicioController extends Controller
 
         $data_encuesta_presidencial = $this->getWebEncuestaPresidencial();
         $data_encuesta_alcaldia_provincial_lima = $this->getWebEncuestaAlcaldiaProvincialLima();
-        $data_encuesta_alcaldia_provincial_callao = $this->getWebEncuestaAlcaldiaProvincialCallao();
-        $data_encuesta_alcaldia_distrital_SJL = $this->getWebEncuestaAlcaldiaDistritoSJL();
-        $data_encuesta_alcaldia_distrital_lima_distritos = $this->getWebEncuestaAlcaldiaDistritosLima();
-        $data_regiones_gobierno_regional = $this->getRegionesGobiernoRegional();
-        $data_provincias_alcaldia_provincial = $this->getProvinciasAlcaldiaPrinvicial();
-        $data_distritos_alcaldia_lima = $this->getDistritosAlcaldiaLima();
 
-        //dd($data_candidatos_presidenciales);
+        //dd($data_encuesta_presidencial);
 
         return view(
             'web.inicio.index',
@@ -44,6 +39,8 @@ class WebInicioController extends Controller
                 'data_candidatos_presidenciales',
                 'data_candidatos_alcaldia_lima',
                 'data_partidos_politicos',
+                'data_encuesta_presidencial',
+                'data_encuesta_alcaldia_provincial_lima',
             )
         );
     }
@@ -130,6 +127,70 @@ class WebInicioController extends Controller
 
     public function getWebEncuestaPresidencial()
     {
+        $eleccion_id = 1; //generales
+        $nivel_id = 1; //nacional
+        $cargo_id = 1; //presidente
+        $pais_id = 1; //peru
+
+        $cantidad_mostrar = 1;
+
+        $encuesta = Encuesta::with(['eleccion:id,id,imagen_ruta'])
+            ->where('eleccion_id', $eleccion_id)
+            ->where('nivel_id', $nivel_id)
+            ->where('cargo_id', $cargo_id)
+            ->where('pais_id', $pais_id)
+            ->where('estado', 'iniciada')
+            ->where('activo', true)
+            ->whereYear('fecha_inicio', now()->year)
+            ->whereMonth('fecha_inicio', now()->month)
+            ->whereDate('fecha_fin', '>=', now())
+            ->orderBy('fecha_inicio', 'desc')
+            ->first();
+
+        // Calcular la cantidad de días restantes
+        $fecha_fin = Carbon::parse($encuesta->fecha_fin);
+        $dias_restantes = now()->diffInDays($fecha_fin);
+
+        // Redondear a entero
+        $encuesta->dias = (int) $dias_restantes;
+
+        return $encuesta;
+    }
+
+    public function getWebEncuestaAlcaldiaProvincialLima()
+    {
+        $eleccion_id = 2; //municipales
+        $nivel_id = 3; //provincial
+        $cargo_id = 9; //alcaldia provincial
+        $provincia_id = 135; //lima
+
+        $cantidad_mostrar = 1;
+
+        $encuesta = Encuesta::with(['eleccion:id,id,imagen_ruta'])
+            ->where('eleccion_id', $eleccion_id)
+            ->where('nivel_id', $nivel_id)
+            ->where('cargo_id', $cargo_id)
+            ->where('provincia_id', $provincia_id)
+            ->where('estado', 'iniciada')
+            ->where('activo', true)
+            ->whereYear('fecha_inicio', now()->year)
+            ->whereMonth('fecha_inicio', now()->month)
+            ->whereDate('fecha_fin', '>=', now())
+            ->orderBy('fecha_inicio', 'desc')
+            ->first();
+
+        // Calcular la cantidad de días restantes
+        $fecha_fin = Carbon::parse($encuesta->fecha_fin);
+        $dias_restantes = now()->diffInDays($fecha_fin);
+
+        // Redondear a entero
+        $encuesta->dias = (int) $dias_restantes;
+
+        return $encuesta;
+    }
+
+    public function getWebEncuestasPresidenciales()
+    {
         //eleccion_id = 1 -> generales
         //nivel_id = 1 -> nacional
         //cargo_id = 1 -> presidente
@@ -151,7 +212,7 @@ class WebInicioController extends Controller
         return $encuestas;
     }
 
-    public function getWebEncuestaAlcaldiaProvincialLima()
+    public function getWebEncuestasAlcaldiaProvincialLima()
     {
         //eleccion_id = 2 -> munipales
         //nivel_id = 3 -> provincial

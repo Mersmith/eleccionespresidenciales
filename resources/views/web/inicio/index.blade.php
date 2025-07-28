@@ -24,6 +24,14 @@
         'p_elemento' => $data_partidos_politicos,
         ])
 
+        @include('web.partials.temporizador', [
+        'p_elemento' => $data_encuesta_presidencial,
+        ])
+
+        @include('web.partials.temporizador', [
+        'p_elemento' => $data_encuesta_alcaldia_provincial_lima,
+        ])
+
     </div>
 </div>
 @endsection
