@@ -13,7 +13,7 @@
             <div class="swiper-wrapper">
                 @foreach ($p_elemento['candidatos'] as $postulacion)
                 <div class="swiper-slide">
-                    <a href="#}">
+                    <a href="{{ route('candidato', ['id' => $postulacion->candidato->id, 'slug' => $postulacion->candidato->slug]) }}">
                         <img src="{{ $postulacion->candidato->foto}}" alt="" />
                         <p>{{ $postulacion->candidato->nombre }}</p>
                         <p>{{ $postulacion->candidato->partido->nombre }}</p>

@@ -5,12 +5,14 @@ use Livewire\Volt\Volt;
 use App\Http\Controllers\Socialite\ProviderRedirectController;
 use App\Http\Controllers\Socialite\ProviderCallbackController;
 use App\Http\Controllers\Web\Inicio\WebInicioController;
+use App\Http\Controllers\Web\Candidato\WebCandidatoController;
 
 Route::get('/auth/{provider}/redirect', ProviderRedirectController::class)->name('auth.redirect');
 Route::get('/auth/{provider}/callback', ProviderCallbackController::class)->name('auth.callback');
 
 Route::get('/', WebInicioController::class)->name('inicio');
 
+Route::get('/candidato/{id}/{slug?}', WebCandidatoController::class)->name('candidato');
 /*
 Route::get('/', function () {
     return view('welcome');

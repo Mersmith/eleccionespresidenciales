@@ -55,7 +55,7 @@
                             </td>                          
                             <td>{{ $item->partido->nombre ?? '-' }}</td>
                             <td class="centrar_iconos">
-                                <a href="{{ route('admin.candidato.vista.editar', $item) }}" class="g_accion_editar">
+                                <a href="{{ route('admin.candidato.vista.editar', $item->id) }}" class="g_accion_editar">
                                     <span><i class="fa-solid fa-pencil"></i></span>
                                 </a>
                             </td>

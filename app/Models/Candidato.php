@@ -46,4 +46,10 @@ class Candidato extends Model
     {
         return $this->hasMany(CandidatoCargo::class);
     }
+
+    //URL AMIGABLE
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

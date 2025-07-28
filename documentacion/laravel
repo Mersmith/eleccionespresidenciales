@@ -71,6 +71,7 @@ CANDIDATOENCUESTA OK
 VOTO OK
 
 php artisan make:controller Web/Inicio/WebInicioController
+php artisan make:controller Web/Candidato/WebCandidatoController
 
 MENU
 LOGO
@@ -108,6 +109,8 @@ Aceptar ubigeo en encuesta y candidato-Cargo
 Las encuestas deben ser mensuales recomendado
 Suscripcion de votantes, candidatos
 Candidato hoja de vida, propuestas, celular, dni
+-----------
+Al agregar candidato a una encuesta, se fije cuantos cargos tienes y si puede entrar
 -----------
 
 php artisan make:livewire Web/Header/WebHeaderLivewire
