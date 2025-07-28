@@ -13,7 +13,7 @@
                     @foreach ($p_elemento['encuestas'] as $index => $item)
                         <div class="swiper-slide">
                             <div>
-                                <a href="#">
+                                <a href="{{ route('encuesta', ['id' => $item->id, 'slug' => $item->slug]) }}">
                                     <div class="contenedor_imagen">
                                             <img src="{{ $item->eleccion->imagen_ruta }}"
                                                 alt="">     
