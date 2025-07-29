@@ -33,8 +33,6 @@ class WebInicioController extends Controller
 
         $data_encuestas_alcaldia_distritos_lima = $this->getWebEncuestasAlcaldiaDistritosLima();
 
-        //dd($data_encuestas_alcaldia_distritos_lima);
-
         return view(
             'web.inicio.index',
             compact(
