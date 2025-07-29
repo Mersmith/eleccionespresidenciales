@@ -16,19 +16,19 @@ class WebCandidatoController extends Controller
 
         $candidato_encuesta_activa = $this->getWebCandidatoEncuestaActiva($id);
 
-        $candidato_encuestas_participaciones = $this->getWebCandidatoEncuestas($id);
-
         $candidato_cargos = $this->getWebCandidatoCargos($id);
 
-        //dd($candidato_encuesta_activa);
+        $candidato_encuestas_participaciones = $this->getWebCandidatoEncuestas($id);
+
+        //dd($getWebCandidatoEncuestaActiva);
 
         return view(
             'web.candidato.index',
             compact(
                 'candidato_partido',
                 'candidato_encuesta_activa',
-                'candidato_encuestas_participaciones',
                 'candidato_cargos',
+                'candidato_encuestas_participaciones',
             )
         );
     }
@@ -51,26 +51,16 @@ class WebCandidatoController extends Controller
             ->latest('fecha_inicio')
             ->first();
 
-        // Calcular la cantidad de días restantes
-        $fecha_fin = Carbon::parse($encuesta_activa->fecha_fin);
-        $dias_restantes = now()->diffInDays($fecha_fin);
+        if ($encuesta_activa) {
+            $fecha_fin = Carbon::parse($encuesta_activa->fecha_fin);
+            $dias_restantes = now()->diffInDays($fecha_fin);
 
-        // Redondear a entero
-        $encuesta_activa->dias = (int) $dias_restantes;
+            $encuesta_activa->dias = (int) $dias_restantes;
 
-        return $encuesta_activa;
+            return $encuesta_activa;
+        }
 
-    }
-
-    public function getWebCandidatoEncuestas($id)
-    {
-        $encuestas = Encuesta::whereHas('candidatoCargos', function ($q) use ($id) {
-            $q->where('candidato_id', $id);
-        })
-            ->orderBy('fecha_inicio', 'desc')
-            ->paginate(10);
-
-        return $encuestas;
+        return null;
     }
 
     public function getWebCandidatoCargos($id)
@@ -82,4 +72,17 @@ class WebCandidatoController extends Controller
 
         return $candidato_cargos;
     }
+
+    public function getWebCandidatoEncuestas($id)
+    {
+        $encuestas = Encuesta::whereHas('candidatoCargos', function ($q) use ($id) {
+            $q->where('candidato_id', $id);
+        })
+            ->orderBy('fecha_inicio', 'desc')
+        //->take(4)
+            ->get();
+
+        return $encuestas;
+    }
+
 }

@@ -33,6 +33,7 @@
 <link rel="stylesheet" href="{{ asset('assets/web/css/partials/perfil-candidato.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/web/css/partials/columna-publicidad.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/web/css/partials/candidatura-cargo.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/web/css/partials/lista-encuesta.css') }}">
 
 <!--PAGINA-->
 <link rel="stylesheet" href="{{ asset('assets/web/css/pagina/candidato.css') }}">

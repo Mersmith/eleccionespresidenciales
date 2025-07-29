@@ -28,21 +28,12 @@
                             ])
                         @endif
 
-                        @if ($candidato_encuestas_participaciones)
-                            <div>
-                                <h2>
-                                    HISTORIAL ENCUESTA
-                                </h2>
-
-                                @foreach ($candidato_encuestas_participaciones as $index => $item)
-                                    <li>
-                                        <h3>{{ $item->nombre }} </h3>
-                                        <p>{{ $item->descripcion }} </p>
-                                        <br>
-                                    </li>
-                                @endforeach
-                            </div>
+                        @if ($candidato_encuestas_participaciones->count())
+                            @include('web.partials.lista-encuesta', [
+                                'p_elemento' => $candidato_encuestas_participaciones,
+                            ])
                         @endif
+
                     </div>
 
                     <!-- PUBLICIDAD -->

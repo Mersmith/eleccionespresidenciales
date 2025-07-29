@@ -31,6 +31,8 @@
     grid-area: columna_publicidad;
 }
 
+/****/
+
 
 @media (max-width:1024px) {
     .contenedor_pagina_candidato .grid_pagina_candidato {
