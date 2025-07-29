@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Candidato;
 use App\Models\CandidatoCargo;
 use App\Models\Encuesta;
+use Carbon\Carbon;
 
 class WebCandidatoController extends Controller
 {
@@ -43,12 +44,19 @@ class WebCandidatoController extends Controller
     {
         $encuesta_activa = Encuesta::where('estado', 'iniciada')
             ->where('activo', true)
-            ->whereDate('fecha_fin', '>=', now())
+            ->whereDate('fecha_fin', '>=', config('constantes.FECHA_CONVOCATORIA_ELECCION_GENERAL'))
             ->whereHas('candidatoCargos', function ($q) use ($id) {
                 $q->where('candidato_id', $id);
             })
             ->latest('fecha_inicio')
             ->first();
+
+        // Calcular la cantidad de días restantes
+        $fecha_fin = Carbon::parse($encuesta_activa->fecha_fin);
+        $dias_restantes = now()->diffInDays($fecha_fin);
+
+        // Redondear a entero
+        $encuesta_activa->dias = (int) $dias_restantes;
 
         return $encuesta_activa;
 
@@ -68,9 +76,9 @@ class WebCandidatoController extends Controller
     public function getWebCandidatoCargos($id)
     {
         $candidato_cargos = CandidatoCargo::with(['cargo', 'eleccion', 'partido', 'region', 'provincia', 'distrito'])
-        ->where('candidato_id', $id)
-        ->orderByDesc('created_at')
-        ->get();
+            ->where('candidato_id', $id)
+            ->orderByDesc('created_at')
+            ->get();
 
         return $candidato_cargos;
     }

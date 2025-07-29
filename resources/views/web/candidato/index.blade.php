@@ -4,107 +4,54 @@
 @section('descripcion', 'Tendencias Market')
 
 @section('content')
-<div class="g_contenedor_pagina">
+    <div class="contenedor_pagina_candidato">
+        <div class="centrar">
+            <div class="contenedor_bloque">
+                <div class="grid_pagina_candidato">
+                    <!-- INFORMACION -->
+                    <div class="columna_informacion">
+                        <!-- PERFIL -->
+                        @include('web.partials.perfil-candidato', [
+                            'p_elemento' => $candidato_partido,
+                        ])
 
-    <div>
-        <h2>
-            DATOS DEL CANDIDATO
-        </h2>
+                        <!-- ENCUESTA ACTIVA -->
+                        @if ($candidato_encuesta_activa)
+                            @include('web.partials.temporizador', [
+                                'p_elemento' => $candidato_encuesta_activa,
+                            ])
+                        @endif
 
-        <h3>{{$candidato_partido->nombre}} </h3>
-        <p>{{$candidato_partido->descripcion}} </p>
-        <img src="{{ $candidato_partido->foto}}" alt="" style="width: 80px" />
-    </div>
+                        @if ($candidato_cargos)
+                            @include('web.partials.candidatura-cargo', [
+                                'p_elemento' => $candidato_cargos,
+                            ])
+                        @endif
 
-    <br>
+                        @if ($candidato_encuestas_participaciones)
+                            <div>
+                                <h2>
+                                    HISTORIAL ENCUESTA
+                                </h2>
 
-    @if($candidato_partido)
-    <div>
+                                @foreach ($candidato_encuestas_participaciones as $index => $item)
+                                    <li>
+                                        <h3>{{ $item->nombre }} </h3>
+                                        <p>{{ $item->descripcion }} </p>
+                                        <br>
+                                    </li>
+                                @endforeach
+                            </div>
+                        @endif
+                    </div>
 
-        <h2>
-            DATOS DEL PARTIDO
-        </h2>
+                    <!-- PUBLICIDAD -->
+                    <div class="columna_publicidad">
+                        @include('web.partials.columna-publicidad')
+                    </div>
 
-        <h3>{{$candidato_partido->partido->nombre}} </h3>
-        <p>{{$candidato_partido->partido->descripcion}} </p>
-        <img src="{{ $candidato_partido->partido->logo}}" alt="" style="width: 80px" />
-    </div>
-    @endif
-
-    <br>
-
-    @if($candidato_encuesta_activa)
-    <div>
-        <h2>
-            ENCUESTA ACTIVA
-        </h2>
-
-        <h3>{{$candidato_encuesta_activa->nombre}} </h3>
-        <p>{{$candidato_encuesta_activa->descripcion}} </p>
-    </div>
-    @endif
-
-    <br>
-
-    @if($candidato_encuestas_participaciones)
-    <div>
-        <h2>
-            HISTORIAL ENCUESTA
-        </h2>
-
-        @foreach ($candidato_encuestas_participaciones as $index => $item)
-        <li>
-            <h3>{{$item->nombre}} </h3>
-            <p>{{$item->descripcion}} </p>
-            <br>
-        </li>
-        @endforeach
-    </div>
-    @endif
-
-    <br>
-
-    @if($candidato_cargos)
-    <div>
-        <h2>
-            CARGOS DEL CANDIDATO
-        </h2>
-
-        <div class="">
-            <!--TABLA CONTENIDO-->
-            <div class="">
-                <div class="">
-                    <table class="">
-                        <thead>
-                            <tr>
-                                <th>Nº</th>
-                                <th>Cargo</th>
-                                <th>Elección</th>
-                                <th>Partido</th>
-                                <th>Ubicación</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($candidato_cargos as $index => $item)
-                            <tr>
-                                <td> {{ $index + 1 }} </td>
-                                <td class="g_resaltar">{{ $item->cargo->nombre  }}</td>
-                                <td>{{ $item->eleccion->nombre }}</td>
-                                <td>{{ $item->partido->nombre ?? '-' }}</td>
-                                <td>
-                                    {{ $item->region->nombre ?? '-' }}
-                                    {{ $item->provincia->nombre ?? '' }}
-                                    {{ $item->distrito->nombre ?? '' }}
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>
     </div>
-    @endif
-
-</div>
 @endsection

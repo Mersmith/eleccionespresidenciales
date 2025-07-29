@@ -1,0 +1,105 @@
+.partials_contenedor_perfil_candidato {
+    background-color: #ffffff;
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.partials_contenedor_perfil_candidato .candidato_imagen_contenedor {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: auto;
+    width: 300px;
+}
+
+.partials_contenedor_perfil_candidato .imagen_candidato {
+    width: 100%;
+    display: block;
+    border-radius: 50%;
+}
+
+.partials_contenedor_perfil_candidato .logo_partido {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100px; 
+    height: auto;
+    border: 2px solid white;
+}
+
+.partials_contenedor_perfil_candidato .nombres_partido {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    justify-content: center;
+}
+
+.partials_contenedor_perfil_candidato .nombres_partido .nombres .redes_sociales {
+    display: flex;
+    gap: 10px;
+    font-size: 20px;
+}
+
+.partials_contenedor_perfil_candidato .nombres_partido .nombres h3 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    line-height: 24px;
+    margin: 4px 0;
+    font-weight: 700;
+    color: var(--color-texto-terciario);
+}
+
+.partials_contenedor_perfil_candidato .nombres_partido .nombres p {
+    font-size: 17px;
+    color: var(--color-texto-terciario);
+}
+
+.partials_contenedor_perfil_candidato .nombres_partido .partido img {
+    width: 150px;
+}
+
+.partials_contenedor_perfil_candidato .nombres_partido .partido h3 {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+    color: var(--color-texto-terciario);
+}
+
+.partials_contenedor_perfil_candidato .nombres_partido .partido p {
+    font-size: 16px;
+    color: var(--color-texto-terciario);
+}
+
+
+@media (max-width: 700px) {
+    .partials_contenedor_perfil_candidato {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .partials_contenedor_perfil_candidato .imagen_candidato {
+        width: 100%;
+    }
+
+    .partials_contenedor_perfil_candidato .nombres_partido {
+        gap: 20px;
+
+    }
+
+    .partials_contenedor_perfil_candidato .nombres_partido .nombres {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .partials_contenedor_perfil_candidato .nombres_partido .nombres .redes_sociales {
+        justify-content: center;
+    }
+
+    .partials_contenedor_perfil_candidato .nombres_partido .partido {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

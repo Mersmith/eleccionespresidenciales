@@ -1,0 +1,21 @@
+.partials_contenedor_columna_publicidad {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.partials_contenedor_columna_publicidad .contenido_publicitario {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: auto;
+    width: 300px;
+}
+
+.partials_contenedor_columna_publicidad .contenido_publicitario img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 100%;
+}

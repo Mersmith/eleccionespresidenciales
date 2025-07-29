@@ -30,6 +30,9 @@
 <link rel="stylesheet" href="{{ asset('assets/web/css/partials/slider-encuesta.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/web/css/partials/mostrador.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/web/css/partials/titulo.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/web/css/partials/perfil-candidato.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/web/css/partials/columna-publicidad.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/web/css/partials/candidatura-cargo.css') }}">
 
 <!--PAGINA-->
-<link rel="stylesheet" href="{{ asset('assets/web/css/pagina/producto.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/web/css/pagina/candidato.css') }}">
