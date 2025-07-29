@@ -21,7 +21,7 @@
             </div>
 
             <!-- CONTENEDOR CONTROL -->
-            @if (count($p_elemento['partidos']) > 6)
+            @if (count($p_elemento['partidos']) > 8)
                 <div class="contenedor_control_mostrar">
                     <p x-show="!mostrarTodos" @click="mostrarTodos = true">
                         Mostrar más <span class="invertido">^</span>
