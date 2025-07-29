@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="{{ asset('assets/web/css/general.css') }}">
 
 <!----------------------web---------------------->
-<!--ESTILOS-->
+<!--VARIABLES-->
 <link rel="stylesheet" href="{{ asset('assets/web/css/variables.css') }}">
 
 <!--LAYOUT MENU-->
@@ -25,12 +25,12 @@
 <!--PARTIALS-->
 <link rel="stylesheet" href="{{ asset('assets/web/css/partials/banner.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/web/css/partials/slider-principal.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/web/css/partials/slider-candidato.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/web/css/partials/temporizador.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/web/css/partials/slider-encuesta.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/web/css/partials/vitrina.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/web/css/partials/mostrador.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/web/css/partials/temporizador.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/web/css/partials/aviso.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/web/css/partials/grid.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/web/css/partials/slider-productos.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/web/css/partials/titulo.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/web/css/partials/enlaces-rapidos.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/web/css/partials/carrusel.css') }}">

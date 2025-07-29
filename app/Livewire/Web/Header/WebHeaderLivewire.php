@@ -3,9 +3,6 @@
 namespace App\Livewire\Web\Header;
 
 use App\Models\Cargo;
-use App\Models\Distrito;
-use App\Models\Provincia;
-use App\Models\Region;
 use Livewire\Component;
 
 class WebHeaderLivewire extends Component
@@ -49,7 +46,7 @@ class WebHeaderLivewire extends Component
             'tipoEleccionSeleccionada' => $this->tipo_eleccion_id,
             'eleccionSeleccionada' => $this->eleccion_id,
             'cargoSeleccionada' => $this->cargo_id,
-        ]);     
+        ]);
     }
 
     public function render()

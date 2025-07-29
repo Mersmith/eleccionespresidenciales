@@ -1,14 +1,13 @@
 @if (!empty($p_elemento))
     <div x-data="dataTemporizador{{ $p_elemento->id }}('{{ $p_elemento['fecha_fin'] }}')" x-init="initTemporizador()" class="partials_contenedor_temporizador">
         <div class="contenedor_fecha_hora">
-            <h2>{{ $p_elemento->nombre }}</h2>
             <div class="contenedor_fecha">
                 @if ($p_elemento->dias == 0)
-                    <span> Termina HOY </span>
+                    <span> Esta encuesta termina HOY </span>
                 @elseif ($p_elemento->dias == 1)
-                    <span> Termina en {{ $p_elemento->dias }} día</span>
+                    <span> Esta encuesta termina en {{ $p_elemento->dias }} día</span>
                 @else
-                    <span> Termina en {{ $p_elemento->dias }} días</span>
+                    <span> Esta encuesta termina en {{ $p_elemento->dias }} días</span>
                 @endif
             </div>
 

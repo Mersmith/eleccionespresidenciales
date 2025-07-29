@@ -1,0 +1,128 @@
+.partials_contenedor_slider_encuesta {
+    position: relative;
+    width: 100%;
+}
+
+/* SLIDER */
+.partials_contenedor_slider_encuesta .swiper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.partials_contenedor_slider_encuesta .swiper-wrapper {
+    display: flex;
+}
+
+.partials_contenedor_slider_encuesta .swiper-slide {
+    width: 16.6%;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+/* IMAGEN */
+.partials_contenedor_slider_encuesta .swiper-slide .contenedor_imagen {
+    position: relative;
+    /*width: 150px;*/
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* IMAGEN */
+.partials_contenedor_slider_encuesta .swiper-slide .contenedor_imagen img {
+    /*width: 100px;*/
+    height: auto;
+    object-fit: cover;
+    max-height: 100%;
+}
+
+.partials_contenedor_slider_encuesta .swiper-slide .contenedor_imagen span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 2px 5px;
+    color: var(--color-texto-secundario);
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14.4px;
+}
+
+.partials_contenedor_slider_encuesta .swiper-slide .contenedor_imagen .estado_activo {   
+    background-color: var(--color-fondo-primario);
+}
+
+.partials_contenedor_slider_encuesta .swiper-slide .contenedor_imagen .estado_finalizado {   
+    background-color: var(--color-fondo-terciario);
+}
+
+.partials_contenedor_slider_encuesta .swiper-slide .marca {
+    max-width: 12rem;
+    overflow: hidden;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--color-texto-terciario);
+}
+
+.partials_contenedor_slider_encuesta .swiper-slide .titulo {
+    height: 34px;
+    overflow: hidden;
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.2;
+    color: var(--color-texto-terciario);
+}
+
+/* CONTROLES */
+.partials_contenedor_slider_encuesta .swiper-button-next,
+.partials_contenedor_slider_encuesta .swiper-button-prev {
+    background: transparent;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: var(--color-texto-senario);
+}
+
+.partials_contenedor_slider_encuesta .swiper-button-next:hover,
+.partials_contenedor_slider_encuesta .swiper-button-prev:hover {
+    background: var(--color-fondo-senario);
+    color: var(--color-texto-septenario);
+}
+
+.partials_contenedor_slider_encuesta .swiper-button-next:after,
+.partials_contenedor_slider_encuesta .swiper-button-prev:after {
+    font-size: 16px;
+}
+
+.partials_contenedor_slider_encuesta .swiper-button-prev {
+    left: 10px;
+    box-shadow: var(--sombra-secundario-izquierda)
+}
+
+.partials_contenedor_slider_encuesta .swiper-button-next {
+    right: 10px;
+    box-shadow: var(--sombra-secundario-derecha)
+}
+
+/* SLIDER THUMBNAILS */
+.partials_contenedor_slider_encuesta .swiper-pagination {
+    position: initial;
+}
+
+.partials_contenedor_slider_encuesta .swiper-pagination-bullet {
+    background-color: var(--color-fondo-senario);
+    width: 8px;
+    height: 8px;
+    opacity: 1;
+    border-radius: 50%;
+}
+
+.partials_contenedor_slider_encuesta .swiper-pagination-bullet-active {
+    background-color: var(--color-fondo-septenario);
+}

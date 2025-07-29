@@ -3,7 +3,7 @@
     position: relative;
     width: 100%;
     padding: 10px;
-    background-color: var(--color-fondo-secundario);
+    background-color: var(--color-fondo-terciario);
 }
 
 /*CONTENEDOR FECHA HORA*/
@@ -13,6 +13,7 @@
     gap: 2px;
     padding: 15px 10px;
     flex-direction: column;
+    margin-bottom: 10px;
 }
 
 .partials_contenedor_temporizador .contenedor_fecha_hora .contenedor_fecha {
@@ -24,7 +25,7 @@
     font-weight: 700;
     font-size: 28px;
     letter-spacing: .125rem;
-    color: var(--color-texto-terciario);
+    color: var(--color-texto-secundario);
 }
 
 .partials_contenedor_temporizador .contenedor_fecha_hora .contenedor_hora {
@@ -37,12 +38,12 @@
     height: 34px;
     display: inline-block;
     padding-top: 3px;
-    background-color: var(--color-fondo-terciario);
+    background-color: var(--color-fondo-secundario);
     border-radius: 5px;
     text-align: center;
     font-weight: 700;
     font-size: 22px;
-    color: var(--color-texto-secundario);
+    color: var(--color-texto-primario);
     vertical-align: middle;
     opacity: .95;
 }
@@ -51,7 +52,7 @@
     padding: 0px 2px;
     font-weight: 700;
     font-size: 1.3rem;
-    color: var(--color-texto-terciario);
+    color: var(--color-texto-secundario);
 }
 
 /* SLIDER */
@@ -60,81 +61,11 @@
     width: 100%;
 }
 
-.partials_contenedor_temporizador .swiper {
-    width: 100%;
-    overflow: hidden;
-}
-
-.partials_contenedor_temporizador .swiper-wrapper {
-    display: flex;
-}
-
-.partials_contenedor_temporizador .swiper-slide {
-    width: 50%;
-    padding: 5px;
-}
-
-.partials_contenedor_temporizador .swiper-slide img {
-    width: 100%;
-    height: auto;
-}
-
-/* CONTROLES */
-.partials_contenedor_temporizador .swiper-button-next,
-.partials_contenedor_temporizador .swiper-button-prev {
-    background: transparent;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    color: var(--color-texto-senario);
-}
-
-.partials_contenedor_temporizador .swiper-button-next:hover,
-.partials_contenedor_temporizador .swiper-button-prev:hover {
-    background: var(--color-fondo-senario);
-    color: var(--color-texto-septenario);
-}
-
-.partials_contenedor_temporizador .swiper-button-next:after,
-.partials_contenedor_temporizador .swiper-button-prev:after {
-    font-size: 16px;
-}
-
-.partials_contenedor_temporizador .swiper-button-prev {
-    left: 10px;
-    box-shadow: var(--sombra-secundario-izquierda)
-}
-
-.partials_contenedor_temporizador .swiper-button-next {
-    right: 10px;
-    box-shadow: var(--sombra-secundario-derecha)
-}
-
-/* SLIDER THUMBNAILS */
-.partials_contenedor_temporizador .swiper-pagination {
-    position: initial;
-}
-
-.partials_contenedor_temporizador .swiper-pagination-bullet {
-    background-color: var(--color-fondo-senario);
-    width: 8px;
-    height: 8px;
-    opacity: 1;
-    border-radius: 50%;
-}
-
-.partials_contenedor_temporizador .swiper-pagination-bullet-active {
-    background-color: var(--color-fondo-septenario);
-}
 
 @media (max-width: 1000px) {    
 
     .partials_contenedor_temporizador .contenedor_fecha_hora .contenedor_fecha span {
         font-size: 20px;
     }
-
-    .partials_contenedor_temporizador .contenedor_fecha_hora .contenedor_fecha img {
-        width: 24px;
-    }
-
+   
 }

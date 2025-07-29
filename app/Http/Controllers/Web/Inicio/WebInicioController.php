@@ -33,6 +33,8 @@ class WebInicioController extends Controller
 
         $data_encuestas_alcaldia_distritos_lima = $this->getWebEncuestasAlcaldiaDistritosLima();
 
+        //dd($data_encuestas_alcaldia_distritos_lima);
+
         return view(
             'web.inicio.index',
             compact(
@@ -214,7 +216,7 @@ class WebInicioController extends Controller
             ->whereDate('fecha_fin', '>=', now())
             ->groupBy('distrito_id');
 
-        $encuestas = Encuesta::whereIn('id', $subquery)->orderBy('fecha_inicio', 'desc')->take(5)->get();
+        $encuestas = Encuesta::whereIn('id', $subquery)->orderBy('fecha_inicio', 'desc')->take(15)->get();
 
         return [
             'id' => $eleccion_id . $nivel_id . $cargo_id,

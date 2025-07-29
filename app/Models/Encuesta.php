@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -91,5 +92,16 @@ class Encuesta extends Model
     {
         return 'slug';
     }
-    
+
+    public function getFechaFinFormateadaAttribute()
+    {
+        return Carbon::parse($this->fecha_fin)->format('Y-m-d');
+    }
+
+    // Accesor para saber si la encuesta ya finalizó
+    public function getYaFinalizoAttribute()
+    {
+        return Carbon::parse($this->fecha_fin)->isPast();
+    }
+
 }
