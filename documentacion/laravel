@@ -78,6 +78,8 @@ php artisan make:livewire Web/Encuestas/EncuestasLivewire
 php artisan make:livewire Web/Encuesta/EncuestaVotoLivewire
 php artisan make:livewire Web/Encuesta/EncuestaResultadoLivewire
 
+--> Crear config constantes
+
 MENU
 LOGO
 PRESIDENCIAL

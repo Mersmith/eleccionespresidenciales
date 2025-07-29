@@ -76,7 +76,7 @@ class WebInicioController extends Controller
 
     public function getWebCandidatosPresidenciales()
     {
-        $eleccion_id = 1; //generales
+        $eleccion_id = config('constantes.ELECCION_GENERAL_ID'); //generales
         $nivel_id = 1; //nacional
         $cargo_id = 1; // presidente
 
@@ -86,6 +86,7 @@ class WebInicioController extends Controller
             ->where('eleccion_id', $eleccion_id)
             ->where('nivel_id', $nivel_id)
             ->where('cargo_id', $cargo_id)
+            ->whereDate('created_at', '>=', config('constantes.FECHA_CONVOCATORIA_ELECCION_GENERAL'))
             ->get();
 
         return [
@@ -97,7 +98,7 @@ class WebInicioController extends Controller
 
     public function getWebCandidatosAlcaldiaLima()
     {
-        $eleccion_id = 2; //municipales
+        $eleccion_id = config('constantes.ELECCION_REGIONAL_ID'); //municipales
         $nivel_id = 3; //provincial
         $cargo_id = 9; // alcaldía provincial
 
@@ -107,6 +108,7 @@ class WebInicioController extends Controller
             ->where('eleccion_id', $eleccion_id)
             ->where('nivel_id', $nivel_id)
             ->where('cargo_id', $cargo_id)
+            ->whereDate('created_at', '>=', config('constantes.FECHA_CONVOCATORIA_ELECCION_REGIONAL'))
             ->get();
 
         return [
@@ -133,7 +135,7 @@ class WebInicioController extends Controller
 
     public function getWebEncuestaPresidencial()
     {
-        $eleccion_id = 1; //generales
+        $eleccion_id = config('constantes.ELECCION_GENERAL_ID'); //generales
         $nivel_id = 1; //nacional
         $cargo_id = 1; //presidente
         $pais_id = 1; //peru
@@ -147,8 +149,7 @@ class WebInicioController extends Controller
             ->where('pais_id', $pais_id)
             ->where('estado', 'iniciada')
             ->where('activo', true)
-            ->whereYear('fecha_inicio', now()->year)
-            ->whereMonth('fecha_inicio', now()->month)
+            ->whereDate('fecha_inicio', '>=', config('constantes.FECHA_CONVOCATORIA_ELECCION_GENERAL'))
             ->whereDate('fecha_fin', '>=', now())
             ->orderBy('fecha_inicio', 'desc')
             ->first();
@@ -165,7 +166,7 @@ class WebInicioController extends Controller
 
     public function getWebEncuestaAlcaldiaProvincialLima()
     {
-        $eleccion_id = 2; //municipales
+        $eleccion_id = config('constantes.ELECCION_REGIONAL_ID'); //municipales
         $nivel_id = 3; //provincial
         $cargo_id = 9; //alcaldia provincial
         $provincia_id = 135; //lima
@@ -179,8 +180,7 @@ class WebInicioController extends Controller
             ->where('provincia_id', $provincia_id)
             ->where('estado', 'iniciada')
             ->where('activo', true)
-            ->whereYear('fecha_inicio', now()->year)
-            ->whereMonth('fecha_inicio', now()->month)
+            ->whereDate('fecha_inicio', '>=', config('constantes.FECHA_CONVOCATORIA_ELECCION_REGIONAL'))
             ->whereDate('fecha_fin', '>=', now())
             ->orderBy('fecha_inicio', 'desc')
             ->first();
@@ -197,7 +197,7 @@ class WebInicioController extends Controller
 
     public function getWebEncuestasAlcaldiaDistritosLima()
     {
-        $eleccion_id = 2; //municipales
+        $eleccion_id = config('constantes.ELECCION_REGIONAL_ID'); //municipales
         $nivel_id = 4; // distrital
         $cargo_id = 11; //alcaldia distrital
         $provincia_id = 135; //lima
@@ -212,8 +212,7 @@ class WebInicioController extends Controller
             ->where('provincia_id', $provincia_id)
             ->where('estado', 'iniciada')
             ->where('activo', true)
-            ->whereYear('fecha_inicio', now()->year)
-            ->whereMonth('fecha_inicio', now()->month)
+            ->whereDate('fecha_inicio', '>=', config('constantes.FECHA_CONVOCATORIA_ELECCION_REGIONAL'))
             ->whereDate('fecha_fin', '>=', now())
             ->groupBy('distrito_id');
 

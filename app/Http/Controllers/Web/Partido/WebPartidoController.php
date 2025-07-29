@@ -69,8 +69,7 @@ class WebPartidoController extends Controller
 
         $encuesta_activa = Encuesta::where('estado', 'iniciada')
             ->where('activo', true)
-            ->whereYear('fecha_inicio', now()->year)
-            ->whereMonth('fecha_inicio', now()->month)
+            ->whereDate('fecha_inicio', '>=', config('constantes.FECHA_CONVOCATORIA_ELECCION_GENERAL'))
             ->whereDate('fecha_fin', '>=', now())
             ->whereHas('candidatoCargos', function ($q) use ($id, $cargo_id) {
                 $q->where('partido_id', $id)

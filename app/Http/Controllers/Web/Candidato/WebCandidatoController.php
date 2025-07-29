@@ -43,8 +43,6 @@ class WebCandidatoController extends Controller
     {
         $encuesta_activa = Encuesta::where('estado', 'iniciada')
             ->where('activo', true)
-            ->whereYear('fecha_inicio', now()->year)
-            ->whereMonth('fecha_inicio', now()->month)
             ->whereDate('fecha_fin', '>=', now())
             ->whereHas('candidatoCargos', function ($q) use ($id) {
                 $q->where('candidato_id', $id);
