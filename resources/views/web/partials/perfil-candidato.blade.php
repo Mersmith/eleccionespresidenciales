@@ -4,7 +4,6 @@
             <img class="imagen_candidato" src="{{ $p_elemento->foto }}" alt="" />
 
             <img class="logo_partido" src="{{ $p_elemento->partido->logo }}" alt="" />
-
         </div>
 
         <div class="nombres_partido">
@@ -25,9 +24,8 @@
                 <p>{{ $p_elemento->descripcion }} </p>
             </div>
 
-            @if ($p_elemento)
+            @if ($p_elemento->partido)
                 <div class="partido">
-
                     <h3>{{ $p_elemento->partido->nombre }} </h3>
                     <p>{{ $p_elemento->partido->descripcion }} </p>
                 </div>

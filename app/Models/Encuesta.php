@@ -93,6 +93,11 @@ class Encuesta extends Model
         return 'slug';
     }
 
+    public function getFechaInicioFormateadaAttribute()
+    {
+        return Carbon::parse($this->fecha_inicio )->format('Y-m-d');
+    }
+
     public function getFechaFinFormateadaAttribute()
     {
         return Carbon::parse($this->fecha_fin)->format('Y-m-d');

@@ -79,7 +79,7 @@ class WebCandidatoController extends Controller
             $q->where('candidato_id', $id);
         })
             ->orderBy('fecha_inicio', 'desc')
-        //->take(4)
+            ->take(4)
             ->get();
 
         return $encuestas;

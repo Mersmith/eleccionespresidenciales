@@ -24,6 +24,9 @@
 /* INFORMACION */
 .contenedor_pagina_candidato .grid_pagina_candidato .columna_informacion {
     grid-area: columna_informacion;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 /* PUBLICIDAD */

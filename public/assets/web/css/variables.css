@@ -9,6 +9,9 @@
     --color-fondo-senario: #c0c0c0;
     --color-fondo-septenario: #778089;
     --color-fondo-octanario: #3b3d3e;/*ofi*/
+    --color-fondo-noveno: #e5e5e5;/*ofi*/
+    --color-fondo-decimo: #f9f9f9;/*ofi*/
+    --color-fondo-undecimo: #f0f0f0;/*ofi*/
 
     --color-texto-primario: #392385;
     --color-texto-secundario: #ffffff;
@@ -27,6 +30,7 @@
     --color-borde-senario: #c0c0c0;
     --color-borde-septenario: #778089;
     --color-borde-octanario: #3b3d3e;
+    --color-borde-noveno: #e5e5e5;
 
     /* BREACKPOINT */
     --breakpoint-computadora: 1024px;
@@ -51,7 +55,7 @@
     --altura-sidebar-cabecara: 56px;
 
     /* SOMBRAS */
-    --sombra: 0 5px 20px rgba(0, 0, 0, .2);
+    --sombra: 0 2px 8px rgba(0, 0, 0, 0.05);
     --sombra-secundario-izquierda: 2px 0 5px -2px rgba(0, 0, 0, 0.2);
     --sombra-secundario-derecha: -2px 0 5px -2px rgba(0, 0, 0, 0.2);
     --sombra-secundario-arriba: rgba(0, 0, 0, 0.1) 0px -3px 26px;
