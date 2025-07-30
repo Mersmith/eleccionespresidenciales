@@ -1,0 +1,78 @@
+.partials_contenedor_perfil_partido {
+    background-color: var(--color-fondo-secundario);
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+    box-shadow: var(--sombra);
+}
+
+.partials_contenedor_perfil_partido .partido_imagen_contenedor {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: auto;
+    width: 300px;
+}
+
+.partials_contenedor_perfil_partido .imagen_partido {
+    width: 100%;
+    display: block;
+}
+
+.partials_contenedor_perfil_partido .nombres_partido {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    justify-content: center;
+    gap: 7px;
+}
+
+.partials_contenedor_perfil_partido .nombres_partido .nombres .redes_sociales {
+    display: flex;
+    gap: 10px;
+    font-size: 20px;
+}
+
+.partials_contenedor_perfil_partido .nombres_partido .nombres h3 {
+    font-size: 24px;
+    line-height: 24px;
+    margin: 4px 0;
+    font-weight: 700;
+    color: var(--color-texto-terciario);
+}
+
+.partials_contenedor_perfil_partido .nombres_partido .nombres p {
+    font-size: 17px;
+    color: var(--color-texto-terciario);
+}
+
+@media (max-width: 700px) {
+    .partials_contenedor_perfil_partido {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .partials_contenedor_perfil_partido .imagen_partido {
+        width: 100%;
+    }
+
+    .partials_contenedor_perfil_partido .nombres_partido {
+        gap: 20px;
+
+    }
+
+    .partials_contenedor_perfil_partido .nombres_partido .nombres {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .partials_contenedor_perfil_partido .nombres_partido .nombres .redes_sociales {
+        justify-content: center;
+    }
+
+    .partials_contenedor_perfil_partido .nombres_partido .nombres h3,
+    .partials_contenedor_perfil_partido .nombres_partido .nombres p {
+        text-align: center;
+    }
+}

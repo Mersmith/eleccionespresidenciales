@@ -4,73 +4,39 @@
 @section('descripcion', 'Tendencias Market')
 
 @section('content')
-<div class="g_contenedor_pagina">
+    <div class="contenedor_pagina_candidato">
+        <div class="centrar">
+            <div class="contenedor_bloque">
+                <div class="grid_pagina_candidato">
+                    <!-- INFORMACION -->
 
+                    <div class="columna_informacion">
+                        <!-- PERFIL -->
+                        @include('web.partials.perfil-partido', [
+                            'p_elemento' => $partido,
+                        ])
 
+                        @include('web.partials.lista-candidato', [
+                            'p_elemento' => $candidatos_presidenciales,
+                        ])
 
-    @if($partido)
-    <div>
+                        @include('web.partials.lista-candidato', [
+                            'p_elemento' => $candidatos_alcaldia_lima,
+                        ])
 
-        <h2>
-            DATOS DEL PARTIDO
-        </h2>
+                        <!-- ENCUESTA ACTIVA -->
+                        @include('web.partials.temporizador', [
+                            'p_elemento' => $encuesta_presidencial_activa,
+                        ])
+                    </div>
 
-        <h3>{{$partido->nombre}} </h3>
-        <p>{{$partido->descripcion}} </p>
-        <img src="{{ $partido->logo}}" alt="" style="width: 80px" />
+                    <!-- PUBLICIDAD -->
+                    <div class="columna_publicidad">
+                        @include('web.partials.columna-publicidad')
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
-    @endif
-
-    <br>
-
-    @if($candidatos_presidenciales)
-    <div>
-        <h2>
-            CANDIDATOS A LA PRESIDENCIA
-        </h2>
-
-        @foreach ($candidatos_presidenciales as $index => $item)
-        <li>
-            <h3>{{$item->nombre}} </h3>
-            <p>{{$item->descripcion}} </p>
-            <br>
-        </li>
-        @endforeach
-    </div>
-    @endif
-
-    <br>
-
-
-    @if($candidatos_presidenciales)
-    <div>
-        <h2>
-            CANDIDATOS A LA ALCALDIA DE LIMA
-        </h2>
-
-        @foreach ($candidatos_alcaldia_lima as $index => $item)
-        <li>
-            <h3>{{$item->nombre}} </h3>
-            <p>{{$item->descripcion}} </p>
-            <br>
-        </li>
-        @endforeach
-    </div>
-    @endif
-
-    <br>
-
-    @if($encuesta_presidencial_activa)
-    <div>
-        <h2>
-            ENCUESTA ACTIVA
-        </h2>
-
-        <h3>{{$encuesta_presidencial_activa->nombre}} </h3>
-        <p>{{$encuesta_presidencial_activa->descripcion}} </p>
-    </div>
-    @endif
-
-    <br>
-</div>
 @endsection
