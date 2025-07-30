@@ -2,10 +2,9 @@
 
 namespace App\Livewire\Web\Encuesta;
 
-use Livewire\Component;
-use App\Models\Encuesta;
 use App\Models\Voto;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Component;
 
 class EncuestaVotoLivewire extends Component
 {
@@ -24,6 +23,11 @@ class EncuestaVotoLivewire extends Component
                 ->where('encuesta_id', $this->encuesta_id)
                 ->exists();
         }
+    }
+
+    public function cerrar()
+    {
+        $this->candidato_cargo_id = null; // Deseleccionar
     }
 
     public function votar()

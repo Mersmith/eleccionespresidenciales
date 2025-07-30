@@ -1,0 +1,157 @@
+.titulares {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulares h4 {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.titulares h3 {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.contendor_encuesta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.boton_resultado {
+    background: var(--color-fondo-primario);
+    color: var(--color-texto-secundario);
+    border-radius: 30px;
+    padding: 10px 15px;
+    text-align: center;
+}
+
+.boton_resultado:hover {
+    background: var(--color-fondo-terciario);
+}
+
+/**/
+.lista_cuadricula_candidatos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.lista_cuadricula_candidatos .card_candidato {
+    border: 2px solid transparent;
+    cursor: pointer;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    transition: border 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lista_cuadricula_candidatos .overlay_votar {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.lista_cuadricula_candidatos .card_candidato:hover {
+    border-color: var(--color-borde-terciario);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.lista_cuadricula_candidatos .card_candidato.seleccionado {
+    border-color: var(--color-borde-primario);
+    background-color: #eef2ff;
+}
+
+.lista_cuadricula_candidatos .card_candidato input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.lista_cuadricula_candidatos .imagen_contenedor {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.lista_cuadricula_candidatos .imagen_candidato {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.lista_cuadricula_candidatos .logo_partido {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    width: 70px;
+    height: 70px;
+    background: var(--color-fondo-secundario);
+    padding: 3px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.lista_cuadricula_candidatos .info_candidato {
+    margin-top: 0.5rem;
+}
+
+.lista_cuadricula_candidatos .boton_votar_contenedor {
+    text-align: center;
+}
+
+.lista_cuadricula_candidatos .boton_votar {
+    background-color: var(--color-fondo-primario);
+    color: var(--color-texto-secundario);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background 0.3s;
+    z-index: 20;
+    cursor: pointer;
+}
+
+.lista_cuadricula_candidatos .boton_votar:hover {
+    background-color: var(--color-fondo-terciario);
+}
+
+.lista_cuadricula_candidatos .boton_cerrar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    color: var(--color-texto-secundario);
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 20;
+    transition: transform 0.2s ease;
+}
+
+.lista_cuadricula_candidatos .boton_cerrar:hover {
+    transform: scale(1.2);
+}
+
+@media (max-width:1024px) {}
+
+@media (max-width: 700px) {
+    .lista_cuadricula_candidatos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

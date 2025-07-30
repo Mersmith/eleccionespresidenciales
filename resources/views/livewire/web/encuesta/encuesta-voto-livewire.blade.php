@@ -1,36 +1,51 @@
-<div class="max-w-xl mx-auto p-4">
-    <h2 class="text-2xl font-bold mb-4">Votación:</h2>
-
+<div>
     @if (session()->has('error'))
-    <div class="bg-red-200 text-red-800 p-2 mb-4">
-        {{ session('error') }}
-    </div>
+        <div class="bg-red-200 text-red-800 p-2 mb-4">
+            {{ session('error') }}
+        </div>
     @endif
 
     @if (session()->has('success'))
-    <div class="bg-green-200 text-green-800 p-2 mb-4">
-        {{ session('success') }}
-    </div>
+        <div class="bg-green-200 text-green-800 p-2 mb-4">
+            {{ session('success') }}
+        </div>
     @endif
 
     @if ($yaVoto)
-    <div class="text-green-700 font-semibold">
-        Ya has votado en esta encuesta.
-    </div>
+        <div class="text-green-700 font-semibold">
+            Ya has votado en esta encuesta.
+        </div>
     @else
-    <form wire:submit.prevent="votar">
-        <div class="space-y-4">
+        <div class="lista_cuadricula_candidatos">
             @foreach ($candidatos as $candidatoCargo)
-            <label class="flex items-center space-x-2">
-                <input type="radio" wire:model="candidato_cargo_id" value="{{ $candidatoCargo->id }}">
-                <span>{{ $candidatoCargo->candidato->nombre }} - {{ $candidatoCargo->partido?->nombre ?? 'Sin partido' }}</span>
-            </label>
+                <label class="card_candidato {{ $candidato_cargo_id == $candidatoCargo->id ? 'seleccionado' : '' }}">
+                    @if ($candidato_cargo_id == $candidatoCargo->id)
+                        <div class="overlay_votar">
+                            <span wire:click="cerrar" class="boton_cerrar" title="Cerrar">
+                                <i class="fas fa-times"></i>
+                            </span>
+                        
+                            <span wire:click="votar" class="boton_votar">
+                                Votar
+                            </span>
+                        </div>
+                    @endif
+
+                    <div class="imagen_contenedor">
+                        <img class="imagen_candidato" src="{{ $candidatoCargo->candidato->foto }}" alt="Candidato" />
+                        <img class="logo_partido" src="{{ $candidatoCargo->candidato->partido->logo }}"
+                            alt="Logo partido" />
+                    </div>
+
+                    <input type="radio" wire:model.live="candidato_cargo_id" value="{{ $candidatoCargo->id }}">
+
+                    <div class="info_candidato">
+                        <strong>{{ $candidatoCargo->candidato->nombre }}</strong>
+                        <p>{{ $candidatoCargo->partido?->nombre ?? 'Sin partido' }}</p>
+                    </div>
+                </label>
             @endforeach
         </div>
 
-        <button type="submit" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-            Votar
-        </button>
-    </form>
     @endif
 </div>

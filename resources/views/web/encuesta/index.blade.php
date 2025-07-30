@@ -4,28 +4,53 @@
 @section('descripcion', 'Tendencias Market')
 
 @section('content')
-<div class="g_contenedor_pagina">
+    <div class="contenedor_pagina_candidato">
+        <div class="centrar">
+            <div class="contenedor_bloque">
+                <div class="grid_pagina_candidato">
+                    <!-- INFORMACION -->
+                    <div class="columna_informacion">
+                        <div class="contendor_encuesta">
+                            <div class="titulares">
+                                <h4>ENCUESTA</h4>
+                                <h3>{{ $encuesta->nombre }} </h3>
+                                <p>
+                                    <strong>Inicio:</strong> {{ $encuesta->fecha_inicio_formateada }} |
+                                    <strong>Fin:</strong> {{ $encuesta->fecha_fin_formateada }}
+                                </p>
+                                <p><i class="fas fa-user-tie"></i> {{ $encuesta->cargo->nombre ?? '-' }}</p>
 
-    <div>
-        <h2>
-            DATOS DEL CANDIDATO
-        </h2>
+                                @php
+                                    $ubicacion = collect([
+                                        $encuesta->pais?->nombre,
+                                        $encuesta->region?->nombre,
+                                        $encuesta->provincia?->nombre,
+                                        $encuesta->distrito?->nombre,
+                                    ])
+                                        ->filter()
+                                        ->join(' / ');
+                                @endphp
 
-        <h3>{{$encuesta->nombre}} </h3>
-        <p>{{$encuesta->descripcion}} </p>
-        <img src="{{ $encuesta->eleccion?->imagen_ruta }}" alt="" style="width: 80px" />
+                                <div>
+                                    <i class="fas fa-map-marker-alt"></i> {{ $ubicacion }}
+                                </div>
+                            </div>
+
+                            @livewire('web.encuesta.encuesta-voto-livewire', ['encuesta_id' => $encuesta->id, 'candidatos' => $encuesta->candidatoCargos])
+
+                            <a class="boton_resultado" href="{{ route('encuesta.resultado', ['id' => $encuesta->id, 'slug' => $encuesta->slug]) }}">
+                                Ver resultados
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- PUBLICIDAD -->
+                    <div class="columna_publicidad">
+                        @include('web.partials.columna-publicidad')
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
-
-    <br>
-
-    <h2>VOTAR</h2>
-    
-    @livewire('web.encuesta.encuesta-voto-livewire', ['encuesta_id' => $encuesta->id, 'candidatos' => $encuesta->candidatoCargos])
-    
-    <br>
-
-    <h2>VER RESULTADOS</h2>
-
-    <a href="{{ route('encuesta.resultado', ['id' => $encuesta->id, 'slug' => $encuesta->slug]) }}">CLICK ACA</a>
-</div>
 @endsection
