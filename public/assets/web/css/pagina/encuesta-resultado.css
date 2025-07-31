@@ -19,7 +19,7 @@
 .grafico_horizontal .foto-candidato {
     width: 64px;
     height: 64px;
-    border-radius: 50%;
+    /*border-radius: 50%;*/
     object-fit: cover;
     border: 2px solid #ccc;
 }
@@ -28,9 +28,8 @@
     position: absolute;
     bottom: -5px;
     right: -5px;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
+    width: 30px;
+    height: 30px;
     border: 2px solid white;
     object-fit: cover;
     background: white;
@@ -87,7 +86,13 @@
     overflow-y: hidden;
     width: 100%;
     padding: 50px 10px 10px 10px;
-    border: 1px solid #ccc;
+    /*border: 1px solid #ccc;*/
+
+    background-image: 
+        linear-gradient(to right, #e0e0e0 1px, transparent 1px),
+        linear-gradient(to bottom, #e0e0e0 1px, transparent 1px);
+    background-size: 40px 40px; /* Tamaño de cada celda */
+    background-position: top left;
 }
 
 .grafico_vertical .grafico {

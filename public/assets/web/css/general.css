@@ -197,6 +197,37 @@
     background: var(--color-fondo-terciario);
 }
 
+/* SCROLL */
+.g_scroll {
+    scrollbar-width: thin; /* para Firefox */
+    scrollbar-color: #bebebe  #f1f1f1; /* para Firefox */
+}
+
+.g_scroll::-webkit-scrollbar {
+    height: 8px; /* para scroll horizontal */
+}
+
+.g_scroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.g_scroll::-webkit-scrollbar-thumb {
+    background-color: #999;
+    border-radius: 4px;
+}
+
+.g_scroll::-webkit-scrollbar-thumb:hover {
+    background-color: #666;
+}
+
+/* Ocultar los botones de flechas (WebKit) */
+.g_scroll::-webkit-scrollbar-button:start:decrement,
+.g_scroll::-webkit-scrollbar-button:end:increment {
+    display: none;
+    height: 0;
+    width: 0;
+}
 
 @media (max-width: 1024px) {
 
