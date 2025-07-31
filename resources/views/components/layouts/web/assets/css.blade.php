@@ -39,3 +39,4 @@
 <!--PAGINA-->
 <link rel="stylesheet" href="{{ asset('assets/web/css/pagina/candidato.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/web/css/pagina/encuesta.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/web/css/pagina/encuesta-resultado.css') }}">

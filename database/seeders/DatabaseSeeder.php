@@ -26,8 +26,8 @@ class DatabaseSeeder extends Seeder
             CandidatoSeeder::class,
             CandidatoCargoSeeder::class,
             EncuestaSeeder::class,
-            //CandidatoEncuestaSeeder::class,
-            //VotoSeeder::class,
+            CandidatoEncuestaSeeder::class,
+            VotoSeeder::class,
         ]);
     }
 }

@@ -1,0 +1,106 @@
+.encuesta-contenedor {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.titulo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.descripcion {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.total-votos {
+    margin-bottom: 25px;
+    color: #444;
+    font-size: 14px;
+}
+
+.candidato-item {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 12px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.05);
+}
+
+.foto-contenedor {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    margin-right: 15px;
+}
+
+.foto-candidato {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc;
+}
+
+.logo-partido {
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid white;
+    object-fit: cover;
+    background: white;
+}
+
+.info-candidato {
+    flex-grow: 1;
+}
+
+.nombre-candidato {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 2px;
+}
+
+.nombre-partido {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.barra-voto {
+    width: 100%;
+    height: 12px;
+    background-color: #eee;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.barra-progreso {
+    height: 100%;
+    background-color: #3490dc;
+}
+
+.votos-dato {
+    text-align: right;
+    margin-left: 15px;
+    min-width: 80px;
+}
+
+.cantidad-votos {
+    font-weight: bold;
+    color: #0056b3;
+    font-size: 14px;
+}
+
+.porcentaje {
+    font-size: 13px;
+    color: #666;
+}

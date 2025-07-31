@@ -38,7 +38,7 @@
 /**/
 .lista_cuadricula_candidatos {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 1rem;
     margin-bottom: 1rem;
 }
@@ -47,7 +47,7 @@
     border: 2px solid transparent;
     cursor: pointer;
     text-align: center;
-    padding: 1rem;
+    /*padding: 1rem;*/
     position: relative;
     transition: border 0.3s, box-shadow 0.3s;
     position: relative;
@@ -85,8 +85,8 @@
 
 .lista_cuadricula_candidatos .imagen_contenedor {
     position: relative;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     overflow: hidden;
 }
 
@@ -100,8 +100,8 @@
     position: absolute;
     bottom: 5px;
     left: 5px;
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     background: var(--color-fondo-secundario);
     padding: 3px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);

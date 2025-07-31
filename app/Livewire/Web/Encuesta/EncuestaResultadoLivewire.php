@@ -30,8 +30,10 @@ class EncuestaResultadoLivewire extends Component
         $resultados = $this->encuesta->candidatoEncuestas->map(function ($candidatoEncuesta) use ($votosPorCandidato) {
             $candidatoCargo = $candidatoEncuesta->candidatoCargo;
             return [
-                'nombre' => $candidatoCargo->candidato->nombre,
-                'partido' => $candidatoCargo->partido->nombre,
+                'candidato_nombre' => $candidatoCargo->candidato->nombre,
+                'candidato_foto' => $candidatoCargo->candidato->foto,
+                'partido_nombre' => $candidatoCargo->partido->nombre,
+                'partido_foto' => $candidatoCargo->partido->logo,
                 'votos' => $votosPorCandidato[$candidatoCargo->id] ?? 0,
             ];
         })->sortByDesc('votos')->values();

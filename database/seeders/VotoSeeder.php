@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use App\Models\Encuesta;
+use App\Models\CandidatoEncuesta;
+use App\Models\User;
 use App\Models\Voto;
 use Illuminate\Database\Seeder;
 
@@ -14,29 +15,33 @@ class VotoSeeder extends Seeder
      */
     public function run(): void
     {
+        // Obtener todos los usuarios
         $usuarios = User::all();
-        $encuestas = Encuesta::with('candidatoCargos')->get(); // asumimos que esta relación existe
+
+        // Obtener encuestas presidenciales (IDs del 1 al 24)
+        $encuestas = Encuesta::whereIn('id', range(1, 24))->get();
 
         foreach ($usuarios as $usuario) {
-            // El usuario vota en 1 o 2 encuestas aleatorias
-            $encuestasAleatorias = $encuestas->random(rand(1, min(2, $encuestas->count())));
+            foreach ($encuestas as $encuesta) {
 
-            foreach ($encuestasAleatorias as $encuesta) {
-                // Suponemos que la relación en Encuesta es llamada candidatosCargo
-                $candidatoCargos = $encuesta->candidatoCargos;
+                // Obtener todos los candidatos válidos para esta encuesta
+                $candidatos = CandidatoEncuesta::where('encuesta_id', $encuesta->id)->pluck('candidato_cargo_id');
 
-                if ($candidatoCargos->isNotEmpty()) {
-                    Voto::updateOrCreate(
-                        [
-                            'user_id' => $usuario->id,
-                            'encuesta_id' => $encuesta->id,
-                        ],
-                        [
-                            'candidato_cargo_id' => $candidatoCargos->random()->id,
-                            'fecha_voto' => now()->subDays(rand(0, 10)),
-                        ]
-                    );
+                if ($candidatos->isEmpty()) {
+                    continue;
                 }
+
+                // Elegir un candidato al azar para votar
+                $candidatoCargoId = $candidatos->random();
+
+                // Insertar el voto solo si no existe
+                Voto::firstOrCreate([
+                    'user_id' => $usuario->id,
+                    'encuesta_id' => $encuesta->id,
+                ], [
+                    'candidato_cargo_id' => $candidatoCargoId,
+                    'fecha_voto' => now(),
+                ]);
             }
         }
     }

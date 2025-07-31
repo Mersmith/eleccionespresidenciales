@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Encuesta;
 use App\Models\CandidatoCargo;
 use App\Models\CandidatoEncuesta;
 use Illuminate\Database\Seeder;
@@ -14,17 +13,29 @@ class CandidatoEncuestaSeeder extends Seeder
      */
     public function run(): void
     {
-        $encuestas = Encuesta::all();
+        // Paso 1: obtener todos los candidato_cargo_id de los candidato_id entre 1 y 25
+        $candidatoCargosPresidencial = CandidatoCargo::whereIn('candidato_id', range(1, 25))->get();
 
-        $postulaciones = CandidatoCargo::all();
-
-        foreach ($postulaciones as $postulacion) {
-            $encuestasAleatorias = $encuestas->random(rand(1, min(2, $encuestas->count())));
-
-            foreach ($encuestasAleatorias as $encuesta) {
+        // Paso 2: Iterar sobre las encuestas del 1 al 24
+        foreach (range(1, 24) as $encuestaId) {
+            foreach ($candidatoCargosPresidencial as $candidatoCargo) {
+                // Verifica que no exista para evitar duplicados
                 CandidatoEncuesta::firstOrCreate([
-                    'candidato_cargo_id' => $postulacion->id,
-                    'encuesta_id' => $encuesta->id,
+                    'candidato_cargo_id' => $candidatoCargo->id,
+                    'encuesta_id' => $encuestaId,
+                ]);
+            }
+        }
+
+        // Obtener los candidato_cargo_id para candidatos 26 al 33
+        $candidatoCargosAlcaldiaLima = CandidatoCargo::whereIn('candidato_id', range(26, 33))->get();
+
+        // Recorrer encuestas 37 al 44
+        foreach (range(37, 44) as $encuestaId) {
+            foreach ($candidatoCargosAlcaldiaLima as $candidatoCargo) {
+                CandidatoEncuesta::firstOrCreate([
+                    'candidato_cargo_id' => $candidatoCargo->id,
+                    'encuesta_id' => $encuestaId,
                 ]);
             }
         }
