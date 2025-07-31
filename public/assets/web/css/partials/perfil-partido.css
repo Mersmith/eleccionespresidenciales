@@ -1,9 +1,7 @@
 .partials_contenedor_perfil_partido {
     background-color: var(--color-fondo-secundario);
     display: flex;
-    gap: 10px;
-    padding: 20px;
-    box-shadow: var(--sombra);
+    gap: 10px; 
 }
 
 .partials_contenedor_perfil_partido .partido_imagen_contenedor {
@@ -31,19 +29,6 @@
     display: flex;
     gap: 10px;
     font-size: 20px;
-}
-
-.partials_contenedor_perfil_partido .nombres_partido .nombres h3 {
-    font-size: 24px;
-    line-height: 24px;
-    margin: 4px 0;
-    font-weight: 700;
-    color: var(--color-texto-terciario);
-}
-
-.partials_contenedor_perfil_partido .nombres_partido .nombres p {
-    font-size: 17px;
-    color: var(--color-texto-terciario);
 }
 
 @media (max-width: 700px) {
