@@ -3,7 +3,6 @@
             @include('web.partials.titulo', [
                 'p_contenido' => $p_elemento['titulo'],
                 'p_alineacion' => 'center',
-                'p_color' => '#4a4a4a',
             ])
 
         <div x-data="dataMostrador{{ $p_elemento['id'] }}()" class="partials_contenedor_mostrador">
@@ -14,7 +13,7 @@
                         <a href="{{ route('partido', ['id' => $item->id, 'slug' => $item->slug]) }}">
                             <!-- IMAGENES -->
                             <img src="{{ $item->logo }}" alt="" />
-                             <p>{{ $item->nombre }}</p>
+                             <p class="g_texto_nivel_5">{{ $item->nombre }}</p>
                         </a>
                     </div>
                 @endforeach

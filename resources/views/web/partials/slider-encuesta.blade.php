@@ -3,7 +3,6 @@
         @include('web.partials.titulo', [
             'p_contenido' => $p_elemento['titulo'],
             'p_alineacion' => 'left',
-            'p_color' => '#000000',
         ])
 
         <div class="partials_contenedor_slider_encuesta">
@@ -18,14 +17,14 @@
                                         <img src="{{ $item->eleccion->imagen_ruta }}" alt="">
 
                                         @if ($item->ya_finalizo)
-                                            <span class="estado_finalizado">Finalizada</span>
+                                            <span class="g_etiqueta g_etiqueta_desactivo">Finalizada</span>
                                         @else
-                                            <span class="estado_activo">{{ $item->fecha_fin_formateada }}</span>
+                                            <span class="g_etiqueta g_etiqueta_activo">{{ $item->fecha_fin_formateada }}</span>
                                         @endif
                                     </div>
                                 </a>
-                                <div class="marca">{{ $item->provincia->nombre }}</div>
-                                <div class="titulo">{{ $item->distrito->nombre }}</div>
+                                <div class="g_texto_nivel_3">{{ $item->provincia->nombre }}</div>
+                                <div class="g_texto_nivel_4">{{ $item->distrito->nombre }}</div>
                             </div>
                         </div>
                     @endforeach

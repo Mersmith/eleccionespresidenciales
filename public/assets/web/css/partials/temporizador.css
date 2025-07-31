@@ -37,7 +37,7 @@
     width: 24px;
     height: 34px;
     display: inline-block;
-    padding-top: 3px;
+    /*padding-top: 3px;*/
     background-color: var(--color-fondo-secundario);
     border-radius: 5px;
     text-align: center;
@@ -60,7 +60,6 @@
     position: relative;
     width: 100%;
 }
-
 
 @media (max-width: 1000px) {    
 

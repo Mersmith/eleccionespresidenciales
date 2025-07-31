@@ -4,7 +4,6 @@
         @include('web.partials.titulo', [
             'p_contenido' => $p_elemento['titulo'],
             'p_alineacion' => 'left',
-            'p_color' => '#000000',
         ])
 
         <div class="partials_contenedor_slider_candidato">
@@ -20,8 +19,8 @@
                                     <img class="logo_partido" src="{{ $postulacion->candidato->partido->logo }}"
                                         alt="" />
                                 </div>
-                                <p>{{ $postulacion->candidato->nombre }}</p>
-                                <span>{{ $postulacion->candidato->partido->nombre }}</span>
+                                <p class="g_texto_nivel_1">{{ $postulacion->candidato->nombre }}</p>
+                                <span class="g_texto_nivel_2">{{ $postulacion->candidato->partido->nombre }}</span>
                             </a>
                         </div>
                     @endforeach

@@ -19,22 +19,20 @@
     @include('components.layouts.web.assets.css')
 </head>
 
-<body class="contenedor_layout_ecommerce">
+<body class="contenedor_layout_web">
 
 
     <div x-data="xDataLayoutEcommerce()" x-init="initLayoutEcommerce">
         <!--MENU PRINCIPAL-->
         @livewire('web.header.web-header-livewire')
 
-
         <!--CONTENEDOR LAYOUT GENERAL-->
-        <main class="contenedor_layout_ecommerce_pagina">
+        <main class="contenedor_layout_web_pagina">
             @yield('content')
             @if (isset($slot))
-            {{ $slot }}
+                {{ $slot }}
             @endif
         </main>
-
 
         <div class="contenedor_superponer" :x-show="estadoSuperponer" x-on:click="cerrarTodo"></div>
     </div>
@@ -46,32 +44,31 @@
     @livewireScripts
     @stack('script')
     <script>
-        @if(session('alerta'))
-        window.onload = function() {
-            let mensaje = @json(session('alerta'));
-            alertaNormal(mensaje);
-        };
+        @if (session('alerta'))
+            window.onload = function() {
+                let mensaje = @json(session('alerta'));
+                alertaNormal(mensaje);
+            };
         @endif
 
         Livewire.on('alertaLivewire', mensaje => {
             if (mensaje == 'Creado' || mensaje == 'Actualizado') {
                 Swal.fire({
-                    icon: 'success'
-                    , title: mensaje
-                    , showConfirmButton: false
-                    , timer: 2500
+                    icon: 'success',
+                    title: mensaje,
+                    showConfirmButton: false,
+                    timer: 2500
                 })
             } else if (mensaje == "Error") {
                 Swal.fire({
-                    icon: 'error'
-                    , title: '¡Alto!'
-                    , text: mensaje
-                    , showConfirmButton: false
-                    , timer: 2500
+                    icon: 'error',
+                    title: '¡Alto!',
+                    text: mensaje,
+                    showConfirmButton: false,
+                    timer: 2500
                 })
             }
         })
-
     </script>
 </body>
 

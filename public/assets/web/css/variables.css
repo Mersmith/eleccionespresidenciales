@@ -1,17 +1,26 @@
 :root {
 
     /* COLORES */
-    --color-fondo-primario: #392385;/*ofi*/
-    --color-fondo-secundario: #ffffff;/*ofi*/
-    --color-fondo-terciario: #1c1c1d;/*ofi*/
-    --color-fondo-cuaternario: #252728;/*ofi*/
-    --color-fondo-quinario: #3a3c3d;/*ofi*/
+    --color-fondo-primario: #392385;
+    /*ofi*/
+    --color-fondo-secundario: #ffffff;
+    /*ofi*/
+    --color-fondo-terciario: #1c1c1d;
+    /*ofi*/
+    --color-fondo-cuaternario: #252728;
+    /*ofi*/
+    --color-fondo-quinario: #3a3c3d;
+    /*ofi*/
     --color-fondo-senario: #c0c0c0;
     --color-fondo-septenario: #778089;
-    --color-fondo-octanario: #3b3d3e;/*ofi*/
-    --color-fondo-noveno: #e5e5e5;/*ofi*/
-    --color-fondo-decimo: #f9f9f9;/*ofi*/
-    --color-fondo-undecimo: #f0f0f0;/*ofi*/
+    --color-fondo-octanario: #3b3d3e;
+    /*ofi*/
+    --color-fondo-noveno: #e5e5e5;
+    /*ofi*/
+    --color-fondo-decimo: #f9f9f9;
+    /*ofi*/
+    --color-fondo-undecimo: #f0f0f0;
+    /*ofi*/
 
     --color-texto-primario: #392385;
     --color-texto-secundario: #ffffff;
@@ -39,10 +48,12 @@
 
     /* ALTURAS */
     --altura-header-principal-computadora: 140px;
+    /*ofi*/
     --altura-menu-principal-arriba-computadora: 90px;
     --altura-menu-principal-abajo-computadora: 50px;
 
     --altura-header-principal-movil: 170px;
+    /*ofi*/
     --altura-menu-principal-arriba-movil: 120px;
     --altura-menu-principal-abajo-movil: 50px;
 
@@ -67,5 +78,26 @@
     --slide-productos-tablet: 45%;
     /*1 ELEMENTO*/
     --slide-productos-movil: 95%;
+
+
+
+    /*GENERAL*/
+    --color-fondo-pagina: #fafafa;
+
+    --color-fondo-superponer: rgba(0, 0, 0, 0.192);
+
+    --ancho-centrar-pagina: 1280px;
+
+    /*CONTROL SLIDER*/
+    --color-control-slider-texto: #c0c0c0;
+    --color-control-slider-texto-hover: #778089;
+    --fondo-control-slider-fondo: #c0c0c0;
+    --fondo-control-slider-fondo-active: #778089;
+    --sombra-control-slider-izquierda: 2px 0 5px -2px rgba(0, 0, 0, 0.2);
+    --sombra-control-slider-derecha: -2px 0 5px -2px rgba(0, 0, 0, 0.2);
+
+    /*CARD*/
+    --color-borde-card: #ffffff;
+    
 
 }

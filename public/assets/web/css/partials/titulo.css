@@ -4,25 +4,16 @@
 }
 
 .titulo_simple h3 {
-    font-weight: 500;
-    font-size: 28px;
+    font-weight: 600;
+    font-size: 27px;
     line-height: 1.2;
 }
 
-.titulo_icono {
-    padding-top: 30px;
-    padding-bottom: 30px;
-}
+@media (max-width: 700px) {
 
-.titulo_icono h3 {
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 0.5rem;
-}
+    .titulo_simple h3 {
+        font-size: 25px;
+        text-align: center;
+    }
 
-.titulo_icono img {
-    width: 20px;
-    margin-right: 10px;
-    display: inline;
 }

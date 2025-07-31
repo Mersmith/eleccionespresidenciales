@@ -25,12 +25,8 @@
 }
 
 .partials_contenedor_mostrador .grid_mostrador p {
-    width: 140px;
     margin-top: 15px;
-    text-align: center;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 1;
+    width: 140px;   
 }
 
 /* IMAGENES */

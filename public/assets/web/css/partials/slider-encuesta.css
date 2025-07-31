@@ -41,42 +41,6 @@
     position: absolute;
     top: 0;
     right: 0;
-    padding: 2px 5px;
-    color: var(--color-texto-secundario);
-    border-radius: 3px;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 14.4px;
-}
-
-.partials_contenedor_slider_encuesta .swiper-slide .contenedor_imagen .estado_activo {   
-    background-color: var(--color-fondo-primario);
-}
-
-.partials_contenedor_slider_encuesta .swiper-slide .contenedor_imagen .estado_finalizado {   
-    background-color: var(--color-fondo-terciario);
-}
-
-.partials_contenedor_slider_encuesta .swiper-slide .marca {
-    max-width: 12rem;
-    overflow: hidden;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 1px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    color: var(--color-texto-terciario);
-}
-
-.partials_contenedor_slider_encuesta .swiper-slide .titulo {
-    height: 34px;
-    overflow: hidden;
-    margin-bottom: 8px;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 1.2;
-    color: var(--color-texto-terciario);
 }
 
 /* CONTROLES */
@@ -86,13 +50,13 @@
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    color: var(--color-texto-senario);
+    color: var(--color-control-slider-texto);
 }
 
 .partials_contenedor_slider_encuesta .swiper-button-next:hover,
 .partials_contenedor_slider_encuesta .swiper-button-prev:hover {
-    background: var(--color-fondo-senario);
-    color: var(--color-texto-septenario);
+    background: var(--fondo-control-slider-fondo);
+    color: var(--color-control-slider-texto-hover);
 }
 
 .partials_contenedor_slider_encuesta .swiper-button-next:after,
@@ -102,12 +66,12 @@
 
 .partials_contenedor_slider_encuesta .swiper-button-prev {
     left: 10px;
-    box-shadow: var(--sombra-secundario-izquierda)
+    box-shadow: var(--sombra-control-slider-izquierda)
 }
 
 .partials_contenedor_slider_encuesta .swiper-button-next {
     right: 10px;
-    box-shadow: var(--sombra-secundario-derecha)
+    box-shadow: var(--sombra-control-slider-derecha)
 }
 
 /* SLIDER THUMBNAILS */
@@ -116,7 +80,7 @@
 }
 
 .partials_contenedor_slider_encuesta .swiper-pagination-bullet {
-    background-color: var(--color-fondo-senario);
+    background-color: var(--fondo-control-slider-fondo);
     width: 8px;
     height: 8px;
     opacity: 1;
@@ -124,5 +88,5 @@
 }
 
 .partials_contenedor_slider_encuesta .swiper-pagination-bullet-active {
-    background-color: var(--color-fondo-septenario);
+    background-color: var(--fondo-control-slider-fondo-active);
 }
