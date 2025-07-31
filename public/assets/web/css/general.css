@@ -183,6 +183,21 @@
     color: var(--color-primario-hover);
 }
 
+/*BOTON SIGUIENTE*/
+.boton_siguiente {
+    background: var(--color-fondo-primario);
+    color: var(--color-texto-secundario);
+    border-radius: 30px;
+    padding: 3px 15px;
+    text-align: center;
+    width: 180px;
+}
+
+.boton_siguiente:hover {
+    background: var(--color-fondo-terciario);
+}
+
+
 @media (max-width: 1024px) {
 
     /* CONTENEDOR LAYOUT WEB */

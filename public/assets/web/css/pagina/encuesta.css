@@ -1,41 +1,19 @@
-.titulares {
+.partials_contendor_encuesta {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.partials_contendor_encuesta .titulares {
     margin-top: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.titulares h4 {
-    font-size: 24px;
-    font-weight: 700;
     text-align: center;
 }
 
-.titulares h3 {
-    font-size: 20px;
-    font-weight: 700;
-    text-align: center;
-}
 
-.contendor_encuesta {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.boton_resultado {
-    background: var(--color-fondo-primario);
-    color: var(--color-texto-secundario);
-    border-radius: 30px;
-    padding: 10px 15px;
-    text-align: center;
-}
-
-.boton_resultado:hover {
-    background: var(--color-fondo-terciario);
-}
-
-/**/
+/*LISTA CUADRICULA CANDIDATOS*/
 .lista_cuadricula_candidatos {
     display: grid;
     grid-template-columns: repeat(5, 1fr);

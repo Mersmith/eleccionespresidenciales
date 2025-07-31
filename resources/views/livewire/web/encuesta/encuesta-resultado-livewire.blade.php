@@ -1,59 +1,82 @@
-<div class="contenedor_pagina_candidato">
-    <div class="centrar">
-        <div class="contenedor_bloque">
-            <div class="grid_pagina_candidato">
-                <!-- INFORMACION -->
-                <div class="columna_informacion">
-                    <div class="contenedor_encuesta_resultado">
-                        <h1 class="titulo">{{ $encuesta->nombre }}</h1>
-                        <p class="descripcion">{{ $encuesta->descripcion }}</p>
+<div class="g_contenedor_pagina">
+    <div class="g_centrar_pagina">
 
-                        @php
-                            $totalVotos = $resultados->sum('votos');
-                        @endphp
+        <div class="g_pading_pagina g_gap_pagina">
 
-                        <p class="total-votos">Total de votos: <strong>{{ $totalVotos }}</strong></p>
+            <div class="g_grid_pagina_2_columnas">
+                <!-- COLUMNA 1 -->
+                <div class="g_grid_columna_1">
 
-                        @foreach ($resultados as $item)
+                    @php
+                        $totalVotos = $resultados->sum('votos');
+                    @endphp
+
+                    <div class="partials_contendor_encuesta">
+                        <div class="titulares">
+                            <h4 class="g_texto_nivel_6">ENCUESTA</h4>
+                            {{-- <h3 class="g_texto_nivel_6">{{ $encuesta->nombre }} </h3> --}}
+                            <p class="g_texto_nivel_2">
+                                <strong>Inicio:</strong> {{ $encuesta->fecha_inicio_formateada }} |
+                                <strong>Fin:</strong> {{ $encuesta->fecha_fin_formateada }}
+                            </p>
+                            <p class="g_texto_nivel_1"><i class="fas fa-user-tie"></i>
+                                {{ $encuesta->cargo->nombre ?? '-' }}</p>
+
                             @php
-                                $porcentaje = $totalVotos > 0 ? round(($item['votos'] / $totalVotos) * 100, 2) : 0;
+                                $ubicacion = collect([
+                                    $encuesta->pais?->nombre,
+                                    $encuesta->region?->nombre,
+                                    $encuesta->provincia?->nombre,
+                                    $encuesta->distrito?->nombre,
+                                ])
+                                    ->filter()
+                                    ->join(' / ');
                             @endphp
-                            <div class="candidato-item">
-                                <div class="foto-contenedor">
-                                    <img src="{{ $item['candidato_foto'] }}" alt="Candidato" class="foto-candidato">
-                                    <img src="{{ $item['partido_foto'] }}" alt="Partido" class="logo-partido">
-                                </div>
-                                <div class="info-candidato">
-                                    <div class="nombre-candidato">{{ $item['candidato_nombre'] }}</div>
-                                    <div class="nombre-partido">{{ $item['partido_nombre'] }}</div>
-                                    <div class="barra-voto">
-                                        <div class="barra-progreso" style="width: {{ $porcentaje }}%"></div>
+
+                            <span class="g_texto_nivel_3">
+                                <i class="fas fa-map-marker-alt"></i> {{ $ubicacion }}
+                            </span>
+                        </div>
+
+                        <div class="grafico_horizontal">
+                            <p class="g_texto_nivel_3">Total de votos: <strong>{{ $totalVotos }}</strong></p>
+
+                            @foreach ($resultados as $item)
+                                @php
+                                    $porcentaje = $totalVotos > 0 ? round(($item['votos'] / $totalVotos) * 100, 2) : 0;
+                                @endphp
+                                <div class="candidato-item">
+                                    <div class="foto_contenedor">
+                                        <img src="{{ $item['candidato_foto'] }}" alt="Candidato" class="foto-candidato">
+                                        <img src="{{ $item['partido_foto'] }}" alt="Partido" class="logo-partido">
+                                    </div>
+                                    <div class="info_candidato">
+                                        <div class="nombre_candidato">{{ $item['candidato_nombre'] }}</div>
+                                        <div class="nombre_partido">{{ $item['partido_nombre'] }}</div>
+                                        <div class="barra_voto">
+                                            <div class="barra_progreso" style="width: {{ $porcentaje }}%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="votos_dato">
+                                        <div class="cantidad_votos">{{ $item['votos'] }} votos</div>
+                                        <div class="porcentaje">{{ $porcentaje }}%</div>
                                     </div>
                                 </div>
-                                <div class="votos-dato">
-                                    <div class="cantidad-votos">{{ $item['votos'] }} votos</div>
-                                    <div class="porcentaje">{{ $porcentaje }}%</div>
-                                </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
 
 
+                        <div class="grafico_vertical">
+                            <p class="g_texto_nivel_3">Total de votos: <strong>{{ $totalVotos }}</strong></p>
 
-                        <div class="barra_ga">
-                            @php
-                                $totalVotos = $resultados->sum('votos');
-                            @endphp
-
-                            <p class="total-votos">Total de votos: <strong>{{ $totalVotos }}</strong></p>
-
-                            <div class="grafico-barras-scroll">
+                            <div class="grafico_barras_scroll">
                                 <div class="grafico">
                                     @foreach ($resultados as $item)
                                         @php
                                             $porcentaje =
                                                 $totalVotos > 0 ? round(($item['votos'] / $totalVotos) * 100, 2) : 0;
                                         @endphp
-                                        <div class="barra-container">
+                                        <div class="barra_container">
                                             <div class="barra" style="height: {{ $porcentaje }}%">
                                                 <img src="{{ $item['partido_foto'] }}" class="logo" alt="Partido">
                                             </div>
@@ -63,14 +86,19 @@
                             </div>
                         </div>
 
-
+                        <a class="boton_siguiente"
+                            href="{{ route('encuesta', ['id' => $encuesta->id, 'slug' => $encuesta->slug]) }}">
+                            Ver encuesta
+                        </a>
                     </div>
                 </div>
 
-                <!-- PUBLICIDAD -->
-                <div class="columna_publicidad">
+                <!-- COLUMNA 2 -->
+                <div class="g_grid_columna_2">
                     @include('web.partials.columna-publicidad')
                 </div>
+
             </div>
         </div>
     </div>
+</div>
