@@ -41,7 +41,7 @@
     .contenedor_pagina_candidato .grid_pagina_candidato {
         grid-template-areas: "columna_informacion"
             "columna_publicidad";
-        grid-template-columns: auto;
+        grid-template-columns: 100%;
         grid-gap: 0px;
     }
 }
