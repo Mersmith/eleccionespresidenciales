@@ -1,15 +1,15 @@
 @if (!empty($p_elemento))
-    <div class="partials_contenedor_lista_encuesta">
-        <h2 class="titulo_encuestas">Últimas encuestas donde participa</h2>
+    <div class="partials_contenedor_lista_encuesta g_card_panel">
+        <h2 class="g_texto_nivel_6 g_texto_borde_izquierdo g_texto_subrayado">Úlimas participaciones</h2>
 
         @foreach ($p_elemento as $index => $item)
             <div class="encuesta_item">
                 <a href="{{ route('encuesta', ['id' => $item->id, 'slug' => $item->slug]) }}" class="imagen_container">
                     <img src="{{ $item->eleccion->imagen_ruta }}" alt="Imagen" class="imagen_encuesta">
                     @if ($item->ya_finalizo)
-                        <span class="estado_finalizado">Finalizada</span>
+                        <span class="g_etiqueta g_etiqueta_desactivo">Finalizada</span>
                     @else
-                        <span class="estado_activo">{{ $item->fecha_fin_formateada }}</span>
+                        <span class="g_etiqueta g_etiqueta_activo">{{ $item->fecha_fin_formateada }}</span>
                     @endif
                 </a>
 
@@ -25,23 +25,23 @@
                             ->join(' / ');
                     @endphp
 
-                    <div class="ubicacion">
+                    <div class="g_texto_nivel_3">
                         {{ $ubicacion }}
                     </div>
 
-                    <h3 class="nombre_encuesta">{{ $item->nombre }}</h3>
-                    <p class="cargo_encuesta"><strong>Cargo:</strong> {{ $item->cargo->nombre ?? '-' }}</p>
+                    <h3 class="g_texto_nivel_4">{{ $item->nombre }}</h3>
+                    <p class="g_texto_nivel_2"><strong>Cargo:</strong> {{ $item->cargo->nombre ?? '-' }}</p>
 
-                    <p class="fechas_encuesta">
+                    <p class="g_texto_nivel_2">
                         <strong>Inicio:</strong> {{ $item->fecha_inicio_formateada }} |
                         <strong>Fin:</strong> {{ $item->fecha_fin_formateada }}
                     </p>
 
-                    <p class="descripcion_encuesta">{{ $item->descripcion }}</p>
+                    <p class="g_texto_descripcion">{{ $item->descripcion }}</p>
 
                     <div class="ver_mas_container">
                         <a href="{{ route('encuesta', ['id' => $item->id, 'slug' => $item->slug]) }}"
-                            class="ver_mas_btn">
+                            class="g_ver_mas_btn">
                             Ver encuesta <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>

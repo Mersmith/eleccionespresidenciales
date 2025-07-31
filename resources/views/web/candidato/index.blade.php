@@ -4,12 +4,14 @@
 @section('descripcion', 'Tendencias Market')
 
 @section('content')
-    <div class="contenedor_pagina_candidato">
-        <div class="centrar">
-            <div class="contenedor_bloque">
-                <div class="grid_pagina_candidato">
-                    <!-- INFORMACION -->
-                    <div class="columna_informacion">
+    <div class="g_contenedor_pagina">
+        <div class="g_centrar_pagina">
+
+            <div class="g_pading_pagina g_gap_pagina">
+
+                <div class="g_grid_pagina_2_columnas">
+                    <!-- COLUMNA 1 -->
+                    <div class="g_grid_columna_1">
                         <!-- PERFIL -->
                         @include('web.partials.perfil-candidato', [
                             'p_elemento' => $candidato_partido,
@@ -36,8 +38,8 @@
 
                     </div>
 
-                    <!-- PUBLICIDAD -->
-                    <div class="columna_publicidad">
+                    <!-- COLUMNA 2 -->
+                    <div class="g_grid_columna_2">
                         @include('web.partials.columna-publicidad')
                     </div>
 

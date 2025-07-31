@@ -1,49 +1,6 @@
-.contenedor_pagina_candidato {
-    background-color: #fafafa;
-}
-
-.contenedor_pagina_candidato .centrar {
-    margin: 0 auto;
-    max-width: 1280px;
-    width: 100%;
-}
-
-/*.contenedor_pagina_candidato .contenedor_bloque {
-    background-color: #ffffff;
-}*/
-
-.contenedor_pagina_candidato .grid_pagina_candidato {
-    width: 100%;
-    display: grid;
-    grid-template-areas: "columna_informacion columna_publicidad";
-    grid-template-columns: 70% 30%;
-    padding: 20px 0px;
-    /*grid-gap: 40px;*/
-}
-
-/* INFORMACION */
-.contenedor_pagina_candidato .grid_pagina_candidato .columna_informacion {
-    grid-area: columna_informacion;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-/* PUBLICIDAD */
-.contenedor_pagina_candidato .grid_pagina_candidato .columna_publicidad {
-    grid-area: columna_publicidad;
-}
-
-/****/
 
 
 @media (max-width:1024px) {
-    .contenedor_pagina_candidato .grid_pagina_candidato {
-        grid-template-areas: "columna_informacion"
-            "columna_publicidad";
-        grid-template-columns: 100%;
-        grid-gap: 0px;
-    }
 }
 
 @media (max-width: 700px) {

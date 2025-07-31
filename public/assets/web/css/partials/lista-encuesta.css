@@ -1,16 +1,8 @@
 .partials_contenedor_lista_encuesta {
     background-color: var(--color-fondo-secundario);
-    padding: 20px;
-    box-shadow: var(--sombra);
-}
-
-.partials_contenedor_lista_encuesta .titulo_encuestas {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    border-left: 4px solid var(--color-borde-terciario);
-    padding-left: 10px;
-    color: var(--color-texto-terciario);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .partials_contenedor_lista_encuesta .encuesta_item {
@@ -44,75 +36,18 @@
     display: block;
 }
 
-.partials_contenedor_lista_encuesta .estado_activo,
-.partials_contenedor_lista_encuesta .estado_finalizado {
+.partials_contenedor_lista_encuesta .encuesta_item a span {
     position: absolute;
     top: 8px;
     left: 8px;
-    padding: 4px 8px;
-    font-size: 12px;
-    font-weight: bold;
-    border-radius: 5px;
-    color: var(--color-texto-secundario);
-}
-
-.partials_contenedor_lista_encuesta .estado_activo {
-    background-color: var(--color-fondo-primario);
-}
-
-.partials_contenedor_lista_encuesta .estado_finalizado {
-    background-color: var(--color-fondo-terciario);
 }
 
 .partials_contenedor_lista_encuesta .detalle_encuesta {
     flex: 1;
 }
 
-.partials_contenedor_lista_encuesta .ubicacion {
-    font-size: 14px;
-    color: var(--color-texto-quinario);
-    margin-bottom: 5px;
-}
-
-.partials_contenedor_lista_encuesta .nombre_encuesta {
-    font-size: 18px;
-    font-weight: bold;
-    color: var(--color-texto-terciario);
-    margin-bottom: 5px;
-}
-
-.partials_contenedor_lista_encuesta .cargo_encuesta,
-.partials_contenedor_lista_encuesta .fechas_encuesta {
-    font-size: 13px;
-    color: var(--color-texto-cuaternario);
-    margin-bottom: 5px;
-}
-
-
-.partials_contenedor_lista_encuesta .descripcion_encuesta {
-    line-height: 1.4;
-    max-height: 4.2em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3; 
-    -webkit-box-orient: vertical;
-}
-
 .partials_contenedor_lista_encuesta .ver_mas_container {
     margin-top: 10px;
-}
-
-.partials_contenedor_lista_encuesta .ver_mas_btn {
-    font-size: 13px;
-    color: var(--color-fondo-primario);
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.2s;
-}
-
-.partials_contenedor_lista_encuesta .ver_mas_btn:hover {
-    color: var(--color-primario-hover);
 }
 
 @media (max-width: 700px) {
@@ -120,7 +55,7 @@
         flex-direction: column;
     }
 
-    .partials_contenedor_lista_encuesta .imagen_container{
+    .partials_contenedor_lista_encuesta .imagen_container {
         width: 100%;
         height: auto;
     }

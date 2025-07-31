@@ -2,17 +2,7 @@
     background-color: var(--color-fondo-secundario);
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    padding: 20px;
-    box-shadow: var(--sombra);
-}
-
-.partials_contenedor_candidatura_cargo h2 {
-    font-size: 24px;
-    font-weight: 600;
-    color: var(--color-texto-terciario);
-    border-bottom: 1px solid var(--color-borde-noveno);
-    padding-bottom: 8px;
+    gap: 10px; 
 }
 
 .partials_contenedor_candidatura_cargo .item {
@@ -25,37 +15,4 @@
 
 .partials_contenedor_candidatura_cargo .item:hover {
     background-color: var(--color-fondo-undecimo);
-}
-
-.partials_contenedor_candidatura_cargo .item h2 {
-    font-size: 24px;
-    line-height: 24px;
-    margin: 4px 0;
-    font-weight: 700;
-}
-
-.partials_contenedor_candidatura_cargo .item h4 {
-    font-size: 18px;
-    line-height: 24px;
-    font-weight: 600;
-}
-
-.partials_contenedor_candidatura_cargo .item h5 {
-    font-size: 18px;
-    color: var(--color-texto-quinario);
-}
-
-.partials_contenedor_candidatura_cargo .item .partido {
-    font-size: 16px;
-    color: var(--color-texto-quinario);
-}
-
-.partials_contenedor_candidatura_cargo .item .ubicacion {
-    display: inline-block;
-    font-size: 15px;
-    color: var(--color-texto-quinario);
-}
-
-.partials_contenedor_candidatura_cargo .item i {
-    color: var(--color-texto-terciario);
 }

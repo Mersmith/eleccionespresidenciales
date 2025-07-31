@@ -36,6 +36,25 @@
     margin-top: 40px;
 }
 
+/*GRID PAGINA COLUMNA*/
+.g_grid_pagina_2_columnas {
+    width: 100%;
+    display: grid;
+    grid-template-areas: "g_grid_columna_1 g_grid_columna_2";
+    grid-template-columns: 70% 30%;
+}
+
+.g_grid_pagina_2_columnas .g_grid_columna_1 {
+    grid-area: g_grid_columna_1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.g_grid_pagina_2_columnas .g_grid_columna_2 {
+    grid-area: g_grid_columna_2;
+}
+
 /* CONTENEDOR SUPONER */
 .contenedor_superponer {
     z-index: 600;
@@ -52,6 +71,12 @@
 
 .contenedor_superponer[x-show="true"] {
     display: block;
+}
+
+/* CARD */
+.g_card_panel {
+    padding: 20px;
+    box-shadow: var(--sombra);
 }
 
 /* TEXTO */
@@ -78,9 +103,9 @@
 }
 
 .g_texto_nivel_4 {
-    height: 34px;
+    /*height: 34px;*/
     overflow: hidden;
-    margin-bottom: 8px;
+    /*margin-bottom: 8px;*/
     font-weight: 700;
     font-size: 14px;
     line-height: 1.2;
@@ -92,6 +117,39 @@
     font-weight: 400;
     font-size: 15px;
     line-height: 1;
+}
+
+.g_texto_nivel_6 {
+    font-size: 24px;
+    line-height: 24px;
+    margin: 4px 0;
+    font-weight: 700;
+    color: var(--color-texto-terciario);
+}
+
+.g_texto_nivel_7 {
+    font-size: 17px;
+    color: var(--color-texto-terciario);
+}
+
+.g_texto_subrayado {
+    border-bottom: 1px solid var(--color-borde-noveno);
+    padding-bottom: 10px;
+}
+
+.g_texto_borde_izquierdo {
+    border-left: 4px solid var(--color-borde-terciario);
+    padding-left: 10px;
+}
+
+.g_texto_descripcion {
+    line-height: 1.4;
+    max-height: 4.2em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 /*ETIQUETA*/
@@ -112,6 +170,19 @@
     background-color: var(--color-fondo-terciario);
 }
 
+/* VER MAS */
+.g_ver_mas_btn {
+    font-size: 13px;
+    color: var(--color-fondo-primario);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.g_ver_mas_btn:hover {
+    color: var(--color-primario-hover);
+}
+
 @media (max-width: 1024px) {
 
     /* CONTENEDOR LAYOUT WEB */
@@ -119,6 +190,12 @@
         margin-top: var(--altura-header-principal-movil);
     }
 
+    .g_grid_pagina_2_columnas {
+        grid-template-areas: "g_grid_columna_1"
+            "g_grid_columna_2";
+        grid-template-columns: 100%;
+        grid-gap: 10px;
+    }
 }
 
 @media (max-width: 700px) {
