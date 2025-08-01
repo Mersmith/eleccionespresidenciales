@@ -1,11 +1,3 @@
-.contenedor_filtros {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    background-color: var(--color-fondo-secundario);
-    padding: 10px;
-}
-
 .contenedor_filtros div{
     display: flex;
     flex-direction: column;

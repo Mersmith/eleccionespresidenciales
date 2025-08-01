@@ -6,7 +6,7 @@
             <div class="g_grid_pagina_filtro">
                 <!-- COLUMNA 1 -->
                 <div class="g_grid_columna_1">
-                    <div class="contenedor_filtros">
+                    <div class="contenedor_filtros g_card_panel g_card_flex_column">
 
                         <h4 class="g_texto_nivel_6">Filtros</h4>
 
@@ -14,7 +14,7 @@
                             <label for="tipoEleccionSeleccionada" class="g_texto_nivel_4">Tipo elección:</label>
                             <select wire:model.live="tipoEleccionSeleccionada" id="tipoEleccionSeleccionada"
                                 name="tipoEleccionSeleccionada">
-                                <option value="">Selecciona tipo de elección</option>
+                                <option value="" disabled>Selecciona tipo de elección</option>
                                 @foreach ($tipos_elecciones as $tipo)
                                     <option value="{{ $tipo->id }}">{{ $tipo->nombre }}</option>
                                 @endforeach
@@ -26,7 +26,7 @@
                                 <label for="eleccionSeleccionada" class="g_texto_nivel_4">Elección:</label>
                                 <select wire:model.live="eleccionSeleccionada" id="eleccionSeleccionada"
                                     name="eleccionSeleccionada">
-                                    <option value="">Selecciona elección</option>
+                                    <option value="" disabled>Selecciona elección</option>
                                     @foreach ($elecciones as $eleccion)
                                         <option value="{{ $eleccion->id }}">{{ $eleccion->nombre }}</option>
                                     @endforeach
@@ -39,7 +39,7 @@
                                 <label for="cargoSeleccionada" class="g_texto_nivel_4">Cargo:</label>
                                 <select wire:model.live="cargoSeleccionada" id="cargoSeleccionada"
                                     name="cargoSeleccionada">
-                                    <option value="">Selecciona cargo</option>
+                                    <option value="" disabled>Selecciona cargo</option>
                                     @foreach ($cargos as $cargo)
                                         <option value="{{ $cargo->id }}">{{ $cargo->nombre }}</option>
                                     @endforeach
@@ -52,7 +52,7 @@
                                 <label for="regionSeleccionada" class="g_texto_nivel_4">Región:</label>
                                 <select wire:model.live="regionSeleccionada" id="regionSeleccionada"
                                     name="regionSeleccionada">
-                                    <option value="">Selecciona region</option>
+                                    <option value="" disabled>Selecciona region</option>
                                     @foreach ($regiones as $region)
                                         <option value="{{ $region->id }}">{{ $region->nombre }}</option>
                                     @endforeach
@@ -65,7 +65,7 @@
                                 <label for="provinciaSeleccionada" class="g_texto_nivel_4">Provincia:</label>
                                 <select wire:model.live="provinciaSeleccionada" id="provinciaSeleccionada"
                                     name="provinciaSeleccionada">
-                                    <option value="">Selecciona provincia</option>
+                                    <option value="" disabled>Selecciona provincia</option>
                                     @foreach ($provincias as $provincia)
                                         <option value="{{ $provincia->id }}">{{ $provincia->nombre }}</option>
                                     @endforeach
@@ -78,7 +78,7 @@
                                 <label for="distritoSeleccionada" class="g_texto_nivel_4">Distrito:</label>
                                 <select wire:model.live="distritoSeleccionada" id="distritoSeleccionada"
                                     name="distritoSeleccionada">
-                                    <option value="">Selecciona distrito</option>
+                                    <option value="" disabled>Selecciona distrito</option>
                                     @foreach ($distritos as $distrito)
                                         <option value="{{ $distrito->id }}">{{ $distrito->nombre }}</option>
                                     @endforeach
@@ -87,8 +87,7 @@
                         @endif
 
 
-                        <button wire:click="limpiarFiltros" type="button"
-                            class="boton_siguiente">
+                        <button wire:click="limpiarFiltros" type="button" class="boton_siguiente">
                             Limpiar filtros
                         </button>
                     </div>
@@ -97,12 +96,18 @@
                 <!-- COLUMNA 2 -->
                 <div class="g_grid_columna_2">
                     @if ($encuestas->count())
-                        @include('web.partials.lista-encuesta', [
-                            'p_elemento' => $encuestas,
-                        ])
+                        <div class="g_card_panel g_card_partial_column">
+                            <h2 class="g_texto_nivel_6 g_texto_borde_izquierdo g_texto_subrayado">Encuestas
+                            </h2>
+
+                            @include('web.partials.lista-encuesta', [
+                                'p_elemento' => $encuestas,
+                            ])
+
+                            {{ $encuestas->links() }}
+                        </div>
                     @endif
 
-                    {{ $encuestas->links() }}
                 </div>
 
             </div>

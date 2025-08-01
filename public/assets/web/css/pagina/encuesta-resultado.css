@@ -61,7 +61,7 @@
 
 .grafico_horizontal .barra_progreso {
     height: 100%;
-    background-color: #3490dc;
+    background-color: #3498db;
 }
 
 .grafico_horizontal .votos_dato {
@@ -81,6 +81,8 @@
     color: #666;
 }
 
+
+/*GRAFICO VERTICAL*/
 .grafico_vertical .grafico_barras_scroll {
     overflow-x: auto;
     overflow-y: hidden;
@@ -101,11 +103,12 @@
     height: 300px;
     min-width: fit-content;
     gap: 10px;
+    justify-content: space-between;
 }
 
 .grafico_vertical .barra_container {
     position: relative;
-    width: 40px;
+    width: 35px;
     height: 100%;
     background: #f0f0f0;
     display: flex;
