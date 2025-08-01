@@ -18,13 +18,10 @@
 
             <!-- BUSCADOR PRINCIPAL -->
             <div class="buscador_principal">
-                <div class="contenedor_input_buscador_principal">
-                    <input type="text" placeholder="Busca a tu candidato..." name="buscar_producto" id="buscar_producto" />
-                </div>
 
-                <button>
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
+                @livewire('web.header.web-buscar-livewire')
+                
+               
             </div>
 
             <!-- MENU HAMBURGUESA COMPUTADORA -->

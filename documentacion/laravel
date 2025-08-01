@@ -121,6 +121,7 @@ Al agregar candidato a una encuesta, se fije cuantos cargos tienes y si puede en
 -----------
 
 php artisan make:livewire Web/Header/WebHeaderLivewire
+php artisan make:livewire Web/Header/WebBuscarLivewire
 
 php artisan make:model Slider -mfsc
 
