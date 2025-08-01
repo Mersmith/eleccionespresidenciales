@@ -97,7 +97,28 @@
     --sombra-control-slider-derecha: -2px 0 5px -2px rgba(0, 0, 0, 0.2);
 
     /*CARD*/
-    --color-borde-card: #ffffff;
-    
+    --color-borde-card-imagen: #ffffff;
+
+    /*FONDOS*/
+    --color-fondo-global-1: #1c1c1d;
+    --color-texto-global-1-contraste: #ffffff;
+
+    --color-fondo-global-2: #ffffff;
+    --color-texto-global-2-contraste: #1c1c1d;
+
+    --color-fondo-etiqueta-1: #1c1c1d;
+    --color-fondo-etiqueta-2: #392385;
+    --color-texto-etiqueta-constraste: #ffffff;
+
+    /*TEXTOS*/
+    --color-texto-opaco: #778089;
+
+    /*LIST*/
+    --color-fondo-lista: #f9f9f9;
+    --color-fondo-lista-hober: #f0f0f0;
+    --color-border-lista: #1c1c1d;
+    --color-border-card: #e5e5e5;
+
+
 
 }

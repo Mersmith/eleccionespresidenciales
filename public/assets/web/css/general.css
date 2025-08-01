@@ -98,6 +98,8 @@
 .g_card_panel {
     padding: 20px;
     box-shadow: var(--sombra);
+    background-color: var(--color-fondo-secundario);
+    gap: 10px;
 }
 
 /* TEXTO */
@@ -180,15 +182,15 @@
     font-weight: 700;
     font-size: 12px;
     line-height: 14.4px;
-    color: var(--color-texto-secundario);
+    color: var(--color-texto-global-1-contraste);
 }
 
 .g_etiqueta_activo {
-    background-color: var(--color-fondo-primario);
+    background-color: var(--color-fondo-etiqueta-2);
 }
 
 .g_etiqueta_desactivo {
-    background-color: var(--color-fondo-terciario);
+    background-color: var(--color-fondo-etiqueta-1);
 }
 
 /* VER MAS */
@@ -252,6 +254,34 @@
     display: none;
     height: 0;
     width: 0;
+}
+
+/*CONTROL MOSTRAR*/
+.g_contenedor_control_mostrar {
+    margin-top: 20px;
+    text-align: end;
+}
+
+.g_contenedor_control_mostrar p {
+    cursor: pointer;
+    padding-right: 0.875rem;
+    text-decoration: underline;
+    letter-spacing: .1163rem;
+    color: var(--color-texto-opaco);
+}
+
+.g_contenedor_control_mostrar span {
+    position: absolute;
+}
+
+.g_contenedor_control_mostrar .invertido {
+    transform: translateY(-45%) rotate(180deg);
+    margin-top: 10px;
+}
+
+.g_contenedor_control_mostrar .normal {
+    margin-top: 5px;
+    margin-left: 2px;
 }
 
 @media (max-width: 1024px) {

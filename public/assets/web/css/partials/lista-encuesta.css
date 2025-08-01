@@ -1,5 +1,4 @@
 .partials_contenedor_lista_encuesta {
-    background-color: var(--color-fondo-secundario);
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -8,10 +7,10 @@
 .partials_contenedor_lista_encuesta .encuesta_item {
     display: flex;
     gap: 20px;
-    border: 1px solid var(--color-borde-noveno);
+    border: 1px solid var(--color-border-card);
     padding: 15px;
     border-radius: 10px;
-    background: var(--color-fondo-decimo);
+    background: var(--color-fondo-lista);
     transition: box-shadow 0.3s ease;
 }
 

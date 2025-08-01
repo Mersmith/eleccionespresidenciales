@@ -1,18 +1,16 @@
 .partials_contenedor_candidatura_cargo {
-    background-color: var(--color-fondo-secundario);
     display: flex;
     flex-direction: column;
-    gap: 10px; 
 }
 
 .partials_contenedor_candidatura_cargo .item {
-    background-color: var(--color-fondo-decimo);
+    background-color: var(--color-fondo-lista);
     padding: 16px;
     border-radius: 8px;
-    border-left: 4px solid var(--color-fondo-terciario);
+    border-left: 4px solid var(--color-border-lista);
     transition: background-color 0.2s ease;
 }
 
 .partials_contenedor_candidatura_cargo .item:hover {
-    background-color: var(--color-fondo-undecimo);
+    background-color: var(--color-fondo-lista-hober);
 }

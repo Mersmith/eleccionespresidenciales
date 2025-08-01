@@ -12,6 +12,7 @@
                 <div class="g_grid_pagina_2_columnas">
                     <!-- COLUMNA 1 -->
                     <div class="g_grid_columna_1">
+
                         <!-- PERFIL -->
                         @include('web.partials.perfil-candidato', [
                             'p_elemento' => $candidato_partido,
@@ -31,9 +32,14 @@
                         @endif
 
                         @if ($candidato_encuestas_participaciones->count())
-                            @include('web.partials.lista-encuesta', [
-                                'p_elemento' => $candidato_encuestas_participaciones,
-                            ])
+                            <div class="g_card_panel g_card_partial_column">
+                                <h2 class="g_texto_nivel_6 g_texto_borde_izquierdo g_texto_subrayado">Úlimas participaciones
+                                </h2>
+
+                                @include('web.partials.lista-encuesta', [
+                                    'p_elemento' => $candidato_encuestas_participaciones,
+                                ])
+                            </div>
                         @endif
 
                     </div>

@@ -1,7 +1,5 @@
 .partials_contenedor_perfil_candidato {
-    background-color: var(--color-fondo-secundario);
     display: flex;
-    gap: 10px; 
 }
 
 .partials_contenedor_perfil_candidato .candidato_imagen_contenedor {
@@ -27,6 +25,7 @@
     border: 2px solid var(--color-borde-card);
 }
 
+/* NOMBRES PARTIDO */
 .partials_contenedor_perfil_candidato .nombres_partido {
     display: flex;
     flex-direction: column;
@@ -57,7 +56,6 @@
 
     .partials_contenedor_perfil_candidato .nombres_partido {
         gap: 20px;
-
     }
 
     .partials_contenedor_perfil_candidato .nombres_partido .nombres {

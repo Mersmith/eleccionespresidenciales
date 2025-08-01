@@ -3,7 +3,7 @@
     position: relative;
     width: 100%;
     padding: 10px;
-    background-color: var(--color-fondo-terciario);
+    background-color: var(--color-fondo-global-1);
 }
 
 /*CONTENEDOR FECHA HORA*/
@@ -25,7 +25,7 @@
     font-weight: 700;
     font-size: 28px;
     letter-spacing: .125rem;
-    color: var(--color-texto-secundario);
+    color: var(--color-texto-global-1-contraste);
 }
 
 .partials_contenedor_temporizador .contenedor_fecha_hora .contenedor_hora {
@@ -38,12 +38,12 @@
     height: 34px;
     display: inline-block;
     /*padding-top: 3px;*/
-    background-color: var(--color-fondo-secundario);
+    background-color: var(--color-fondo-global-2);
     border-radius: 5px;
     text-align: center;
     font-weight: 700;
     font-size: 22px;
-    color: var(--color-texto-primario);
+    color: var(--color-texto-global-2-contraste);
     vertical-align: middle;
     opacity: .95;
 }
@@ -52,7 +52,7 @@
     padding: 0px 2px;
     font-weight: 700;
     font-size: 1.3rem;
-    color: var(--color-texto-secundario);
+    color: var(--color-texto-global-1-contraste);
 }
 
 /* SLIDER */

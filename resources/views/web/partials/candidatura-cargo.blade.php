@@ -1,5 +1,5 @@
 @if (!empty($p_elemento))
-    <div class="partials_contenedor_candidatura_cargo g_card_panel">
+    <div class="partials_contenedor_candidatura_cargo g_card_panel g_card_partial_column">
         <h2 class="g_texto_nivel_6 g_texto_subrayado"><i class="fas fa-history"></i> Candidaturas</h2>
 
         @foreach ($p_elemento as $index => $item)

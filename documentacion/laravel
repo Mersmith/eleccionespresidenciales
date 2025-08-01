@@ -126,3 +126,22 @@ php artisan make:livewire Web/Header/WebBuscarLivewire
 php artisan make:model Slider -mfsc
 
 php artisan make:model Banner -mfsc
+
+
+PARTIALS Y PAGINAS
+INICIO
+slider-candidato ok
+temporizador ok
+slider-encuesta ok
+mostrador ok
+
+CANDIDATO
+perfil-candidato
+candidatura-cargo
+lista-encuesta
+
+PARTIDO 
+perfil-partido
+candidatura-cargo
+
+ENCUESTA

@@ -1,7 +1,5 @@
 @if (!empty($p_elemento))
-    <div class="partials_contenedor_lista_encuesta g_card_panel">
-        <h2 class="g_texto_nivel_6 g_texto_borde_izquierdo g_texto_subrayado">Úlimas participaciones</h2>
-
+    <div class="partials_contenedor_lista_encuesta">
         @foreach ($p_elemento as $index => $item)
             <div class="encuesta_item">
                 <a href="{{ route('encuesta', ['id' => $item->id, 'slug' => $item->slug]) }}" class="imagen_container">
