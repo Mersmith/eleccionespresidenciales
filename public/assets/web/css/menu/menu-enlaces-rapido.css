@@ -31,10 +31,10 @@
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: white;
+    background-color: var(--color-fondo-lista);
     min-width: 180px;
     border-radius: 6px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--sombra);
     padding: 10px 0;
     z-index: 999;
     max-height: 90vh;
@@ -46,13 +46,15 @@
 }
 
 .submenu_oculto li a {
-    color: black;
+    color: var(--color-fondo-etiqueta-1);
     text-decoration: none;
     display: block;
 }
 
 .submenu_oculto li:hover {
-    background-color: #f0f0f0;
+    background-color: var(--color-fondo-lista-hober);
+    color: var(--color-fondo-etiqueta-2);
+    font-weight: 600;
 }
 
 /* Mostrar submenú al hacer hover */

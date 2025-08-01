@@ -92,7 +92,7 @@
             </div>
 
             <!-- SIDEBAR CONTENIDO -->
-            <div class="sidebar_contenido">
+            <div class="sidebar_contenido g_scroll">
                 <div class="sidebar_cotenido_item">
 
                     <!-- CARGOS  - NIVEL 1-->
