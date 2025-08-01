@@ -1,0 +1,202 @@
+[
+    {
+        "id": 1,
+        "nombre": "PRESIDENTE",
+        "cargo_id": 1,
+        "region_id": "",
+        "provincia_id": "",
+        "distrito_id": "",
+        "submenu": []
+    },
+    {
+        "id": 1,
+        "nombre": "ALCALDÍA LIMA",
+        "cargo_id": 9,
+        "region_id": 14,
+        "provincia_id": 135,
+        "distrito_id": "",
+        "submenu": []
+    },
+    {
+        "id": 1,
+        "nombre": "DISTRITOS LIMA",
+        "cargo_id": 11,
+        "region_id": 14,
+        "provincia_id": 135,
+        "distrito_id": "",
+        "submenu": [
+            {
+                "distrito_id": 1338,
+                "nombre": "ANCON"
+            },
+            {
+                "distrito_id": 1339,
+                "nombre": "ATE"
+            },
+            {
+                "distrito_id": 1340,
+                "nombre": "BARRANCO"
+            },
+            {
+                "distrito_id": 1341,
+                "nombre": "BREÑA"
+            },
+            {
+                "distrito_id": 1342,
+                "nombre": "CARABAYLLO"
+            },
+            {
+                "distrito_id": 1343,
+                "nombre": "CHACLACAYO"
+            },
+            {
+                "distrito_id": 1344,
+                "nombre": "CHORRILLOS"
+            },
+            {
+                "distrito_id": 1345,
+                "nombre": "CIENEGUILLA"
+            },
+            {
+                "distrito_id": 1346,
+                "nombre": "COMAS"
+            },
+            {
+                "distrito_id": 1347,
+                "nombre": "EL AGUSTINO"
+            },
+            {
+                "distrito_id": 1348,
+                "nombre": "INDEPENDENCIA"
+            },
+            {
+                "distrito_id": 1349,
+                "nombre": "JESUS MARIA"
+            },
+            {
+                "distrito_id": 1350,
+                "nombre": "LA MOLINA"
+            },
+            {
+                "distrito_id": 1351,
+                "nombre": "LA VICTORIA"
+            },
+            {
+                "distrito_id": 1352,
+                "nombre": "LIMA"
+            },
+            {
+                "distrito_id": 1353,
+                "nombre": "LINCE"
+            },
+            {
+                "distrito_id": 1354,
+                "nombre": "LOS OLIVOS"
+            },
+            {
+                "distrito_id": 1355,
+                "nombre": "LURIGANCHO"
+            },
+            {
+                "distrito_id": 1356,
+                "nombre": "LURIN"
+            },
+            {
+                "distrito_id": 1357,
+                "nombre": "MAGDALENA DEL MAR"
+            },
+            {
+                "distrito_id": 1358,
+                "nombre": "MAGDALENA VIEJA"
+            },
+            {
+                "distrito_id": 1359,
+                "nombre": "MIRAFLORES"
+            },
+            {
+                "distrito_id": 1360,
+                "nombre": "PACHACAMAC"
+            },
+            {
+                "distrito_id": 1361,
+                "nombre": "PUCUSANA"
+            },
+            {
+                "distrito_id": 1362,
+                "nombre": "PUENTE PIEDRA"
+            },
+            {
+                "distrito_id": 1363,
+                "nombre": "PUNTA HERMOSA"
+            },
+            {
+                "distrito_id": 1364,
+                "nombre": "PUNTA NEGRA"
+            },
+            {
+                "distrito_id": 1365,
+                "nombre": "RIMAC"
+            },
+            {
+                "distrito_id": 1366,
+                "nombre": "SAN BARTOLO"
+            },
+            {
+                "distrito_id": 1367,
+                "nombre": "SAN BORJA"
+            },
+            {
+                "distrito_id": 1368,
+                "nombre": "SAN ISIDRO"
+            },
+            {
+                "distrito_id": 1369,
+                "nombre": "SAN JUAN DE LURIGANCHO"
+            },
+            {
+                "distrito_id": 1370,
+                "nombre": "SAN JUAN DE MIRAFLORES"
+            },
+            {
+                "distrito_id": 1371,
+                "nombre": "SAN LUIS"
+            },
+            {
+                "distrito_id": 1372,
+                "nombre": "SAN MARTIN DE PORRES"
+            },
+            {
+                "distrito_id": 1373,
+                "nombre": "SAN MIGUEL"
+            },
+            {
+                "distrito_id": 1374,
+                "nombre": "SANTA ANITA"
+            },
+            {
+                "distrito_id": 1375,
+                "nombre": "SANTA MARIA DEL MAR"
+            },
+            {
+                "distrito_id": 1376,
+                "nombre": "SANTA ROSA"
+            },
+            {
+                "distrito_id": 1377,
+                "nombre": "SANTIAGO DE SURCO"
+            },
+            {
+                "distrito_id": 1378,
+                "nombre": "SURQUILLO"
+            },
+            {
+                "distrito_id": 1379,
+                "nombre": "VILLA EL SALVADOR"
+            },
+            {
+                "distrito_id": 1380,
+                "nombre": "VILLA MARIA DEL TRIUNFO"
+            }
+        ]
+    }
+]

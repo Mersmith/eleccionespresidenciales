@@ -18,10 +18,7 @@
 
             <!-- BUSCADOR PRINCIPAL -->
             <div class="buscador_principal">
-
-                @livewire('web.header.web-buscar-livewire')
-                
-               
+                @livewire('web.header.web-buscar-livewire')               
             </div>
 
             <!-- MENU HAMBURGUESA COMPUTADORA -->
@@ -36,15 +33,7 @@
             <!-- MENU ENLACES RAPIDOS -->
             <ul class="menu_enlaces_rapidos">
                 <!-- ITEM CUENTA  -->
-                <li>
-                    <a>PRESIDENTE</a>
-                </li>
-                <li>
-                    <a>ALCALDÍA LIMA</a>
-                </li>
-                <li>
-                    <a>DISTRITOS LIMA <i class="fa-solid fa-angle-down"></i></a>
-                </li>
+                @include('components.layouts.web.menu.menu')
             </ul>
 
             <!-- MENU PRINCIPAL USUARIOS -->

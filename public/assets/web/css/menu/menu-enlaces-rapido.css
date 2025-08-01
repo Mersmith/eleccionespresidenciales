@@ -1,0 +1,61 @@
+.contenedor_menu_enlaces_rapido {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+    position: relative;
+    padding: 0;
+}
+
+.contenedor_menu_enlaces_rapido li {
+    position: relative;
+}
+
+.contenedor_menu_enlaces_rapido li > a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.icon_submenu {
+    font-size: 0.8em;
+}
+
+/* Submenú oculto */
+.submenu_oculto {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 180px;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    padding: 10px 0;
+    z-index: 999;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.submenu_oculto li {
+    padding: 8px 15px;
+}
+
+.submenu_oculto li a {
+    color: black;
+    text-decoration: none;
+    display: block;
+}
+
+.submenu_oculto li:hover {
+    background-color: #f0f0f0;
+}
+
+/* Mostrar submenú al hacer hover */
+.menu_item_con_submenu:hover .submenu_oculto {
+    display: block;
+}

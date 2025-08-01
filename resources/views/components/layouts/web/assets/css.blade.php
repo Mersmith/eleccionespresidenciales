@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="{{ asset('assets/web/css/menu/menu-cabecera.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/web/css/menu/menu-buscar.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/web/css/menu/menu-sidebar.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/web/css/menu/menu-enlaces-rapido.css') }}">
 
 <!--PIE-->
 <link rel="stylesheet" href="{{ asset('assets/web/css/pie/pie-pagina-enlaces.css') }}">

@@ -114,10 +114,7 @@
 .ecommerce_menu_principal .menu_enlaces_rapidos {
     grid-area: menu_enlaces_rapidos;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    color: white;
-    gap: 20px;
 }
 
 
