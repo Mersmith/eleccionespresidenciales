@@ -1,105 +1,112 @@
-<div>
-    <div>
-        <button wire:click="limpiarFiltros" type="button" class="px-3 py-1 bg-gray-300 text-black rounded">
-            Limpiar filtros
-        </button>
+<div class="g_contenedor_pagina">
+    <div class="g_centrar_pagina">
 
-        <h2>Tipos elecciones</h2>
+        <div class="g_pading_pagina g_gap_pagina">
 
-        <select wire:model.live="tipoEleccionSeleccionada">
-            <option value="">Selecciona tipo de elección</option>
-            @foreach ($tipos_elecciones as $tipo)
-            <option value="{{ $tipo->id }}">{{ $tipo->nombre }}</option>
-            @endforeach
-        </select>
+            <div class="g_grid_pagina_filtro">
+                <!-- COLUMNA 1 -->
+                <div class="g_grid_columna_1">
+                    <div class="contenedor_filtros">
+
+                        <h4 class="g_texto_nivel_6">Filtros</h4>
+
+                        <div>
+                            <label for="tipoEleccionSeleccionada" class="g_texto_nivel_4">Tipo elección:</label>
+                            <select wire:model.live="tipoEleccionSeleccionada" id="tipoEleccionSeleccionada"
+                                name="tipoEleccionSeleccionada">
+                                <option value="">Selecciona tipo de elección</option>
+                                @foreach ($tipos_elecciones as $tipo)
+                                    <option value="{{ $tipo->id }}">{{ $tipo->nombre }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        @if ($tipoEleccionSeleccionada)
+                            <div>
+                                <label for="eleccionSeleccionada" class="g_texto_nivel_4">Elección:</label>
+                                <select wire:model.live="eleccionSeleccionada" id="eleccionSeleccionada"
+                                    name="eleccionSeleccionada">
+                                    <option value="">Selecciona elección</option>
+                                    @foreach ($elecciones as $eleccion)
+                                        <option value="{{ $eleccion->id }}">{{ $eleccion->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endif
+
+                        @if ($eleccionSeleccionada)
+                            <div>
+                                <label for="cargoSeleccionada" class="g_texto_nivel_4">Cargo:</label>
+                                <select wire:model.live="cargoSeleccionada" id="cargoSeleccionada"
+                                    name="cargoSeleccionada">
+                                    <option value="">Selecciona cargo</option>
+                                    @foreach ($cargos as $cargo)
+                                        <option value="{{ $cargo->id }}">{{ $cargo->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endif
+
+                        @if ($cargoSeleccionada)
+                            <div>
+                                <label for="regionSeleccionada" class="g_texto_nivel_4">Región:</label>
+                                <select wire:model.live="regionSeleccionada" id="regionSeleccionada"
+                                    name="regionSeleccionada">
+                                    <option value="">Selecciona region</option>
+                                    @foreach ($regiones as $region)
+                                        <option value="{{ $region->id }}">{{ $region->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endif
+
+                        @if ($regionSeleccionada)
+                            <div>
+                                <label for="provinciaSeleccionada" class="g_texto_nivel_4">Provincia:</label>
+                                <select wire:model.live="provinciaSeleccionada" id="provinciaSeleccionada"
+                                    name="provinciaSeleccionada">
+                                    <option value="">Selecciona provincia</option>
+                                    @foreach ($provincias as $provincia)
+                                        <option value="{{ $provincia->id }}">{{ $provincia->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endif
+
+                        @if ($provinciaSeleccionada)
+                            <div>
+                                <label for="distritoSeleccionada" class="g_texto_nivel_4">Distrito:</label>
+                                <select wire:model.live="distritoSeleccionada" id="distritoSeleccionada"
+                                    name="distritoSeleccionada">
+                                    <option value="">Selecciona distrito</option>
+                                    @foreach ($distritos as $distrito)
+                                        <option value="{{ $distrito->id }}">{{ $distrito->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endif
 
 
-        @if ($tipoEleccionSeleccionada)
-        <h3 class="text-lg font-semibold text-gray-700">
-            Elecciones:
-        </h3>
-
-        <select wire:model.live="eleccionSeleccionada">
-            <option value="">Selecciona elección</option>
-            @foreach ($elecciones as $eleccion)
-            <option value="{{ $eleccion->id }}">{{ $eleccion->nombre }}</option>
-            @endforeach
-        </select>
-        @endif
-
-        @if ($eleccionSeleccionada)
-        <h3 class="text-lg font-semibold text-gray-700">
-            Cargos segun tipo eleccion:
-        </h3>
-
-        <select wire:model.live="cargoSeleccionada">
-            <option value="">Selecciona cargo</option>
-            @foreach ($cargos as $cargo)
-            <option value="{{ $cargo->id }}">{{ $cargo->nombre }}</option>
-            @endforeach
-        </select>
-        @endif
-
-
-        @if ($cargoSeleccionada)
-        <h3 class="text-lg font-semibold text-gray-700">
-            Regiones con encuestas:
-        </h3>
-
-
-        <select wire:model.live="regionSeleccionada">
-            <option value="">Selecciona region</option>
-            @foreach ($regiones as $region)
-            <option value="{{ $region->id }}">{{ $region->nombre }}</option>
-            @endforeach
-        </select>
-        @endif
-
-        @if ($regionSeleccionada)
-        <h3 class="text-lg font-semibold text-gray-700">
-            Provincias con encuestas en la región seleccionada:
-        </h3>
-
-        <select wire:model.live="provinciaSeleccionada">
-            <option value="">Selecciona provincia</option>
-            @foreach ($provincias as $provincia)
-            <option value="{{ $provincia->id }}">{{ $provincia->nombre }}</option>
-            @endforeach
-        </select>
-        @endif
-
-        @if ($provinciaSeleccionada)
-        <h3 class="text-lg font-semibold text-gray-700">
-            Distritos con encuestas en la provincia seleccionada:
-        </h3>
-
-        <select wire:model.live="distritoSeleccionada">
-            <option value="">Selecciona distrito</option>
-            @foreach ($distritos as $distrito)
-            <option value="{{ $distrito->id }}">{{ $distrito->nombre }}</option>
-            @endforeach
-        </select>
-        @endif
-
-    </div>
-
-    <div>
-        <h2>LISTA DE ENCUESTAS</h2>
-
-        @foreach ($encuestas as $index => $item)
-        <div class="swiper-slide">
-            <div>
-                <div class="titulo">{{ $item->nombre }}</div>
-                <a href="{{ route('encuesta', ['id' => $item->id, 'slug' => $item->slug]) }}">
-                    <div class="contenedor_imagen">
-                        <img src="{{ $item->eleccion->imagen_ruta }}" alt="" style="width: 70px;">
+                        <button wire:click="limpiarFiltros" type="button"
+                            class="boton_siguiente">
+                            Limpiar filtros
+                        </button>
                     </div>
-                </a>
+                </div>
+
+                <!-- COLUMNA 2 -->
+                <div class="g_grid_columna_2">
+                    @if ($encuestas->count())
+                        @include('web.partials.lista-encuesta', [
+                            'p_elemento' => $encuestas,
+                        ])
+                    @endif
+
+                    {{ $encuestas->links() }}
+                </div>
+
             </div>
+
         </div>
-        @endforeach
-
-        {{ $encuestas->links() }}
     </div>
-
 </div>
