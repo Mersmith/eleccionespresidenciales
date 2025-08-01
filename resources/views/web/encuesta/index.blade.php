@@ -13,8 +13,8 @@
                     <!-- COLUMNA 1 -->
                     <div class="g_grid_columna_1">
 
-                        <div class="partials_contendor_encuesta">
-                            <div class="titulares">
+                        <div class="g_card_panel g_card_flex_column">
+                            <div class="g_centrar_elementos">
                                 <h4 class="g_texto_nivel_6">ENCUESTA</h4>
                                 {{--<h3 class="g_texto_nivel_6">{{ $encuesta->nombre }} </h3>--}}
                                 <p class="g_texto_nivel_2">

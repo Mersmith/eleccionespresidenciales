@@ -16,7 +16,7 @@
             Ya has votado en esta encuesta.
         </div>
     @else
-        <div class="lista_cuadricula_candidatos">
+        <div class="partials_lista_cuadricula_candidatos">
             @foreach ($candidatos as $candidatoCargo)
                 <label class="card_candidato {{ $candidato_cargo_id == $candidatoCargo->id ? 'seleccionado' : '' }}">
                     @if ($candidato_cargo_id == $candidatoCargo->id)

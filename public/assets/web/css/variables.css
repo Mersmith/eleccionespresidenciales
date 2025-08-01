@@ -98,6 +98,7 @@
 
     /*CARD*/
     --color-borde-card-imagen: #ffffff;
+    --color-fondo-card-imagen: #ffffff;
 
     /*FONDOS*/
     --color-fondo-global-1: #1c1c1d;
@@ -118,6 +119,8 @@
     --color-fondo-lista-hober: #f0f0f0;
     --color-border-lista: #1c1c1d;
     --color-border-card: #e5e5e5;
+    --color-borde-card-hober: #392385;
+
 
 
 
