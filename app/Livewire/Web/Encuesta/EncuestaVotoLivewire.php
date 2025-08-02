@@ -5,6 +5,7 @@ namespace App\Livewire\Web\Encuesta;
 use App\Models\Voto;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\Attributes\On;
 
 class EncuestaVotoLivewire extends Component
 {
@@ -12,6 +13,8 @@ class EncuestaVotoLivewire extends Component
     public $candidatos;
     public ?int $candidato_cargo_id = null;
     public bool $yaVoto = false;
+    public $modal_votar = false;
+    public $modal_voto = false;
 
     public function mount($encuesta_id, $candidatos)
     {
@@ -27,36 +30,47 @@ class EncuestaVotoLivewire extends Component
 
     public function cerrar()
     {
-        $this->candidato_cargo_id = null; // Deseleccionar
+        $this->candidato_cargo_id = null;
     }
 
     public function votar()
     {
         if (!Auth::check()) {
-            session()->flash('error', 'Debes iniciar sesión para votar.');
+            $this->dispatch('modalSesion');
             return;
-        }
-
-        if ($this->yaVoto) {
-            session()->flash('error', 'Ya has votado en esta encuesta.');
-            return;
-        }
+        }     
 
         if (!$this->candidato_cargo_id) {
             session()->flash('error', 'Selecciona un candidato para votar.');
             return;
         }
 
-        Voto::create([
-            'user_id' => Auth::id(),
-            'encuesta_id' => $this->encuesta_id,
-            'candidato_cargo_id' => $this->candidato_cargo_id,
-            'fecha_voto' => now(),
-        ]);
+        if(!$this->yaVoto){
+            Voto::create([
+                'user_id' => Auth::id(),
+                'encuesta_id' => $this->encuesta_id,
+                'candidato_cargo_id' => $this->candidato_cargo_id,
+                'fecha_voto' => now(),
+            ]);
+    
+            $this->yaVoto = true;
+    
+            $this->modal_votar = true;
+        }else{
+            $this->modal_voto = true;
+        }
+    }
 
-        $this->yaVoto = true;
+    #[On('emitCerrarModalVotar')]
+    public function cerrarModalVotar()
+    {
+        $this->modal_votar = false;
+    }
 
-        session()->flash('success', '¡Voto registrado correctamente!');
+    #[On('emitCerrarModalVoto')]
+    public function cerrarModalVoto()
+    {
+        $this->modal_voto = false;
     }
 
     public function render()

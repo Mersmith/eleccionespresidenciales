@@ -5,6 +5,7 @@ namespace App\Livewire\Web\Header;
 use App\Models\Cargo;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\On;
 
 class WebHeaderLivewire extends Component
 {
@@ -52,12 +53,11 @@ class WebHeaderLivewire extends Component
         ]);
     }
 
+    #[On('modalSesion')]
     public function abrirModalSesion()
     {
         if (!Auth::check()) {
             $this->modal_sesion = true;
-        } else {
-            return redirect()->route('perfil');
         }
     }
 

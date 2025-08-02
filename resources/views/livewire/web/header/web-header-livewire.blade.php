@@ -42,10 +42,28 @@
             <ul class="menu_principal_usuarios">
                 <!-- ITEM CUENTA  -->
                 <li>
-                    <a class="principal_usuarios_item" wire:click="abrirModalSesion()">
-                        <i class="fa-regular fa-user"></i>
-                        <span>Cuenta</span>
-                    </a>
+                    <x-dropdown align="left" width="40">
+                        <x-slot name="trigger">
+
+                            <a class="principal_usuarios_item">
+                                <i class="fa-regular fa-user"></i>
+                                <span>Cuenta</span>
+                            </a>
+                        </x-slot>
+
+                        <x-slot name="content">
+
+                            @if (Auth::check())
+                                <form method="POST" action="{{ route('logout') }}" x-data>
+                                    @csrf
+                                    <a class="dropdown_item" href="{{ route('logout') }}"
+                                        @click.prevent="$root.submit();">Cerrar </a>
+                                </form>
+                            @else
+                                <a href="#" class="dropdown_item"  wire:click="abrirModalSesion()">Login</a>
+                            @endif
+                        </x-slot>
+                    </x-dropdown>
                 </li>
             </ul>
         </div>

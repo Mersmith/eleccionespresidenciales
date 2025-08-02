@@ -22,7 +22,8 @@ class ProviderRedirectController extends Controller
         try{
             return Socialite::driver($provider)->redirect();
         } catch(\Exception $e){
-            return redirect(route('login'))->withErrors(['provider' => 'Algo salio mal']);
+            //return redirect(route('login'))->withErrors(['provider' => 'Algo salio mal']);
+            return redirect()->intended('/'); 
         }
     }
 }

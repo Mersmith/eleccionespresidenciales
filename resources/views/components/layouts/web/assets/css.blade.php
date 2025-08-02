@@ -9,6 +9,7 @@
 <!----------------------ESTILOS---------------------->
 <!--GENERAL-->
 <link rel="stylesheet" href="{{ asset('assets/web/css/general.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/web/css/modal.css') }}">
 
 <!----------------------web---------------------->
 <!--VARIABLES-->
