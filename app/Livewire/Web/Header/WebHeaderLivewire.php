@@ -4,6 +4,7 @@ namespace App\Livewire\Web\Header;
 
 use App\Models\Cargo;
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
 
 class WebHeaderLivewire extends Component
 {
@@ -21,6 +22,8 @@ class WebHeaderLivewire extends Component
     public $provincia_id = null;
 
     public $distritos = [];
+
+    public $modal_sesion = false;
 
     public function mount()
     {
@@ -47,6 +50,20 @@ class WebHeaderLivewire extends Component
             'eleccionSeleccionada' => $this->eleccion_id,
             'cargoSeleccionada' => $this->cargo_id,
         ]);
+    }
+
+    public function abrirModalSesion()
+    {
+        if (!Auth::check()) {
+            $this->modal_sesion = true;
+        } else {
+            return redirect()->route('perfil');
+        }
+    }
+
+    public function cerrarModalSesion()
+    {
+        $this->modal_sesion = false;
     }
 
     public function render()

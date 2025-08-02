@@ -47,6 +47,7 @@ class ProviderCallbackController extends Controller
 
         Auth::login($user);
 
-        return redirect('/dashboard');
+        //return redirect('/dashboard');
+        return redirect()->intended('/'); 
     }
 }

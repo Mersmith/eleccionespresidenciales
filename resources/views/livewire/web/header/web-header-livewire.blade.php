@@ -10,15 +10,17 @@
                 </span>
 
                 <a href="{{ url('/') }}">
-                    <img src="{{ asset('assets/web/imagenes/logo/logo-votmi-computadora.svg') }}" alt="Tendencias Market" class="imagen_logo_computadora" />
+                    <img src="{{ asset('assets/web/imagenes/logo/logo-votmi-computadora.svg') }}" alt="Tendencias Market"
+                        class="imagen_logo_computadora" />
 
-                    <img src="{{ asset('assets/web/imagenes/logo/logo-votmi-movil.svg') }}" alt="Tendencias Market" class="imagen_logo_movil" />
+                    <img src="{{ asset('assets/web/imagenes/logo/logo-votmi-movil.svg') }}" alt="Tendencias Market"
+                        class="imagen_logo_movil" />
                 </a>
             </div>
 
             <!-- BUSCADOR PRINCIPAL -->
             <div class="buscador_principal">
-                @livewire('web.header.web-buscar-livewire')               
+                @livewire('web.header.web-buscar-livewire')
             </div>
 
             <!-- MENU HAMBURGUESA COMPUTADORA -->
@@ -40,7 +42,7 @@
             <ul class="menu_principal_usuarios">
                 <!-- ITEM CUENTA  -->
                 <li>
-                    <a class="principal_usuarios_item">
+                    <a class="principal_usuarios_item" wire:click="abrirModalSesion()">
                         <i class="fa-regular fa-user"></i>
                         <span>Cuenta</span>
                     </a>
@@ -78,39 +80,41 @@
     </header>
 
     @if ($cargos)
-    <!-- CONTENEDOR SIDEBAR -->
-    <aside class="ecommerce_sidebar_categorias" :class="{ 'estilo_abierto_contenedor_sidebar': estadoAsideAbierto }">
-        <!-- SIDEBAR CONTENEDOR -->
-        <div class="sidebar_contenedor">
-            <!-- SIDEBAR CABECERA -->
-            <div class="sidebar_cabecera">
-                <div class="saludo">¡Buen día!</div>
+        <!-- CONTENEDOR SIDEBAR -->
+        <aside class="ecommerce_sidebar_categorias"
+            :class="{ 'estilo_abierto_contenedor_sidebar': estadoAsideAbierto }">
+            <!-- SIDEBAR CONTENEDOR -->
+            <div class="sidebar_contenedor">
+                <!-- SIDEBAR CABECERA -->
+                <div class="sidebar_cabecera">
+                    <div class="saludo">¡Buen día!</div>
 
-                <span x-on:click="toggleContenedorSidebar">
-                    <i class="fa-solid fa-xmark"></i>
-                </span>
-            </div>
+                    <span x-on:click="toggleContenedorSidebar">
+                        <i class="fa-solid fa-xmark"></i>
+                    </span>
+                </div>
 
-            <!-- SIDEBAR CONTENIDO -->
-            <div class="sidebar_contenido g_scroll">
-                <div class="sidebar_cotenido_item">
+                <!-- SIDEBAR CONTENIDO -->
+                <div class="sidebar_contenido g_scroll">
+                    <div class="sidebar_cotenido_item">
 
-                    <!-- CARGOS  - NIVEL 1-->
-                    <ul class="sidebar_cotenido_item_ul">
-                        <h5>Cargos</h5>
-                        @foreach ($cargos as $cargo)
-                        <li>
-                            <div class="sidebar_cotenido_elemento" wire:click="seleccionarCargo({{ $cargo->id }})">
-                                <i class="fas fa-user-tie"></i>
-                                <a>
-                                    <span>{{ $cargo->nombre }}</span>
-                                    {{--@if ($cargo->nivel_id > 1)
+                        <!-- CARGOS  - NIVEL 1-->
+                        <ul class="sidebar_cotenido_item_ul">
+                            <h5>Cargos</h5>
+                            @foreach ($cargos as $cargo)
+                                <li>
+                                    <div class="sidebar_cotenido_elemento"
+                                        wire:click="seleccionarCargo({{ $cargo->id }})">
+                                        <i class="fas fa-user-tie"></i>
+                                        <a>
+                                            <span>{{ $cargo->nombre }}</span>
+                                            {{-- @if ($cargo->nivel_id > 1)
                                     <i class="fa-solid fa-angle-right"></i>
-                                    @endif--}}
-                                </a>
-                            </div>
+                                    @endif --}}
+                                        </a>
+                                    </div>
 
-                            {{--<!-- REGIONES - NIVEL 2 -->
+                                    {{-- <!-- REGIONES - NIVEL 2 -->
                             @if ($cargo_id == $cargo->id && $cargo_nivel_id >= 2 && $regiones->count())
                             <ul class="sidebar_cotenido_item_ul">
                                 <h5>Regiones</h5>
@@ -170,22 +174,35 @@
                                 </li>
                                 @endforeach
                             </ul>
-                            @endif--}}
+                            @endif --}}
 
-                        </li>
-                        @endforeach
-                    </ul>
-                </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
 
-                <!-- PIE -->
-                <div class="sidebar_cotenido_item sidebar_pie">
-                    <a href="#">
-                        <img src="{{ asset('assets/web/imagenes/logo/logo-votmi-computadora.svg') }}" alt="Tendencias Market" />
-                    </a>
+                    <!-- PIE -->
+                    <div class="sidebar_cotenido_item sidebar_pie">
+                        <a href="#">
+                            <img src="{{ asset('assets/web/imagenes/logo/logo-votmi-computadora.svg') }}"
+                                alt="Tendencias Market" />
+                        </a>
+                    </div>
                 </div>
             </div>
+        </aside>
+    @endif
+
+    @if ($modal_sesion)
+        <div class="modal_sesion_overlay" wire:click.self="cerrarModalSesion">
+            <div class="modal_sesion_contenido">
+                <h2>Iniciar Sesión</h2>
+                <a href="{{ route('auth.redirect', 'google') }}" class="boton_sesion_red">Google</a>
+                <a href="{{ route('auth.redirect', 'github') }}" class="boton_sesion_red">GitHub</a>
+                <a href="{{ route('auth.redirect', 'facebook') }}" class="boton_sesion_red">Facebook</a>
+                <button wire:click="cerrarModalSesion" class="boton_cerrar_modal">Cerrar</button>
+            </div>
         </div>
-    </aside>
     @endif
 
 </div>

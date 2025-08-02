@@ -17,6 +17,8 @@ class ProviderRedirectController extends Controller
             return redirect(route('login'))->withErrors(['provider' => 'Proveedor invalido']);
         }
 
+        session(['url.intended' => url()->previous()]); // ← Guarda la URL actual
+
         try{
             return Socialite::driver($provider)->redirect();
         } catch(\Exception $e){

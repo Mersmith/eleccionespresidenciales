@@ -38,6 +38,7 @@
 <link rel="stylesheet" href="{{ asset('assets/web/css/partials/lista-encuesta.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/web/css/partials/perfil-partido.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/web/css/partials/lista-cuadricula-candidato.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/web/css/partials/modal-sesion.css') }}">
 
 <!--PAGINA-->
 <link rel="stylesheet" href="{{ asset('assets/web/css/pagina/candidato.css') }}">

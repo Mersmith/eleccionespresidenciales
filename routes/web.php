@@ -23,8 +23,8 @@ Route::get('/partido/{id}/{slug?}', WebPartidoController::class)->name('partido'
 Route::get('/encuesta/{id}/votar/{slug?}', WebEncuestaController::class)->name('encuesta');
 Route::get('/encuesta/{id}/resultado/{slug?}', EncuestaResultadoLivewire::class)->name('encuesta.resultado');
 Route::get('/encuestas', EncuestasLivewire::class)->name('encuestas');
-/*
-Route::get('/', function () {
+
+/*Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
