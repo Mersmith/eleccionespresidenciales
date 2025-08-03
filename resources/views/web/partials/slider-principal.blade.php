@@ -24,7 +24,7 @@
         var swiper = new Swiper(".SwiperSliderPrincipal-{{ $p_elemento->id }}", {
             slidesPerView: 1,
             spaceBetween: 0,
-            loop: true,
+            loop: {{ count($p_elemento->imagenes) > 1 ? 'true' : 'false' }},
             pagination: {
                 el: ".SwiperSliderPrincipal-{{ $p_elemento->id }} .swiper-pagination",
                 clickable: true,

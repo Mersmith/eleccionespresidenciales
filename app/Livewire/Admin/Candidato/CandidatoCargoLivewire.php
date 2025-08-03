@@ -148,7 +148,7 @@ class CandidatoCargoLivewire extends Component
     {
         $this->validate();
 
-        $pais_id = null;
+        /*$pais_id = null;
         $region_id = null;
         $provincia_id = null;
         $distrito_id = null;
@@ -161,7 +161,7 @@ class CandidatoCargoLivewire extends Component
             $provincia_id = $this->provincia_id;
         } elseif ($this->nivel_id == 4) {
             $distrito_id = $this->distrito_id;
-        }
+        }*/
 
         $partido_id = $this->partido_id !== '' ? $this->partido_id : null;
 
@@ -171,10 +171,10 @@ class CandidatoCargoLivewire extends Component
             'cargo_id' => $this->cargo_id,
             'eleccion_id' => $this->eleccion_id,
             'partido_id' => $partido_id,
-            'pais_id' => $pais_id,
-            'region_id' => $region_id,
-            'provincia_id' => $provincia_id,
-            'distrito_id' => $distrito_id,
+            'pais_id' =>  $this->pais_id,
+            'region_id' =>  $this->region_id,
+            'provincia_id' =>  $this->provincia_id,
+            'distrito_id' =>  $this->distrito_id,
             'principal' => $this->principal,
             'electo' => $this->electo,
         ]);

@@ -250,7 +250,7 @@ class EncuestaCrearLivewire extends Component
     {
         $this->validate();
 
-        $pais_id = null;
+        /*$pais_id = null;
         $region_id = null;
         $provincia_id = null;
         $distrito_id = null;
@@ -263,7 +263,7 @@ class EncuestaCrearLivewire extends Component
             $provincia_id = $this->provincia_id;
         } elseif ($this->nivel_id == 4) {
             $distrito_id = $this->distrito_id;
-        }
+        }*/
 
         Encuesta::create([
             'nombre' => $this->nombre,
@@ -274,10 +274,10 @@ class EncuestaCrearLivewire extends Component
             'nivel_id' => $this->nivel_id,
             'cargo_id' => $this->cargo_id,
             'eleccion_id' => $this->eleccion_id,
-            'pais_id' => $pais_id,
-            'region_id' => $region_id,
-            'provincia_id' => $provincia_id,
-            'distrito_id' => $distrito_id,
+            'pais_id' => $this->pais_id,
+            'region_id' => $this->region_id,
+            'provincia_id' => $this->provincia_id,
+            'distrito_id' => $this->distrito_id,
             'fecha_inicio' => $this->fecha_inicio,
             'fecha_fin' => $this->fecha_fin,
             'estado' => $this->estado,

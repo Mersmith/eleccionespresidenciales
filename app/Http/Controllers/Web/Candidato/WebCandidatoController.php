@@ -26,9 +26,9 @@ class WebCandidatoController extends Controller
             'web.candidato.index',
             compact(
                 'candidato_partido',//ok
-                'candidato_encuesta_activa',
+                'candidato_encuesta_activa',//ok
                 'candidato_cargos',//ok
-                'candidato_encuestas_participaciones',
+                'candidato_encuestas_participaciones',//ok
             )
         );
     }

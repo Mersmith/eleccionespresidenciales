@@ -129,6 +129,9 @@ Candidato hoja de vida, propuestas, celular, dni
 -----------
 Al agregar candidato a una encuesta, se fije cuantos cargos tienes y si puede entrar
 -----------
+Corregir crear encuesta ubigeo y en candidato cargo
+
+-----
 
 php artisan make:livewire Web/Header/WebHeaderLivewire
 php artisan make:livewire Web/Header/WebBuscarLivewire
@@ -162,6 +165,7 @@ https://www.udep.edu.pe/hoy/wp-content/uploads/sites/49/2021/06/CUERPO-DE-TEXTO-
 
 Partido
 https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Logo_juntos_por_el_Peru.svg/512px-Logo_juntos_por_el_Peru.svg.png
+https://upload.wikimedia.org/wikipedia/commons/b/b7/Logoapp.png
 
 Banner
 https://suerteyasac.com/wp-content/uploads/2024/11/banner-tipo-1-computadora-2048x61.jpg
@@ -173,3 +177,5 @@ https://suerteyasac.com/wp-content/uploads/2024/11/sliders-movil.jpg
 
 Perfil
 https://pbs.twimg.com/profile_images/1876955744525856768/1H9ukeEv_400x400.jpg
+https://s3.amazonaws.com/imagenespantv/noticia/2025/01/orig-1736101471352.jpg
+https://radiosantarosa.com.pe/wp-content/uploads/2023/04/Daniel-Urresti-virgen-merced-traslado.jpg

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Candidato;
 use App\Models\Encuesta;
 use App\Models\Partido;
+use Carbon\Carbon;
 
 class WebPartidoController extends Controller
 {
@@ -19,15 +20,15 @@ class WebPartidoController extends Controller
 
         $encuesta_presidencial_activa = $this->getWebPartidoEncuestaPresidencialActiva($id);
 
-        //dd($encuesta_presidencial_activa);
+        //dd($candidatos_alcaldia_lima);
 
         return view(
             'web.partido.index',
             compact(
-                'partido',//ok
-                'candidatos_presidenciales',//ok
-                'candidatos_alcaldia_lima',
-                'encuesta_presidencial_activa',
+                'partido', //ok
+                'candidatos_presidenciales', //ok
+                'candidatos_alcaldia_lima',//ok
+                'encuesta_presidencial_activa', //ok
             )
         );
     }
@@ -77,6 +78,15 @@ class WebPartidoController extends Controller
             })
             ->latest('fecha_inicio')
             ->first();
+
+        if ($encuesta_activa) {
+            $fecha_fin = Carbon::parse($encuesta_activa->fecha_fin);
+            $dias_restantes = now()->diffInDays($fecha_fin);
+
+            $encuesta_activa->dias = (int) $dias_restantes;
+
+            return $encuesta_activa;
+        }
 
         return $encuesta_activa;
     }

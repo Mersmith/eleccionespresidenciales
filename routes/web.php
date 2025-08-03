@@ -14,15 +14,15 @@ use App\Livewire\Web\Encuestas\EncuestasLivewire;
 Route::get('/auth/{provider}/redirect', ProviderRedirectController::class)->name('auth.redirect');
 Route::get('/auth/{provider}/callback', ProviderCallbackController::class)->name('auth.callback');
 
-Route::get('/', WebInicioController::class)->name('inicio');
+Route::get('/', WebInicioController::class)->name('inicio');//ok
 
-Route::get('/candidato/{id}/{slug?}', WebCandidatoController::class)->name('candidato');
+Route::get('/candidato/{id}/{slug?}', WebCandidatoController::class)->name('candidato');//ok
 
-Route::get('/partido/{id}/{slug?}', WebPartidoController::class)->name('partido');
+Route::get('/partido/{id}/{slug?}', WebPartidoController::class)->name('partido');//ok
 
-Route::get('/encuesta/{id}/votar/{slug?}', WebEncuestaController::class)->name('encuesta');
-Route::get('/encuesta/{id}/resultado/{slug?}', EncuestaResultadoLivewire::class)->name('encuesta.resultado');
-Route::get('/encuestas', EncuestasLivewire::class)->name('encuestas');
+Route::get('/encuesta/{id}/votar/{slug?}', WebEncuestaController::class)->name('encuesta');//ok
+Route::get('/encuesta/{id}/resultado/{slug?}', EncuestaResultadoLivewire::class)->name('encuesta.resultado');//ok
+Route::get('/encuestas', EncuestasLivewire::class)->name('encuestas');//ok
 
 /*Route::get('/', function () {
     return view('welcome');

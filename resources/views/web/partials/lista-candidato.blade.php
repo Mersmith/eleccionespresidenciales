@@ -1,4 +1,4 @@
-@if (!empty($p_elemento))
+@if ($p_elemento->isNotEmpty())
     <div class="partials_contenedor_candidatura_cargo g_card_panel">
         <h2 class="g_texto_nivel_6 g_texto_subrayado"><i class="fas fa-history"></i> {{$p_titulo}}</h2>
 

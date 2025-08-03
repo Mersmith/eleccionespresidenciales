@@ -42,11 +42,11 @@ class WebInicioController extends Controller
                 'data_banner_2',//ok
                 'data_sliders_principal_1',//ok
                 'data_candidatos_presidenciales',//ok
-                'data_candidatos_alcaldia_lima',
+                'data_candidatos_alcaldia_lima',//ok
                 'data_partidos_politicos',//ok
-                'data_encuesta_presidencial',
-                'data_encuesta_alcaldia_provincial_lima',
-                'data_encuestas_alcaldia_distritos_lima',
+                'data_encuesta_presidencial',//ok
+                'data_encuesta_alcaldia_provincial_lima',//ok
+                'data_encuestas_alcaldia_distritos_lima',//ok
             )
         );
     }
