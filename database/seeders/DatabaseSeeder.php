@@ -10,14 +10,12 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            BannerSeeder::class,
-            SliderSeeder::class,
             UserSeeder::class,
             PaisSeeder::class,
             RegionSeeder::class,
             ProvinciaSeeder::class,
             DistritoSeeder::class,
-            NivelSeeder::class,
+            /*NivelSeeder::class,
             TipoEleccionSeeder::class,
             EleccionSeeder::class,
             CargoSeeder::class,
@@ -28,6 +26,8 @@ class DatabaseSeeder extends Seeder
             EncuestaSeeder::class,
             CandidatoEncuestaSeeder::class,
             VotoSeeder::class,
+            BannerSeeder::class,
+            SliderSeeder::class,*/
         ]);
     }
 }

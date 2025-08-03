@@ -62,7 +62,7 @@
         </div>
     @endif
 
-    <!--MODAL VOTAR-->
+    <!--MODAL VOTO-->
     @if ($modal_voto)
         <div x-data="{ show: true }" x-init="setTimeout(() => {
             show = false;

@@ -33,7 +33,7 @@ class WebInicioController extends Controller
 
         $data_encuestas_alcaldia_distritos_lima = $this->getWebEncuestasAlcaldiaDistritosLima();
 
-        //dd($data_encuesta_presidencial);
+        //dd($data_banner_2);
 
         return view(
             'web.inicio.index',
@@ -154,12 +154,12 @@ class WebInicioController extends Controller
             ->orderBy('fecha_inicio', 'desc')
             ->first();
 
-        // Calcular la cantidad de días restantes
-        $fecha_fin = Carbon::parse($encuesta->fecha_fin);
-        $dias_restantes = now()->diffInDays($fecha_fin);
+        if ($encuesta) {
+            $fecha_fin = Carbon::parse($encuesta->fecha_fin);
+            $dias_restantes = now()->diffInDays($fecha_fin);
 
-        // Redondear a entero
-        $encuesta->dias = (int) $dias_restantes;
+            $encuesta->dias = (int) $dias_restantes;
+        }
 
         return $encuesta;
     }
@@ -185,12 +185,12 @@ class WebInicioController extends Controller
             ->orderBy('fecha_inicio', 'desc')
             ->first();
 
-        // Calcular la cantidad de días restantes
-        $fecha_fin = Carbon::parse($encuesta->fecha_fin);
-        $dias_restantes = now()->diffInDays($fecha_fin);
+        if ($encuesta) {
+            $fecha_fin = Carbon::parse($encuesta->fecha_fin);
+            $dias_restantes = now()->diffInDays($fecha_fin);
 
-        // Redondear a entero
-        $encuesta->dias = (int) $dias_restantes;
+            $encuesta->dias = (int) $dias_restantes;
+        }
 
         return $encuesta;
     }

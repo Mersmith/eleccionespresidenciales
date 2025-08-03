@@ -42,6 +42,24 @@
                 "icono": "fa-solid fa-tree-city",
                 "nivel": 2,
                 "submenus": []
+            },
+            {
+                "id": 15,
+                "nombre": "Banner",
+                "ruta": "admin.banner.vista.todas",
+                "url": "/admin/banner",
+                "icono": "fa-solid fa-tree-city",
+                "nivel": 2,
+                "submenus": []
+            },
+            {
+                "id": 16,
+                "nombre": "Slider",
+                "ruta": "admin.slider.vista.todas",
+                "url": "/admin/slider",
+                "icono": "fa-solid fa-tree-city",
+                "nivel": 2,
+                "submenus": []
             }
         ]
     }

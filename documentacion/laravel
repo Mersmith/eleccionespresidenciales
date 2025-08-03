@@ -58,6 +58,13 @@ php artisan make:livewire Admin/Candidato/CandidatoCrearLivewire
 php artisan make:livewire Admin/Candidato/CandidatoEditarLivewire
 php artisan make:livewire Admin/Candidato/CandidatoCargoLivewire
 
+php artisan make:livewire Admin/Banner/BannerTodasLivewire
+php artisan make:livewire Admin/Banner/BannerCrearLivewire
+php artisan make:livewire Admin/Banner/BannerEditarLivewire
+
+php artisan make:livewire Admin/Slider/SliderEditarLivewire
+
+
 php artisan make:migration create_candidato_encuesta_table
 php artisan make:seeder CandidatoEncuestaSeeder
 
