@@ -25,9 +25,9 @@ class WebCandidatoController extends Controller
         return view(
             'web.candidato.index',
             compact(
-                'candidato_partido',
+                'candidato_partido',//ok
                 'candidato_encuesta_activa',
-                'candidato_cargos',
+                'candidato_cargos',//ok
                 'candidato_encuestas_participaciones',
             )
         );

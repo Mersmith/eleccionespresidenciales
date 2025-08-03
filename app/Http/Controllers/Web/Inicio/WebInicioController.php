@@ -38,12 +38,12 @@ class WebInicioController extends Controller
         return view(
             'web.inicio.index',
             compact(
-                'data_baner_1',
-                'data_banner_2',
-                'data_sliders_principal_1',
-                'data_candidatos_presidenciales',
+                'data_baner_1',//ok
+                'data_banner_2',//ok
+                'data_sliders_principal_1',//ok
+                'data_candidatos_presidenciales',//ok
                 'data_candidatos_alcaldia_lima',
-                'data_partidos_politicos',
+                'data_partidos_politicos',//ok
                 'data_encuesta_presidencial',
                 'data_encuesta_alcaldia_provincial_lima',
                 'data_encuestas_alcaldia_distritos_lima',
@@ -124,7 +124,7 @@ class WebInicioController extends Controller
 
         $titulo = 'Partidos políticos';
 
-        $partidos = Partido::all();
+        $partidos = Partido::where('activo', true)->get();
 
         return [
             'id' => $consulta_id,

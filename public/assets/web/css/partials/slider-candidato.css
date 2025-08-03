@@ -40,19 +40,22 @@
 
 .partials_contenedor_slider_candidato .logo_partido {
     position: absolute;
-    bottom: 0px;
-    left: 0px;
-    width: 70px; 
+    bottom: 10px;
+    right: 10px;
+    width: 70px;
     height: auto;
     border: 2px solid var(--color-borde-card-imagen);
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
 }
 
 .partials_contenedor_slider_candidato a p {
     margin-top: 15px;
-    text-align: center;    
+    text-align: center;
 }
 
-.partials_contenedor_slider_candidato a span {    
+.partials_contenedor_slider_candidato a span {
     text-align: center;
 }
 

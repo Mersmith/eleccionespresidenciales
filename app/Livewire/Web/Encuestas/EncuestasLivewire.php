@@ -99,7 +99,9 @@ class EncuestasLivewire extends Component
 
     public function actualizarElecciones()
     {
-        $this->elecciones = Eleccion::where('tipo_eleccion_id', $this->tipoEleccionSeleccionada)->get();
+        $this->elecciones = Eleccion::where('tipo_eleccion_id', $this->tipoEleccionSeleccionada)
+            ->where('activo', true)
+            ->get();
     }
 
     public function actualizarCargos()
@@ -164,7 +166,7 @@ class EncuestasLivewire extends Component
         $this->regionSeleccionada = null;
         $this->provinciaSeleccionada = null;
         $this->distritoSeleccionada = null;
-    
+
         $this->resetPage();
 
         return redirect()->route('encuestas');

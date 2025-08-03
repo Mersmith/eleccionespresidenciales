@@ -8,6 +8,7 @@
     position: relative;
     height: auto;
     width: 300px;
+    padding: 10px;
 }
 
 .partials_contenedor_perfil_partido .imagen_partido {

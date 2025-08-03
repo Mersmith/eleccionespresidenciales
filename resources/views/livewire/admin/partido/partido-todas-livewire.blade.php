@@ -53,7 +53,7 @@
                             <td>{{ $item->sigla }}</td>
                             <td>{{ $item->descripcion }}</td>
                             <td>
-                                <img src="{{ $item->logo }}" alt="{{ $item->nombre }}">    
+                                <img src="{{ $item->logo }}" alt="{{ $item->nombre }}" style="width: 30px;">    
                             </td>
                             <td>
                                 <span class="{{ $item->activo ? 'text-green-600' : 'text-red-600' }}">
@@ -61,7 +61,7 @@
                                 </span>
                             </td>
                             <td class="centrar_iconos">
-                                <a href="{{ route('admin.partido.vista.editar', $item) }}" class="g_accion_editar">
+                                <a href="{{ route('admin.partido.vista.editar', $item->id) }}" class="g_accion_editar">
                                     <span><i class="fa-solid fa-pencil"></i></span>
                                 </a>
                             </td>

@@ -51,7 +51,7 @@
                             <td class="g_resaltar">{{ $item->nombre }}</td>
                             <td>{{ $item->descripcion }}</td>
                             <td>
-                                <img src="{{ $item->foto }}" alt="{{ $item->nombre }}">
+                                <img src="{{ $item->foto }}" alt="{{ $item->nombre }}" style="width: 30px;">
                             </td>                          
                             <td>{{ $item->partido->nombre ?? '-' }}</td>
                             <td class="centrar_iconos">

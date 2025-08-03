@@ -24,8 +24,8 @@ class WebPartidoController extends Controller
         return view(
             'web.partido.index',
             compact(
-                'partido',
-                'candidatos_presidenciales',
+                'partido',//ok
+                'candidatos_presidenciales',//ok
                 'candidatos_alcaldia_lima',
                 'encuesta_presidencial_activa',
             )
