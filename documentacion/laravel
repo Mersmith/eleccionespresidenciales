@@ -64,6 +64,9 @@ php artisan make:livewire Admin/Banner/BannerEditarLivewire
 
 php artisan make:livewire Admin/Slider/SliderEditarLivewire
 
+php artisan make:model Imagen -mfsc
+php artisan make:livewire Admin/Imagen/ImagenTodasLivewire
+php artisan storage:link
 
 php artisan make:migration create_candidato_encuesta_table
 php artisan make:seeder CandidatoEncuestaSeeder

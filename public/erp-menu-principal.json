@@ -60,6 +60,15 @@
                 "icono": "fa-solid fa-tree-city",
                 "nivel": 2,
                 "submenus": []
+            },
+            {
+                "id": 17,
+                "nombre": "Imagen",
+                "ruta": "admin.imagen.vista.todas",
+                "url": "/admin/imagen",
+                "icono": "fa-solid fa-tree-city",
+                "nivel": 2,
+                "submenus": []
             }
         ]
     }

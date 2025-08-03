@@ -28,6 +28,7 @@ use App\Livewire\Admin\Banner\BannerTodasLivewire;
 use App\Livewire\Admin\Banner\BannerCrearLivewire;
 use App\Livewire\Admin\Banner\BannerEditarLivewire;
 use App\Livewire\Admin\Slider\SliderEditarLivewire;
+use App\Livewire\Admin\Imagen\ImagenTodasLivewire;
 
 Route::get('/eleccion', EleccionTodasLivewire::class)->name('eleccion.vista.todas');
 Route::get('/eleccion/crear', EleccionCrearLivewire::class)->name('eleccion.vista.crear');
@@ -62,3 +63,5 @@ Route::get('/banner/crear', BannerCrearLivewire::class)->name('banner.vista.crea
 Route::get('/banner/editar/{id}', BannerEditarLivewire::class)->name('banner.vista.editar');
 
 Route::get('/slider', SliderEditarLivewire::class)->name('slider.vista.todas');
+
+Route::get('/imagen', ImagenTodasLivewire::class)->name('imagen.vista.todas');
