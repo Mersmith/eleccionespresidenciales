@@ -6,7 +6,7 @@
 
         <div class="nombres_partido">
             <div class="nombres">
-                <div class="redes_sociales">
+                {{--<div class="redes_sociales">
                     <a href="#" style="color: #1778f2">
                         <i class="fab fa-facebook"></i>
                     </a>
@@ -16,7 +16,7 @@
                     <a href="#" style="color: #000000">
                         <i class="fab fa-tiktok"></i>
                     </a>
-                </div>
+                </div>--}}
 
                 <h3 class="g_texto_nivel_6">{{ $p_elemento->nombre }} </h3>
                 <p class="g_texto_nivel_7">{{ $p_elemento->descripcion }} </p>
