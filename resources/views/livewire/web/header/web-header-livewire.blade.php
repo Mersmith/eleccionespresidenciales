@@ -10,10 +10,10 @@
                 </span>
 
                 <a href="{{ url('/') }}">
-                    <img src="{{ asset('assets/web/imagenes/logo/logo-votmi-computadora.svg') }}" alt="Tendencias Market"
+                    <img src="{{ asset('assets/images/logo-votmi-computadora.svg') }}" alt="Tendencias Market"
                         class="imagen_logo_computadora" />
 
-                    <img src="{{ asset('assets/web/imagenes/logo/logo-votmi-movil.svg') }}" alt="Tendencias Market"
+                    <img src="{{ asset('assets/images/logo-votmi-movil.svg') }}" alt="Tendencias Market"
                         class="imagen_logo_movil" />
                 </a>
             </div>
