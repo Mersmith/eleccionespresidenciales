@@ -27,6 +27,15 @@
             },
             {
                 "id": 13,
+                "nombre": "Alianza",
+                "ruta": "admin.alianza.vista.todas",
+                "url": "/admin/alianza",
+                "icono": "fa-solid fa-tree-city",
+                "nivel": 2,
+                "submenus": []
+            },
+            {
+                "id": 14,
                 "nombre": "Candidato",
                 "ruta": "admin.candidato.vista.todas",
                 "url": "/admin/candidato",
@@ -35,7 +44,7 @@
                 "submenus": []
             },
             {
-                "id": 14,
+                "id": 15,
                 "nombre": "Encuesta",
                 "ruta": "admin.encuesta.vista.todas",
                 "url": "/admin/encuesta",
@@ -44,7 +53,7 @@
                 "submenus": []
             },
             {
-                "id": 15,
+                "id": 16,
                 "nombre": "Banner",
                 "ruta": "admin.banner.vista.todas",
                 "url": "/admin/banner",
@@ -53,7 +62,7 @@
                 "submenus": []
             },
             {
-                "id": 16,
+                "id": 17,
                 "nombre": "Slider",
                 "ruta": "admin.slider.vista.todas",
                 "url": "/admin/slider",
@@ -62,7 +71,7 @@
                 "submenus": []
             },
             {
-                "id": 17,
+                "id": 18,
                 "nombre": "Imagen",
                 "ruta": "admin.imagen.vista.todas",
                 "url": "/admin/imagen",

@@ -27,6 +27,8 @@ php artisan make:model CandidatoCargo -m
 php artisan make:model CandidatoEncuesta -m
 php artisan make:model Nivel -mfsc
 php artisan make:model TipoEleccion -mfsc
+php artisan make:model Alianza -mfsc
+php artisan make:model AlianzaPartido -mfsc
 
 php artisan make:livewire Admin/Header/AdminHeaderLivewire
 
@@ -64,6 +66,10 @@ php artisan make:livewire Admin/Banner/BannerCrearLivewire
 php artisan make:livewire Admin/Banner/BannerEditarLivewire
 
 php artisan make:livewire Admin/Slider/SliderEditarLivewire
+
+php artisan make:livewire Admin/Alianza/CrearAlianzaLivewire
+php artisan make:livewire Admin/Alianza/AlianzaTodasLivewire
+php artisan make:livewire Admin/Alianza/AlianzaEditarLivewire
 
 php artisan make:model Imagen -mfsc
 php artisan make:livewire Admin/Imagen/ImagenTodasLivewire
