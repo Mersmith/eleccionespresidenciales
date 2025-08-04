@@ -1,4 +1,4 @@
-@section('tituloPagina', 'Candidato')
+@section('tituloPagina', 'Crear Candidato')
 <div>
     <!--CABECERA TITULO PAGINA-->
     <div class="g_panel cabecera_titulo_pagina">

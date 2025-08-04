@@ -284,20 +284,12 @@ class EncuestaEditarLivewire extends Component
     {
         $this->validate();
 
-        $pais_id = null;
-        $region_id = null;
-        $provincia_id = null;
-        $distrito_id = null;
+        $nivel = (int) $this->nivel_id;
 
-        if ($this->nivel_id == 1) {
-            $pais_id = $this->pais_id;
-        } elseif ($this->nivel_id == 2) {
-            $region_id = $this->region_id;
-        } elseif ($this->nivel_id == 3) {
-            $provincia_id = $this->provincia_id;
-        } elseif ($this->nivel_id == 4) {
-            $distrito_id = $this->distrito_id;
-        }
+        $pais_id = $nivel >= 1 ? $this->pais_id : null;
+        $region_id = $nivel >= 2 ? $this->region_id : null;
+        $provincia_id = $nivel >= 3 ? $this->provincia_id : null;
+        $distrito_id = $nivel >= 4 ? $this->distrito_id : null;
 
         $this->encuesta->update([
             'nombre' => $this->nombre,
@@ -308,10 +300,10 @@ class EncuestaEditarLivewire extends Component
             'nivel_id' => $this->nivel_id,
             'cargo_id' => $this->cargo_id,
             'eleccion_id' => $this->eleccion_id,
-            'pais_id' => $pais_id,
-            'region_id' => $region_id,
-            'provincia_id' => $provincia_id,
-            'distrito_id' => $distrito_id,
+            'pais_id' =>  $pais_id,
+            'region_id' =>  $region_id,
+            'provincia_id' =>  $provincia_id,
+            'distrito_id' =>  $distrito_id,
             'fecha_inicio' => $this->fecha_inicio,
             'fecha_fin' => $this->fecha_fin,
             'estado' => $this->estado,

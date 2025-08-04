@@ -1,4 +1,4 @@
-@section('tituloPagina', 'Candidato')
+@section('tituloPagina', 'Candidatos')
 
 @section('anchoPantalla', '100%')
 

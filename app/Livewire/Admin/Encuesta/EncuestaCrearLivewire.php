@@ -242,6 +242,7 @@ class EncuestaCrearLivewire extends Component
             $fechaFin = Carbon::parse($this->fecha_fin)->format('d-m-Y');
 
             $this->nombre = 'ENCUESTA ' . strtoupper($eleccion->nombre) . ' - ' . strtoupper($cargo->nombre) . ' - del ' . $fechaInicio . ' al ' . $fechaFin;
+            $this->nombre = 'ENCUESTA ' . strtoupper($eleccion->nombre) . ' - ' . strtoupper($cargo->nombre) . ' - del ' . $fechaInicio . ' al ' . $fechaFin;
             $this->slug = Str::slug($this->nombre);
         }
     }
@@ -250,20 +251,12 @@ class EncuestaCrearLivewire extends Component
     {
         $this->validate();
 
-        /*$pais_id = null;
-        $region_id = null;
-        $provincia_id = null;
-        $distrito_id = null;
-    
-        if ($this->nivel_id == 1) {
-            $pais_id = $this->pais_id;
-        } elseif ($this->nivel_id == 2) {
-            $region_id = $this->region_id;
-        } elseif ($this->nivel_id == 3) {
-            $provincia_id = $this->provincia_id;
-        } elseif ($this->nivel_id == 4) {
-            $distrito_id = $this->distrito_id;
-        }*/
+        $nivel = (int) $this->nivel_id;
+
+        $pais_id = $nivel >= 1 ? $this->pais_id : null;
+        $region_id = $nivel >= 2 ? $this->region_id : null;
+        $provincia_id = $nivel >= 3 ? $this->provincia_id : null;
+        $distrito_id = $nivel >= 4 ? $this->distrito_id : null;
 
         Encuesta::create([
             'nombre' => $this->nombre,
@@ -274,10 +267,10 @@ class EncuestaCrearLivewire extends Component
             'nivel_id' => $this->nivel_id,
             'cargo_id' => $this->cargo_id,
             'eleccion_id' => $this->eleccion_id,
-            'pais_id' => $this->pais_id,
-            'region_id' => $this->region_id,
-            'provincia_id' => $this->provincia_id,
-            'distrito_id' => $this->distrito_id,
+            'pais_id' =>  $pais_id,
+            'region_id' =>  $region_id,
+            'provincia_id' =>  $provincia_id,
+            'distrito_id' =>  $distrito_id,
             'fecha_inicio' => $this->fecha_inicio,
             'fecha_fin' => $this->fecha_fin,
             'estado' => $this->estado,

@@ -152,7 +152,7 @@
 
         <div>
             <div class="formulario_botones">
-                <button wire:click="crearPartido" class="guardar">Guardar</button>
+                <button wire:click="actualizarPartido" class="guardar">Guardar</button>
 
                 <a href="{{ route('admin.candidato.vista.todas') }}" class="cancelar">Cancelar</a>
             </div>

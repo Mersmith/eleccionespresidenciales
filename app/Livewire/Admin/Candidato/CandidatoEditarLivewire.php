@@ -150,7 +150,7 @@ class CandidatoEditarLivewire extends Component
         }
     }
 
-    public function crearPartido()
+    public function actualizarPartido()
     {
         $this->validate();
 

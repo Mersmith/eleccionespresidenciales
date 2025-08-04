@@ -1,4 +1,4 @@
-@section('tituloPagina', 'Partido')
+@section('tituloPagina', 'Partidos')
 
 @section('anchoPantalla', '100%')
 
@@ -80,7 +80,7 @@
 
         @else
         <div class="g_vacio">
-            <p>No hay locales disponibles.</p>
+            <p>No hay partidos disponibles.</p>
             <i class="fa-regular fa-face-grin-wink"></i>
         </div>
         @endif

@@ -105,7 +105,7 @@
                     <!--NOMBRE-->
                     <div class="g_margin_bottom_20">
                         <label for="nombre">Nombre <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
-                        <input type="text" id="nombre" name="nombre" wire:model.live="nombre" required disabled>
+                        <input type="text" id="nombre" name="nombre" wire:model.live="nombre" required >
                         <p class="leyenda">Se genera automático</p>
                         @error('nombre')
                         <p class="mensaje_error">{{ $message }}</p>

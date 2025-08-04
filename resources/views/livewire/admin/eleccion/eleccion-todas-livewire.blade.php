@@ -1,4 +1,4 @@
-@section('tituloPagina', 'Locales')
+@section('tituloPagina', 'Elecciones')
 
 @section('anchoPantalla', '100%')
 
@@ -23,11 +23,14 @@
         @if ($elecciones->count())
             <div class="tabla_cabecera">
                 <div class="tabla_cabecera_buscar">
-                    <input type="text" wire:model.live.debounce.500ms="buscar" placeholder="Buscar por nombre...">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <form action="">
+                        <input type="text" wire:model.live.debounce.1300ms="buscar" id="buscar" name="buscar"
+                            placeholder="Buscar...">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </form>
                 </div>
             </div>
-    
+
             <div class="tabla_contenido g_margin_bottom_20">
                 <div class="contenedor_tabla">
                     <table class="tabla">
@@ -44,7 +47,8 @@
                         <tbody>
                             @foreach ($elecciones as $index => $item)
                                 <tr>
-                                    <td>{{ ($elecciones->currentPage() - 1) * $elecciones->perPage() + $loop->iteration }}</td>
+                                    <td>{{ ($elecciones->currentPage() - 1) * $elecciones->perPage() + $loop->iteration }}
+                                    </td>
                                     <td class="g_resaltar">{{ $item->nombre }}</td>
                                     <td>{{ $item->tipoEleccion->nombre }}</td>
                                     <td>{{ \Carbon\Carbon::parse($item->fecha_votacion)->format('d/m/Y') }}</td>
@@ -54,7 +58,8 @@
                                         </span>
                                     </td>
                                     <td class="centrar_iconos">
-                                        <a href="{{ route('admin.eleccion.vista.editar', $item->id) }}" class="g_accion_editar">
+                                        <a href="{{ route('admin.eleccion.vista.editar', $item->id) }}"
+                                            class="g_accion_editar">
                                             <span><i class="fa-solid fa-pencil"></i></span>
                                         </a>
                                     </td>
@@ -64,7 +69,7 @@
                     </table>
                 </div>
             </div>
-    
+
             @if ($elecciones->hasPages())
                 <div class="mt-4">
                     {{ $elecciones->onEachSide(1)->links() }}
@@ -77,5 +82,5 @@
             </div>
         @endif
     </div>
-    
+
 </div>
