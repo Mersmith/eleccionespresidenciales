@@ -241,8 +241,8 @@ class EncuestaCrearLivewire extends Component
             $fechaInicio = Carbon::parse($this->fecha_inicio)->format('d-m-Y');
             $fechaFin = Carbon::parse($this->fecha_fin)->format('d-m-Y');
 
-            $this->nombre = 'ENCUESTA ' . strtoupper($eleccion->nombre) . ' - ' . strtoupper($cargo->nombre) . ' - del ' . $fechaInicio . ' al ' . $fechaFin;
-            $this->nombre = 'ENCUESTA ' . strtoupper($eleccion->nombre) . ' - ' . strtoupper($cargo->nombre) . ' - del ' . $fechaInicio . ' al ' . $fechaFin;
+            //$this->nombre = 'ENCUESTA ' . strtoupper($eleccion->nombre) . ' - ' . strtoupper($cargo->nombre) . ' - del ' . $fechaInicio . ' al ' . $fechaFin;
+            $this->nombre = 'ENCUESTA ' . ' - ' . strtoupper($cargo->nombre) . ' - del ' . $fechaInicio;
             $this->slug = Str::slug($this->nombre);
         }
     }

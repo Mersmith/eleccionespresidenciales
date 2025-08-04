@@ -5,10 +5,11 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <!----------------------ESTILOS---------------------->
 <!--GENERAL-->
-<link rel="stylesheet" href="{{ asset('assets/css/general.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/admin/css/general.css') }}">
 
 <!--ESTILOS-->
-<link rel="stylesheet" href="{{ asset('assets/css/estilos.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/admin/css/estilos.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/admin/css/modal.css') }}">
 
 <!----------------------ERP---------------------->
 <!--LAYOUT ERP-->

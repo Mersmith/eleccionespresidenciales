@@ -37,6 +37,7 @@
                     <thead>
                         <tr>
                             <th>Nº</th>
+                            <th>Nombre</th>
                             <th>Elección</th>
                             <th>Cargo</th>
                             <th>Nivel</th>
@@ -55,6 +56,7 @@
                         @foreach ($encuestas as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
+                                <td>{{ $item->nombre }}</td>
                                 <td>{{ $item->eleccion->nombre ?? '-' }}</td>
                                 <td>{{ $item->cargo->nombre ?? '-' }}</td>
                                 <td>{{ $item->nivel->nombre ?? '-' }}</td>
@@ -79,10 +81,10 @@
                                     <a href="{{ route('admin.encuesta.candidato.editar', $item->id) }}" class="g_accion_editar">
                                         <span><i class="fa-solid fa-pencil"></i></span>
                                     </a>
-                                    <a href="{{ route('admin.encuesta.voto.editar', $item->id) }}" class="g_accion_editar">
+                                    <a href="{{ route('encuesta', $item->id) }}" class="g_accion_editar" target="_blank">
                                         <span><i class="fa-solid fa-pencil"></i></span>
                                     </a>
-                                    <a href="{{ route('admin.encuesta.resultado.editar', $item->id) }}" class="g_accion_editar">
+                                    <a href="{{ route('encuesta.resultado', $item->id) }}" class="g_accion_editar" target="_blank">
                                         <span><i class="fa-solid fa-pencil"></i></span>
                                     </a>
                                 </td>

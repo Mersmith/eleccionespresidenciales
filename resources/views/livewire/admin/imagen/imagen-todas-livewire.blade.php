@@ -53,82 +53,86 @@
 
     <!--MODAL EDITAR-->
     @if ($imagenId)
-        <x-dialog-modal wire:model="modal">
-            <x-slot name="title">
+        <div class="g_modal">
+            <div class="modal_contenedor">
+                <div class="modal_cerrar">
+                    <button wire:click="$set('imagenId', false)"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <div class="modal_titulo g_titulo">
+                    <h2>Nueva Editar</h2>
+                </div>
+
+                <div class="modal_cuerpo">
+                    <div class="formulario">
+                        <!--TITULO-->
+                        <div class="g_margin_bottom_20">
+                            <label for="titulo">Titulo <span class="obligatorio"><i
+                                        class="fa-solid fa-asterisk"></i></span></label>
+                            <input type="text" id="titulo" name="titulo" wire:model="titulo">
+                            <p class="leyenda">Se mostrará en el SEO.</p>
+                            @error('titulo')
+                                <p class="mensaje_error">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <!--DESCRIPCION-->
+                        <div class="g_margin_bottom_20">
+                            <label for="descripcion">Descripción <span class="obligatorio"><i
+                                        class="fa-solid fa-asterisk"></i></span></label>
+                            <textarea id="descripcion" name="descripcion" wire:model="descripcion"> </textarea>
+                            <p class="leyenda">Se mostrará en el SEO.</p>
+                            @error('descripcion')
+                                <p class="mensaje_error">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <!--IMAGEN-->
+                        <div class="g_margin_bottom_20">
+                            <label for="descripcion">Imagen</label>
+
+                            <div class="dropzone_item">
+                                <img src="{{ $url }}" class="dropzone_image">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cabecera_titulo_botones g_margin_bottom_20">
+                        <a class="g_boton g_boton_primary">
+                            <label for="imagen_edit" style="cursor: pointer;">Cambiar imagen <i
+                                    class="fa-solid fa-square-plus"></i></label>
+                        </a>
+                        <input type="file" id="imagen_edit" wire:model="imagen_edit" accept="image/*"
+                            style="display: none;">
+                    </div>
+
+                    <div class="contenedor_dropzone">
+                        @if ($imagen_edit)
+                            <div class="dropzone_item">
+                                <img src="{{ $imagen_edit->temporaryUrl() }}" class="dropzone_image">
+                                <button type="button" wire:click="eliminarImagenEditTemporal()"
+                                    class="remove_button"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                        @else
+                            <div class="g_vacio">
+                                <p>No hay imagen.</p>
+                                <i class="fa-regular fa-face-grin-wink"></i>
+                            </div>
+                        @endif
+                    </div>
+                    @error('imagen_edit')
+                        <p class="mensaje_error">{{ $message }}</p>
+                    @enderror
+                </div>
                 <div>
-                    <!--TITULO-->
-                    <h4 class="g_panel_titulo">Editar</h4>
-                </div>
-            </x-slot>
-            <x-slot name="content">
-                <div class="formulario">
-                    <!--TITULO-->
-                    <div class="g_margin_bottom_20">
-                        <label for="titulo">Titulo <span class="obligatorio"><i
-                                    class="fa-solid fa-asterisk"></i></span></label>
-                        <input type="text" id="titulo" name="titulo" wire:model="titulo">
-                        <p class="leyenda">Se mostrará en el SEO.</p>
-                        @error('titulo')
-                            <p class="mensaje_error">{{ $message }}</p>
-                        @enderror
-                    </div>
+                    <div class="formulario_botones">
+                        <button type="button" wire:click="editarFormulario" class="guardar">Actualizar</button>
 
-                    <!--DESCRIPCION-->
-                    <div class="g_margin_bottom_20">
-                        <label for="descripcion">Descripción <span class="obligatorio"><i
-                                    class="fa-solid fa-asterisk"></i></span></label>
-                        <textarea id="descripcion" name="descripcion" wire:model="descripcion"> </textarea>
-                        <p class="leyenda">Se mostrará en el SEO.</p>
-                        @error('descripcion')
-                            <p class="mensaje_error">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <!--IMAGEN-->
-                    <div class="g_margin_bottom_20">
-                        <label for="descripcion">Imagen</label>
-
-                        <div class="dropzone_item">
-                            <img src="{{ $url }}" class="dropzone_image">
-                        </div>
+                        <button type="button" wire:click="$set('imagenId', false)" class="cancelar">Cancelar</button>
                     </div>
                 </div>
-
-                <div class="cabecera_titulo_botones g_margin_bottom_20">
-                    <a class="g_boton g_boton_primary">
-                        <label for="imagen_edit" style="cursor: pointer;">Cambiar imagen <i
-                                class="fa-solid fa-square-plus"></i></label>
-                    </a>
-                    <input type="file" id="imagen_edit" wire:model="imagen_edit" accept="image/*"
-                        style="display: none;">
-                </div>
-
-                <div class="contenedor_dropzone">
-                    @if ($imagen_edit)
-                        <div class="dropzone_item">
-                            <img src="{{ $imagen_edit->temporaryUrl() }}" class="dropzone_image">
-                            <button type="button" wire:click="eliminarImagenEditTemporal()" class="remove_button"><i
-                                    class="fa-solid fa-xmark"></i></button>
-                        </div>
-                    @else
-                        <div class="g_vacio">
-                            <p>No hay imagen.</p>
-                            <i class="fa-regular fa-face-grin-wink"></i>
-                        </div>
-                    @endif
-                </div>
-                @error('imagen_edit')
-                    <p class="mensaje_error">{{ $message }}</p>
-                @enderror
-            </x-slot>
-            <x-slot name="footer">
-                <div class="formulario_botones">
-                    <button type="button" wire:click="editarFormulario" class="guardar">Actualizar</button>
-
-                    <button type="button" wire:click="$set('modal', false)" class="cancelar">Cancelar</button>
-                </div>
-            </x-slot>
-        </x-dialog-modal>
+            </div>
+        </div>
     @endif
 
     <!--TABLA-->

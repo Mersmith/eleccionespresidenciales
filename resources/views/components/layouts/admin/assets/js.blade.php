@@ -12,7 +12,7 @@
 
 <!----------------------JAVASCRIPT---------------------->
 <!--ALERTAS-->
-<script src="{{ asset('assets/js/alertas.js') }}"></script>
+<script src="{{ asset('assets/admin/js/alertas.js') }}"></script>
 
 <!----------------------ERP---------------------->
 <!--LAYOUT ERP-->
