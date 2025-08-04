@@ -12,15 +12,22 @@
                 <div class="swiper-wrapper">
                     @foreach ($p_elemento['candidatos'] as $postulacion)
                         <div class="swiper-slide">
-                            <a href="{{ route('candidato', ['id' => $postulacion->candidato->id, 'slug' => $postulacion->candidato->slug]) }}">
+                            <a
+                                href="{{ route('candidato', ['id' => $postulacion->candidato->id, 'slug' => $postulacion->candidato->slug]) }}">
                                 <div class="candidato_imagen_contenedor">
                                     <img class="imagen_candidato" src="{{ $postulacion->candidato->foto }}"
                                         alt="" />
-                                    <img class="logo_partido" src="{{ $postulacion->candidato->partido->logo }}"
-                                        alt="" />
+                                    @if ($postulacion->candidato && $postulacion->candidato->partido)
+                                        <img class="logo_partido" src="{{ $postulacion->candidato->partido->logo }}"
+                                            alt="" />
+                                    @endif
                                 </div>
                                 <p class="g_texto_nivel_1">{{ $postulacion->candidato->nombre }}</p>
-                                <span class="g_texto_nivel_2">{{ $postulacion->candidato->partido->nombre }}</span>
+                                @if ($postulacion->candidato && $postulacion->candidato->partido)
+                                    <span class="g_texto_nivel_2">{{ $postulacion->candidato->partido->nombre }}</span>
+                                @else
+                                    <span class="g_texto_nivel_2"></span>
+                                @endif
                             </a>
                         </div>
                     @endforeach

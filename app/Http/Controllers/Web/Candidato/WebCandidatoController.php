@@ -20,7 +20,7 @@ class WebCandidatoController extends Controller
 
         $candidato_encuestas_participaciones = $this->getWebCandidatoEncuestas($id);
 
-        //dd($getWebCandidatoEncuestaActiva);
+        //dd($candidato_partido);
 
         return view(
             'web.candidato.index',
@@ -36,6 +36,8 @@ class WebCandidatoController extends Controller
     public function getWebCandidatoPartido($id)
     {
         $candidato_partido = Candidato::with('partido')->findOrFail($id);
+
+        $candidato_partido->redes_sociales = json_decode($candidato_partido->redes_sociales, true);
 
         return $candidato_partido;
     }

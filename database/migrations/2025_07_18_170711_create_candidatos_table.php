@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->text('descripcion')->nullable();
             $table->string('foto')->nullable();
+            $table->json('redes_sociales')->nullable();
 
             $table->foreignId('partido_id')->nullable()->constrained()->onDelete('set null');
 
