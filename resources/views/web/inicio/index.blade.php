@@ -39,7 +39,11 @@
                 @include('web.partials.mostrador', [
                     'p_elemento' => $data_partidos_politicos,
                 ])
-                
+
+                @include('web.partials.mostrador-alianza', [
+                    'p_elemento' => $data_alianzas_electorales,
+                ])
+
             </div>
 
         </div>

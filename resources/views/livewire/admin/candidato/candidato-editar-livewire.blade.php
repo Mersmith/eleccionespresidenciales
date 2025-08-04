@@ -181,7 +181,7 @@
                             <th>Nº</th>
                             <th>Cargo</th>
                             <th>Elección</th>
-                            <th>Partido</th>
+                            <th>Partido o Alianza</th>
                             <th>Ubicación</th>
                         </tr>
                     </thead>
@@ -191,7 +191,15 @@
                                 <td> {{ $index + 1 }} </td>
                                 <td class="g_resaltar">{{ $item->cargo->nombre }}</td>
                                 <td>{{ $item->eleccion->nombre }}</td>
-                                <td>{{ $item->partido->nombre ?? '-' }}</td>
+                                <td>
+                                    @if ($item->partido)
+                                        {{ $item->partido->nombre }}
+                                    @elseif ($item->alianza)
+                                        {{ $item->alianza->nombre }}
+                                    @else
+                                        -
+                                    @endif
+                                </td>
                                 <td>
                                     {{ $item->region->nombre ?? '-' }}
                                     {{ $item->provincia->nombre ?? '' }}

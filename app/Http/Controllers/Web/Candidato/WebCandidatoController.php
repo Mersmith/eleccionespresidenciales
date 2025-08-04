@@ -20,7 +20,7 @@ class WebCandidatoController extends Controller
 
         $candidato_encuestas_participaciones = $this->getWebCandidatoEncuestas($id);
 
-        //dd($candidato_partido);
+        //dd($candidato_cargos);
 
         return view(
             'web.candidato.index',
@@ -67,7 +67,7 @@ class WebCandidatoController extends Controller
 
     public function getWebCandidatoCargos($id)
     {
-        $candidato_cargos = CandidatoCargo::with(['cargo', 'eleccion', 'partido', 'region', 'provincia', 'distrito'])
+        $candidato_cargos = CandidatoCargo::with(['cargo', 'eleccion', 'partido', 'alianza', 'region', 'provincia', 'distrito'])
             ->where('candidato_id', $id)
             ->orderByDesc('created_at')
             ->get();

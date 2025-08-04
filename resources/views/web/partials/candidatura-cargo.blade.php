@@ -7,7 +7,15 @@
                 <h4 class="g_texto_nivel_4"><i class="fas fa-vote-yea"></i> {{ $item->eleccion->nombre }}</h4>
                 <h5 class="g_texto_nivel_1"><i class="fas fa-user-tie"></i> <strong>Cargo:</strong>
                     {{ $item->cargo->nombre }}</h5>
-                <p class="g_texto_nivel_2"><i class="fas fa-flag"></i> <strong>Partido:</strong> {{ $item->partido->nombre ?? '-' }}</p>
+                <p class="g_texto_nivel_2"><i class="fas fa-flag"></i>
+                    @if ($item->partido)
+                        <strong>Partido:</strong> {{ $item->partido->nombre ?? '-' }}
+                    @elseif ($item->alianza)
+                        <strong>Alianza:</strong> {{ $item->alianza->nombre ?? '-' }}
+                    @else
+                        -
+                    @endif
+                </p>
                 <span class="g_texto_nivel_3"><i class="fas fa-map-marker-alt"></i>
                     {{ $item->pais->nombre ?? '' }}
                     {{ $item->region->nombre ?? '' }}

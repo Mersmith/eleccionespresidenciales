@@ -14,6 +14,7 @@ class CandidatoCargo extends Model
         'cargo_id',
         'eleccion_id',
         'partido_id',
+        'alianza_id',
         'pais_id',
         'region_id',
         'provincia_id',
@@ -78,4 +79,10 @@ class CandidatoCargo extends Model
     {
         return $this->hasMany(Voto::class);
     }
+
+    public function alianza()
+    {
+        return $this->belongsTo(Alianza::class);
+    }
+
 }

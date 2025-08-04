@@ -8,12 +8,13 @@ use App\Models\Cargo;
 use App\Models\Distrito;
 use App\Models\Eleccion;
 use App\Models\Nivel;
+use App\Models\Pais;
 use App\Models\Partido;
+use App\Models\Alianza;
 use App\Models\Provincia;
 use App\Models\Region;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
-use App\Models\Pais;
 
 #[Layout('components.layouts.admin.layout-admin')]
 class CandidatoCargoLivewire extends Component
@@ -25,6 +26,9 @@ class CandidatoCargoLivewire extends Component
 
     public $paises = [], $regiones = [], $provincias = [], $distritos = [];
     public $cargos = [], $elecciones = [], $partidos;
+
+    public $alianza_id = "";
+    public $alianzas = [];
 
     public $cargo_id = "", $eleccion_id = "", $partido_id = "";
     public $pais_id = "", $region_id = "", $provincia_id = "", $distrito_id = "";
@@ -40,6 +44,7 @@ class CandidatoCargoLivewire extends Component
             'cargo_id' => 'required|exists:cargos,id',
             'eleccion_id' => 'required|exists:eleccions,id',
             'partido_id' => 'nullable|exists:partidos,id',
+            'alianza_id' => 'nullable|exists:alianzas,id',
             'pais_id' => 'required_if:nivel_id,1|nullable|exists:pais,id',
             'region_id' => 'required_if:nivel_id,2|nullable|exists:regions,id',
             'provincia_id' => 'required_if:nivel_id,3|nullable|exists:provincias,id',
@@ -58,6 +63,7 @@ class CandidatoCargoLivewire extends Component
         $this->niveles = Nivel::all();
         $this->partidos = Partido::all();
         $this->paises = Pais::all();
+        $this->alianzas = Alianza::where('activo', true)->get();
     }
 
     public function updatedNivelId($value)
@@ -148,6 +154,18 @@ class CandidatoCargoLivewire extends Component
     {
         $this->validate();
 
+        if (empty($this->partido_id) && empty($this->alianza_id)) {
+            $this->addError('partido_id', 'Debe seleccionar un partido o una alianza.');
+            $this->addError('alianza_id', 'Debe seleccionar un partido o una alianza.');
+            return;
+        }
+    
+        if (!empty($this->partido_id) && !empty($this->alianza_id)) {
+            $this->addError('partido_id', 'No puede seleccionar partido y alianza al mismo tiempo.');
+            $this->addError('alianza_id', 'No puede seleccionar partido y alianza al mismo tiempo.');
+            return;
+        }
+
         $nivel = (int) $this->nivel_id;
 
         $pais_id = $nivel >= 1 ? $this->pais_id : null;
@@ -163,10 +181,11 @@ class CandidatoCargoLivewire extends Component
             'cargo_id' => $this->cargo_id,
             'eleccion_id' => $this->eleccion_id,
             'partido_id' => $partido_id,
-            'pais_id' =>  $pais_id,
-            'region_id' =>  $region_id,
-            'provincia_id' =>  $provincia_id,
-            'distrito_id' =>  $distrito_id,
+            'alianza_id' => $this->alianza_id ?: null,
+            'pais_id' => $pais_id,
+            'region_id' => $region_id,
+            'provincia_id' => $provincia_id,
+            'distrito_id' => $distrito_id,
             'principal' => $this->principal,
             'electo' => $this->electo,
         ]);

@@ -202,7 +202,7 @@
                     <!-- PIE -->
                     <div class="sidebar_cotenido_item sidebar_pie">
                         <a href="#">
-                            <img src="{{ asset('assets/web/imagenes/logo/logo-votmi-computadora.svg') }}"
+                            <img src="{{ asset('assets/images/logo-votmi-computadora.svg') }}"
                                 alt="Tendencias Market" />
                         </a>
                     </div>

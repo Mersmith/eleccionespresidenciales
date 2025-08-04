@@ -90,6 +90,7 @@ VOTO OK
 php artisan make:controller Web/Inicio/WebInicioController
 php artisan make:controller Web/Candidato/WebCandidatoController
 php artisan make:controller Web/Partido/WebPartidoController
+php artisan make:controller Web/Alianza/WebAlianzaController
 php artisan make:controller Web/Encuesta/WebEncuestaController
 php artisan make:livewire Web/Encuestas/EncuestasLivewire
 php artisan make:livewire Web/Encuesta/EncuestaVotoLivewire

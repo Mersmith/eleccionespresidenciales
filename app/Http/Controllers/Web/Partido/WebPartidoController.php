@@ -14,20 +14,20 @@ class WebPartidoController extends Controller
     {
         $partido = $this->getWebPartido($id);
 
-        $candidatos_presidenciales = $this->getWebPartidoCandidatoPresidencial($id);
+        $candidatos_presidenciales = $this->getWebPartidoAlianzaCandidatoPresidencial($id);
 
         $candidatos_alcaldia_lima = $this->getWebPartidoCandidatoAlcaldiaLima($id);
 
         $encuesta_presidencial_activa = $this->getWebPartidoEncuestaPresidencialActiva($id);
 
-        //dd($candidatos_alcaldia_lima);
+        //dd($partido);
 
         return view(
             'web.partido.index',
             compact(
                 'partido', //ok
                 'candidatos_presidenciales', //ok
-                'candidatos_alcaldia_lima',//ok
+                'candidatos_alcaldia_lima', //ok
                 'encuesta_presidencial_activa', //ok
             )
         );
@@ -35,8 +35,12 @@ class WebPartidoController extends Controller
 
     public function getWebPartido($id)
     {
-        $partido = Partido::findOrFail($id);
-
+        $partido = Partido::with(['alianzas' => function ($query) {
+            $query->where('eleccion_id', 1);
+        }])->findOrFail($id);
+    
+        $partido->alianza = $partido->alianzas->first(); // añade la propiedad directamente
+    
         return $partido;
     }
 
@@ -50,6 +54,48 @@ class WebPartidoController extends Controller
         })->get();
 
         return $candidatos;
+    }
+
+    public function getWebPartidoAlianzaCandidatoPresidencial($partido_id)
+    {
+        $cargo_id = 1; // Presidente
+        $eleccion_id = 1; // ID de elección actual (ajusta si es dinámico)
+
+        // Buscar el partido con sus alianzas y los partidos de la alianza
+        $partido = Partido::with(['alianzas' => function ($q) use ($eleccion_id) {
+            $q->where('eleccion_id', $eleccion_id)->where('activo', true);
+        }])->findOrFail($partido_id);
+
+        $todosCandidatos = collect();
+
+        // =========================
+        // Candidatos por PARTIDO
+        // =========================
+        $candidatosPartido = Candidato::whereHas('cargos', function ($query) use ($partido_id, $cargo_id) {
+            $query->where('partido_id', $partido_id)
+                ->where('cargo_id', $cargo_id);
+        })->get();
+
+        $todosCandidatos = $todosCandidatos->merge($candidatosPartido);
+
+        // =========================
+        // Candidatos por ALIANZA
+        // =========================
+        if ($partido->alianzas->isNotEmpty()) {
+            $alianza = $partido->alianzas->first(); // Si puede haber más de una activa, adapta esto
+
+            $candidatosAlianza = Candidato::whereHas('cargos', function ($query) use ($alianza, $cargo_id) {
+                $query->where('alianza_id', $alianza->id)
+                    ->where('cargo_id', $cargo_id);
+            })->get();
+
+            $todosCandidatos = $todosCandidatos->merge($candidatosAlianza);
+        }
+
+        // =========================
+        // Eliminar duplicados por ID
+        // =========================
+        return $todosCandidatos->unique('id')->values();
     }
 
     public function getWebPartidoCandidatoAlcaldiaLima($id)

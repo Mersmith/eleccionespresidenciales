@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\Inicio;
 
 use App\Http\Controllers\Controller;
+use App\Models\Alianza;
 use App\Models\Banner;
 use App\Models\CandidatoCargo;
 use App\Models\Distrito;
@@ -28,25 +29,28 @@ class WebInicioController extends Controller
 
         $data_partidos_politicos = $this->getWebpartidosPoliticos();
 
+        $data_alianzas_electorales = $this->getWebAlianzas();
+
         $data_encuesta_presidencial = $this->getWebEncuestaPresidencial();
         $data_encuesta_alcaldia_provincial_lima = $this->getWebEncuestaAlcaldiaProvincialLima();
 
         $data_encuestas_alcaldia_distritos_lima = $this->getWebEncuestasAlcaldiaDistritosLima();
 
-        //dd($data_banner_2);
+        //dd($data_alianzas_electorales);
 
         return view(
             'web.inicio.index',
             compact(
-                'data_baner_1',//ok
-                'data_banner_2',//ok
-                'data_sliders_principal_1',//ok
-                'data_candidatos_presidenciales',//ok
-                'data_candidatos_alcaldia_lima',//ok
-                'data_partidos_politicos',//ok
-                'data_encuesta_presidencial',//ok
-                'data_encuesta_alcaldia_provincial_lima',//ok
-                'data_encuestas_alcaldia_distritos_lima',//ok
+                'data_baner_1', //ok
+                'data_banner_2', //ok
+                'data_sliders_principal_1', //ok
+                'data_candidatos_presidenciales', //ok
+                'data_candidatos_alcaldia_lima', //ok
+                'data_partidos_politicos', //ok
+                'data_alianzas_electorales', //ok
+                'data_encuesta_presidencial', //ok
+                'data_encuesta_alcaldia_provincial_lima', //ok
+                'data_encuestas_alcaldia_distritos_lima', //ok
             )
         );
     }
@@ -130,6 +134,25 @@ class WebInicioController extends Controller
             'id' => $consulta_id,
             'titulo' => $titulo,
             'partidos' => $partidos,
+        ];
+    }
+
+    public function getWebAlianzas()
+    {
+        $consulta_id = 2;
+        $eleccion_id = config('constantes.ELECCION_GENERAL_ID'); //generales
+
+        $titulo = 'Alianzas electorales';
+
+        $alianzas = Alianza::with('partidos') // si tienes una relación partidos()
+            ->where('activo', true)
+            ->where('eleccion_id', $eleccion_id)
+            ->get();
+
+        return [
+            'id' => $consulta_id,
+            'titulo' => $titulo,
+            'partidos' => $alianzas,
         ];
     }
 
