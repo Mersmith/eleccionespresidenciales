@@ -17,7 +17,10 @@ class PartidoEditarLivewire extends Component
     public $sigla;
     public $descripcion;
     public $logo;
+    public $plan_gobierno;
     public $activo;
+
+    public $redes_sociales;
 
     protected $validationAttributes = [
         'nombre' => 'nombre',
@@ -25,6 +28,7 @@ class PartidoEditarLivewire extends Component
         'sigla' => 'sigla',
         'descripcion' => 'descripción',
         'logo' => 'logo',
+        'plan_gobierno' => 'plan de gobierno',
         'activo' => 'estado',
     ];
 
@@ -33,32 +37,13 @@ class PartidoEditarLivewire extends Component
         return [
             'nombre' => 'required|unique:partidos,nombre,' . $this->partido->id,
             'slug' => 'required|unique:partidos,slug,' . $this->partido->id,
-            'sigla' => 'required',
-            'descripcion' => 'required|min:3|max:255',
-            'logo' => 'required',
+            'sigla' => 'nullable',
+            'descripcion' => 'nullable|min:3|max:255',
+            'logo' => 'nullable|url',
+            'plan_gobierno' => 'nullable|url',
             'activo' => 'required|numeric|regex:/^\d{1}$/',
         ];
     }
-
-    protected $messages = [
-        'nombre.required' => 'El :attribute es obligatorio.',
-        'nombre.unique' => 'El :attribute ya está registrado.',
-
-        'slug.required' => 'El :attribute es obligatorio.',
-        'slug.unique' => 'El :attribute ya está registrado.',
-
-        'sigla.required' => 'La :attribute es obligatoria.',
-
-        'descripcion.required' => 'La :attribute es obligatoria.',
-        'descripcion.min' => 'La :attribute debe tener al menos :min caracteres.',
-        'descripcion.max' => 'La :attribute no debe exceder los :max caracteres.',
-
-        'logo.required' => 'El :attribute es obligatorio.',
-
-        'activo.required' => 'El :attribute es obligatorio.',
-        'activo.numeric' => 'El :attribute debe ser un valor numérico.',
-        'activo.regex' => 'El :attribute debe ser 1 (activo) o 0 (inactivo).',
-    ];
 
     public function updatedNombre($value)
     {
@@ -74,7 +59,10 @@ class PartidoEditarLivewire extends Component
         $this->sigla = $this->partido->sigla;
         $this->descripcion = $this->partido->descripcion;
         $this->logo = $this->partido->logo;
+        $this->plan_gobierno = $this->partido->plan_gobierno;
         $this->activo = $this->partido->activo;
+
+        $this->redes_sociales = json_decode($this->partido->redes_sociales, true);
     }
 
     public function actualizarPartido()
@@ -87,6 +75,7 @@ class PartidoEditarLivewire extends Component
             'sigla' => $this->sigla,
             'descripcion' => $this->descripcion,
             'logo' => $this->logo,
+            'plan_gobierno' => $this->plan_gobierno,
             'activo' => $this->activo,
         ]);
 

@@ -51,7 +51,7 @@
                                     <td>{{ ($elecciones->currentPage() - 1) * $elecciones->perPage() + $loop->iteration }}
                                     </td>
                                     <td class="g_resaltar">ID: {{ $item->id }} - {{ $item->nombre }}</td>
-                                    <td><img src="{{ $item->imagen_ruta }}" alt=""></td>
+                                    <td><img src="{{ $item->imagen_ruta }}"></td>
                                     <td class="g_inferior g_resumir">{{ $item->descripcion }}</td>
                                     <td>{{ $item->fecha_votacion }}</td>
                                     <td class="g_inferior">
@@ -84,5 +84,4 @@
             </div>
         @endif
     </div>
-
 </div>

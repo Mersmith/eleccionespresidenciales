@@ -11,6 +11,7 @@ use App\Livewire\Admin\Cargo\CargoEditarLivewire;
 use App\Livewire\Admin\Partido\PartidoTodasLivewire;
 use App\Livewire\Admin\Partido\PartidoCrearLivewire;
 use App\Livewire\Admin\Partido\PartidoEditarLivewire;
+use App\Livewire\Admin\Partido\PartidoSocialLivewire;
 use App\Livewire\Admin\Categoria\CategoriaTodasLivewire;
 use App\Livewire\Admin\Categoria\CategoriaCrearLivewire;
 use App\Livewire\Admin\Categoria\CategoriaEditarLivewire;
@@ -48,6 +49,7 @@ Route::get('/eleccion/editar/{id}', EleccionEditarLivewire::class)->name('elecci
 Route::get('/partido', PartidoTodasLivewire::class)->name('partido.vista.todas');
 Route::get('/partido/crear', PartidoCrearLivewire::class)->name('partido.vista.crear');
 Route::get('/partido/editar/{id}', PartidoEditarLivewire::class)->name('partido.vista.editar');
+Route::get('/partido/red-social/{id}', PartidoSocialLivewire::class)->name('partido.social.editar');
 
 Route::get('/alianza', AlianzaTodasLivewire::class)->name('alianza.vista.todas');
 Route::get('/alianza/crear', CrearAlianzaLivewire::class)->name('alianza.vista.crear');
