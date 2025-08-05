@@ -74,7 +74,7 @@
 
                     <!--DESCRIPCION-->
                     <div class="g_margin_bottom_20">
-                        <label for="descripcion">Descripción <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
+                        <label for="descripcion">Descripción</label>
                         <textarea id="descripcion" name="descripcion" wire:model.live="descripcion" rows="3"></textarea>
                         <p class="leyenda">Se mostrará en el SEO.</p>
                         @error('descripcion')
@@ -98,7 +98,7 @@
                     <div class="g_margin_bottom_20">
                         <label for="imagen_ruta">Imagen</label>
                         <input type="text" id="imagen_ruta" name="imagen_ruta" wire:model.live="imagen_ruta">
-                        <p class="leyenda">El logo de la elección</p>
+                        <p class="leyenda">Imagen de la elección</p>
                         @error('imagen_ruta')
                         <p class="mensaje_error">{{ $message }}</p>
                         @enderror

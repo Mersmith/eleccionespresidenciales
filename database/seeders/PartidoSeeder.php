@@ -67,8 +67,8 @@ class PartidoSeeder extends Seeder
                 'nombre' => $nombre,
                 'slug' => Str::slug($nombre),
                 'sigla' => null,
-                'descripcion' => $faker->sentence,
-                'logo' => 'http://127.0.0.1:8000/assets/images/partido/partido-1.jpg',
+                'descripcion' => $nombre,
+                //'logo' => 'http://127.0.0.1:8000/assets/images/partido/partido-1.jpg',
                 'activo' => true,
             ]);
         }

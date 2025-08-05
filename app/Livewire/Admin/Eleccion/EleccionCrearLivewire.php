@@ -38,7 +38,7 @@ class EleccionCrearLivewire extends Component
         return [
             'nombre' => 'required|unique:eleccions,nombre',
             'slug' => 'required|unique:eleccions,slug',
-            'descripcion' => 'required|min:3|max:255',
+            'descripcion' => 'nullable|min:3|max:255',
             'tipo_eleccion_id' => 'required|exists:tipo_eleccions,id',
             'imagen_ruta' => 'nullable|url',
             'fecha_votacion' => 'required|date|after_or_equal:' . $this->anio . '-01-01|before_or_equal:' . $this->anio . '-12-31',

@@ -52,11 +52,13 @@
                                     <td class="g_resaltar">{{ $item->nombre }}</td>
                                     <td>{{ $item->tipoEleccion->nombre }}</td>
                                     <td>{{ \Carbon\Carbon::parse($item->fecha_votacion)->format('d/m/Y') }}</td>
-                                    <td>
-                                        <span class="{{ $item->activo ? 'text-green-600' : 'text-red-600' }}">
-                                            {{ $item->activo ? 'Sí' : 'No' }}
-                                        </span>
+
+                                    <td class="g_inferior">
+                                        <span class="estado {{ $item->activo ? 'g_activo' : 'g_desactivado' }}"><i
+                                                class="fa-solid fa-circle"></i></span>
+                                        {{ $item->activo ? 'Sí' : 'No' }}
                                     </td>
+
                                     <td class="centrar_iconos">
                                         <a href="{{ route('admin.eleccion.vista.editar', $item->id) }}"
                                             class="g_accion_editar">
@@ -71,7 +73,7 @@
             </div>
 
             @if ($elecciones->hasPages())
-                <div class="mt-4">
+                <div>
                     {{ $elecciones->onEachSide(1)->links() }}
                 </div>
             @endif

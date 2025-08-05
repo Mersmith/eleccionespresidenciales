@@ -20,8 +20,9 @@ class DatabaseSeeder extends Seeder
             CargoSeeder::class,
             CategoriaSeeder::class,
             PartidoSeeder::class,
+
             EleccionSeeder::class,
-            CandidatoSeeder::class,
+            //CandidatoSeeder::class,
              /*CandidatoCargoSeeder::class,
             EncuestaSeeder::class,
             CandidatoEncuestaSeeder::class,
