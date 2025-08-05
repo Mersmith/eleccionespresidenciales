@@ -36,7 +36,7 @@ class WebInicioController extends Controller
 
         $data_encuestas_alcaldia_distritos_lima = $this->getWebEncuestasAlcaldiaDistritosLima();
 
-        //dd($data_alianzas_electorales);
+        //dd($data_candidatos_presidenciales);
 
         return view(
             'web.inicio.index',
@@ -86,7 +86,7 @@ class WebInicioController extends Controller
 
         $titulo = 'Candidatos a la presidencia';
 
-        $candidatos = CandidatoCargo::with(['candidato', 'partido'])
+        $candidatos = CandidatoCargo::with(['candidato', 'partido', 'alianza'])
             ->where('eleccion_id', $eleccion_id)
             ->where('nivel_id', $nivel_id)
             ->where('cargo_id', $cargo_id)

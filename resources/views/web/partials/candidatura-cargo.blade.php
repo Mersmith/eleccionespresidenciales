@@ -13,7 +13,7 @@
                     @elseif ($item->alianza)
                         <strong>Alianza:</strong> {{ $item->alianza->nombre ?? '-' }}
                     @else
-                        -
+                        Sin Agrupación
                     @endif
                 </p>
                 <span class="g_texto_nivel_3"><i class="fas fa-map-marker-alt"></i>

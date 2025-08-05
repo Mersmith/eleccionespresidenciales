@@ -17,16 +17,25 @@
                                 <div class="candidato_imagen_contenedor">
                                     <img class="imagen_candidato" src="{{ $postulacion->candidato->foto }}"
                                         alt="" />
-                                    @if ($postulacion->candidato && $postulacion->candidato->partido)
-                                        <img class="logo_partido" src="{{ $postulacion->candidato->partido->logo }}"
-                                            alt="" />
+                                    @if ($postulacion->candidato)
+                                        @php
+                                            $partido = $postulacion->candidato->partido;
+                                            $alianza = $postulacion->candidato->alianza;
+                                            $logo = $partido ? $partido->logo : ($alianza ? $alianza->logo : null);
+                                        @endphp
+
+                                        @if ($logo)
+                                            <img class="logo_partido" src="{{ $logo }}" alt="" />
+                                        @endif
                                     @endif
                                 </div>
                                 <p class="g_texto_nivel_1">{{ $postulacion->candidato->nombre }}</p>
-                                @if ($postulacion->candidato && $postulacion->candidato->partido)
-                                    <span class="g_texto_nivel_2">{{ $postulacion->candidato->partido->nombre }}</span>
+                                @if ($postulacion->partido)
+                                    <span class="g_texto_nivel_2">{{ $postulacion->partido->nombre }}</span>
+                                @elseif ($postulacion->alianza)
+                                    <span class="g_texto_nivel_2">{{ $postulacion->alianza->nombre }}</span>
                                 @else
-                                    <span class="g_texto_nivel_2"></span>
+                                    <span class="g_texto_nivel_2">Sin agrupación</span>
                                 @endif
                             </a>
                         </div>

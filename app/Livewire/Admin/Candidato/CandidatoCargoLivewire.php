@@ -154,7 +154,7 @@ class CandidatoCargoLivewire extends Component
     {
         $this->validate();
 
-        if (empty($this->partido_id) && empty($this->alianza_id)) {
+        /*if (empty($this->partido_id) && empty($this->alianza_id)) {
             $this->addError('partido_id', 'Debe seleccionar un partido o una alianza.');
             $this->addError('alianza_id', 'Debe seleccionar un partido o una alianza.');
             return;
@@ -164,7 +164,7 @@ class CandidatoCargoLivewire extends Component
             $this->addError('partido_id', 'No puede seleccionar partido y alianza al mismo tiempo.');
             $this->addError('alianza_id', 'No puede seleccionar partido y alianza al mismo tiempo.');
             return;
-        }
+        }*/
 
         $nivel = (int) $this->nivel_id;
 

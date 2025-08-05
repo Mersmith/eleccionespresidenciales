@@ -28,7 +28,7 @@
 
                 <div class="imagen_contenedor">
                     <img class="imagen_candidato" src="{{ $candidatoCargo->candidato->foto }}" alt="Candidato" />
-                    <img class="logo_partido" src="{{ $candidatoCargo->candidato->partido->logo }}"
+                    <img class="logo_partido" src="{{ $candidatoCargo->candidato->partido?->logo }}"
                         alt="Logo partido" />
                 </div>
 
