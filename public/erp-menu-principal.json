@@ -4,7 +4,7 @@
         "nombre": "1",
         "ruta": "#",
         "url": "#",
-        "icono": "fa-solid fa-city",
+        "icono": "fa-solid fa-users-viewfinder",
         "nivel": 1,
         "submenus": [
             {
@@ -12,7 +12,7 @@
                 "nombre": "Eleccion",
                 "ruta": "admin.eleccion.vista.todas",
                 "url": "/admin/eleccion",
-                "icono": "fa-solid fa-tree-city",
+                "icono": "fa-solid fa-check-to-slot",
                 "nivel": 2,
                 "submenus": []
             },
@@ -21,43 +21,123 @@
                 "nombre": "Partido",
                 "ruta": "admin.partido.vista.todas",
                 "url": "/admin/partido",
-                "icono": "fa-solid fa-tree-city",
+                "icono": "fa-solid fa-flag",
                 "nivel": 2,
                 "submenus": []
             },
             {
                 "id": 13,
                 "nombre": "Alianza",
-                "ruta": "admin.alianza.vista.todas",
-                "url": "/admin/alianza",
-                "icono": "fa-solid fa-tree-city",
+                "ruta": "#",
+                "url": "#",
+                "icono": "fa-solid fa-people-group",
                 "nivel": 2,
-                "submenus": []
+                "submenus": [
+                    {
+                        "id": 111,
+                        "nombre": "Todo",
+                        "ruta": "admin.alianza.vista.todas",
+                        "url": "/admin/alianza",
+                        "nivel": 3,
+                        "submenus": []
+                    },
+                    {
+                        "id": 112,
+                        "nombre": "Crear",
+                        "ruta": "admin.alianza.vista.crear",
+                        "url": "/admin/alianza/crear",
+                        "nivel": 3,
+                        "submenus": []
+                    }
+                ]
             },
             {
                 "id": 14,
                 "nombre": "Candidato",
-                "ruta": "admin.candidato.vista.todas",
-                "url": "/admin/candidato",
-                "icono": "fa-solid fa-tree-city",
+                "ruta": "#",
+                "url": "#",
+                "icono": "fa-solid fa-user-tie",
                 "nivel": 2,
-                "submenus": []
+                "submenus": [
+                    {
+                        "id": 111,
+                        "nombre": "Todo",
+                        "ruta": "admin.candidato.vista.todas",
+                        "url": "/admin/candidato",
+                        "nivel": 3,
+                        "submenus": []
+                    },
+                    {
+                        "id": 112,
+                        "nombre": "Crear",
+                        "ruta": "admin.candidato.vista.crear",
+                        "url": "/admin/candidato/crear",
+                        "nivel": 3,
+                        "submenus": []
+                    }
+                ]
             },
             {
                 "id": 15,
                 "nombre": "Encuesta",
-                "ruta": "admin.encuesta.vista.todas",
-                "url": "/admin/encuesta",
-                "icono": "fa-solid fa-tree-city",
+                "ruta": "#",
+                "url": "#",
+                "icono": "fa-solid fa-square-poll-vertical",
+                "nivel": 2,
+                "submenus": [
+                    {
+                        "id": 111,
+                        "nombre": "Todo",
+                        "ruta": "admin.encuesta.vista.todas",
+                        "url": "/admin/encuesta",
+                        "nivel": 3,
+                        "submenus": []
+                    },
+                    {
+                        "id": 112,
+                        "nombre": "Crear",
+                        "ruta": "admin.encuesta.vista.crear",
+                        "url": "/admin/encuesta/crear",
+                        "nivel": 3,
+                        "submenus": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "nombre": "3",
+        "ruta": "#",
+        "url": "#",
+        "icono": "fa-solid fa-photo-film",
+        "nivel": 1,
+        "submenus": [
+            {
+                "id": 41,
+                "nombre": "Imagen",
+                "ruta": "admin.imagen.vista.todas",
+                "url": "/admin/imagen",
+                "icono": "fa-solid fa-image",
                 "nivel": 2,
                 "submenus": []
-            },
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "nombre": "4",
+        "ruta": "#",
+        "url": "#",
+        "icono": "fa-solid fa-bullhorn",
+        "nivel": 1,
+        "submenus": [
             {
                 "id": 16,
                 "nombre": "Banner",
                 "ruta": "admin.banner.vista.todas",
                 "url": "/admin/banner",
-                "icono": "fa-solid fa-tree-city",
+                "icono": "fa-solid fa-panorama",
                 "nivel": 2,
                 "submenus": []
             },
@@ -66,25 +146,26 @@
                 "nombre": "Slider",
                 "ruta": "admin.slider.vista.todas",
                 "url": "/admin/slider",
-                "icono": "fa-solid fa-tree-city",
+                "icono": "fa-solid fa-images",
                 "nivel": 2,
                 "submenus": []
-            },
-            {
-                "id": 18,
-                "nombre": "Imagen",
-                "ruta": "admin.imagen.vista.todas",
-                "url": "/admin/imagen",
-                "icono": "fa-solid fa-tree-city",
-                "nivel": 2,
-                "submenus": []
-            },
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "nombre": "4",
+        "ruta": "#",
+        "url": "#",
+        "icono": "fa-solid fa-database",
+        "nivel": 1,
+        "submenus": [
             {
                 "id": 19,
                 "nombre": "Plan",
                 "ruta": "admin.plan.vista.todas",
                 "url": "/admin/plan",
-                "icono": "fa-solid fa-tree-city",
+                "icono": "fa-solid fa-file-lines",
                 "nivel": 2,
                 "submenus": []
             },
@@ -93,7 +174,7 @@
                 "nombre": "Membresia",
                 "ruta": "admin.membresia.vista.todas",
                 "url": "/admin/membresia",
-                "icono": "fa-solid fa-tree-city",
+                "icono": "fa-solid fa-dollar-sign",
                 "nivel": 2,
                 "submenus": []
             }
