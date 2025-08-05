@@ -10,7 +10,7 @@
             <a href="{{ route('admin.alianza.vista.todas') }}" class="g_boton g_boton_light">
                 Inicio <i class="fa-solid fa-house"></i></a>
 
-            <a href="#" class="g_boton g_boton_primary">
+            <a href="{{ route('admin.alianza.social.editar', $alianza->id) }}" class="g_boton g_boton_primary">
                 Social <i class="fa-solid fa-square-plus"></i></a>
 
             <a href="{{ route('admin.alianza.vista.todas') }}" class="g_boton g_boton_darkt">

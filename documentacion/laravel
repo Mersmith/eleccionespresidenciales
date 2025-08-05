@@ -80,6 +80,7 @@ php artisan make:livewire Admin/Slider/SliderEditarLivewire
 php artisan make:livewire Admin/Alianza/CrearAlianzaLivewire
 php artisan make:livewire Admin/Alianza/AlianzaTodasLivewire
 php artisan make:livewire Admin/Alianza/AlianzaEditarLivewire
+php artisan make:livewire Admin/Alianza/AlianzaSocialLivewire
 
 php artisan make:livewire Admin/Plan/PlanTodasLivewire
 php artisan make:livewire Admin/Plan/PlanCrearLivewire

@@ -33,6 +33,7 @@ use App\Livewire\Admin\Imagen\ImagenTodasLivewire;
 use App\Livewire\Admin\Alianza\AlianzaTodasLivewire;
 use App\Livewire\Admin\Alianza\AlianzaEditarLivewire;
 use App\Livewire\Admin\Alianza\CrearAlianzaLivewire;
+use App\Livewire\Admin\Alianza\AlianzaSocialLivewire;
 use App\Livewire\Admin\Plan\PlanTodasLivewire;
 use App\Livewire\Admin\Plan\PlanEditarLivewire;
 use App\Livewire\Admin\Plan\PlanCrearLivewire;
@@ -54,6 +55,7 @@ Route::get('/partido/red-social/{id}', PartidoSocialLivewire::class)->name('part
 Route::get('/alianza', AlianzaTodasLivewire::class)->name('alianza.vista.todas');
 Route::get('/alianza/crear', CrearAlianzaLivewire::class)->name('alianza.vista.crear');
 Route::get('/alianza/editar/{id}', AlianzaEditarLivewire::class)->name('alianza.vista.editar');
+Route::get('/alianza/red-social/{id}', AlianzaSocialLivewire::class)->name('alianza.social.editar');
 
 Route::get('/plan', PlanTodasLivewire::class)->name('plan.vista.todas');
 Route::get('/plan/crear', PlanCrearLivewire::class)->name('plan.vista.crear');

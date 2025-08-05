@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             PartidoSeeder::class,
 
             EleccionSeeder::class,
+            AlianzaSeeder::class,
             //CandidatoSeeder::class,
              /*CandidatoCargoSeeder::class,
             EncuestaSeeder::class,

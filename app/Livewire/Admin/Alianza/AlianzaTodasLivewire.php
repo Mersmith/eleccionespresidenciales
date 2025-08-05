@@ -25,6 +25,8 @@ class AlianzaTodasLivewire extends Component
             ->orderBy('created_at', 'desc')
             ->paginate($this->perPage);
 
+            //dd($alianzas);
+
         return view('livewire.admin.alianza.alianza-todas-livewire', compact('alianzas'));
     }
 }

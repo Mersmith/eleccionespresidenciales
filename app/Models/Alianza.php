@@ -26,4 +26,9 @@ class Alianza extends Model
     {
         return $this->belongsToMany(Partido::class, 'alianza_partidos');
     }
+
+    public function eleccion()
+    {
+        return $this->belongsTo(Eleccion::class);
+    }
 }

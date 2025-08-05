@@ -38,6 +38,7 @@
                         <thead>
                             <tr>
                                 <th>Nº</th>
+                                <th>Elección</th>
                                 <th>Logo</th>
                                 <th>Nombre</th>
                                 <th>Plan</th>
@@ -51,6 +52,7 @@
                             @foreach ($alianzas as $index => $item)
                                 <tr>
                                     <td> {{ $index + 1 }} </td>
+                                    <td class="g_inferior">ID: {{ $item->eleccion->id }} - {{ $item->eleccion->nombre }}</td>
                                     <td><img src="{{ $item->logo }}"></td>
                                     <td class="g_resaltar">ID: {{ $item->id }} - {{ $item->nombre }}</td>
                                     <td class="g_inferior g_resumir">
