@@ -7,85 +7,43 @@ use App\Models\TipoEleccion;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use Livewire\Attributes\Rule;
 
 #[Layout('components.layouts.admin.layout-admin')]
 class EleccionCrearLivewire extends Component
 {
     public $tipo_elecciones;
 
+    #[Rule('required|unique:eleccions,nombre', as :'nombre de la elección')]
     public $nombre;
+
+    #[Rule('required|unique:eleccions,slug', as :'slug')]
     public $slug;
+
+    #[Rule('nullable|min:3|max:255', as :'descripción')]
     public $descripcion;
-    public $tipo_eleccion_id = "";
+
+    #[Rule('required|exists:tipo_eleccions,id', as :'tipo de elección')]
+    public $tipo_eleccion_id = '';
+
+    #[Rule('nullable|url', as :'URL de la imagen')]
     public $imagen_ruta;
+
+    #[Rule('required|date', as :'fecha de votación')]
     public $fecha_votacion;
+
+    #[Rule('required|numeric|regex:/^\d{1}$/', as :'estado activo')]
     public $activo = "0";
-    public $anio;
 
-    protected $validationAttributes = [
-        'tipo_eleccion_id' => 'tipo de elección',
-        'anio' => 'año',
-        'nombre' => 'nombre de la elección',
-        'slug' => 'slug',
-        'descripcion' => 'descripción',
-        'imagen_ruta' => 'URL de la imagen',
-        'fecha_votacion' => 'fecha de votación',
-        'activo' => 'estado activo',
-    ];
-
-    protected function rules()
-    {
-        return [
-            'nombre' => 'required|unique:eleccions,nombre',
-            'slug' => 'required|unique:eleccions,slug',
-            'descripcion' => 'nullable|min:3|max:255',
-            'tipo_eleccion_id' => 'required|exists:tipo_eleccions,id',
-            'imagen_ruta' => 'nullable|url',
-            'fecha_votacion' => 'required|date|after_or_equal:' . $this->anio . '-01-01|before_or_equal:' . $this->anio . '-12-31',
-            'activo' => 'required|numeric|regex:/^\d{1}$/',
-            'anio' => 'required|integer|min:2024|max:2100',
-        ];
-    }
-
-    protected $messages = [
-        'tipo_eleccion_id.required' => 'La :attribute es obligatoria.',
-        'tipo_eleccion_id.exists' => 'La :attribute seleccionada no es válida.',
-
-        'anio.required' => 'El :attribute es obligatorio.',
-        'anio.integer' => 'El :attribute debe ser un número entero.',
-        'anio.min' => 'El :attribute no puede ser menor a 2024.',
-        'anio.max' => 'El :attribute no puede ser mayor a 2100.',
-
-        'nombre.required' => 'El :attribute es obligatorio.',
-        'nombre.unique' => 'El :attribute ya está registrado.',
-
-        'slug.required' => 'El :attribute es obligatorio.',
-        'slug.unique' => 'El :attribute ya está registrado.',
-
-        'descripcion.required' => 'La :attribute es obligatoria.',
-        'descripcion.min' => 'La :attribute debe tener al menos :min caracteres.',
-        'descripcion.max' => 'La :attribute no debe exceder los :max caracteres.',
-
-        'imagen_ruta.url' => 'La :attribute debe ser una URL válida.',
-
-        'fecha_votacion.required' => 'La :attribute es obligatoria.',
-        'fecha_votacion.date' => 'La :attribute debe ser una fecha válida.',
-        'fecha_votacion.after_or_equal' => 'La :attribute debe ser desde el 1 de enero del año seleccionado.',
-        'fecha_votacion.before_or_equal' => 'La :attribute no puede ser después del 31 de diciembre del año seleccionado.',
-
-        'activo.required' => 'El :attribute es obligatorio.',
-        'activo.numeric' => 'El :attribute debe ser un número.',
-        'activo.regex' => 'El :attribute debe ser 0 o 1.',
-
-        'imagen_ruta.image' => 'La :attribute debe ser un archivo de imagen válido.',
-    ];
+    #[Rule('required|integer|min:2024|max:2100', as :'año')]
+    public $anio;    
 
     public function mount()
     {
         $this->tipo_elecciones = TipoEleccion::all();
     }
 
-    public function updatedTipo()
+    public function updatedTipoEleccionId()
     {
         $this->actualizarNombre();
     }

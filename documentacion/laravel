@@ -1,11 +1,15 @@
 php artisan make:migration add_provider_to_users_table --table=users
 
 php artisan migrate:fresh --seed
+php artisan optimize:clear
 
 php artisan make:controller Socialite/ProviderRedirectController --invokable
 php artisan make:controller Socialite/ProviderCallbackController --invokable
 
 composer require laravel/socialite
+
+composer require laravel-lang/lang --dev
+mkdir -p resources/lang/es
 
 php artisan make:middleware CheckAdmin
 php artisan make:middleware CheckVotante

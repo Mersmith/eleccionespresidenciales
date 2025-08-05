@@ -49,6 +49,10 @@
     border-bottom: 1px solid #e0e6eb;
 }
 
+.tabla td img{
+    height: 30px;
+}
+
 .estado {
     font-size: 8px;
     display: inline-block;

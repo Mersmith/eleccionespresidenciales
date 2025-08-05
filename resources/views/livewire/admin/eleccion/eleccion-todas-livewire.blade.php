@@ -38,7 +38,8 @@
                             <tr>
                                 <th>Nº</th>
                                 <th>Nombre</th>
-                                <th>Tipo</th>
+                                <th>Imagen</th>
+                                <th>Descripcion</th>
                                 <th>Fecha de votación</th>
                                 <th>Activo</th>
                                 <th>Acción</th>
@@ -49,16 +50,15 @@
                                 <tr>
                                     <td>{{ ($elecciones->currentPage() - 1) * $elecciones->perPage() + $loop->iteration }}
                                     </td>
-                                    <td class="g_resaltar">{{ $item->nombre }}</td>
-                                    <td>{{ $item->tipoEleccion->nombre }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($item->fecha_votacion)->format('d/m/Y') }}</td>
-
+                                    <td class="g_resaltar">ID: {{ $item->id }} - {{ $item->nombre }}</td>
+                                    <td><img src="{{ $item->imagen_ruta }}" alt=""></td>
+                                    <td class="g_inferior g_resumir">{{ $item->descripcion }}</td>
+                                    <td>{{ $item->fecha_votacion }}</td>
                                     <td class="g_inferior">
                                         <span class="estado {{ $item->activo ? 'g_activo' : 'g_desactivado' }}"><i
                                                 class="fa-solid fa-circle"></i></span>
-                                        {{ $item->activo ? 'Sí' : 'No' }}
+                                        {{ $item->activo ? 'Activo' : 'Desactivo' }}
                                     </td>
-
                                     <td class="centrar_iconos">
                                         <a href="{{ route('admin.eleccion.vista.editar', $item->id) }}"
                                             class="g_accion_editar">
