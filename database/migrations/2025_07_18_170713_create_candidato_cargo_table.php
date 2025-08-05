@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('eleccion_id')->constrained('eleccions')->onDelete('cascade');
             $table->foreignId('partido_id')->nullable()->constrained('partidos')->onDelete('set null');
             $table->foreignId('alianza_id')->nullable()->constrained('alianzas')->onDelete('set null');
+            $table->string('numero')->nullable()->comment('Número de votación para ciertos cargos');
 
             $table->foreignId('pais_id')->nullable()->constrained('pais')->onDelete('set null');
             $table->foreignId('region_id')->nullable()->constrained('regions')->onDelete('set null');

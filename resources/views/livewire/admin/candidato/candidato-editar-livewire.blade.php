@@ -158,6 +158,26 @@
                     </div>
 
                 </div>
+
+                <div class="g_panel">
+                    <!--TITULO-->
+                    <h4 class="g_panel_titulo">Plan</h4>
+
+                    <!--PLAN-->
+                    <div>
+                        <select id="plan_id" name="plan_id" wire:model.live="plan_id" required>
+                            <option value="">Seleccionar un plan</option>
+                            @if ($planes)
+                                @foreach ($planes as $plan)
+                                    <option value="{{ $plan->id }}">{{ $plan->nombre }}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                        @error('plan_id')
+                            <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
             </div>
         </div>
 

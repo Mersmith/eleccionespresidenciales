@@ -15,6 +15,7 @@ class CandidatoCargo extends Model
         'eleccion_id',
         'partido_id',
         'alianza_id',
+        'numero',
         'pais_id',
         'region_id',
         'provincia_id',

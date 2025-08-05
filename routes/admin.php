@@ -31,6 +31,10 @@ use App\Livewire\Admin\Imagen\ImagenTodasLivewire;
 use App\Livewire\Admin\Alianza\AlianzaTodasLivewire;
 use App\Livewire\Admin\Alianza\AlianzaEditarLivewire;
 use App\Livewire\Admin\Alianza\CrearAlianzaLivewire;
+use App\Livewire\Admin\Plan\PlanTodasLivewire;
+use App\Livewire\Admin\Plan\PlanEditarLivewire;
+use App\Livewire\Admin\Plan\PlanCrearLivewire;
+use App\Livewire\Admin\Membresia\MembresiaTodasLivewire;
 
 Route::get('/eleccion', EleccionTodasLivewire::class)->name('eleccion.vista.todas');
 Route::get('/eleccion/crear', EleccionCrearLivewire::class)->name('eleccion.vista.crear');
@@ -47,6 +51,12 @@ Route::get('/partido/editar/{id}', PartidoEditarLivewire::class)->name('partido.
 Route::get('/alianza', AlianzaTodasLivewire::class)->name('alianza.vista.todas');
 Route::get('/alianza/crear', CrearAlianzaLivewire::class)->name('alianza.vista.crear');
 Route::get('/alianza/editar/{id}', AlianzaEditarLivewire::class)->name('alianza.vista.editar');
+
+Route::get('/plan', PlanTodasLivewire::class)->name('plan.vista.todas');
+Route::get('/plan/crear', PlanCrearLivewire::class)->name('plan.vista.crear');
+Route::get('/plan/editar/{id}', PlanEditarLivewire::class)->name('plan.vista.editar');
+
+Route::get('/membresia', MembresiaTodasLivewire::class)->name('membresia.vista.todas');
 
 //Route::get('/categoria', CategoriaTodasLivewire::class)->name('categoria.vista.todas');
 //Route::get('/categoria/crear', CategoriaCrearLivewire::class)->name('categoria.vista.crear');

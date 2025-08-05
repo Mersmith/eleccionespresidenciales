@@ -17,6 +17,7 @@ class Candidato extends Model
         'foto',
         'redes_sociales',
         'partido_id',
+        'plan_id',
         'region_id',
         'provincia_id',
         'distrito_id',
@@ -46,6 +47,23 @@ class Candidato extends Model
     public function cargos() //ok
     {
         return $this->hasMany(CandidatoCargo::class);
+    }
+
+    public function plan()
+    {
+        return $this->belongsTo(Plan::class);
+    }
+
+    public function membresias()
+    {
+        return $this->hasMany(Membresia::class);
+    }
+
+    public function membresiaActiva()
+    {
+        return $this->hasOne(Membresia::class)
+            ->where('mes', now()->startOfMonth())
+            ->where('pagado', true);
     }
 
     //URL AMIGABLE

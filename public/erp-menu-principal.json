@@ -78,6 +78,24 @@
                 "icono": "fa-solid fa-tree-city",
                 "nivel": 2,
                 "submenus": []
+            },
+            {
+                "id": 19,
+                "nombre": "Plan",
+                "ruta": "admin.plan.vista.todas",
+                "url": "/admin/plan",
+                "icono": "fa-solid fa-tree-city",
+                "nivel": 2,
+                "submenus": []
+            },
+            {
+                "id": 20,
+                "nombre": "Membresia",
+                "ruta": "admin.membresia.vista.todas",
+                "url": "/admin/membresia",
+                "icono": "fa-solid fa-tree-city",
+                "nivel": 2,
+                "submenus": []
             }
         ]
     }

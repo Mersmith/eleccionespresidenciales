@@ -21,6 +21,7 @@ return new class extends Migration
             $table->json('redes_sociales')->nullable();
 
             $table->foreignId('partido_id')->nullable()->constrained()->onDelete('set null');
+            $table->foreignId('plan_id')->nullable()->constrained('plans')->nullOnDelete();
 
             $table->foreignId('region_id')->nullable()->constrained()->onDelete('set null');
             $table->foreignId('provincia_id')->nullable()->constrained()->onDelete('set null');

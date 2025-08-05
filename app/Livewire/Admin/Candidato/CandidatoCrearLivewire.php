@@ -7,6 +7,7 @@ use App\Models\Distrito;
 use App\Models\Partido;
 use App\Models\Provincia;
 use App\Models\Region;
+use App\Models\Plan;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -26,6 +27,9 @@ class CandidatoCrearLivewire extends Component
     public $provincia_id = "";
     public $distrito_id = "";
     public $activo = "0";
+
+    public $planes = [];
+    public $plan_id = "";
 
     protected $validationAttributes = [
         'nombre' => 'nombre',
@@ -50,6 +54,7 @@ class CandidatoCrearLivewire extends Component
             'region_id' => 'required',
             'provincia_id' => 'required',
             'distrito_id' => 'required|exists:distritos,id',
+            'plan_id' => 'required',
             'activo' => 'required|numeric|regex:/^\d{1}$/',
         ];
     }
@@ -85,6 +90,7 @@ class CandidatoCrearLivewire extends Component
     {
         $this->partidos = Partido::all();
         $this->regiones = Region::all();
+        $this->planes = Plan::all();
     }
 
     public function updatedNombre($value)
@@ -141,6 +147,7 @@ class CandidatoCrearLivewire extends Component
             'region_id' => $this->region_id,
             'provincia_id' => $this->provincia_id,
             'distrito_id' => $this->distrito_id,
+            'plan_id' => $this->plan_id,
             'activo' => $this->activo,
         ]);
 

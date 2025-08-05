@@ -8,6 +8,7 @@ use App\Models\Distrito;
 use App\Models\Partido;
 use App\Models\Provincia;
 use App\Models\Region;
+use App\Models\Plan;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -32,6 +33,9 @@ class CandidatoEditarLivewire extends Component
 
     public $historial = [];
 
+    public $planes = [];
+    public $plan_id;
+
     protected $validationAttributes = [
         'nombre' => 'nombre',
         'slug' => 'slug',
@@ -55,6 +59,7 @@ class CandidatoEditarLivewire extends Component
             'region_id' => 'required',
             'provincia_id' => 'required',
             'distrito_id' => 'required|exists:distritos,id',
+            'plan_id' => 'required',
             'activo' => 'required|numeric|regex:/^\d{1}$/',
         ];
     }
@@ -98,6 +103,7 @@ class CandidatoEditarLivewire extends Component
         $this->region_id = $this->candidato->region_id ?? '';
         $this->provincia_id = $this->candidato->provincia_id ?? '';
         $this->distrito_id = $this->candidato->distrito_id ?? '';
+        $this->plan_id = $this->candidato->plan_id ?? '';
         $this->activo = $this->candidato->activo;
 
         $this->partidos = Partido::all();
@@ -107,6 +113,8 @@ class CandidatoEditarLivewire extends Component
         $this->loadDistritos();
 
         $this->cargarHistorial();
+
+        $this->planes = Plan::all();
     }
 
     public function updatedNombre($value)
@@ -163,6 +171,7 @@ class CandidatoEditarLivewire extends Component
             'region_id' => $this->region_id,
             'provincia_id' => $this->provincia_id,
             'distrito_id' => $this->distrito_id,
+            'plan_id' => $this->plan_id,
             'activo' => $this->activo,
         ]);
 
