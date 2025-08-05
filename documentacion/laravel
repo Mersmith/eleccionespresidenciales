@@ -32,6 +32,8 @@ php artisan make:model AlianzaPartido -mfsc
 php artisan make:model Plan -mfsc
 php artisan make:model Membresia -mfsc
 
+php artisan make:model CandidatoCargoEquipo -mfsc
+
 php artisan make:livewire Admin/Header/AdminHeaderLivewire
 
 php artisan make:livewire Admin/Eleccion/EleccionTodasLivewire
@@ -45,6 +47,7 @@ php artisan make:livewire Admin/Cargo/CargoEditarLivewire
 php artisan make:livewire Admin/Partido/PartidoTodasLivewire
 php artisan make:livewire Admin/Partido/PartidoCrearLivewire
 php artisan make:livewire Admin/Partido/PartidoEditarLivewire
+php artisan make:livewire Admin/Partido/PartidoSocialLivewire
 
 php artisan make:livewire Admin/Categoria/CategoriaTodasLivewire
 php artisan make:livewire Admin/Categoria/CategoriaCrearLivewire
@@ -61,6 +64,7 @@ php artisan make:livewire Admin/Candidato/CandidatoTodasLivewire
 php artisan make:livewire Admin/Candidato/CandidatoCrearLivewire
 php artisan make:livewire Admin/Candidato/CandidatoEditarLivewire
 php artisan make:livewire Admin/Candidato/CandidatoCargoLivewire
+php artisan make:livewire Admin/Candidato/CandidatoCargoEquipoLivewire
 php artisan make:livewire Admin/Candidato/CandidatoSocialLivewire
 
 php artisan make:livewire Admin/Banner/BannerTodasLivewire

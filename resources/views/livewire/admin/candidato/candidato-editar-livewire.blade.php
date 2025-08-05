@@ -203,6 +203,7 @@
                             <th>Elección</th>
                             <th>Partido o Alianza</th>
                             <th>Ubicación</th>
+                            <th>Accion</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -224,6 +225,10 @@
                                     {{ $item->region->nombre ?? '-' }}
                                     {{ $item->provincia->nombre ?? '' }}
                                     {{ $item->distrito->nombre ?? '' }}
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.candidato.cargo.equipo.editar', $item->id) }}" class="g_boton g_boton_primary">
+                                        Equipo <i class="fa-solid fa-square-plus"></i></a>
                                 </td>
                             </tr>
                         @endforeach

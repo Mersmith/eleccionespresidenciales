@@ -86,4 +86,21 @@ class CandidatoCargo extends Model
         return $this->belongsTo(Alianza::class);
     }
 
+    public function equipo()
+    {
+        return $this->hasMany(
+            CandidatoCargoEquipo::class,
+            'lider_candidato_cargo_id'
+        );
+    }
+
+    // 🔹 Relación con equipo como integrante
+    public function esIntegranteEn()
+    {
+        return $this->hasMany(
+            CandidatoCargoEquipo::class,
+            'integrante_candidato_cargo_id'
+        );
+    }
+
 }

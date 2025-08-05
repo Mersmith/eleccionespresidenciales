@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('sigla')->nullable();
             $table->text('descripcion')->nullable();
             $table->string('logo')->nullable();
+            $table->string('plan_gobierno')->nullable();
+            $table->json('redes_sociales')->nullable();
+
             $table->boolean('activo')->default(false)->comment('1 ACTIVADO, 0 DESACTIVADO');
 
             $table->timestamps();

@@ -16,6 +16,7 @@ class Candidato extends Model
         'descripcion',
         'foto',
         'redes_sociales',
+        'plan_gobierno',
         'partido_id',
         'plan_id',
         'region_id',

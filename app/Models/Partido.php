@@ -15,6 +15,8 @@ class Partido extends Model
         'sigla',
         'slug',
         'logo',
+        'redes_sociales',
+        'plan_gobierno',
         'descripcion',
         'activo',
     ];
