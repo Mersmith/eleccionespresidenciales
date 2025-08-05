@@ -10,25 +10,26 @@
         <!-- Lista de Candidatos Agregados -->
         <div class="bg-white p-6 rounded-2xl shadow-md">
             <h2 class="text-lg font-semibold text-blue-700 mb-4">Candidatos Agregados</h2>
-            <input
-                type="text"
-                wire:model.live="searchAgregados"
-                placeholder="Buscar..."
-                class="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4 focus:ring focus:ring-blue-200 focus:outline-none"
-            />
+            <input type="text" wire:model.live="searchAgregados" placeholder="Buscar..."
+                class="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4 focus:ring focus:ring-blue-200 focus:outline-none" />
 
             <ul class="space-y-3">
-                @foreach($candidatosAgregados as $postulacion)
+                @foreach ($candidatosAgregados as $postulacion)
                     <li class="bg-blue-50 border border-blue-200 rounded-lg p-4 flex justify-between items-center">
                         <span class="text-gray-800">
-                            {{ $postulacion->candidato->nombre }} - 
-                            {{ $postulacion->cargo->nombre }} - 
-                            {{ $postulacion->partido?->nombre ?? 'Sin partido' }}
+                            {{ $postulacion->candidato->nombre }} -
+                            {{ $postulacion->cargo->nombre }} -
+                            @if ($postulacion->partido)
+                                <strong>Partido:</strong> {{ $item->partido->nombre ?? '-' }}
+                            @elseif ($postulacion->alianza)
+                                <strong>Alianza:</strong> {{ $item->alianza->nombre ?? '-' }}
+                            @else
+                                -
+                            @endif
+
                         </span>
-                        <button
-                            wire:click="quitarCandidato({{ $postulacion->id }})"
-                            class="text-sm text-white bg-red-500 hover:bg-red-600 px-3 py-1 rounded-lg"
-                        >
+                        <button wire:click="quitarCandidato({{ $postulacion->id }})"
+                            class="text-sm text-white bg-red-500 hover:bg-red-600 px-3 py-1 rounded-lg">
                             Quitar
                         </button>
                     </li>
@@ -39,25 +40,28 @@
         <!-- Lista de Candidatos Disponibles -->
         <div class="bg-white p-6 rounded-2xl shadow-md">
             <h2 class="text-lg font-semibold text-green-700 mb-4">Candidatos Disponibles</h2>
-            <input
-                type="text"
-                wire:model.live="searchDisponibles"
-                placeholder="Buscar..."
-                class="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4 focus:ring focus:ring-green-200 focus:outline-none"
-            />
+            <input type="text" wire:model.live="searchDisponibles" placeholder="Buscar..."
+                class="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4 focus:ring focus:ring-green-200 focus:outline-none" />
 
             <ul class="space-y-3">
-                @foreach($candidatosDisponibles as $postulacion)
+                @foreach ($candidatosDisponibles as $postulacion)
                     <li class="bg-green-50 border border-green-200 rounded-lg p-4 flex justify-between items-center">
                         <span class="text-gray-800">
-                            {{ $postulacion->candidato->nombre }} - 
-                            {{ $postulacion->cargo->nombre }} - 
-                            {{ $postulacion->partido?->nombre ?? 'Sin partido' }}
+                            {{ $postulacion->candidato->nombre }} -
+                            {{ $postulacion->cargo->nombre }} -
+
+
+                            @if ($postulacion->partido)
+                                {{ $postulacion->partido->nombre }}
+                            @elseif ($postulacion->alianza)
+                                {{ $postulacion->alianza->nombre }}
+                            @else
+                                Sin afiliación
+                            @endif
+
                         </span>
-                        <button
-                            wire:click="agregarCandidato({{ $postulacion->id }})"
-                            class="text-sm text-white bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded-lg"
-                        >
+                        <button wire:click="agregarCandidato({{ $postulacion->id }})"
+                            class="text-sm text-white bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded-lg">
                             Agregar
                         </button>
                     </li>

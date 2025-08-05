@@ -56,7 +56,7 @@ class EncuestaCandidatoLivewire extends Component
         $idsAgregados = $this->encuesta->candidatoEncuestas->pluck('candidato_cargo_id');
 
         // Candidatos agregados a esta encuesta
-        $candidatosAgregados = CandidatoCargo::with('candidato', 'cargo')
+        $candidatosAgregados = CandidatoCargo::with('candidato', 'cargo', 'partido', 'alianza')
             ->whereIn('id', $idsAgregados)
             ->whereHas('candidato', function ($query) {
                 $query->where('nombre', 'like', '%' . $this->searchAgregados . '%');
@@ -64,7 +64,7 @@ class EncuestaCandidatoLivewire extends Component
             ->get();
 
         // Disponibles = los que no han sido asignados aún
-        $candidatosDisponibles = CandidatoCargo::with('candidato', 'cargo')
+        $candidatosDisponibles = CandidatoCargo::with('candidato', 'cargo', 'partido', 'alianza')
             ->whereNotIn('id', $idsAgregados)
             ->where('cargo_id', $this->encuesta->cargo_id)
             ->where(function ($query) {
@@ -77,6 +77,8 @@ class EncuestaCandidatoLivewire extends Component
                 $query->where('nombre', 'like', '%' . $this->searchDisponibles . '%');
             })
             ->get();
+
+            //dd($candidatosDisponibles);
 
         return view('livewire.admin.encuesta.encuesta-candidato-livewire', [
             'candidatosAgregados' => $candidatosAgregados,

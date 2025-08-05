@@ -12,7 +12,7 @@ class WebEncuestaController extends Controller
     {
         $encuesta = $this->getWebEncuesta($id);
 
-        //sdd($encuesta);
+        //dd($encuesta);
 
         return view(
             'web.encuesta.index',

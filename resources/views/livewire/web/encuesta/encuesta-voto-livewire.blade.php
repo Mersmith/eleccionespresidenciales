@@ -36,7 +36,15 @@
 
                 <div class="info_candidato">
                     <strong>{{ $candidatoCargo->candidato->nombre }}</strong>
-                    <p>{{ $candidatoCargo->partido?->nombre ?? 'Sin partido' }}</p>
+                    <p>
+                        @if ($candidatoCargo->partido)
+                            {{ $candidatoCargo->partido->nombre }}
+                        @elseif ($candidatoCargo->alianza)
+                            {{ $candidatoCargo->alianza->nombre }}
+                        @else
+                            Sin partido
+                        @endif
+                    </p>
                 </div>
             </label>
         @endforeach
