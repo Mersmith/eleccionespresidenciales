@@ -41,7 +41,7 @@
                                 <th>Logo</th>
                                 <th>Nombre</th>
                                 <th>Plan</th>
-                                <th>Descripcion</th>
+                                <th>Descripción</th>
                                 <th>Redes</th>
                                 <th>Activo</th>
                                 <th>Acción</th>

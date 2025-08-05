@@ -10,6 +10,9 @@
             <a href="{{ route('admin.alianza.vista.todas') }}" class="g_boton g_boton_light">
                 Inicio <i class="fa-solid fa-house"></i></a>
 
+            <a href="#" class="g_boton g_boton_primary">
+                Social <i class="fa-solid fa-square-plus"></i></a>
+
             <a href="{{ route('admin.alianza.vista.todas') }}" class="g_boton g_boton_darkt">
                 <i class="fa-solid fa-arrow-left"></i> Regresar</a>
         </div>
@@ -42,8 +45,7 @@
 
                     <!--SIGLAS-->
                     <div class="g_margin_bottom_20">
-                        <label for="sigla">Sigla <span class="obligatorio"><i
-                                    class="fa-solid fa-asterisk"></i></span></label>
+                        <label for="sigla">Sigla</label>
                         <input type="text" id="sigla" name="sigla" wire:model.live="sigla" required>
                         @error('sigla')
                             <p class="mensaje_error">{{ $message }}</p>
@@ -52,8 +54,7 @@
 
                     <!--DESCRIPCION-->
                     <div class="g_margin_bottom_20">
-                        <label for="descripcion">Descripción <span class="obligatorio"><i
-                                    class="fa-solid fa-asterisk"></i></span></label>
+                        <label for="descripcion">Descripción</label>
                         <textarea id="descripcion" name="descripcion" wire:model.live="descripcion" rows="3"></textarea>
                         <p class="leyenda">Se mostrará en el SEO.</p>
                         @error('descripcion')
@@ -63,38 +64,35 @@
 
                     <!--LOGO-->
                     <div class="g_margin_bottom_20">
-                        <label for="logo">Logo <span class="obligatorio"><i
-                                    class="fa-solid fa-asterisk"></i></span></label>
+                        <label for="logo">Logo</label>
                         <input type="text" id="logo" name="logo" wire:model.live="logo" required>
                         @error('logo')
                             <p class="mensaje_error">{{ $message }}</p>
                         @enderror
                     </div>
 
+                    <!--PLAN GOBIERNO-->
+                    <div class="g_margin_bottom_20">
+                        <label for="plan_gobierno">Plan de gobierno</label>
+                        <input type="text" id="plan_gobierno" name="plan_gobierno" wire:model.live="plan_gobierno"
+                            required>
+                        @error('plan_gobierno')
+                            <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!--ELECCIÓN-->
                     <div>
-                        <label>Elección:</label>
-                        <select wire:model.live="eleccion_id" class="w-full border p-2">
-                            <option value="">-- Seleccione --</option>
+                        <label for="eleccion_id">Elección <span class="obligatorio"><i
+                                    class="fa-solid fa-asterisk"></i></span></label>
+                        <select id="eleccion_id" name="eleccion_id" wire:model.live="eleccion_id" required>
+                            <option value="">Seleccionar una elección</option>
                             @foreach ($elecciones as $eleccion)
                                 <option value="{{ $eleccion->id }}">{{ $eleccion->nombre }}</option>
                             @endforeach
                         </select>
                         @error('eleccion_id')
-                            <span class="text-red-600">{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <div>
-                        <label>Partidos:</label>
-                        @foreach ($partidos as $partido)
-                            <div class="flex items-center space-x-2">
-                                <input type="checkbox" wire:model.live="partidosSeleccionados"
-                                    value="{{ $partido->id }}">
-                                <span>{{ $partido->nombre }}</span>
-                            </div>
-                        @endforeach
-                        @error('partidosSeleccionados')
-                            <span class="text-red-600">{{ $message }}</span>
+                            <p class="mensaje_error">{{ $message }}</p>
                         @enderror
                     </div>
                 </div>
@@ -113,6 +111,42 @@
                     @error('activo')
                         <p class="mensaje_error">{{ $message }}</p>
                     @enderror
+                </div>
+
+                <div class="g_panel">
+                    <!--TITULO-->
+                    <h4 class="g_panel_titulo">Redes</h4>
+
+                    @if (!empty($redes_sociales))
+                        <div>
+                            @foreach ($redes_sociales as $elemento)
+                                @if (!empty($elemento['url']))
+                                    <a href="{{ $elemento['url'] }}" target="_blank"
+                                        style="color: {{ $elemento['color'] }}">
+                                        {!! $elemento['icono'] !!}
+                                    </a>
+                                @endif
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
+
+                <div class="g_panel">
+                    <!--TITULO-->
+                    <h4 class="g_panel_titulo">Partidos</h4>
+
+                    <div>
+                        @foreach ($partidos as $partido)
+                            <div>
+                                <input type="checkbox" wire:model.live="partidosSeleccionados"
+                                    value="{{ $partido->id }}">
+                                <span>{{ $partido->nombre }}</span>
+                            </div>
+                        @endforeach
+                        @error('partidosSeleccionados')
+                            <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
             </div>
         </div>

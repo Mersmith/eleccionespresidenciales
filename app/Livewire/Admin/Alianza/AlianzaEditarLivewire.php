@@ -19,7 +19,10 @@ class AlianzaEditarLivewire extends Component
     public $sigla;
     public $descripcion;
     public $logo;
+    public $plan_gobierno;
     public $activo;
+
+    public $redes_sociales;
 
     public $eleccion_id;
     public $partidosSeleccionados = [];
@@ -31,9 +34,10 @@ class AlianzaEditarLivewire extends Component
         return [
             'nombre' => 'required|unique:alianzas,nombre,' . $this->alianza->id,
             'slug' => 'required|unique:alianzas,slug,' . $this->alianza->id,
-            'sigla' => 'required',
-            'descripcion' => 'required|min:3|max:255',
-            'logo' => 'required',
+            'sigla' => 'nullable',
+            'descripcion' => 'nullable|min:3|max:255',
+            'logo' => 'nullable|url',
+            'plan_gobierno' => 'nullable|url',
             'eleccion_id' => 'required',
             'activo' => 'required|numeric|regex:/^\d{1}$/',
         ];
@@ -48,8 +52,12 @@ class AlianzaEditarLivewire extends Component
         $this->sigla = $this->alianza->sigla;
         $this->descripcion = $this->alianza->descripcion;
         $this->logo = $this->alianza->logo;
+        $this->plan_gobierno = $this->alianza->plan_gobierno;
         $this->activo = $this->alianza->activo;
         $this->eleccion_id = $this->alianza->eleccion_id;
+
+        $this->redes_sociales = json_decode($this->alianza->redes_sociales, true);
+
 
         $this->elecciones = Eleccion::all();
         $this->partidos = Partido::all();
@@ -72,6 +80,7 @@ class AlianzaEditarLivewire extends Component
             'sigla' => $this->sigla,
             'descripcion' => $this->descripcion,
             'logo' => $this->logo,
+            'plan_gobierno' => $this->plan_gobierno,
             'activo' => $this->activo,
             'eleccion_id' => $this->eleccion_id,
         ]);
