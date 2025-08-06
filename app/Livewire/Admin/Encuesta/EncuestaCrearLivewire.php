@@ -21,7 +21,6 @@ use Livewire\Component;
 class EncuestaCrearLivewire extends Component
 {
     public $niveles;
-    public $nivel_id = "";
 
     public $paises = [], $regiones = [], $provincias = [], $distritos = [];
     public $categorias, $elecciones, $cargos = [];
@@ -31,8 +30,9 @@ class EncuestaCrearLivewire extends Component
     public $descripcion;
     public $imagen_url;
     public $categoria_id = "";
-    public $eleccion_id = "";
+    public $nivel_id = "";
     public $cargo_id = "";
+    public $eleccion_id = "";
     public $pais_id = "";
     public $region_id = "";
     public $provincia_id = "";
