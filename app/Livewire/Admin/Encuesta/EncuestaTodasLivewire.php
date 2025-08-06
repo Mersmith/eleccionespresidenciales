@@ -31,6 +31,9 @@ class EncuestaTodasLivewire extends Component
     public $activo = '';
     public $estado = '';
 
+    public $fecha_inicio_desde = '';
+    public $fecha_inicio_hasta = '';
+
     public $buscar = '';
     public $perPage = 20;
 
@@ -186,6 +189,14 @@ class EncuestaTodasLivewire extends Component
         // Filtro por estado
         if ($this->estado !== '') {
             $query->where('estado', $this->estado);
+        }
+
+        // Filtro por fecha_inicio entre rango
+        if (!empty($this->fecha_inicio_desde) && !empty($this->fecha_inicio_hasta)) {
+            $query->whereBetween('fecha_inicio', [
+                $this->fecha_inicio_desde . ' 00:00:00',
+                $this->fecha_inicio_hasta . ' 23:59:59',
+            ]);
         }
 
         $encuestas = $query->orderBy('created_at', 'desc')

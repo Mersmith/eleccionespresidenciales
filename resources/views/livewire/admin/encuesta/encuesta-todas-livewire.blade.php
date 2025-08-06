@@ -146,7 +146,7 @@
                  <div class="g_panel">
                      <div class="g_fila g_margin_bottom_20">
                          <!--ACTIVO-->
-                         <div class="g_columna_12">
+                         <div class="g_columna_6">
                              <div>
                                  <label for="distrito_id">Activo</label>
                                  <select id="activo" name="activo" wire:model.live="activo">
@@ -156,11 +156,8 @@
                                  </select>
                              </div>
                          </div>
-                     </div>
-
-                     <div class="g_fila">
-                         <!--ALIANZA-->
-                         <div class="g_columna_12">
+                         <!--ESTADO-->
+                         <div class="g_columna_6">
                              <div>
                                  <label for="distrito_id">Estado</label>
                                  <select id="estado" name="estado" wire:model.live="estado" required>
@@ -169,6 +166,24 @@
                                      <option value="iniciada">INICIADA</option>
                                      <option value="finalizada">FINALIZADA</option>
                                  </select>
+                             </div>
+                         </div>
+                     </div>
+
+                     <div class="g_fila">
+                         <!--FECHA-->
+                         <div class="g_columna_6">
+                             <!-- Fecha Inicio Desde -->
+                             <div>
+                                 <label for="fecha_inicio_desde">Desde</label>
+                                 <input type="date" id="fecha_inicio_desde" wire:model.live="fecha_inicio_desde">
+                             </div>
+                         </div>
+                         <div class="g_columna_6">
+                             <!-- Fecha Inicio Hasta -->
+                             <div>
+                                 <label for="fecha_inicio_hasta">Hasta</label>
+                                 <input type="date" id="fecha_inicio_hasta" wire:model.live="fecha_inicio_hasta">
                              </div>
                          </div>
                      </div>
