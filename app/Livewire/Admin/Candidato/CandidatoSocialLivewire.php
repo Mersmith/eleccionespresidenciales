@@ -2,10 +2,10 @@
 
 namespace App\Livewire\Admin\Candidato;
 
-use Livewire\Component;
-use Livewire\Attributes\Layout;
 use App\Models\Candidato;
+use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
+use Livewire\Component;
 
 #[Layout('components.layouts.admin.layout-admin')]
 class CandidatoSocialLivewire extends Component
@@ -15,8 +15,8 @@ class CandidatoSocialLivewire extends Component
     public $contenido = [];
 
     protected $rules = [
-        //'contenido.*.icono' => 'required|string|max:255',
-        //'contenido.*.color' => 'required|string|max:1000',
+        'contenido.*.icono' => 'required|string|max:255',
+        'contenido.*.color' => 'required|string|max:1000',
         'contenido.*.url' => 'nullable|string|max:1000',
     ];
 
@@ -34,8 +34,8 @@ class CandidatoSocialLivewire extends Component
 
     public function mount($id)
     {
-        $this->candidato = Candidato::findOrFail($id);        
-       
+        $this->candidato = Candidato::findOrFail($id);
+
         if ($this->candidato->redes_sociales) {
             $this->contenido = json_decode($this->candidato->redes_sociales, true);
         } else {
@@ -67,33 +67,33 @@ class CandidatoSocialLivewire extends Component
                 [
                     'id' => 5,
                     'icono' => '<i class="fa-brands fa-youtube"></i>',
-                    'color' => '#000000',
+                    'color' => '#ff0000',
                     'url' => '',
                 ],
                 [
                     'id' => 6,
                     'icono' => '<i class="fa-brands fa-kickstarter-k"></i>',
-                    'color' => '#000000',
+                    'color' => '#1dde13',
                     'url' => '',
                 ],
                 [
                     'id' => 7,
                     'icono' => '<i class="fa-brands fa-linkedin"></i>',
-                    'color' => '#000000',
+                    'color' => '#0a66c3',
                     'url' => '',
                 ],
                 [
                     'id' => 8,
-                    'icono' => '<i class="fa-solid fa-globe"></i>',
-                    'color' => '#000000',
+                    'icono' => '<i class="fa-brands fa-chrome"></i>',
+                    'color' => '#fbbe0a',
                     'url' => '',
                 ],
             ];
         }
-    }    
-   
-    #[On('handleComunidadSocialOn')]
-    public function handleComunidadSocialOn($item, $position)
+    }
+
+    #[On('handleCandidatoSocialOn')]
+    public function handleCandidatoSocialOn($item, $position)
     {
         $index = array_search($item, array_column($this->contenido, 'id'));
 
@@ -103,7 +103,7 @@ class CandidatoSocialLivewire extends Component
         }
     }
 
-    public function guardarComunidadSocial()
+    public function guardarCandidatoSocial()
     {
         $this->validate();
 

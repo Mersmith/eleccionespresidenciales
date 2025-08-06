@@ -1,4 +1,4 @@
-@section('tituloPagina', 'Editar Candidato')
+@section('tituloPagina', 'Editar candidato')
 <div>
     <!--CABECERA TITULO PAGINA-->
     <div class="g_panel cabecera_titulo_pagina">
@@ -13,7 +13,7 @@
             <a href="{{ route('admin.candidato.cargo.editar', $candidato->id) }}" class="g_boton g_boton_primary">
                 Cargo <i class="fa-solid fa-square-plus"></i></a>
 
-            <a href="{{ route('admin.candidato.social.editar', $candidato->id) }}" class="g_boton g_boton_primary">
+            <a href="{{ route('admin.candidato.social.editar', $candidato->id) }}" class="g_boton g_boton_info">
                 Social <i class="fa-solid fa-square-plus"></i></a>
 
             <a href="{{ route('admin.candidato.vista.todas') }}" class="g_boton g_boton_darkt">
@@ -50,8 +50,7 @@
 
                     <!--DESCRIPCION-->
                     <div class="g_margin_bottom_20">
-                        <label for="descripcion">Descripcion <span class="obligatorio"><i
-                                    class="fa-solid fa-asterisk"></i></span></label>
+                        <label for="descripcion">Descripcion</label>
                         <textarea id="descripcion" wire:model.live="descripcion" rows="3"></textarea>
                         @error('descripcion')
                             <p class="mensaje_error">{{ $message }}</p>
@@ -60,9 +59,27 @@
 
                     <!--FOTO-->
                     <div class="g_margin_bottom_20">
-                        <label for="foto">Foto <span class="obligatorio"><i
-                                    class="fa-solid fa-asterisk"></i></span></label>
-                        <input type="text" id="foto" name="foto" wire:model.live="foto" required>
+                        <label for="foto">Foto</label>
+                        <input type="text" id="foto" name="foto" wire:model.live="foto">
+                        @error('foto')
+                            <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!--VIDEO PRESENTACIÓN-->
+                    <div class="g_margin_bottom_20">
+                        <label for="foto">Video presentación </label>
+                        <input type="text" id="video_presentacion" name="video_presentacion"
+                            wire:model.live="video_presentacion">
+                        @error('foto')
+                            <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!--PLAN GOBIERNO-->
+                    <div class="g_margin_bottom_20">
+                        <label for="foto">Plan de gobierno </label>
+                        <input type="text" id="plan_gobierno" name="plan_gobierno" wire:model.live="plan_gobierno">
                         @error('foto')
                             <p class="mensaje_error">{{ $message }}</p>
                         @enderror
@@ -70,9 +87,8 @@
 
                     <!--PARTIDO-->
                     <div class="g_margin_bottom_20">
-                        <label for="partido_id">Partido <span class="obligatorio"><i
-                                    class="fa-solid fa-asterisk"></i></span></label>
-                        <select id="partido_id" name="partido_id" wire:model.live="partido_id" required>
+                        <label for="partido_id">Partido</label>
+                        <select id="partido_id" name="partido_id" wire:model.live="partido_id">
                             <option value="" selected disabled>Seleccionar un partido</option>
                             @if ($partidos)
                                 @foreach ($partidos as $partido)
@@ -98,6 +114,38 @@
                         <option value="1">ACTIVO</option>
                     </select>
                     @error('activo')
+                        <p class="mensaje_error">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="g_panel">
+                    <!--TITULO-->
+                    <h4 class="g_panel_titulo">Redes</h4>
+
+                    @if (!empty($redes_sociales))
+                        <div>
+                            @foreach ($redes_sociales as $elemento)
+                                @if (!empty($elemento['url']))
+                                    <a href="{{ $elemento['url'] }}" target="_blank"
+                                        style="color: {{ $elemento['color'] }}">
+                                        {!! $elemento['icono'] !!}
+                                    </a>
+                                @endif
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
+
+                <div class="g_panel">
+                    <!--TITULO-->
+                    <h4 class="g_panel_titulo">¿Es candidato oficial?</h4>
+
+                    <!--CANDIDATO OFICIAL-->
+                    <select id="candidato_oficial" name="candidato_oficial" wire:model="candidato_oficial">
+                        <option value="0" selected>NO</option>
+                        <option value="1">SI</option>
+                    </select>
+                    @error('candidato_oficial')
                         <p class="mensaje_error">{{ $message }}</p>
                     @enderror
                 </div>
@@ -227,7 +275,8 @@
                                     {{ $item->distrito->nombre ?? '' }}
                                 </td>
                                 <td>
-                                    <a href="{{ route('admin.candidato.cargo.equipo.editar', $item->id) }}" class="g_boton g_boton_primary">
+                                    <a href="{{ route('admin.candidato.cargo.equipo.editar', $item->id) }}"
+                                        class="g_boton g_boton_primary">
                                         Equipo <i class="fa-solid fa-square-plus"></i></a>
                                 </td>
                             </tr>

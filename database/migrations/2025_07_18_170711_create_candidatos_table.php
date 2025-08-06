@@ -29,6 +29,7 @@ return new class extends Migration
             $table->foreignId('provincia_id')->nullable()->constrained()->onDelete('set null');
             $table->foreignId('distrito_id')->nullable()->constrained()->onDelete('set null');
 
+            $table->boolean('candidato_oficial')->default(false)->comment('1 SI, 0 NO');
             $table->boolean('activo')->default(false)->comment('1 ACTIVADO, 0 DESACTIVADO');
 
             $table->timestamps();

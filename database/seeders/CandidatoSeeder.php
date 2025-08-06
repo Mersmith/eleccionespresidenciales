@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Candidato;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
+use Faker\Factory as Faker;
 
 class CandidatoSeeder extends Seeder
 {
@@ -13,6 +14,8 @@ class CandidatoSeeder extends Seeder
      */
     public function run(): void
     {
+        $faker = Faker::create();
+
         $candidatos = [
             [
                 'nombre' => 'Ricardo Velásquez Ramirez',
@@ -554,11 +557,15 @@ class CandidatoSeeder extends Seeder
                 'slug' => Str::slug($data['nombre']),
                 'descripcion' => 'Descripción del ' . $data['nombre'],
                 'foto' => $data['foto'],
+                'video_presentacion' => $faker->boolean(40) ? $faker->url : null,
+                'plan_gobierno' => $faker->boolean(40) ? $faker->url : null,
                 'partido_id' => $data['partido_id'],
+                'plan_id' => rand(1, 3),
                 'region_id' => $data['region_id'],
                 'provincia_id' => $data['provincia_id'],
                 'distrito_id' => $data['distrito_id'],
-                'activo' => $data['activo'],
+                'candidato_oficial' => $faker->boolean(80) ? 1 : 0,
+                'activo' => $faker->boolean(80) ? 1 : 0,
             ]);
         }
 

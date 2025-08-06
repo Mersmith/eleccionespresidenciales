@@ -23,6 +23,7 @@ class Candidato extends Model
         'region_id',
         'provincia_id',
         'distrito_id',
+        'candidato_oficial',
         'activo',
     ];
 

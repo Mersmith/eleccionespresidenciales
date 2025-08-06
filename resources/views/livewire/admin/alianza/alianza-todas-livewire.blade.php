@@ -41,7 +41,7 @@
                                 <th>Elección</th>
                                 <th>Logo</th>
                                 <th>Nombre</th>
-                                <th>Plan</th>
+                                <th>P. Gobierno</th>
                                 <th>Descripción</th>
                                 <th>Redes</th>
                                 <th>Activo</th>

@@ -11,16 +11,10 @@ use Livewire\WithPagination;
 class CandidatoTodasLivewire extends Component
 {
     use WithPagination;
-    public $buscar;
-
-    protected $paginate = 10;
+    public $buscar = '';
+    public $perPage = 10;
 
     public function updatingBuscar()
-    {
-        $this->resetPage();
-    }
-
-    public function updatingPaginacion()
     {
         $this->resetPage();
     }
@@ -29,7 +23,7 @@ class CandidatoTodasLivewire extends Component
     {
         $candidatos = Candidato::where('nombre', 'like', '%' . $this->buscar . '%')
             ->orderBy('created_at', 'desc')
-            ->paginate(10);
+            ->paginate($this->perPage);
 
         return view('livewire.admin.candidato.candidato-todas-livewire', [
             'candidatos' => $candidatos,
