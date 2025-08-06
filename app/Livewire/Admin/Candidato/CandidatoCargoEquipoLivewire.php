@@ -5,7 +5,11 @@ namespace App\Livewire\Admin\Candidato;
 use App\Models\CandidatoCargo;
 use App\Models\CandidatoCargoEquipo;
 use App\Models\Cargo;
+use App\Models\Distrito;
 use App\Models\Nivel;
+use App\Models\Pais;
+use App\Models\Provincia;
+use App\Models\Region;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -14,8 +18,8 @@ class CandidatoCargoEquipoLivewire extends Component
 {
     public CandidatoCargo $lider;
     public $posibles = [];
-    public $seleccionados = []; // colección de pivot rows (CandidatoCargoEquipo)
-    public $seleccionadosIds = []; // ids de los integrantes (candidato_cargo.id)
+    public $seleccionados = [];
+    public $seleccionadosIds = [];
 
     /* FILTROS */
     public $niveles;
@@ -24,21 +28,23 @@ class CandidatoCargoEquipoLivewire extends Component
     public $cargos;
     public $cargo_id = "";
 
+    public $paises = [], $regiones = [], $provincias = [], $distritos = [];
+    public $pais_id = "", $region_id = "", $provincia_id = "", $distrito_id = "";
+
     public $filtrarPorPartido = false;
     public $filtrarPorAlianza = false;
 
     public function mount($id)
     {
         $this->niveles = Nivel::all();
+        $this->paises = Pais::all();
 
-        // eager load para tener equipo + relaciones ya disponibles
         $this->lider = CandidatoCargo::with(['candidato', 'cargo', 'eleccion', 'equipo.integrante.candidato', 'equipo.integrante.cargo'])->findOrFail($id);
-
+        //dd($this->lider);
         $this->loadSeleccionados();
         $this->loadPosibles();
     }
 
-    // cuando cambia el filtro: primero recargamos seleccionados (ids) y luego los posibles
     public function updatedNivelId($value)
     {
         $this->cargo_id = '';
@@ -54,16 +60,13 @@ class CandidatoCargoEquipoLivewire extends Component
 
     public function updatedCargoId()
     {
-        // opcional: limpiar Seleccionados/Posibles si value es vacío
         $this->loadSeleccionados();
         $this->loadPosibles();
     }
 
     public function updatedFiltrarPorPartido()
     {
-        // primero recargar seleccionados (para calcular ids)
         $this->loadSeleccionados();
-        // luego posibles (usa $this->seleccionadosIds)
         $this->loadPosibles();
     }
 
@@ -71,6 +74,67 @@ class CandidatoCargoEquipoLivewire extends Component
     {
         $this->loadSeleccionados();
         $this->loadPosibles();
+    }
+
+    public function updatedPaisId($value)
+    {
+        $this->region_id = "";
+        $this->regiones = [];
+        $this->provincia_id = "";
+        $this->provincias = [];
+        $this->distrito_id = "";
+        $this->distritos = [];
+
+        if ($value) {
+            $this->loadRegiones();
+            $this->loadSeleccionados();
+            $this->loadPosibles();
+        }
+    }
+
+    public function updatedRegionId($value)
+    {
+        $this->provincia_id = "";
+        $this->provincias = [];
+        $this->distritos = [];
+        $this->distrito_id = "";
+
+        if ($value) {
+            $this->loadProvincias();
+            $this->loadSeleccionados();
+            $this->loadPosibles();
+        }
+    }
+
+    public function updatedProvinciaId($value)
+    {
+        $this->distritos = [];
+        $this->distrito_id = "";
+
+        if ($value) {
+            $this->loadDistritos();
+        }
+    }
+
+    public function loadRegiones()
+    {
+        if (!is_null($this->pais_id)) {
+            $this->regiones = Region::where('pais_id', $this->pais_id)->get();
+        }
+    }
+
+    public function loadProvincias()
+    {
+        if (!is_null($this->region_id)) {
+            $this->provincias = Provincia::where('region_id', $this->region_id)->get();
+        }
+    }
+
+    public function loadDistritos()
+    {
+        if (!is_null($this->provincia_id)) {
+            $this->distritos = Distrito::where('provincia_id', $this->provincia_id)->get();
+        }
     }
 
     protected function loadSeleccionados()
@@ -104,6 +168,18 @@ class CandidatoCargoEquipoLivewire extends Component
         if (!empty($this->cargo_id)) {
             $query->whereHas('integrante', function ($q) {
                 $q->where('cargo_id', $this->cargo_id);
+            });
+        }
+
+        if (!empty($this->pais_id)) {
+            $query->whereHas('integrante', function ($q) {
+                $q->where('pais_id', $this->pais_id);
+            });
+        }
+
+        if (!empty($this->region_id)) {
+            $query->whereHas('integrante', function ($q) {
+                $q->where('region_id', $this->region_id);
             });
         }
 
@@ -146,6 +222,14 @@ class CandidatoCargoEquipoLivewire extends Component
         // Aplicar filtro de cargo (si se seleccionó uno)
         if (!empty($this->cargo_id)) {
             $query->where('cargo_id', $this->cargo_id);
+        }
+
+        if (!empty($this->pais_id)) {
+            $query->where('pais_id', $this->pais_id);
+        }
+
+        if (!empty($this->region_id)) {
+            $query->where('region_id', $this->region_id);
         }
 
         $this->posibles = $query->orderBy('cargo_id')->get();
