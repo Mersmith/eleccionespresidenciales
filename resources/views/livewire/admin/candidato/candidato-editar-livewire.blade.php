@@ -275,7 +275,7 @@
                                     {{ $item->distrito->nombre ?? '' }}
                                 </td>
                                 <td>
-                                    <a href="{{ route('admin.candidato.cargo.equipo.editar', $item->id) }}"
+                                    <a href="{{ route('admin.candidato.cargo.equipo.crear', $item->id) }}"
                                         class="g_boton g_boton_primary">
                                         Equipo <i class="fa-solid fa-square-plus"></i></a>
                                 </td>

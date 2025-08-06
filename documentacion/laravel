@@ -69,6 +69,8 @@ php artisan make:livewire Admin/Candidato/CandidatoCrearLivewire
 php artisan make:livewire Admin/Candidato/CandidatoEditarLivewire
 php artisan make:livewire Admin/Candidato/CandidatoCargoLivewire
 php artisan make:livewire Admin/Candidato/CandidatoCargoEquipoLivewire
+php artisan make:livewire Admin/Candidato/CandidatoCargoEquipoCrearLivewire
+php artisan make:livewire Admin/Candidato/CandidatoCargoEquipoTodasLivewire
 php artisan make:livewire Admin/Candidato/CandidatoSocialLivewire
 
 php artisan make:livewire Admin/Banner/BannerTodasLivewire
