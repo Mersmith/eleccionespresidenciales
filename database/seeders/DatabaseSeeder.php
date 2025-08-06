@@ -26,8 +26,8 @@ class DatabaseSeeder extends Seeder
             PlanSeeder::class,
             CandidatoSeeder::class,
             CandidatoCargoSeeder::class,
-            /*EncuestaSeeder::class,
-            CandidatoEncuestaSeeder::class,
+            EncuestaSeeder::class,
+            /*CandidatoEncuestaSeeder::class,
             VotoSeeder::class,
             BannerSeeder::class,
             SliderSeeder::class,*/

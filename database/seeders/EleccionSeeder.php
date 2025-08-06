@@ -69,7 +69,7 @@ class EleccionSeeder extends Seeder
                 'tipo_eleccion_id' => 1,
                 'imagen_ruta' => 'http://127.0.0.1:8000/assets/images/portada/portada-1.jpg',
                 'fecha_votacion' => Carbon::create(2024, 4, 10),
-                'activo' => true,
+                'activo' => false,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

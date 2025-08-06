@@ -795,8 +795,8 @@ class EncuestaSeeder extends Seeder
                 'distrito_id' => $e['distrito_id'],
                 'fecha_inicio' => Carbon::now(),
                 'fecha_fin' => Carbon::now()->addDays(30),
-                'estado' => 'iniciada',
-                'activo' => true,
+                'estado' => $faker->randomElement(['pendiente', 'iniciada', 'finalizada']),
+                'activo' => $faker->boolean(80) ? 1 : 0,
             ]);
         }
     }
