@@ -1,57 +1,135 @@
-<div class="space-y-6">
-    <h2 class="text-xl font-bold">Equipo de {{ $lider->candidato->nombre }} — {{ $lider->cargo->nombre }}</h2>
+@section('tituloPagina', 'Crear candidato')
+<div>
+    <!--CABECERA TITULO PAGINA-->
+    <div class="g_panel cabecera_titulo_pagina">
+        <!--TITULO-->
+        <h2>Equipo de {{ $lider->candidato->nombre }} — {{ $lider->cargo->nombre }}</h2>
+
+        <!--BOTONES-->
+        <div class="cabecera_titulo_botones">
+            <a href="{{ route('admin.candidato.vista.todas') }}" class="g_boton g_boton_light">
+                Inicio <i class="fa-solid fa-house"></i></a>
+
+            <a href="{{ route('admin.candidato.vista.todas') }}" class="g_boton g_boton_darkt">
+                <i class="fa-solid fa-arrow-left"></i> Regresar</a>
+        </div>
+    </div>
+
+    <!--FORMULARIO-->
+    <div class="formulario">
+        <div class="g_fila">
+            <div class="g_columna_12">
+                <div class="g_panel">
+                    <!--TITULO-->
+                    <h4 class="g_panel_titulo">Filtros</h4>
+
+                    <!--NIVELES-->
+                    <div class="g_margin_bottom_20">
+                        <label for="nivel_id">Nivel <span class="obligatorio"><i
+                                    class="fa-solid fa-asterisk"></i></span></label>
+                        <select id="nivel_id" name="nivel_id" wire:model.live="nivel_id" required>
+                            <option value="" selected disabled>Seleccionar un nivel</option>
+                            @if ($niveles)
+                                @foreach ($niveles as $nivel)
+                                    <option value="{{ $nivel->id }}">{{ $nivel->nombre }}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                        @error('nivel_id')
+                            <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!--CARGOS-->
+                    <div class="g_margin_bottom_20">
+                        <label for="cargo_id">Cargo <span class="obligatorio"><i
+                                    class="fa-solid fa-asterisk"></i></span></label>
+                        <select id="cargo_id" name="cargo_id" wire:model.live="cargo_id" required>
+                            <option value="" selected disabled>Seleccionar un cargo</option>
+                            @if ($cargos)
+                                @foreach ($cargos as $cargo)
+                                    <option value="{{ $cargo->id }}">{{ $cargo->nombre }}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                        @error('cargo_id')
+                            <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div class="g_margin_bottom_20">
+                        <label>
+                            <input type="checkbox" wire:model.live="filtrarPorPartido">
+                            Filtrar por mismo partido (usar partido del líder)
+                        </label>
+
+                        <label style="margin-left:1rem;">
+                            <input type="checkbox" wire:model.live="filtrarPorAlianza">
+                            Filtrar por misma alianza (usar alianza del líder)
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
     @if (session()->has('message'))
         <div class="bg-green-100 p-2 rounded">{{ session('message') }}</div>
     @endif
 
     <!-- Equipo actual -->
-    <div class="bg-white p-4 rounded shadow">
-        <h3 class="font-semibold">Equipo actual</h3>
-        @if ($lider->equipo->isEmpty())
-            <p>No tiene integrantes.</p>
-        @else
-            <ul>
-                @foreach ($lider->equipo as $row)
-                    <li class="flex items-center justify-between py-2">
-                        <div>
-                            <strong>{{ $row->integrante->candidato->nombre }}</strong>
-                            — {{ $row->integrante->cargo->nombre }}
-                            @if($row->rol) <span class="ml-2 text-sm">({{ $row->rol }})</span> @endif
-                        </div>
-                        <div class="flex gap-2">
-                            <button wire:click="removeIntegrante({{ $row->integrante->id }})" class="px-2 py-1 bg-red-500 text-white rounded">Quitar</button>
-                        </div>
-                    </li>
-                @endforeach
-            </ul>
-        @endif
-    </div>
+    <div class="g_fila">
+        <div class="g_columna_6">
+            <div class="g_panel">
+                <h4 class="g_panel_titulo">Equipo</h4>
 
-    <!-- Formulario selección de integranes -->
-    <div class="bg-white p-4 rounded shadow">
-        <h3 class="font-semibold">Agregar / editar integrantes</h3>
-
-        <form wire:submit.prevent="save" class="space-y-3">
-            <div>
-                <label class="block text-sm font-medium">Selecciona integrantes</label>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 max-h-64 overflow-auto border rounded p-2">
-                    @foreach ($posibles as $p)
-                        <label class="flex items-center gap-2">
-                            <input type="checkbox" wire:model="seleccionados" value="{{ $p->id }}">
-                            <span>{{ $p->candidato->nombre }} — {{ $p->cargo->nombre }}</span>
-                            <!-- campo rol para este integrante -->
-                            <input type="text" wire:model="roles.{{ $p->id }}" placeholder="Rol (opcional)" class="ml-4 border px-2 py-1" />
-                            <input type="number" wire:model="ordenes.{{ $p->id }}" placeholder="Orden" class="ml-2 w-20 border px-2 py-1" />
-                        </label>
-                    @endforeach
-                </div>
-                @error('seleccionados') <span class="text-red-600">{{ $message }}</span> @enderror
+                @if ($seleccionados->isEmpty())
+                    <p>No tiene equipo.</p>
+                @else
+                    <ul>
+                        @foreach ($seleccionados as $row)
+                            @php $integrante = $row->integrante; @endphp
+                            <li>
+                                {{ $integrante->candidato->nombre ?? '—' }}
+                                — {{ $integrante->cargo->nombre ?? '—' }}
+                                <button wire:click.prevent="removeIntegrante({{ $integrante->id }})"
+                                    class="g_boton_peque">
+                                    Quitar
+                                </button>
+                            </li>
+                        @endforeach
+                    </ul>
+                @endif
             </div>
 
-            <div class="flex gap-2">
-                <button type="submit" class="px-3 py-1 bg-blue-600 text-white rounded">Guardar equipo</button>
+
+        </div>
+
+        <div class="g_columna_6">
+            <div class="g_panel">
+                <h4 class="g_panel_titulo">Integrantes disponibles</h4>
+
+                @if ($posibles->isEmpty())
+                    <p>No hay candidatos disponibles.</p>
+                @else
+                    <ul>
+                        @foreach ($posibles as $item)
+                            <li>
+                                {{ $item->candidato->nombre ?? '—' }}
+                                — {{ $item->cargo->nombre ?? '—' }}
+                                — {{ $item->partido->nombre ?? '' }}
+
+                                <button wire:click.prevent="agregarIntegrante({{ $item->id }})"
+                                    class="g_boton_peque">
+                                    Agregar
+                                </button>
+                            </li>
+                        @endforeach
+                    </ul>
+                @endif
             </div>
-        </form>
+        </div>
     </div>
+
 </div>

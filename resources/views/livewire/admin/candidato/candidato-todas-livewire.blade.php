@@ -92,10 +92,15 @@
                                             @endforeach
                                         @endif
                                     </td>
-                                    <td>{{ $item->partido->nombre ?? '' }}</td>
+                                    <td class="g_resaltar">
+                                        @if ($item->partido)
+                                            ID: {{ $item->partido->id }} - {{ $item->partido->nombre }}
+                                        @endif
+                                    </td>
                                     <td class="g_resaltar">ID: {{ $item->plan->id }} - {{ $item->plan->nombre }}</td>
                                     <td>
-                                        <span class="{{ $item->candidato_oficial ? 'text-green-600' : 'text-red-600' }}">
+                                        <span
+                                            class="{{ $item->candidato_oficial ? 'text-green-600' : 'text-red-600' }}">
                                             {{ $item->candidato_oficial ? 'Sí' : 'No' }}
                                         </span>
                                     </td>

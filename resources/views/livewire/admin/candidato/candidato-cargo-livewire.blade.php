@@ -73,9 +73,8 @@
 
                     <!--PARTIDO-->
                     <div class="g_margin_bottom_20">
-                        <label for="partido_id">Partido <span class="obligatorio"><i
-                                    class="fa-solid fa-asterisk"></i></span></label>
-                        <select id="partido_id" name="partido_id" wire:model.live="partido_id" required>
+                        <label for="partido_id">Partido</label>
+                        <select id="partido_id" name="partido_id" wire:model.live="partido_id">
                             <option value="" selected>Seleccionar un partido</option>
                             @if ($partidos)
                                 @foreach ($partidos as $partido)
@@ -83,6 +82,7 @@
                                 @endforeach
                             @endif
                         </select>
+                        <p class="leyenda">Elija partido o alianza.</p>
                         @error('partido_id')
                             <p class="mensaje_error">{{ $message }}</p>
                         @enderror
@@ -97,7 +97,18 @@
                                 <option value="{{ $alianza->id }}">{{ $alianza->nombre }}</option>
                             @endforeach
                         </select>
+                        <p class="leyenda">Elija alianza o partido.</p>
                         @error('alianza_id')
+                            <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!--NOMBRE-->
+                    <div>
+                        <label for="numero">Número de candidato</label>
+                        <input type="text" id="numero" name="numero" wire:model.live="numero" required>
+                        <p class="leyenda">Si el cargo es para número es obligatorio</p>
+                        @error('numero')
                             <p class="mensaje_error">{{ $message }}</p>
                         @enderror
                     </div>
@@ -212,7 +223,7 @@
 
         <div>
             <div class="formulario_botones">
-                <button wire:click="crearEncuesta" class="guardar">Guardar</button>
+                <button wire:click="crearCandidatoCargo" class="guardar">Guardar</button>
 
                 <a href="{{ route('admin.encuesta.vista.todas') }}" class="cancelar">Cancelar</a>
             </div>

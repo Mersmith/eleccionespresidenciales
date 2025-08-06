@@ -19,6 +19,8 @@ use Livewire\Component;
 #[Layout('components.layouts.admin.layout-admin')]
 class CandidatoCargoLivewire extends Component
 {
+    //numero: cargo_id = 2, 3, 4, 5, 7, 8, 10, 12
+
     public $niveles;
     public $nivel_id = "";
 
@@ -33,6 +35,8 @@ class CandidatoCargoLivewire extends Component
     public $cargo_id = "", $eleccion_id = "", $partido_id = "";
     public $pais_id = "", $region_id = "", $provincia_id = "", $distrito_id = "";
 
+    public $numero;
+
     public $principal = "0";
     public $electo = "0";
 
@@ -45,6 +49,7 @@ class CandidatoCargoLivewire extends Component
             'eleccion_id' => 'required|exists:eleccions,id',
             'partido_id' => 'nullable|exists:partidos,id',
             'alianza_id' => 'nullable|exists:alianzas,id',
+            'numero' => 'nullable',
             'pais_id' => 'required_if:nivel_id,1|nullable|exists:pais,id',
             'region_id' => 'required_if:nivel_id,2|nullable|exists:regions,id',
             'provincia_id' => 'required_if:nivel_id,3|nullable|exists:provincias,id',
@@ -150,7 +155,7 @@ class CandidatoCargoLivewire extends Component
         }
     }
 
-    public function crearEncuesta()
+    public function crearCandidatoCargo()
     {
         $this->validate();
 
@@ -182,6 +187,7 @@ class CandidatoCargoLivewire extends Component
             'eleccion_id' => $this->eleccion_id,
             'partido_id' => $partido_id,
             'alianza_id' => $this->alianza_id ?: null,
+            'numero' => $this->numero,
             'pais_id' => $pais_id,
             'region_id' => $region_id,
             'provincia_id' => $provincia_id,
