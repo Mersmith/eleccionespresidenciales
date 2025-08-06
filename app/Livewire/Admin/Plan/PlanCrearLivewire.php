@@ -11,6 +11,13 @@ class PlanCrearLivewire extends Component
 {
     public $nombre, $precio, $descripcion, $requiere_pago = "0";
 
+    protected $validationAttributes = [
+        'nombre' => 'nombre',
+        'precio' => 'precio',
+        'descripcion' => 'descripción',
+        'requiere_pago' => 'requiere pago',
+    ];
+
     protected function rules()
     {
         return [

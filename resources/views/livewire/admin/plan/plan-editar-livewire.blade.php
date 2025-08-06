@@ -42,7 +42,6 @@
                     <div class="g_margin_bottom_20">
                         <label for="descripcion">Descripción <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
                         <textarea id="descripcion" name="descripcion" wire:model.live="descripcion" rows="3"></textarea>
-                        <p class="leyenda">Se mostrará en el SEO.</p>
                         @error('descripcion')
                         <p class="mensaje_error">{{ $message }}</p>
                         @enderror

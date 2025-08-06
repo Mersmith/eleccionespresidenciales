@@ -40,7 +40,7 @@
                             <th>Nombre</th>
                             <th>Requiere pago</th>
                             <th>Precio</th>
-                            <th>Descripion</th>
+                            <th>Descripión</th>
                             <th>Acción</th>
                         </tr>
                     </thead>

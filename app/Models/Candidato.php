@@ -15,6 +15,7 @@ class Candidato extends Model
         'slug',
         'descripcion',
         'foto',
+        'video_presentacion',
         'redes_sociales',
         'plan_gobierno',
         'partido_id',

@@ -16,6 +16,13 @@ class PlanEditarLivewire extends Component
     public $descripcion;
     public $requiere_pago;
 
+    protected $validationAttributes = [
+        'nombre' => 'nombre',
+        'precio' => 'precio',
+        'descripcion' => 'descripción',
+        'requiere_pago' => 'requiere pago',
+    ];
+
     protected function rules()
     {
         return [
