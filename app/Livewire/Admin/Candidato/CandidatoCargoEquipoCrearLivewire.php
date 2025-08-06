@@ -38,9 +38,9 @@ class CandidatoCargoEquipoCrearLivewire extends Component
     public $buscar = '';
     public $perPage = 20;
 
-    protected $listeners = [
-        'refreshDisponibles' => '$refresh',
-    ];
+    /*protected $listeners = [
+        'integranteEquipoQuitado' => '$refresh',
+    ];*/
 
     public function mount($id)
     {
@@ -164,7 +164,7 @@ class CandidatoCargoEquipoCrearLivewire extends Component
             ->exists();
 
         if ($exists) {
-            $this->dispatchBrowserEvent('toast', ['type' => 'warning', 'message' => 'Ya es integrante.']);
+            //$this->dispatchBrowserEvent('toast', ['type' => 'warning', 'message' => 'Ya es integrante.']);
             return;
         }
 
@@ -173,13 +173,16 @@ class CandidatoCargoEquipoCrearLivewire extends Component
             'integrante_candidato_cargo_id' => $integranteId,
         ]);
 
-        $this->emit('integranteAgregado', $this->liderId);
-        $this->dispatchBrowserEvent('toast', ['type' => 'success', 'message' => 'Integrante agregado.']);
+        $this->dispatch('alertaLivewire', "Creado");
+
+        //$this->dispatch('integranteEquipoAgregado', $this->liderId);
+        //$this->dispatchBrowserEvent('toast', ['type' => 'success', 'message' => 'Integrante agregado.']);
         $this->resetPage();
     }
 
     public function render()
-    { // reconstruir query de posibles
+    { 
+        // reconstruir query de posibles
         $query = CandidatoCargo::with(['candidato', 'cargo', 'partido'])
             ->where('eleccion_id', $this->lider->eleccion_id)
             ->where('id', '!=', $this->liderId);

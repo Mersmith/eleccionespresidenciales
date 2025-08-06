@@ -275,9 +275,13 @@
                                     {{ $item->distrito->nombre ?? '' }}
                                 </td>
                                 <td>
+                                    <a href="{{ route('admin.candidato.cargo.equipo.editar', $item->id) }}"
+                                        class="g_boton g_boton_secondary">
+                                        Ver equipo <i class="fa-solid fa-eye"></i></a>
+
                                     <a href="{{ route('admin.candidato.cargo.equipo.crear', $item->id) }}"
                                         class="g_boton g_boton_primary">
-                                        Equipo <i class="fa-solid fa-square-plus"></i></a>
+                                        Agregar equipo <i class="fa-solid fa-square-plus"></i></a>
                                 </td>
                             </tr>
                         @endforeach

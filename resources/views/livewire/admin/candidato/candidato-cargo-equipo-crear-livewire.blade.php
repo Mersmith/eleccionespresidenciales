@@ -1,4 +1,4 @@
-@section('tituloPagina', 'Crear equipo')
+@section('tituloPagina', 'Agregar equipo')
 
 @section('anchoPantalla', '100%')
 
@@ -13,7 +13,11 @@
             <a href="{{ route('admin.candidato.vista.todas') }}" class="g_boton g_boton_light">
                 Inicio <i class="fa-solid fa-house"></i></a>
 
-            <a href="{{ route('admin.candidato.vista.todas') }}" class="g_boton g_boton_darkt">
+            <a href="{{ route('admin.candidato.cargo.equipo.editar', $lider->candidato->id) }}"
+                class="g_boton g_boton_primary">
+                Ver equipo <i class="fa-solid fa-eye"></i></a>
+
+            <a href="{{ route('admin.candidato.vista.editar', $lider->candidato->id) }}" class="g_boton g_boton_darkt">
                 <i class="fa-solid fa-arrow-left"></i> Regresar</a>
         </div>
     </div>
@@ -206,9 +210,10 @@
                                     <td class="g_resaltar">{{ $loop->iteration }}</td>
                                     <td class="g_resaltar">{{ $item->candidato->nombre }}</td>
                                     <td class="g_resaltar">{{ $item->cargo->nombre }}</td>
-                                    <td class="g_resaltar">{{ $item->partido->nombre }}</td>
+                                    <td class="g_resaltar">{{ $item->partido?->nombre }}</td>
                                     <td>
-                                        <button wire:click.prevent="agregarIntegrante({{ $item->id }})" class="g_boton g_boton_primary">
+                                        <button wire:click.prevent="agregarIntegrante({{ $item->id }})"
+                                            class="g_boton g_boton_primary">
                                             Agregar
                                         </button>
                                     </td>
