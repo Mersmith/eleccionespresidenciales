@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreignId('candidato_id')->constrained()->onDelete('cascade');
             $table->date('mes'); // ejemplo: 2025-08-01
             $table->boolean('pagado')->default(false);
+            $table->foreignId('plan_id')->nullable()->constrained()->nullOnDelete();
+            $table->decimal('precio_pagado', 8, 2); // precio real del momento
 
             $table->timestamps();
         });

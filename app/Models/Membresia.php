@@ -14,10 +14,17 @@ class Membresia extends Model
         'candidato_id',
         'mes',
         'pagado',
+        'plan_id',
+        'precio_pagado',
     ];
 
     public function candidato()
     {
         return $this->belongsTo(Candidato::class);
+    }
+
+    public function plan()
+    {
+        return $this->belongsTo(Plan::class);
     }
 }

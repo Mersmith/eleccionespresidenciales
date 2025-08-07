@@ -64,6 +64,7 @@
                                 <th>Nº</th>
                                 <th>Candidato</th>
                                 <th>Plan</th>
+                                <th>Precio pagado</th>
                                 <th>Mes</th>
                                 <th>Estado</th>
                                 <th>Acción</th>
@@ -77,6 +78,7 @@
                                     </td>
                                     <td class="g_resaltar">ID: {{ $m->candidato->plan->id }} -
                                         {{ $m->candidato->plan->nombre }}</td>
+                                    <td> {{ $m->precio_pagado }} </td>
                                     <td> {{ $m->mes }} </td>
                                     <td>
                                         @if ($m->pagado)

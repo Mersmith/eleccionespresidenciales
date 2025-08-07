@@ -69,6 +69,7 @@
                                 <th>Nº</th>
                                 <th>Candidato</th>
                                 <th>Plan</th>
+                                <th>Precio</th>
                                 <th>Estado</th>
                                 <th>Acción</th>
                             </tr>
@@ -82,6 +83,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td class="g_resaltar">ID: {{ $c->id }} - {{ $c->nombre }}</td>
                                         <td class="g_resaltar">ID: {{ $c->plan->id }} - {{ $c->plan->nombre }}</td>
+                                        <td>{{ $c->plan->precio }}</td>
                                         <td>
                                             @if ($m)
                                                 ❌ No pagado

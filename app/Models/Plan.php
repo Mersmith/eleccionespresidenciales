@@ -17,4 +17,8 @@ class Plan extends Model
         'descripcion',
     ];
 
+    public function membresias()
+    {
+        return $this->hasMany(Membresia::class);
+    }
 }

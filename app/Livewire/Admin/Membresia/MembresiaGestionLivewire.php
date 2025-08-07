@@ -50,13 +50,28 @@ class MembresiaGestionLivewire extends Component
     {
         $mesDate = Carbon::createFromFormat('Y-m', $this->mesSeleccionado)->startOfMonth()->toDateString();
 
-        $m = Membresia::firstOrCreate(
-            ['candidato_id' => $candidatoId, 'mes' => $mesDate],
-            ['pagado' => false]
-        );
+        // Obtener el candidato con su plan
+        $candidato = Candidato::with('plan')->findOrFail($candidatoId);
 
-        $m->pagado = !$m->pagado;
-        $m->save();
+        // Ver si ya existe membresía
+        $membresia = Membresia::where('candidato_id', $candidatoId)
+            ->where('mes', $mesDate)
+            ->first();
+
+        if ($membresia) {
+            // Si ya existe, solo toggle pagado
+            $membresia->pagado = !$membresia->pagado;
+            $membresia->save();
+        } else {
+            // Crear nueva membresía con plan_id y precio_pagado
+            Membresia::create([
+                'candidato_id' => $candidatoId,
+                'mes' => $mesDate,
+                'pagado' => true, // ya que se está marcando como pagado
+                'plan_id' => $candidato->plan_id,
+                'precio_pagado' => $candidato->plan->precio ?? 0.00, // fallback por si es null
+            ]);
+        }
 
         $this->loadMembresias();
     }
