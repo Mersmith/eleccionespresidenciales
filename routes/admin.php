@@ -39,6 +39,8 @@ use App\Livewire\Admin\Plan\PlanTodasLivewire;
 use App\Livewire\Admin\Plan\PlanEditarLivewire;
 use App\Livewire\Admin\Plan\PlanCrearLivewire;
 use App\Livewire\Admin\Membresia\MembresiaTodasLivewire;
+use App\Livewire\Admin\Membresia\MembresiaGestionLivewire;
+use App\Livewire\Admin\Membresia\MembresiaHistorialLivewire;
 
 Route::get('/eleccion', EleccionTodasLivewire::class)->name('eleccion.vista.todas');
 Route::get('/eleccion/crear', EleccionCrearLivewire::class)->name('eleccion.vista.crear');
@@ -63,6 +65,8 @@ Route::get('/plan/crear', PlanCrearLivewire::class)->name('plan.vista.crear');
 Route::get('/plan/editar/{id}', PlanEditarLivewire::class)->name('plan.vista.editar');
 
 Route::get('/membresia', MembresiaTodasLivewire::class)->name('membresia.vista.todas');
+Route::get('/membresia/gestion', MembresiaGestionLivewire::class)->name('membresia.vista.gestion');
+Route::get('/membresia/historial', MembresiaHistorialLivewire::class)->name('membresia.vista.historial');
 
 //Route::get('/categoria', CategoriaTodasLivewire::class)->name('categoria.vista.todas');
 //Route::get('/categoria/crear', CategoriaCrearLivewire::class)->name('categoria.vista.crear');

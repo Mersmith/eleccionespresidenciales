@@ -89,6 +89,8 @@ php artisan make:livewire Admin/Plan/PlanCrearLivewire
 php artisan make:livewire Admin/Plan/PlanEditarLivewire
 
 php artisan make:livewire Admin/Membresia/MembresiaTodasLivewire
+php artisan make:livewire Admin/Membresia/MembresiaGestionLivewire
+php artisan make:livewire Admin/Membresia/MembresiaHistorialLivewire
 
 php artisan make:model Imagen -mfsc
 php artisan make:livewire Admin/Imagen/ImagenTodasLivewire
