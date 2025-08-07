@@ -6,10 +6,14 @@
 
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+
+
 <!----------------------VENDOR---------------------->
 <!--SWEETALERT-->
 <script src="{{ asset('vendor/sweetalert2@11/sweetalert2@11.min.js') }}"></script>
 
+<!--CHART-->
+<script src="{{ asset('vendor/chart.js/chart.js') }}"></script>
 <!----------------------JAVASCRIPT---------------------->
 <!--ALERTAS-->
 <script src="{{ asset('assets/admin/js/alertas.js') }}"></script>

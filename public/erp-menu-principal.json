@@ -248,5 +248,24 @@
                 ]
             }
         ]
+    },
+    {
+        "id": 7,
+        "nombre": "4",
+        "ruta": "#",
+        "url": "#",
+        "icono": "fa-solid fa-chart-simple",
+        "nivel": 1,
+        "submenus": [
+            {
+                "id": 19,
+                "nombre": "Reporte",
+                "ruta": "admin.reporte.todas",
+                "url": "/admin/reporte",
+                "icono": "fa-solid fa-file-lines",
+                "nivel": 2,
+                "submenus": []
+            }
+        ]
     }
 ]

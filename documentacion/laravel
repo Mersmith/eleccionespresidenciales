@@ -99,6 +99,8 @@ php artisan make:livewire Admin/Membresia/MembresiaHistorialLivewire
 php artisan make:livewire Admin/Membresia/MembresiaAuspiciadorGestionLivewire
 php artisan make:livewire Admin/Membresia/MembresiaAuspiciadorHistorialLivewire
 
+php artisan make:livewire Admin/Reporte/ReporteInicioLivewire
+
 php artisan make:model Imagen -mfsc
 php artisan make:livewire Admin/Imagen/ImagenTodasLivewire
 php artisan storage:link

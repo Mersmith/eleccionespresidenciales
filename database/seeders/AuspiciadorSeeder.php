@@ -22,7 +22,7 @@ class AuspiciadorSeeder extends Seeder
                 'empresa' => $faker->company,
                 'celular' => $faker->phoneNumber,
                 'observacion' => $faker->sentence,
-                'plan_id' => rand(1, 3), // Asegúrate de tener planes con IDs 1, 2 y 3
+                'plan_id' => rand(4, 7), // Asegúrate de tener planes con IDs 1, 2 y 3
                 'activo' => $faker->boolean,
             ]);
         }

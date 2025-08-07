@@ -38,6 +38,7 @@ use App\Livewire\Admin\Slider\SliderEditarLivewire;
 use App\Livewire\Admin\Auspiciador\AuspiciadorCrearLivewire;
 use App\Livewire\Admin\Auspiciador\AuspiciadorEditarLivewire;
 use App\Livewire\Admin\Auspiciador\AuspiciadorTodasLivewire;
+use App\Livewire\Admin\Reporte\ReporteInicioLivewire;
 
 use Illuminate\Support\Facades\Route;
 
@@ -89,6 +90,8 @@ Route::get('/candidato/cargo/{id}', CandidatoCargoLivewire::class)->name('candid
 Route::get('/candidato/cargo-equipo/crear/{id}', CandidatoCargoEquipoCrearLivewire::class)->name('candidato.cargo.equipo.crear');
 Route::get('/candidato/cargo-equipo/editar/{id}', CandidatoCargoEquipoTodasLivewire::class)->name('candidato.cargo.equipo.editar');
 Route::get('/candidato/red-social/{id}', CandidatoSocialLivewire::class)->name('candidato.social.editar');
+
+Route::get('/reporte', ReporteInicioLivewire::class)->name('reporte.todas');
 
 Route::get('/banner', BannerTodasLivewire::class)->name('banner.vista.todas');
 Route::get('/banner/crear', BannerCrearLivewire::class)->name('banner.vista.crear');
