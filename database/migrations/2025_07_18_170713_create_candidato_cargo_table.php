@@ -29,6 +29,7 @@ return new class extends Migration
 
             $table->boolean('principal')->default(false)->comment('1 SI, 0 NO');
             $table->boolean('electo')->default(false)->comment('1 ELEGIDO, 0 TODAVIDA');
+            $table->boolean('activo')->default(false)->comment('1 ACTIVADO, 0 DESACTIVADO');
 
             $table->timestamps();
 

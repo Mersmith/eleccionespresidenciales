@@ -10,7 +10,7 @@
             <a href="{{ route('admin.candidato.vista.todas') }}" class="g_boton g_boton_light">
                 Inicio <i class="fa-solid fa-house"></i></a>
 
-            <a href="{{ route('admin.candidato.cargo.editar', $candidato->id) }}" class="g_boton g_boton_primary">
+            <a href="{{ route('admin.candidato.cargo.crear', $candidato->id) }}" class="g_boton g_boton_primary">
                 Cargo <i class="fa-solid fa-square-plus"></i></a>
 
             <a href="{{ route('admin.candidato.social.editar', $candidato->id) }}" class="g_boton g_boton_info">
@@ -274,14 +274,18 @@
                                     {{ $item->provincia->nombre ?? '' }}
                                     {{ $item->distrito->nombre ?? '' }}
                                 </td>
-                                <td>
+                                <td class="centrar_iconos">
                                     <a href="{{ route('admin.candidato.cargo.equipo.editar', $item->id) }}"
-                                        class="g_boton g_boton_secondary">
-                                        Ver equipo <i class="fa-solid fa-eye"></i></a>
+                                        class="g_resaltar">
+                                        <i class="fa-solid fa-eye"></i></a>
 
                                     <a href="{{ route('admin.candidato.cargo.equipo.crear', $item->id) }}"
-                                        class="g_boton g_boton_primary">
-                                        Agregar equipo <i class="fa-solid fa-square-plus"></i></a>
+                                        class="g_activo">
+                                        <i class="fa-solid fa-square-plus"></i></a>
+
+                                    <a href="{{ route('admin.candidato.cargo.editar', $item->id) }}"
+                                        class="g_accion_editar">
+                                        <span><i class="fa-solid fa-pencil"></i></span>
                                 </td>
                             </tr>
                         @endforeach

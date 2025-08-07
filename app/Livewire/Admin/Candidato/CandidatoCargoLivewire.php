@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Candidato;
 
+use App\Models\Alianza;
 use App\Models\Candidato;
 use App\Models\CandidatoCargo;
 use App\Models\Cargo;
@@ -10,7 +11,6 @@ use App\Models\Eleccion;
 use App\Models\Nivel;
 use App\Models\Pais;
 use App\Models\Partido;
-use App\Models\Alianza;
 use App\Models\Provincia;
 use App\Models\Region;
 use Livewire\Attributes\Layout;
@@ -24,6 +24,7 @@ class CandidatoCargoLivewire extends Component
     public $niveles;
     public $nivel_id = "";
 
+    public $candidato;
     public $candidatoId;
 
     public $paises = [], $regiones = [], $provincias = [], $distritos = [];
@@ -39,6 +40,7 @@ class CandidatoCargoLivewire extends Component
 
     public $principal = "0";
     public $electo = "0";
+    public $activo = "0";
 
     protected function rules()
     {
@@ -56,14 +58,15 @@ class CandidatoCargoLivewire extends Component
             'distrito_id' => 'required_if:nivel_id,4|nullable|exists:distritos,id',
             'principal' => 'required|numeric|regex:/^\d{1}$/',
             'electo' => 'required|numeric|regex:/^\d{1}$/',
+            'activo' => 'required|numeric|regex:/^\d{1}$/',
         ];
     }
 
     public function mount($id)
     {
         $this->candidatoId = $id;
-        $candidato = Candidato::findOrFail($id);
-        $this->partido_id = $candidato->partido_id ?? '';
+        $this->candidato = Candidato::findOrFail($id);
+        $this->partido_id = $this->candidato->partido_id ?? '';
 
         $this->niveles = Nivel::all();
         $this->partidos = Partido::all();
@@ -157,18 +160,24 @@ class CandidatoCargoLivewire extends Component
 
     public function crearCandidatoCargo()
     {
+        if (!$this->candidato->activo) {
+            //EL CANDIDATO NO ESTA ACTIVO
+            $this->dispatch('alertaLivewire', "Error");
+            return;
+        }
+
         $this->validate();
 
         /*if (empty($this->partido_id) && empty($this->alianza_id)) {
-            $this->addError('partido_id', 'Debe seleccionar un partido o una alianza.');
-            $this->addError('alianza_id', 'Debe seleccionar un partido o una alianza.');
-            return;
+        $this->addError('partido_id', 'Debe seleccionar un partido o una alianza.');
+        $this->addError('alianza_id', 'Debe seleccionar un partido o una alianza.');
+        return;
         }
-    
+
         if (!empty($this->partido_id) && !empty($this->alianza_id)) {
-            $this->addError('partido_id', 'No puede seleccionar partido y alianza al mismo tiempo.');
-            $this->addError('alianza_id', 'No puede seleccionar partido y alianza al mismo tiempo.');
-            return;
+        $this->addError('partido_id', 'No puede seleccionar partido y alianza al mismo tiempo.');
+        $this->addError('alianza_id', 'No puede seleccionar partido y alianza al mismo tiempo.');
+        return;
         }*/
 
         $nivel = (int) $this->nivel_id;
@@ -194,6 +203,7 @@ class CandidatoCargoLivewire extends Component
             'distrito_id' => $distrito_id,
             'principal' => $this->principal,
             'electo' => $this->electo,
+            'activo' => $this->activo,
         ]);
 
         $this->dispatch('alertaLivewire', "Creado");

@@ -12,6 +12,7 @@ use App\Livewire\Admin\Candidato\CandidatoCargoEquipoTodasLivewire;
 use App\Livewire\Admin\Candidato\CandidatoCargoLivewire;
 use App\Livewire\Admin\Candidato\CandidatoCrearLivewire;
 use App\Livewire\Admin\Candidato\CandidatoEditarLivewire;
+use App\Livewire\Admin\Candidato\CandidatoCargoEditarLivewire;
 use App\Livewire\Admin\Candidato\CandidatoSocialLivewire;
 use App\Livewire\Admin\Candidato\CandidatoTodasLivewire;
 use App\Livewire\Admin\Eleccion\EleccionCrearLivewire;
@@ -86,7 +87,8 @@ Route::get('/auspiciador/editar/{id}', AuspiciadorEditarLivewire::class)->name('
 Route::get('/candidato', CandidatoTodasLivewire::class)->name('candidato.vista.todas');
 Route::get('/candidato/crear', CandidatoCrearLivewire::class)->name('candidato.vista.crear');
 Route::get('/candidato/editar/{id}', CandidatoEditarLivewire::class)->name('candidato.vista.editar');
-Route::get('/candidato/cargo/{id}', CandidatoCargoLivewire::class)->name('candidato.cargo.editar');
+Route::get('/candidato/cargo/{id}', CandidatoCargoLivewire::class)->name('candidato.cargo.crear');
+Route::get('/candidato/cargo/editar/{id}', CandidatoCargoEditarLivewire::class)->name('candidato.cargo.editar');
 Route::get('/candidato/cargo-equipo/crear/{id}', CandidatoCargoEquipoCrearLivewire::class)->name('candidato.cargo.equipo.crear');
 Route::get('/candidato/cargo-equipo/editar/{id}', CandidatoCargoEquipoTodasLivewire::class)->name('candidato.cargo.equipo.editar');
 Route::get('/candidato/red-social/{id}', CandidatoSocialLivewire::class)->name('candidato.social.editar');

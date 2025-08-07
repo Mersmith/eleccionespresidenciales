@@ -22,6 +22,7 @@ class CandidatoCargo extends Model
         'distrito_id',
         'principal',
         'electo',
+        'activo',
     ];
 
     public function nivel() //ok

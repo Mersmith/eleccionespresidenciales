@@ -237,7 +237,7 @@
 
         <div>
             <div class="formulario_botones">
-                <button wire:click="crearCandidatoCargo" class="guardar">Guardar</button>
+                <button wire:click="actualizarCandidatoCargo" class="guardar">Actualizar</button>
 
                 <a href="{{ route('admin.candidato.vista.todas') }}" class="cancelar">Cancelar</a>
             </div>
