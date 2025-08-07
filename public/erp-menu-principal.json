@@ -74,6 +74,14 @@
                         "url": "/admin/candidato/crear",
                         "nivel": 3,
                         "submenus": []
+                    },
+                    {
+                        "id": 113,
+                        "nombre": "Cargos",
+                        "ruta": "admin.candidato.cargo.todas",
+                        "url": "/admin/candidato",
+                        "nivel": 3,
+                        "submenus": []
                     }
                 ]
             },

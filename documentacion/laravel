@@ -72,7 +72,8 @@ php artisan make:livewire Admin/Auspiciador/AuspiciadorEditarLivewire
 php artisan make:livewire Admin/Candidato/CandidatoTodasLivewire
 php artisan make:livewire Admin/Candidato/CandidatoCrearLivewire
 php artisan make:livewire Admin/Candidato/CandidatoEditarLivewire
-php artisan make:livewire Admin/Candidato/CandidatoCargoLivewire
+php artisan make:livewire Admin/Candidato/CandidatoCargoTodasLivewire
+php artisan make:livewire Admin/Candidato/CandidatoCargoCrearLivewire
 php artisan make:livewire Admin/Candidato/CandidatoCargoEditarLivewire
 php artisan make:livewire Admin/Candidato/CandidatoCargoEquipoLivewire
 php artisan make:livewire Admin/Candidato/CandidatoCargoEquipoCrearLivewire
