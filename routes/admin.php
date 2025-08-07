@@ -24,6 +24,8 @@ use App\Livewire\Admin\Encuesta\EncuestaTodasLivewire;
 use App\Livewire\Admin\Imagen\ImagenTodasLivewire;
 use App\Livewire\Admin\Membresia\MembresiaGestionLivewire;
 use App\Livewire\Admin\Membresia\MembresiaHistorialLivewire;
+use App\Livewire\Admin\Membresia\MembresiaAuspiciadorGestionLivewire;
+use App\Livewire\Admin\Membresia\MembresiaAuspiciadorHistorialLivewire;
 use App\Livewire\Admin\Membresia\MembresiaTodasLivewire;
 use App\Livewire\Admin\Partido\PartidoCrearLivewire;
 use App\Livewire\Admin\Partido\PartidoEditarLivewire;
@@ -64,6 +66,8 @@ Route::get('/plan/editar/{id}', PlanEditarLivewire::class)->name('plan.vista.edi
 Route::get('/membresia', MembresiaTodasLivewire::class)->name('membresia.vista.todas');
 Route::get('/membresia/gestion', MembresiaGestionLivewire::class)->name('membresia.vista.gestion');
 Route::get('/membresia/historial', MembresiaHistorialLivewire::class)->name('membresia.vista.historial');
+Route::get('/membresia/auspiciador/gestion', MembresiaAuspiciadorGestionLivewire::class)->name('membresia.auspiciador.vista.gestion');
+Route::get('/membresia/auspiciador/historial', MembresiaAuspiciadorHistorialLivewire::class)->name('membresia.auspiciador.vista.historial');
 
 //Route::get('/categoria', CategoriaTodasLivewire::class)->name('categoria.vista.todas');
 //Route::get('/categoria/crear', CategoriaCrearLivewire::class)->name('categoria.vista.crear');

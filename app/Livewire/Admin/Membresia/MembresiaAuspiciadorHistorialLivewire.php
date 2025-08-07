@@ -9,7 +9,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 
 #[Layout('components.layouts.admin.layout-admin')]
-class MembresiaHistorialLivewire extends Component
+class MembresiaAuspiciadorHistorialLivewire extends Component
 {
     use WithPagination;
 
@@ -49,22 +49,23 @@ class MembresiaHistorialLivewire extends Component
         $this->resetPage();
     }
 
+
     public function render()
     {
-        $query = Membresia::with('candidato')
-            ->whereNotNull('candidato_id') // Asegura que son de candidato
-            ->when($this->buscar, function ($q) {
-                $q->whereHas('candidato', fn($sub) =>
-                    $sub->where('nombre', 'like', '%' . $this->buscar . '%')
-                );
-            })
-            ->when($this->mesSeleccionado, function ($q) {
-                $q->whereMonth('mes', Carbon::createFromFormat('Y-m', $this->mesSeleccionado)->month)
-                    ->whereYear('mes', Carbon::createFromFormat('Y-m', $this->mesSeleccionado)->year);
-            })
-            ->orderByDesc('mes');
+        $query = Membresia::with('auspiciador')
+        ->whereNotNull('auspiciador_id') // Asegura que son de auspiciador
+        ->when($this->buscar, function ($q) {
+            $q->whereHas('auspiciador', fn($sub) =>
+                $sub->where('nombre', 'like', '%' . $this->buscar . '%')
+            );
+        })
+        ->when($this->mesSeleccionado, function ($q) {
+            $q->whereMonth('mes', Carbon::createFromFormat('Y-m', $this->mesSeleccionado)->month)
+              ->whereYear('mes', Carbon::createFromFormat('Y-m', $this->mesSeleccionado)->year);
+        })
+        ->orderByDesc('mes');
 
-        return view('livewire.admin.membresia.membresia-historial-livewire', [
+        return view('livewire.admin.membresia.membresia-auspiciador-historial-livewire', [
             'historial' => $query->paginate(10),
         ]);
     }

@@ -1,40 +1,30 @@
-@section('tituloPagina', 'Membresia candidato historial')
-
+@section('tituloPagina', 'Membresía auspiciador historial')
 @section('anchoPantalla', '100%')
 
-
 <div>
-    <!--CABECERA TITULO PAGINA-->
+    <!-- CABECERA -->
     <div class="g_panel cabecera_titulo_pagina">
-        <!--TITULO-->
-        <h2>Membresia candidato historial</h2>
-
-        <!--BOTONES-->
+        <h2>Membresía auspiciador historial</h2>
         <div class="cabecera_titulo_botones">
-            <a href="{{ route('admin.membresia.vista.gestion') }}" class="g_boton g_boton_primary">
-                Deudores <i class="fa-solid fa-comments-dollar"></i></a>
-
-            <a href="{{ route('admin.candidato.vista.todas') }}" class="g_boton g_boton_secondary">
-                Candidato <i class="fa-solid fa-user-tie"></i></a>
+            <a href="{{ route('admin.membresia.auspiciador.vista.gestion') }}" class="g_boton g_boton_primary">
+                Deudores <i class="fa-solid fa-comments-dollar"></i>
+            </a>
+            <a href="{{ route('admin.auspiciador.vista.todas') }}" class="g_boton g_boton_secondary">
+                Auspiciador <i class="fa-solid fa-handshake"></i>
+            </a>
         </div>
     </div>
 
-    <!--FORMULARIO-->
+    <!-- FORMULARIO FILTROS -->
     <div class="formulario">
         <div class="g_panel">
             <div class="g_fila">
                 <div class="g_columna_8">
-                    <!--TITULO-->
                     <h4 class="g_panel_titulo">Filtros</h4>
-
                     <div class="g_fila g_margin_bottom_20">
-                        <!--NIVELES-->
                         <div class="g_columna_4">
-                            <div>
-                                <label class="font-semibold">Mes:</label>
-                                <input type="month" wire:model.live="mesSeleccionado"
-                                    class="border rounded px-2 py-1" />
-                            </div>
+                            <label class="font-semibold">Mes:</label>
+                            <input type="month" wire:model.live="mesSeleccionado" class="border rounded px-2 py-1" />
                         </div>
                     </div>
                 </div>
@@ -42,27 +32,25 @@
         </div>
     </div>
 
-    <!--TABLA-->
+    <!-- TABLA -->
     <div class="g_panel">
         <div class="tabla_cabecera">
             <div class="tabla_cabecera_buscar">
-                <form action="">
-                    <input type="text" wire:model.live.debounce.1300ms="buscar" id="buscar" name="buscar"
-                        placeholder="Buscar...">
+                <form>
+                    <input type="text" wire:model.live.debounce.1300ms="buscar" placeholder="Buscar...">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </form>
             </div>
         </div>
 
         @if ($historial->count())
-            <!--TABLA CONTENIDO-->
             <div class="tabla_contenido g_margin_bottom_20">
                 <div class="contenedor_tabla">
                     <table class="tabla">
                         <thead>
                             <tr>
                                 <th>Nº</th>
-                                <th>Candidato</th>
+                                <th>Auspiciador</th>
                                 <th>Plan</th>
                                 <th>Precio pagado</th>
                                 <th>Mes</th>
@@ -71,15 +59,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($historial as $m)
+                            @foreach ($historial as $m)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td class="g_resaltar">ID: {{ $m->candidato->id }} - {{ $m->candidato->nombre }}
+                                    <td class="g_resaltar">
+                                        ID: {{ $m->auspiciador->id }} - {{ $m->auspiciador->nombre }}
                                     </td>
-                                    <td class="g_resaltar">ID: {{ $m->candidato->plan->id }} -
-                                        {{ $m->candidato->plan->nombre }}</td>
-                                    <td> {{ $m->precio_pagado }} </td>
-                                    <td> {{ $m->mes }} </td>
+                                    <td class="g_resaltar">
+                                        ID: {{ $m->auspiciador->plan->id ?? '-' }} -
+                                        {{ $m->auspiciador->plan->nombre ?? 'Sin plan' }}
+                                    </td>
+                                    <td>{{ $m->precio_pagado }}</td>
+                                    <td>{{ $m->mes }}</td>
                                     <td>
                                         @if ($m->pagado)
                                             <span class="text-green-600 font-semibold">✅ Pagado</span>
@@ -94,15 +85,9 @@
                                         </button>
                                     </td>
                                 </tr>
-
-                            @empty
-                                <tr>
-                                    <td colspan="3" class="py-4">No hay historial que requieran pago.</td>
-                                </tr>
-                            @endforelse
+                            @endforeach
                         </tbody>
                     </table>
-
                 </div>
             </div>
 
@@ -117,6 +102,5 @@
                 <i class="fa-regular fa-face-grin-wink"></i>
             </div>
         @endif
-
     </div>
 </div>

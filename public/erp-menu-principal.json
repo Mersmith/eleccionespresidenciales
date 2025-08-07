@@ -197,7 +197,7 @@
             },
             {
                 "id": 20,
-                "nombre": "Membresia",
+                "nombre": "M. Candidato",
                 "ruta": "#",
                 "url": "#",
                 "icono": "fa-solid fa-dollar-sign",
@@ -216,6 +216,32 @@
                         "nombre": "Historial",
                         "ruta": "admin.membresia.vista.historial",
                         "url": "/admin/membresia/historial",
+                        "nivel": 3,
+                        "submenus": []
+                    }
+                ]
+            },
+            {
+                "id": 21,
+                "nombre": "M. Auspiciador",
+                "ruta": "#",
+                "url": "#",
+                "icono": "fa-solid fa-dollar-sign",
+                "nivel": 2,
+                "submenus": [
+                    {
+                        "id": 111,
+                        "nombre": "Gestión",
+                        "ruta": "admin.membresia.auspiciador.vista.gestion",
+                        "url": "/admin/membresia/auspiciador/gestion",
+                        "nivel": 3,
+                        "submenus": []
+                    },
+                    {
+                        "id": 112,
+                        "nombre": "Historial",
+                        "ruta": "admin.membresia.auspiciador.vista.historial",
+                        "url": "/admin/membresia/auspiciador/historial",
                         "nivel": 3,
                         "submenus": []
                     }
