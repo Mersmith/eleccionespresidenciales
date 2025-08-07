@@ -194,7 +194,7 @@ class CandidatoEditarLivewire extends Component
             'activo' => $this->activo,
         ]);
 
-        $this->dispatch('alertaLivewire', "Creado");
+        $this->dispatch('alertaLivewire', "Actualizado");
 
         //return redirect()->route('admin.candidato.vista.todas');
     }

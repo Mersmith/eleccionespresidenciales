@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('slug')->unique();
             $table->text('descripcion')->nullable();
+            $table->text('celular')->nullable();
+            $table->text('observacion')->nullable();
             $table->string('foto')->nullable();
             $table->string('video_presentacion')->nullable();
             $table->string('plan_gobierno')->nullable();

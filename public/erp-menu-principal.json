@@ -133,6 +133,32 @@
         "nivel": 1,
         "submenus": [
             {
+                "id": 20,
+                "nombre": "Auspiciador",
+                "ruta": "#",
+                "url": "#",
+                "icono": "fa-solid fa-dollar-sign",
+                "nivel": 2,
+                "submenus": [
+                    {
+                        "id": 111,
+                        "nombre": "Todo",
+                        "ruta": "admin.auspiciador.vista.todas",
+                        "url": "/admin/auspiciador",
+                        "nivel": 3,
+                        "submenus": []
+                    },
+                    {
+                        "id": 112,
+                        "nombre": "Crear",
+                        "ruta": "admin.auspiciador.vista.crear",
+                        "url": "/admin/auspiciador/crear",
+                        "nivel": 3,
+                        "submenus": []
+                    }
+                ]
+            },
+            {
                 "id": 16,
                 "nombre": "Banner",
                 "ruta": "admin.banner.vista.todas",

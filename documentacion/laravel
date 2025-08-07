@@ -35,6 +35,7 @@ php artisan make:model Alianza -mfsc
 php artisan make:model AlianzaPartido -mfsc
 php artisan make:model Plan -mfsc
 php artisan make:model Membresia -mfsc
+php artisan make:model Auspiciador -mfsc
 
 php artisan make:model CandidatoCargoEquipo -mfsc
 
@@ -63,6 +64,10 @@ php artisan make:livewire Admin/Encuesta/EncuestaEditarLivewire
 php artisan make:livewire Admin/Encuesta/EncuestaCandidatoLivewire
 php artisan make:livewire Admin/Encuesta/EncuestaVotoLivewire
 php artisan make:livewire Admin/Encuesta/EncuestaResultadoLivewire
+
+php artisan make:livewire Admin/Auspiciador/AuspiciadorTodasLivewire
+php artisan make:livewire Admin/Auspiciador/AuspiciadorCrearLivewire
+php artisan make:livewire Admin/Auspiciador/AuspiciadorEditarLivewire
 
 php artisan make:livewire Admin/Candidato/CandidatoTodasLivewire
 php artisan make:livewire Admin/Candidato/CandidatoCrearLivewire

@@ -14,6 +14,8 @@ class Candidato extends Model
         'nombre',
         'slug',
         'descripcion',
+        'celular',
+        'observacion',
         'foto',
         'video_presentacion',
         'redes_sociales',

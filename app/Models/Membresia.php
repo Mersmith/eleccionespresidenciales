@@ -12,6 +12,7 @@ class Membresia extends Model
 
     protected $fillable = [
         'candidato_id',
+        'auspiciador_id',
         'mes',
         'pagado',
         'plan_id',
@@ -21,6 +22,11 @@ class Membresia extends Model
     public function candidato()
     {
         return $this->belongsTo(Candidato::class);
+    }
+
+    public function auspiciador()
+    {
+        return $this->belongsTo(Auspiciador::class);
     }
 
     public function plan()

@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             EleccionSeeder::class,
             AlianzaSeeder::class,
             PlanSeeder::class,
+            AuspiciadorSeeder::class,
             CandidatoSeeder::class,
             CandidatoCargoSeeder::class,
             EncuestaSeeder::class,

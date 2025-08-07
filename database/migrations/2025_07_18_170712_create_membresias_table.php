@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('membresias', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('candidato_id')->constrained()->onDelete('cascade');
+            $table->foreignId('candidato_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('auspiciador_id')->nullable()->constrained()->nullOnDelete();
             $table->date('mes'); // ejemplo: 2025-08-01
             $table->boolean('pagado')->default(false);
             $table->foreignId('plan_id')->nullable()->constrained()->nullOnDelete();
