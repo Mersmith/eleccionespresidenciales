@@ -86,7 +86,7 @@
                                             @if ($m)
                                                 ❌ No pagado
                                             @else
-                                                --
+                                                -- Sin registro
                                             @endif
                                         </td>
                                         <td>
