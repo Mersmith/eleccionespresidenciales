@@ -20,6 +20,8 @@ class EncuestaCandidatoLivewire extends Component
     public string $searchDisponibles = '';
     public string $searchAgregados = '';
 
+    public $pageDisponibles = 1;
+
     public function mount($id)
     {
         $this->encuestaId = $id;
@@ -29,6 +31,7 @@ class EncuestaCandidatoLivewire extends Component
     public function updatingSearchDisponibles()
     {
         $this->resetPage();
+        $this->reset('pageDisponibles');
     }
 
     public function updatingSearchAgregados()
@@ -42,6 +45,8 @@ class EncuestaCandidatoLivewire extends Component
             'candidato_cargo_id' => $candidatoCargoId,
             'encuesta_id' => $this->encuesta->id,
         ]);
+
+        $this->dispatch('alertaLivewire', "Creado");
     }
 
     public function quitarCandidato($candidatoCargoId)
@@ -49,6 +54,8 @@ class EncuestaCandidatoLivewire extends Component
         CandidatoEncuesta::where('candidato_cargo_id', $candidatoCargoId)
             ->where('encuesta_id', $this->encuesta->id)
             ->delete();
+
+        $this->dispatch('alertaLivewire', "Eliminado");
     }
     public function render()
     {
@@ -76,9 +83,9 @@ class EncuestaCandidatoLivewire extends Component
             ->whereHas('candidato', function ($query) {
                 $query->where('nombre', 'like', '%' . $this->searchDisponibles . '%');
             })
-            ->get();
+            ->paginate(20, ['*'], 'pageDisponibles');
 
-            //dd($candidatosDisponibles);
+        //dd($candidatosDisponibles);
 
         return view('livewire.admin.encuesta.encuesta-candidato-livewire', [
             'candidatosAgregados' => $candidatosAgregados,
