@@ -19,7 +19,7 @@
     </div>
 
     <!--FORMULARIO-->
-    {{-- <div class="formulario">
+    <div class="formulario">
         <div class="g_fila">
             <div class="g_columna_8">
                 <div class="g_panel">
@@ -156,18 +156,6 @@
                                 </select>
                             </div>
                         </div>
-                        <!--ESTADO-->
-                        <div class="g_columna_6">
-                            <div>
-                                <label for="distrito_id">Estado</label>
-                                <select id="estado" name="estado" wire:model.live="estado" required>
-                                    <option value="">TODOS</option>
-                                    <option value="pendiente">PENDIENTE</option>
-                                    <option value="iniciada">INICIADA</option>
-                                    <option value="finalizada">FINALIZADA</option>
-                                </select>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="g_fila">
@@ -175,22 +163,18 @@
                         <div class="g_columna_6">
                             <!-- Fecha Inicio Desde -->
                             <div>
-                                <label for="fecha_inicio_desde">Desde</label>
-                                <input type="date" id="fecha_inicio_desde" wire:model.live="fecha_inicio_desde">
                             </div>
                         </div>
                         <div class="g_columna_6">
                             <!-- Fecha Inicio Hasta -->
                             <div>
-                                <label for="fecha_inicio_hasta">Hasta</label>
-                                <input type="date" id="fecha_inicio_hasta" wire:model.live="fecha_inicio_hasta">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 
     <!--TABLA-->
     <div class="g_panel">
