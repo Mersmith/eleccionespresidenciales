@@ -20,15 +20,15 @@
 
     <!--FORMULARIO-->
     <div class="formulario">
-        <div class="g_fila">
-            <div class="g_columna_8">
-                <div class="g_panel">
-                    <!--TITULO-->
-                    <h4 class="g_panel_titulo">Filtros</h4>
+        <div class="g_panel">
+            <div class="g_fila">
+                <!--TITULO-->
+                <h4 class="g_panel_titulo">Filtros</h4>
 
+                <div class="g_columna_12">
                     <div class="g_fila g_margin_bottom_20">
                         <!--NIVELES-->
-                        <div class="g_columna_4">
+                        <div class="g_columna_3">
                             <div>
                                 <label for="nivel_id">Nivel</label>
                                 <select id="nivel_id" name="nivel_id" wire:model.live="nivel_id" required>
@@ -46,7 +46,7 @@
                         </div>
 
                         <!--CARGOS-->
-                        <div class="g_columna_4">
+                        <div class="g_columna_3">
                             <div>
                                 <label for="cargo_id">Cargo</label>
                                 <select id="cargo_id" name="cargo_id" wire:model.live="cargo_id" required>
@@ -57,14 +57,27 @@
                                         @endforeach
                                     @endif
                                 </select>
-                                @error('cargo_id')
-                                    <p class="mensaje_error">{{ $message }}</p>
-                                @enderror
+                            </div>
+                        </div>
+
+                        <!--ELECCION-->
+                        <div class="g_columna_3">
+                            <div>
+                                <label for="eleccion_id">Eleccion</label>
+                                <select id="eleccion_id" name="eleccion_id" wire:model.live="eleccion_id" required>
+                                    <option value="" selected disabled>Seleccionar una elección</option>
+                                    @if ($elecciones)
+                                        @foreach ($elecciones as $eleccion)
+                                            <option value="{{ $eleccion->id }}">{{ $eleccion->nombre }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+
                             </div>
                         </div>
 
                         <!--PAIS-->
-                        <div class="g_columna_4">
+                        <div class="g_columna_3">
                             <div>
                                 <label for="pais_id">Pais</label>
                                 <select id="pais_id" name="pais_id" wire:model.live="pais_id" required>
@@ -81,12 +94,13 @@
 
                             </div>
                         </div>
-
                     </div>
+                </div>
 
-                    <div class="g_fila">
+                <div class="g_columna_12">
+                    <div class="g_fila g_margin_bottom_20">
                         <!--REGION-->
-                        <div class="g_columna_4">
+                        <div class="g_columna_3">
                             <div>
                                 <label for="region_id">Región</label>
                                 <select id="region_id" name="region_id" wire:model.live="region_id" required>
@@ -104,7 +118,7 @@
                         </div>
 
                         <!--PROVINCIA-->
-                        <div class="g_columna_4">
+                        <div class="g_columna_3">
                             <div>
                                 <label for="provincia_id">Provincia</label>
                                 <select id="provincia_id" name="provincia_id" wire:model.live="provincia_id" required>
@@ -122,7 +136,7 @@
                         </div>
 
                         <!--DISTRITO-->
-                        <div class="g_columna_4">
+                        <div class="g_columna_3">
                             <div>
                                 <label for="distrito_id">Distrito</label>
                                 <select id="distrito_id" name="distrito_id" wire:model.live="distrito_id" required>
@@ -138,15 +152,43 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <!--PARTIDO-->
+                        <div class="g_columna_3">
+                            <div>
+                                <label for="partido_id">Partido</label>
+                                <select id="partido_id" name="partido_id" wire:model.live="partido_id">
+                                    <option value="">Seleccionar un partido</option>
+                                    @if ($partidos)
+                                        @foreach ($partidos as $partido)
+                                            <option value="{{ $partido->id }}">{{ $partido->nombre }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="g_columna_4">
-                <div class="g_panel">
-                    <div class="g_fila g_margin_bottom_20">
+                <div class="g_columna_12">
+                    <div class="g_fila">
+                        <!--ALIANZA-->
+                        <div class="g_columna_3">
+                            <div>
+                                <label for="alianza_id">Alianza</label>
+                                <select id="alianza_id" name="alianza_id" wire:model.live="alianza_id">
+                                    <option value="">Seleccionar una alianza</option>
+                                    @if ($alianzas)
+                                        @foreach ($alianzas as $alianza)
+                                            <option value="{{ $alianza->id }}">{{ $alianza->nombre }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+
                         <!--ACTIVO-->
-                        <div class="g_columna_6">
+                        <div class="g_columna_3">
                             <div>
                                 <label for="distrito_id">Activo</label>
                                 <select id="activo" name="activo" wire:model.live="activo">
@@ -154,20 +196,6 @@
                                     <option value="0" selected>DESACTIVADO</option>
                                     <option value="1">ACTIVO</option>
                                 </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="g_fila">
-                        <!--FECHA-->
-                        <div class="g_columna_6">
-                            <!-- Fecha Inicio Desde -->
-                            <div>
-                            </div>
-                        </div>
-                        <div class="g_columna_6">
-                            <!-- Fecha Inicio Hasta -->
-                            <div>
                             </div>
                         </div>
                     </div>
@@ -244,8 +272,13 @@
                                     </td>
                                     <td class="centrar_iconos">
                                         <a href="{{ route('admin.candidato.vista.editar', $item->candidato->id) }}"
+                                            class="g_activo">
+                                            <span><i class="fa-solid fa-user-tie"></i></span>
+                                        </a>
+
+                                        <a href="{{ route('admin.candidato.cargo.editar', $item->id) }}"
                                             class="g_accion_editar">
-                                            <span><i class="fa-solid fa-pencil"></i></span>
+                                            <span><i class="fa-solid fa-bag-shopping"></i></span>
                                         </a>
                                     </td>
                                 </tr>
