@@ -1,9 +1,9 @@
 @if (!empty($p_elemento) && $p_elemento['partidos']->isNotEmpty())
     <div>
-            @include('web.partials.titulo', [
-                'p_contenido' => $p_elemento['titulo'],
-                'p_alineacion' => 'left',
-            ])
+        @include('web.partials.titulo', [
+            'p_contenido' => $p_elemento['titulo'],
+            'p_alineacion' => 'left',
+        ])
 
         <div x-data="dataMostrador{{ $p_elemento['id'] }}()" class="partials_contenedor_mostrador">
             <!-- CONTENEDOR GRID -->
@@ -12,8 +12,12 @@
                     <div class="item">
                         <a href="{{ route('alianza', ['id' => $item->id, 'slug' => $item->slug]) }}">
                             <!-- IMAGENES -->
-                            <img src="{{ $item->logo }}" alt="" />
-                             <p class="g_texto_nivel_5">{{ $item->nombre }}</p>
+                            @if (!empty($item->logo))
+                                <img src="{{ $item->logo }}" alt="{{ $item->nombre }}">
+                            @else
+                                <img src="{{ asset('assets/images/partido/partido-1.jpg') }}" alt="">
+                            @endif
+                            <p class="g_texto_nivel_5">{{ $item->nombre }}</p>
                         </a>
                     </div>
                 @endforeach

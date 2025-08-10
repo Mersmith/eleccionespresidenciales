@@ -7,7 +7,7 @@
     <!--CABECERA TITULO PAGINA-->
     <div class="g_panel cabecera_titulo_pagina">
         <!--TITULO-->
-        <h2>Red social</h2>
+        <h2>Red social de: {{ $alianza->nombre }}</h2>
 
         <div class="cabecera_titulo_botones">
             <a href="{{ route('admin.alianza.vista.todas') }}" class="g_boton g_boton_light">

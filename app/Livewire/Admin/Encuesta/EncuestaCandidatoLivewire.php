@@ -46,7 +46,7 @@ class EncuestaCandidatoLivewire extends Component
             'encuesta_id' => $this->encuesta->id,
         ]);
 
-        $this->dispatch('alertaLivewire', "Creado");
+        //$this->dispatch('alertaLivewire', "Creado");
     }
 
     public function quitarCandidato($candidatoCargoId)

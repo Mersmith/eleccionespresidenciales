@@ -3,7 +3,13 @@
         @foreach ($p_elemento as $index => $item)
             <div class="encuesta_item">
                 <a href="{{ route('encuesta', ['id' => $item->id, 'slug' => $item->slug]) }}" class="imagen_container">
-                    <img src="{{ $item->eleccion->imagen_ruta }}" alt="Imagen" class="imagen_encuesta">
+
+                    @if ($item->imagen_url)
+                        <img src="{{ $item->imagen_url}}" alt="Imagen" class="imagen_encuesta">
+                    @else
+                        <img src="{{ $item->eleccion->imagen_ruta }}" alt="Imagen" class="imagen_encuesta">
+                    @endif
+
                     @if ($item->ya_finalizo)
                         <span class="g_etiqueta g_etiqueta_desactivo">Finalizada</span>
                     @else

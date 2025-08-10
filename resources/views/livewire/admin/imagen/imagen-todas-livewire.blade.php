@@ -65,6 +65,18 @@
 
                 <div class="modal_cuerpo">
                     <div class="formulario">
+                        <!-- URL -->
+                        <div class="g_margin_bottom_20" x-data="{ url: '{{ asset($url) }}' }">
+                            <label for="titulo">Url</label>
+                            <input type="text" id="titulo" name="titulo" :value="url" readonly
+                                class="g_margin_bottom_20" disabled>
+                            <div class="formulario_botones">
+                                <button type="button" class="agregar" @click="navigator.clipboard.writeText(url)">
+                                    Copiar
+                                </button>
+                            </div>
+                        </div>
+
                         <!--TITULO-->
                         <div class="g_margin_bottom_20">
                             <label for="titulo">Titulo <span class="obligatorio"><i
@@ -148,6 +160,10 @@
                         <div class="botones">
                             <a href="{{ $imagen->url }}" target="_blank" class="g_boton g_boton_info"><i
                                     class="fa-solid fa-eye"></i></a>
+                            <button type="button" class="g_boton g_boton_danger"
+                                @click="navigator.clipboard.writeText('{{ $imagen->url }}')">
+                                <i class="fa-solid fa-copy"></i>
+                            </button>
                             <button wire:click="seleccionarImagen({{ $imagen->id }})"
                                 class="g_boton g_boton_primary"><i class="fa-solid fa-pencil"></i></button>
                             <button

@@ -125,6 +125,7 @@
 }
 
 .grafico_vertical .logo {
+    padding: 2px;
     position: absolute;
     bottom: 100%;
     left: 50%;

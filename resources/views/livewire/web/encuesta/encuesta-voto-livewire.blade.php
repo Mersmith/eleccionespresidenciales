@@ -27,9 +27,25 @@
                 @endif
 
                 <div class="imagen_contenedor">
-                    <img class="imagen_candidato" src="{{ $candidatoCargo->candidato->foto }}" alt="Candidato" />
-                    <img class="logo_partido" src="{{ $candidatoCargo->candidato->partido?->logo }}"
-                        alt="Logo partido" />
+                    @if (!empty($candidatoCargo->candidato->foto))
+                        <img class="imagen_candidato" src="{{ $candidatoCargo->candidato->foto }}" alt="Candidato" />
+                    @else
+                        <img src="{{ asset('assets/images/partido/partido-1.jpg') }}" alt=""
+                            class="imagen_candidato">
+                    @endif
+
+                    @php
+                        $partido = $candidatoCargo->partido;
+                        $alianza = $candidatoCargo->alianza;
+                        $logo = $partido ? $partido->logo : ($alianza ? $alianza->logo : null);
+                    @endphp
+
+                    @if ($logo)
+                        <img class="logo_partido" src="{{ $logo }}" alt="" />
+                    @else
+                        <img src="{{ asset('assets/images/partido/partido-1.jpg') }}" alt=""
+                            class="logo_partido">
+                    @endif
                 </div>
 
                 <input type="radio" wire:model.live="candidato_cargo_id" value="{{ $candidatoCargo->id }}">

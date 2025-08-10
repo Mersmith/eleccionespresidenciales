@@ -3,7 +3,7 @@
     <!--CABECERA TITULO PAGINA-->
     <div class="g_panel cabecera_titulo_pagina">
         <!--TITULO-->
-        <h2>Editar alianza</h2>
+        <h2>Editar alianza de: {{ $alianza->nombre }}</h2>
 
         <!--BOTONES-->
         <div class="cabecera_titulo_botones">

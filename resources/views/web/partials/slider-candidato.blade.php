@@ -15,17 +15,25 @@
                             <a
                                 href="{{ route('candidato', ['id' => $postulacion->candidato->id, 'slug' => $postulacion->candidato->slug]) }}">
                                 <div class="candidato_imagen_contenedor">
-                                    <img class="imagen_candidato" src="{{ $postulacion->candidato->foto }}"
-                                        alt="" />
+                                    @if (!empty($postulacion->candidato->foto))
+                                        <img src="{{ $postulacion->candidato->foto }}"
+                                            alt="{{ $postulacion->candidato->nombre }}" class="imagen_candidato">
+                                    @else
+                                        <img src="{{ asset('assets/images/partido/partido-1.jpg') }}" alt=""
+                                            class="imagen_candidato">
+                                    @endif
                                     @if ($postulacion->candidato)
                                         @php
-                                            $partido = $postulacion->candidato->partido;
-                                            $alianza = $postulacion->candidato->alianza;
+                                            $partido = $postulacion->partido;
+                                            $alianza = $postulacion->alianza;
                                             $logo = $partido ? $partido->logo : ($alianza ? $alianza->logo : null);
                                         @endphp
 
                                         @if ($logo)
                                             <img class="logo_partido" src="{{ $logo }}" alt="" />
+                                        @else
+                                            <img src="{{ asset('assets/images/partido/partido-1.jpg') }}" alt=""
+                                                class="logo_partido">
                                         @endif
                                     @endif
                                 </div>

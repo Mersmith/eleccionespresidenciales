@@ -1,7 +1,11 @@
 @if (!empty($p_elemento))
     <div class="partials_contenedor_perfil_partido g_card_panel">
         <div class="partido_imagen_contenedor">
-            <img class="imagen_partido" src="{{ $p_elemento->logo }}" alt="" />
+            @if (!empty($item->logo))
+                <img src="{{ $item->logo }}" alt="{{ $item->nombre }}" class="imagen_partido">
+            @else
+                <img src="{{ asset('assets/images/partido/partido-1.jpg') }}" alt="" class="imagen_partido">
+            @endif
         </div>
 
         <div class="nombres_partido">

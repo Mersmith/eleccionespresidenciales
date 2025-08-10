@@ -1,4 +1,4 @@
-.contenedor_menu_buscar{
+.contenedor_menu_buscar {
     width: 100%;
 }
 
@@ -80,12 +80,19 @@
     text-decoration: none;
     color: var(--color-fondo-etiqueta-1);
     transition: background-color 0.2s ease, color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .resultados_busqueda a:hover {
     background-color: var(--color-fondo-lista-hober);
     color: var(--color-fondo-etiqueta-2);
     font-weight: 600;
+}
+
+.resultados_busqueda a img {
+    width: 40px;
 }
 
 .resultados_busqueda li:hover {

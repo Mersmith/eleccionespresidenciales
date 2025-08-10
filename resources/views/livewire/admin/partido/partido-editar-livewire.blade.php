@@ -2,7 +2,7 @@
 <div>
     <!--CABECERA TITULO PAGINA-->
     <div class="g_panel cabecera_titulo_pagina">
-        <h2>Editar partido</h2>
+        <h2>Editar partido de: {{ $partido->nombre }}</h2>
         <div class="cabecera_titulo_botones">
             <a href="{{ route('admin.partido.vista.todas') }}" class="g_boton g_boton_light">
                 Inicio <i class="fa-solid fa-house"></i>

@@ -3,28 +3,33 @@
 }
 
 .partials_contenedor_perfil_candidato .candidato_imagen_contenedor {
-    display: flex;
-    flex-direction: column;
     position: relative;
-    height: auto;
-    width: 300px;
+    width: 220px; /* ancho fijo */
+    height: 220px; /* alto fijo */
+    overflow: hidden;
+    flex-shrink: 0; /* evita que se encoja */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .partials_contenedor_perfil_candidato .imagen_candidato {
     width: 100%;
+    height: 100%;
+    object-fit: cover; /* recorta y rellena sin deformar */
     display: block;
     border-radius: 50%;
 }
 
 .partials_contenedor_perfil_candidato .logo_partido {
     position: absolute;
-    bottom: 0px;
-    left: 0px;
-    width: 100px;
-    height: auto;
+    bottom: 5px;
+    right: 5px;
+    width: 60px;
+    height: 60px;
     border: 2px solid var(--color-borde-card);
     background-color: white;
-    padding: 10px;
+    padding: 5px;
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3);
 }
 
@@ -34,7 +39,7 @@
     flex-direction: column;
     justify-content: space-between;
     justify-content: center;
-    gap: 7px;
+    gap: 10px;
 }
 
 .partials_contenedor_perfil_candidato .nombres_partido .nombres .redes_sociales {
@@ -45,6 +50,14 @@
 
 .partials_contenedor_perfil_candidato .nombres_partido .partido img {
     width: 150px;
+}
+
+/* PLAN GOBIERNO */
+.partials_contenedor_perfil_candidato .plan_gobierno a {
+    padding: 5px 15px;
+    background-color: var(--color-fondo-primario);
+    color: var(--color-texto-secundario);
+    border-radius: 20px;
 }
 
 @media (max-width: 700px) {

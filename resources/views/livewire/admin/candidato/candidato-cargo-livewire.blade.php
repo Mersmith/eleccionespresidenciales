@@ -3,7 +3,7 @@
     <!--CABECERA TITULO PAGINA-->
     <div class="g_panel cabecera_titulo_pagina">
         <!--TITULO-->
-        <h2>Agregar cargo</h2>
+        <h2>Agregar cargo de: {{ $candidato->nombre }}</h2>
 
         <!--BOTONES-->
         <div class="cabecera_titulo_botones">

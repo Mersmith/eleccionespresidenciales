@@ -12,7 +12,7 @@ class CandidatoTodasLivewire extends Component
 {
     use WithPagination;
     public $buscar = '';
-    public $perPage = 10;
+    public $perPage = 20;
 
     public function updatingBuscar()
     {

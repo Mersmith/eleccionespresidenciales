@@ -54,7 +54,7 @@ class CandidatoCrearLivewire extends Component
         return [
             'nombre' => 'required|unique:candidatos,nombre',
             'slug' => 'required|unique:candidatos,slug',
-            'descripcion' => 'required|min:3|max:255',
+            'descripcion' => 'nullable|min:3|max:255',
             'foto' => 'nullable|url',
             'video_presentacion' => 'nullable|url',
             'plan_gobierno' => 'nullable|url',
@@ -132,7 +132,7 @@ class CandidatoCrearLivewire extends Component
             'region_id' => $this->region_id,
             'provincia_id' => $this->provincia_id,
             'distrito_id' => $this->distrito_id,
-            'candidato_oficial' => $this->activo,
+            'candidato_oficial' => $this->candidato_oficial,
             'activo' => $this->activo,
         ]);
 

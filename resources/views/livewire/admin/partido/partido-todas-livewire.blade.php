@@ -20,17 +20,16 @@
 
     <!--TABLA-->
     <div class="g_panel">
-        @if ($partidos->count())
-            <div class="tabla_cabecera">
-                <div class="tabla_cabecera_buscar">
-                    <form action="">
-                        <input type="text" wire:model.live.debounce.1300ms="buscar" id="buscar" name="buscar"
-                            placeholder="Buscar...">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </form>
-                </div>
+        <div class="tabla_cabecera">
+            <div class="tabla_cabecera_buscar">
+                <form action="">
+                    <input type="text" wire:model.live.debounce.1300ms="buscar" id="buscar" name="buscar"
+                        placeholder="Buscar...">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </form>
             </div>
-
+        </div>
+        @if ($partidos->count())       
             <!--TABLA CONTENIDO-->
             <div class="tabla_contenido g_margin_bottom_20">
                 <div class="contenedor_tabla">

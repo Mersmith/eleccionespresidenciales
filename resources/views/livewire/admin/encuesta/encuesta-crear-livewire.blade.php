@@ -2,8 +2,10 @@
 <div>
     <!--CABECERA TITULO PAGINA-->
     <div class="g_panel cabecera_titulo_pagina">
-        <!--TITULO-->
-        <h2>Crear encuesta</h2>
+        <!--TITULO-->        
+        <div>
+            <h2>Crear encuesta</h2>
+        </div>
 
         <!--BOTONES-->
         <div class="cabecera_titulo_botones">
@@ -106,7 +108,7 @@
                     <div class="g_margin_bottom_20">
                         <label for="nombre">Nombre <span class="obligatorio"><i class="fa-solid fa-asterisk"></i></span></label>
                         <input type="text" id="nombre" name="nombre" wire:model.live="nombre" required >
-                        <p class="leyenda">Se genera automático</p>
+                        <p class="leyenda">encuesta-cargo-año-ubigeo-fecha_inicio</p>
                         @error('nombre')
                         <p class="mensaje_error">{{ $message }}</p>
                         @enderror

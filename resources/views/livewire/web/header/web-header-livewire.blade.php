@@ -42,13 +42,22 @@
             <ul class="menu_principal_usuarios">
                 <!-- ITEM CUENTA  -->
                 <li>
-                    <x-dropdown align="left" width="40">
+                    @if (Auth::check())
+                        <a class="principal_usuarios_item">
+                            <i class="fa-solid fa-face-laugh-wink"></i>
+                            <span>Hola!</span>
+                        </a>
+                    @else
+                        <a class="principal_usuarios_item" wire:click="abrirModalSesion()" style="cursor: pointer;">
+                            <i class="fa-regular fa-user"></i>
+                            <span>Login</span>
+                        </a>
+                    @endif
+
+                    {{-- <x-dropdown align="left" width="40">
                         <x-slot name="trigger">
 
-                            <a class="principal_usuarios_item">
-                                <i class="fa-regular fa-user"></i>
-                                <span>Cuenta</span>
-                            </a>
+                           
                         </x-slot>
 
                         <x-slot name="content">
@@ -60,10 +69,10 @@
                                         @click.prevent="$root.submit();">Cerrar </a>
                                 </form>
                             @else
-                                <a href="#" class="dropdown_item"  wire:click="abrirModalSesion()">Login</a>
+                                <a href="#" class="dropdown_item" >Login</a>
                             @endif
                         </x-slot>
-                    </x-dropdown>
+                    </x-dropdown> --}}
                 </li>
             </ul>
         </div>

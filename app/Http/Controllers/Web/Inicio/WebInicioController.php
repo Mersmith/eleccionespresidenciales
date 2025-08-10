@@ -90,6 +90,8 @@ class WebInicioController extends Controller
             ->where('eleccion_id', $eleccion_id)
             ->where('nivel_id', $nivel_id)
             ->where('cargo_id', $cargo_id)
+            ->where('principal', true)
+            ->where('activo', true)
             ->whereDate('created_at', '>=', config('constantes.FECHA_CONVOCATORIA_ELECCION_GENERAL'))
             ->get();
 
@@ -112,6 +114,8 @@ class WebInicioController extends Controller
             ->where('eleccion_id', $eleccion_id)
             ->where('nivel_id', $nivel_id)
             ->where('cargo_id', $cargo_id)
+            ->where('principal', true)
+            ->where('activo', true)
             ->whereDate('created_at', '>=', config('constantes.FECHA_CONVOCATORIA_ELECCION_REGIONAL'))
             ->get();
 

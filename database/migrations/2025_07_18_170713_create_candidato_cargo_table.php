@@ -33,7 +33,7 @@ return new class extends Migration
 
             $table->timestamps();
 
-            $table->unique(['candidato_id', 'cargo_id', 'eleccion_id', 'pais_id', 'region_id', 'provincia_id', 'distrito_id'], 'unique_postulacion');
+            $table->unique(['candidato_id', 'cargo_id', 'eleccion_id', 'partido_id', 'alianza_id', 'pais_id', 'region_id', 'provincia_id', 'distrito_id'], 'unique_postulacion');
 
         });
     }

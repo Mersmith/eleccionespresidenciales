@@ -21,8 +21,10 @@
 .partials_contenedor_lista_encuesta .imagen_container {
     position: relative;
     flex-shrink: 0;
-    width: 160px;
-    height: 120px;
+    /*width: 160px;
+    height: 120px;*/
+    width: 200px;
+    height: 113px;
     overflow: hidden;
     border-radius: 8px;
 }

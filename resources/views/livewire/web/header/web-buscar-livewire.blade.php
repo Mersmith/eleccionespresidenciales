@@ -19,6 +19,13 @@
                 @forelse($resultados as $candidato)
                     <li>
                         <a href="{{ route('candidato', ['id' => $candidato->id, 'slug' => $candidato->slug]) }}">
+                            @if (!empty($candidato->foto))
+                                <img src="{{ $candidato->foto }}"
+                                    alt="{{ $candidato->nombre }}" class="imagen_candidato">
+                            @else
+                                <img src="{{ asset('assets/images/partido/partido-1.jpg') }}" alt=""
+                                    class="imagen_candidato">
+                            @endif
                             {{ $candidato->nombre }}
                         </a>
                     </li>

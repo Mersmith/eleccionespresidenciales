@@ -18,6 +18,27 @@
                             'p_elemento' => $candidato_partido,
                         ])
 
+                        <!-- VIDEO PRESENTACION -->
+                        @if ($candidato_partido->video_presentacion)
+                            @php
+                                preg_match(
+                                    '/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([^\&\?\/]+)/',
+                                    $candidato_partido->video_presentacion,
+                                    $matches,
+                                );
+                                $videoId = $matches[1] ?? null;
+                            @endphp
+
+                            @if ($videoId)
+                                <div class="g_video_container">
+                                    <iframe width="560" height="315"
+                                        src="https://www.youtube.com/embed/{{ $videoId }}" title="YouTube video player"
+                                        frameborder="0" allowfullscreen>
+                                    </iframe>
+                                </div>
+                            @endif
+                        @endif
+
                         <!-- ENCUESTA ACTIVA -->
                         @if ($candidato_encuesta_activa)
                             @include('web.partials.temporizador', [

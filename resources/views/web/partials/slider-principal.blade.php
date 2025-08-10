@@ -25,6 +25,10 @@
             slidesPerView: 1,
             spaceBetween: 0,
             loop: {{ count($p_elemento->imagenes) > 1 ? 'true' : 'false' }},
+            autoplay: {
+                delay: 5000, // 5000 ms = 5 segundos
+                disableOnInteraction: false, // para que siga después de interactuar
+            },
             pagination: {
                 el: ".SwiperSliderPrincipal-{{ $p_elemento->id }} .swiper-pagination",
                 clickable: true,

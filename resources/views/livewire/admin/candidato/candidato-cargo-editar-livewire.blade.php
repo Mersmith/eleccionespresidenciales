@@ -1,9 +1,9 @@
-@section('tituloPagina', 'Agregar cargo')
+@section('tituloPagina', 'Editar cargo')
 <div>
     <!--CABECERA TITULO PAGINA-->
     <div class="g_panel cabecera_titulo_pagina">
         <!--TITULO-->
-        <h2>Agregar cargo</h2>
+        <h2>Editar cargo de: {{ $candidato->nombre }}</h2>
 
         <!--BOTONES-->
         <div class="cabecera_titulo_botones">

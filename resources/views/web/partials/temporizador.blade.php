@@ -30,12 +30,16 @@
 
         <div class="partials_contenedor_slider_temporizador">
             <a href="{{ route('encuesta', ['id' => $p_elemento->id, 'slug' => $p_elemento->slug]) }}">
-                <img src="{{ $p_elemento->eleccion?->imagen_ruta }} " alt="{{ $p_elemento->nombre }}" />
+                @if ($p_elemento->imagen_url)
+                    <img src="{{ $p_elemento->imagen_url }} " alt="{{ $p_elemento->nombre }}" />
+                @else
+                    <img src="{{ $p_elemento->eleccion?->imagen_ruta }} " alt="{{ $p_elemento->nombre }}" />
+                @endif
             </a>
         </div>
     </div>
 
-    <script>      
+    <script>
         function dataTemporizador{{ $p_elemento->id }}(fecha_fin) {
             const fechaFinal = new Date(fecha_fin);
 

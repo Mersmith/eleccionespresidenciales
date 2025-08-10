@@ -100,7 +100,7 @@
 .grid_instagram .botones {
     display: flex;
     justify-content: space-around;
-    padding: 10px;
+    padding: 5px;
 }
 
 .imagene_seleccionada {

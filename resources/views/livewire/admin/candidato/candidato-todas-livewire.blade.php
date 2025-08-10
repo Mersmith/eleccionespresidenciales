@@ -114,6 +114,16 @@
                                             class="g_accion_editar">
                                             <span><i class="fa-solid fa-pencil"></i></span>
                                         </a>
+
+                                        <a href="{{ route('admin.candidato.social.editar', $item->id) }}"
+                                            class="g_resaltar">
+                                            <span><i class="fa-brands fa-facebook"></i></span>
+                                        </a>
+
+                                        <a href="{{ route('admin.candidato.cargo.crear', $item->id) }}"
+                                            class="g_activo">
+                                            <span><i class="fa-solid fa-user-tie"></i></span>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
