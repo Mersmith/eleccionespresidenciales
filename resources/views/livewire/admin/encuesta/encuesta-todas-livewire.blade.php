@@ -212,8 +212,8 @@
                          <thead>
                              <tr>
                                  <th>Nº</th>
-                                 {{-- <th>Elección</th>
-                                 <th>Imagen</th> --}}
+                                 {{-- <th>Elección</th>--}}
+                                 <th>Imagen</th> 
                                  <th>Nombre</th>
                                  <th>Cargo</th>
                                  <th>Nivel</th>
@@ -233,8 +233,8 @@
                                  <tr>
                                      <td>{{ $loop->iteration }}</td>
                                      {{-- <td class="g_inferior">ID: {{ $item->eleccion->id }} -
-                                         {{ $item->eleccion->nombre ?? '-' }}</td>
-                                     <td><img src="{{ $item->imagen_url }}"></td> --}}
+                                         {{ $item->eleccion->nombre ?? '-' }}</td>--}}
+                                     <td><img src="{{ $item->imagen_url }}"></td> 
                                      <td class="g_resaltar">{{ $item->nombre }}</td>
                                      <td>{{ $item->cargo->nombre ?? '' }}</td>
                                      <td>{{ $item->nivel->nombre ?? '' }}</td>
