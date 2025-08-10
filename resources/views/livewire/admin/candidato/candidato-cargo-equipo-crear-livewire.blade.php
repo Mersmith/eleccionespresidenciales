@@ -13,7 +13,7 @@
             <a href="{{ route('admin.candidato.vista.todas') }}" class="g_boton g_boton_light">
                 Inicio <i class="fa-solid fa-house"></i></a>
 
-            <a href="{{ route('admin.candidato.cargo.equipo.editar', $lider->candidato->id) }}"
+            <a href="{{ route('admin.candidato.cargo.equipo.editar', $lider->id) }}"
                 class="g_boton g_boton_primary">
                 Ver equipo <i class="fa-solid fa-eye"></i></a>
 
@@ -200,7 +200,9 @@
                                 <th>Nº</th>
                                 <th>Nombre</th>
                                 <th>Cargo</th>
+                                <th>Número</th>
                                 <th>Partido</th>
+                                <th>Alianza</th>
                                 <th>Acción</th>
                             </tr>
                         </thead>
@@ -210,7 +212,9 @@
                                     <td class="g_resaltar">{{ $loop->iteration }}</td>
                                     <td class="g_resaltar">{{ $item->candidato->nombre }}</td>
                                     <td class="g_resaltar">{{ $item->cargo->nombre }}</td>
+                                    <td class="g_resaltar">{{ $item->numero }}</td>
                                     <td class="g_resaltar">{{ $item->partido?->nombre }}</td>
+                                    <td class="g_resaltar">{{ $item->alianza?->nombre }}</td>
                                     <td>
                                         <button wire:click.prevent="agregarIntegrante({{ $item->id }})"
                                             class="g_boton g_boton_primary">

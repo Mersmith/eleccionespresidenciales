@@ -45,14 +45,23 @@
                                 @endphp
                                 <div class="barra_container">
                                     <div class="barra" style="height: {{ $porcentaje }}%">
+                                        <div class="foto_contenedor">
+                                            @if (!empty($item['candidato_foto']))
+                                                <img src="{{ $item['candidato_foto'] }}" alt="Candidato"
+                                                    class="foto-candidato">
+                                            @else
+                                                <img src="{{ asset('assets/images/partido/partido-1.jpg') }}"
+                                                    alt="" class="foto-candidato">
+                                            @endif
 
-                                        @if (!empty($item['partido_foto']))
-                                            <img src="{{ $item['partido_foto'] }}" class="logo" alt="Partido">
-                                        @else
-                                            <img src="{{ asset('assets/images/partido/partido-1.jpg') }}" alt=""
-                                                class="logo">
-                                        @endif
-
+                                            @if (!empty($item['partido_foto']))
+                                                <img src="{{ $item['partido_foto'] }}" alt="Partido"
+                                                    class="logo-partido">
+                                            @else
+                                                <img src="{{ asset('assets/images/partido/partido-1.jpg') }}"
+                                                    alt="" class="logo-partido">
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach
@@ -88,7 +97,6 @@
                                             <img src="{{ asset('assets/images/partido/partido-1.jpg') }}"
                                                 alt="" class="logo-partido">
                                         @endif
-
                                     </div>
                                     <div class="info_candidato">
                                         <div class="nombre_candidato">{{ $item['candidato_nombre'] }}</div>

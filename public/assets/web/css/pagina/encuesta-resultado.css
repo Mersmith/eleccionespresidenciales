@@ -1,4 +1,3 @@
-
 .grafico_horizontal .candidato-item {
     display: flex;
     align-items: center;
@@ -87,13 +86,14 @@
     overflow-x: auto;
     overflow-y: hidden;
     width: 100%;
-    padding: 50px 10px 10px 10px;
+    padding: 70px 10px 10px 10px;
     /*border: 1px solid #ccc;*/
 
-    background-image: 
+    background-image:
         linear-gradient(to right, #e0e0e0 1px, transparent 1px),
         linear-gradient(to bottom, #e0e0e0 1px, transparent 1px);
-    background-size: 40px 40px; /* Tamaño de cada celda */
+    background-size: 40px 40px;
+    /* Tamaño de cada celda */
     background-position: top left;
 }
 
@@ -103,12 +103,12 @@
     height: 300px;
     min-width: fit-content;
     gap: 10px;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .grafico_vertical .barra_container {
     position: relative;
-    width: 35px;
+    width: 80px;
     height: 100%;
     background: #f0f0f0;
     display: flex;
@@ -124,13 +124,29 @@
     position: relative;
 }
 
-.grafico_vertical .logo {
+.grafico_vertical .foto_contenedor {
     padding: 2px;
     position: absolute;
     bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     object-fit: contain;
+}
+
+/*.grafico_vertical .foto-candidato {
+    width: 64px;
+    height: 64px;
+}*/
+
+.grafico_vertical .logo-partido {
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid white;
+    object-fit: cover;
+    background: white;
 }

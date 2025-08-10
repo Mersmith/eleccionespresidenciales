@@ -76,7 +76,7 @@
                                                     Sin afiliación
                                                 @endif
                                             </td>
-                                            <td class="g_resaltar"></td>
+                                            <td class="g_resaltar">{{ $postulacion->numero}}</td>
                                             <td class="centrar_iconos">
                                                 <button wire:click="quitarCandidato({{ $postulacion->id }})"
                                                     class="g_boton g_boton_danger">

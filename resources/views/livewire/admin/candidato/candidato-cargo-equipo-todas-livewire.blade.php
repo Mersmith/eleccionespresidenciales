@@ -200,7 +200,9 @@
                                 <th>Nº</th>
                                 <th>Nombre</th>
                                 <th>Cargo</th>
+                                <th>Número</th>
                                 <th>Partido</th>
+                                <th>Alianza</th>
                                 <th>Acción</th>
                             </tr>
                         </thead>
@@ -211,7 +213,9 @@
                                     <td class="g_resaltar">{{ $loop->iteration }}</td>
                                     <td class="g_resaltar">{{ $item->candidato->nombre }}</td>
                                     <td class="g_resaltar">{{ $item->cargo->nombre }}</td>
+                                    <td class="g_resaltar">{{ $item->numero }}</td>
                                     <td class="g_resaltar">{{ $item->partido?->nombre }}</td>
+                                    <td class="g_resaltar">{{ $item->alianza?->nombre }}</td>
                                     <td>
                                         <button wire:click.prevent="removeIntegrante({{ $item->id }})"
                                             class="g_boton g_boton_danger">

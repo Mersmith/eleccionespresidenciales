@@ -175,6 +175,11 @@ class EncuestaCrearLivewire extends Component
         $this->actualizarNombre();
     }
 
+    public function updatedNombre($value)
+    {
+        $this->slug = Str::slug($this->nombre);
+    }
+
     public function updatedPaisId($value)
     {
         $this->region_id = "";
