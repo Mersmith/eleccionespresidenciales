@@ -62,7 +62,12 @@
                                                     alt="" class="logo-partido">
                                             @endif
                                         </div>
+                                        <div class="pie_datos_candidato">
+                                            <div class="porcentaje">{{ $porcentaje }}%</div>
+                                            <div class="nombre"> {{ $item['candidato_nombre'] }}</div>
+                                        </div>
                                     </div>
+
                                 </div>
                             @endforeach
                         </div>
