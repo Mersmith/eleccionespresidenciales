@@ -1,0 +1,21 @@
+docker --version
+docker build -t eleccionespresidenciales .
+docker run -p 8080:8080 eleccionespresidenciales
+docker build --no-cache -t eleccionespresidenciales .
+
+
+todos:
+docker ps
+
+
+docker exec -it su0osh bash
+ls -la
+cat .env
+
+Levantar un contenedor nuevo de tu imagen:
+docker run -d -p 8080:8080 --name elecciones_container eleccionespresidenciales
+
+docker ps
+
+
+docker restart elecciones_container
