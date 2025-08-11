@@ -19,3 +19,14 @@ docker ps
 
 
 docker restart elecciones_container
+
+
+docker run -p 8080:8080 eleccionespresidenciales
+
+contenedor:
+docker exec -it 8b6d2a9884fb bash
+
+
+rm -rf public/storage
+php artisan storage:link
+ls -l public/storage
