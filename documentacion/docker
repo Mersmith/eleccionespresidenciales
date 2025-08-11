@@ -34,3 +34,9 @@ ls -l public/storage
 
 dcoker google
 docker build -t gcr.io/tu-proyecto/eleccionespresidenciales2:tag .
+
+
+/*************/
+docker build -t mi-laravel-livewire .
+docker run --rm -p 8080:8080 mi-laravel-livewire
+
