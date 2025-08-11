@@ -30,3 +30,7 @@ docker exec -it 8b6d2a9884fb bash
 rm -rf public/storage
 php artisan storage:link
 ls -l public/storage
+
+
+dcoker google
+docker build -t gcr.io/tu-proyecto/eleccionespresidenciales2:tag .

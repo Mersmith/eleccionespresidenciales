@@ -1,6 +1,0 @@
-node_modules
-vendor
-public/storage
-.git
-.gitignore
-storage/*.key
