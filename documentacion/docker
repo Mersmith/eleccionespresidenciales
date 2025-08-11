@@ -40,3 +40,13 @@ docker build -t gcr.io/tu-proyecto/eleccionespresidenciales2:tag .
 docker build -t mi-laravel-livewire .
 docker run --rm -p 8080:8080 mi-laravel-livewire
 
+*********************************************
+el .env en dockeringenore es para externo, para probar no puede estar
+
+DB_CONNECTION=mysql
+#DB_HOST=127.0.0.1
+DB_HOST=host.docker.internal
+DB_PORT=3306
+DB_DATABASE=elecciones
+DB_USERNAME=root
+DB_PASSWORD=
