@@ -46,6 +46,12 @@
                         <img src="{{ asset('assets/images/partido/partido-1.jpg') }}" alt=""
                             class="logo_partido">
                     @endif
+
+                    @if ($candidatoCargo->numero )
+                        <div class="numero_candidato">
+                            <span>{{ $candidatoCargo->numero }}</span>
+                        </div>
+                    @endif
                 </div>
 
                 <input type="radio" wire:model.live="candidato_cargo_id" value="{{ $candidatoCargo->id }}">

@@ -61,6 +61,12 @@
                                                 <img src="{{ asset('assets/images/partido/partido-1.jpg') }}"
                                                     alt="" class="logo-partido">
                                             @endif
+
+                                            @if (!empty($item['numero']))
+                                                <div class="numero_candidato">
+                                                    <span>{{ $item['numero'] }}</span>
+                                                </div>
+                                            @endif
                                         </div>
                                         <div class="pie_datos_candidato">
                                             <div class="porcentaje">{{ $porcentaje }}%</div>
@@ -101,6 +107,12 @@
                                         @else
                                             <img src="{{ asset('assets/images/partido/partido-1.jpg') }}"
                                                 alt="" class="logo-partido">
+                                        @endif
+
+                                        @if (!empty($item['numero']))
+                                            <div class="numero_candidato">
+                                                <span>{{ $item['numero'] }}</span>
+                                            </div>
                                         @endif
                                     </div>
                                     <div class="info_candidato">

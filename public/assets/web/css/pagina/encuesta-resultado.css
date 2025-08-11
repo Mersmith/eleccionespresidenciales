@@ -25,13 +25,28 @@
 
 .grafico_horizontal .logo-partido {
     position: absolute;
-    bottom: -5px;
-    right: -5px;
+    bottom: -10px;
+    left: -6px;
     width: 30px;
     height: 30px;
     border: 2px solid white;
     object-fit: cover;
     background: white;
+}
+
+.grafico_horizontal .numero_candidato {
+    position: absolute;
+    bottom: -10px;
+    left: 26px;
+    width: 30px;
+    height: 30px;
+    background: var(--color-fondo-card-imagen);
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    font-weight: 600;
 }
 
 .grafico_horizontal .info_candidato {
@@ -129,8 +144,8 @@
     bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     object-fit: contain;
 }
 
@@ -142,12 +157,27 @@
 .grafico_vertical .logo-partido {
     position: absolute;
     bottom: -5px;
-    right: -5px;
+    left: -5px;
     width: 30px;
     height: 30px;
     border: 2px solid white;
     object-fit: cover;
     background: white;
+}
+
+.grafico_vertical .numero_candidato {
+    position: absolute;
+    bottom: -5px;
+    left: 27px;
+    width: 30px;
+    height: 30px;
+    background: var(--color-fondo-card-imagen);
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    font-weight: 600;
 }
 
 .grafico_vertical .pie_datos_candidato {

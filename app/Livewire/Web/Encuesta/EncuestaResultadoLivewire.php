@@ -31,6 +31,7 @@ class EncuestaResultadoLivewire extends Component
             $candidatoCargo = $candidatoEncuesta->candidatoCargo;
             return [
                 'candidato_nombre' => $candidatoCargo->candidato->nombre,
+                'numero' => $candidatoCargo->numero,
                 'candidato_foto' => $candidatoCargo->candidato->foto,
                 'partido_nombre' => $candidatoCargo->partido ? $candidatoCargo->partido->nombre : ($candidatoCargo->alianza->nombre ?? 'Sin partido'),
                 'partido_foto' => $candidatoCargo->partido ? $candidatoCargo->partido->logo : ($candidatoCargo->alianza->logo ?? null),
