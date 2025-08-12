@@ -34,6 +34,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'check.votante' => CheckVotante::class,
             'check.candidato' => CheckCandidato::class,
         ]);
+        $middleware->trustProxies(at: '*');
         //$middleware->append(\App\Http\Middleware\VerifyCsrfToken::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
