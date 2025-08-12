@@ -1,7 +1,11 @@
 @extends('components.layouts.web.layout-ecommerce')
 
-@section('tituloPagina', 'Tendencias Market | Todos los productos que quieres están aquí!')
-@section('descripcion', 'Tendencias Market')
+@section('tituloPagina', $alianza->nombre ?: 'VotaXmi - Sistema web de encuestas y elecciones en Perú')
+
+@section('descripcion', $alianza->descripcion ?: 'VotaXmi es un sistema web especializado en encuestas y procesos
+    electorales para elecciones presidenciales, municipales y regionales en Perú. Participa y vota fácilmente.')
+
+@section('meta_image', $alianza->logo ? url($alianza->logo) : asset('assets/images/imagen-defecto.jpg'))
 
 @section('content')
     <div class="g_contenedor_pagina">
@@ -32,6 +36,18 @@
                         @include('web.partials.temporizador', [
                             'p_elemento' => $encuesta_presidencial_activa,
                         ])
+
+                        <div class="g_card_panel g_card_partial_column">
+                            @include('web.partials.social-share', [
+                                'url' => url()->current(),
+                                'title' => $alianza->nombre ?? 'VotaXmi',
+                                'description' =>
+                                    $alianza->descripcion ?? 'Participa y apoya a tu candidato favorito.',
+                                'image' => $alianza->logo
+                                    ? url($alianza->logo)
+                                    : asset('assets/images/imagen-defecto.jpg'),
+                            ])
+                        </div>
                     </div>
 
                     <!-- COLUMNA 2 -->

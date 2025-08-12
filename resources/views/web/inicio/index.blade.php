@@ -1,7 +1,11 @@
 @extends('components.layouts.web.layout-ecommerce')
 
-@section('tituloPagina', 'Tendencias Market | Todos los productos que quieres están aquí!')
-@section('descripcion', 'Tendencias Market')
+@section('tituloPagina', 'VotaXmi - Sistema web de encuestas y elecciones en Perú')
+
+@section('descripcion', 'VotaXmi es un sistema web especializado en encuestas y procesos electorales para elecciones
+    presidenciales, municipales y regionales en Perú. Participa y vota fácilmente.')
+    
+@section('meta_image', asset('assets/images/imagen-defecto.jpg'))
 
 @section('content')
     <div class="g_contenedor_pagina">

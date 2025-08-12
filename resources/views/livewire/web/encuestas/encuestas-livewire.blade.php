@@ -1,3 +1,9 @@
+@section('tituloPagina', 'VotaXmi - Sistema web de encuestas y elecciones en Perú')
+
+@section('descripcion', 'VotaXmi es un sistema web especializado en encuestas y procesos electorales para elecciones presidenciales, municipales y regionales en Perú. Participa y vota fácilmente.')
+
+@section('meta_image', asset('assets/images/imagen-defecto.jpg'))
+
 <div class="g_contenedor_pagina">
     <div class="g_centrar_pagina">
 

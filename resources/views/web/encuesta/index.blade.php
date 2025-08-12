@@ -1,7 +1,13 @@
 @extends('components.layouts.web.layout-ecommerce')
 
-@section('tituloPagina', 'Tendencias Market | Todos los productos que quieres están aquí!')
-@section('descripcion', 'Tendencias Market')
+@section('tituloPagina', $encuesta->nombre ?: 'VotaXmi - Sistema web de encuestas y elecciones en Perú')
+
+@section('descripcion',
+    $encuesta->descripcion ?:
+    'VotaXmi es un sistema web especializado en encuestas y procesos
+    electorales para elecciones presidenciales, municipales y regionales en Perú. Participa y vota fácilmente.')
+
+@section('meta_image', $encuesta->imagen_url ? url($encuesta->imagen_url) : asset('assets/images/imagen-defecto.jpg'))
 
 @section('content')
     <div class="g_contenedor_pagina">
@@ -12,7 +18,6 @@
                 <div class="g_grid_pagina_2_columnas">
                     <!-- COLUMNA 1 -->
                     <div class="g_grid_columna_1">
-
                         <div class="g_card_panel g_card_flex_column">
                             <div class="g_centrar_elementos">
                                 @if ($estado_encuesta)
@@ -52,8 +57,16 @@
                                 href="{{ route('encuesta.resultado', ['id' => $encuesta->id, 'slug' => $encuesta->slug]) }}">
                                 Ver resultados
                             </a>
-                        </div>
 
+                            <br>
+
+                            @include('web.partials.social-share', [
+                                'url' => url()->current(),
+                                'title' => $encuesta->nombre ?? 'VotaXmi',
+                                'description' => $encuesta->descripcion ?? 'Participa y apoya a tu candidato favorito.',
+                                'image' => $encuesta->imagen_url ? url($encuesta->imagen_url) : asset('assets/images/imagen-defecto.jpg'),
+                            ])
+                        </div>
                     </div>
 
                     <!-- COLUMNA 2 -->

@@ -315,6 +315,84 @@
     height: 100%;
 }
 
+/*REDES SOCIALES SHARE**/
+.compartir_redes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #392385;
+  }
+  
+  .compartir_redes > p {
+    flex: 0 0 100%;
+    font-size: 16px;
+    color: #5e208d; /* morado más suave */
+    user-select: none;
+  }
+  
+  .compartir_redes > div {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+  }
+  
+  .compartir_redes a.btn-compartir {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 4px 8px;
+    border-radius: 35px;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+    justify-content: center;
+  }
+  
+  .compartir_redes a.btn-compartir:hover,
+  .compartir_redes a.btn-compartir:focus {
+    transform: scale(1.07);
+    outline: none;
+  }
+  
+  /* Colores y sombras para cada red */
+  .compartir_redes a.facebook {
+    background: #3b5998;
+  }
+  
+  .compartir_redes a.facebook:hover {
+    background: #2d4373;
+  }
+  
+  .compartir_redes a.twitter {
+    background: #1da1f2;
+  }
+  
+  .compartir_redes a.twitter:hover {
+    background: #0d95e8;
+  }
+  
+  .compartir_redes a.whatsapp {
+    background: #25d366;
+  }
+  
+  .compartir_redes a.whatsapp:hover {
+    background: #1ebe57;
+  }
+  
+  /* Iconos */
+  .compartir_redes i.fab {
+    font-size: 1.4rem;
+    filter: drop-shadow(0 0 0.2px rgba(0, 0, 0, 0.25));
+  }
+  
+
 
 @media (max-width: 1024px) {
 

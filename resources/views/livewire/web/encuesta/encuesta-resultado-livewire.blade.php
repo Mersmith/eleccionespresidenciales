@@ -1,3 +1,12 @@
+@section('tituloPagina', $encuesta->nombre ?: 'VotaXmi - Sistema web de encuestas y elecciones en Perú')
+
+@section('descripcion',
+    $encuesta->descripcion ?:
+    'VotaXmi es un sistema web especializado en encuestas y procesos
+    electorales para elecciones presidenciales, municipales y regionales en Perú. Participa y vota fácilmente.')
+
+@section('meta_image', $encuesta->imagen_url ? url($encuesta->imagen_url) : asset('assets/images/imagen-defecto.jpg'))
+
 <div class="g_contenedor_pagina">
     <div class="g_centrar_pagina">
 
@@ -134,6 +143,18 @@
                             href="{{ route('encuesta', ['id' => $encuesta->id, 'slug' => $encuesta->slug]) }}">
                             Ver encuesta
                         </a>
+
+                        <br>
+
+                        @include('web.partials.social-share', [
+                            'url' => url()->current(),
+                            'title' => $encuesta->nombre ?? 'VotaXmi',
+                            'description' =>
+                                $encuesta->descripcion ?? 'Participa y apoya a tu candidato favorito.',
+                            'image' => $encuesta->imagen_url
+                                ? url($encuesta->imagen_url)
+                                : asset('assets/images/imagen-defecto.jpg'),
+                        ])
                     </div>
                 </div>
 
