@@ -16,11 +16,14 @@
     <meta property="og:description" content="@yield('descripcion', 'Participa y apoya a tu candidato favorito.')" />
     <meta property="og:image" content="@yield('meta_image', asset('default-image.jpg'))" />
     <meta property="og:type" content="website" />
-    
+
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="@yield('tituloPagina', 'VotaXmi')" />
     <meta name="twitter:description" content="@yield('descripcion', 'Participa y apoya a tu candidato favorito.')" />
-    <meta name="twitter:image" content="@yield('meta_image', asset('default-image.jpg'))" />    
+    <meta name="twitter:image" content="@yield('meta_image', asset('default-image.jpg'))" />
+
+    <link rel="manifest" href="{{ asset('manifest.json') }}">
+    <meta name="theme-color" content="#392385" />
 
     <!-- SCRIPTS -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
