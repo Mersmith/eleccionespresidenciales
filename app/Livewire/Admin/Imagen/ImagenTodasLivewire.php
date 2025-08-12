@@ -67,7 +67,7 @@ class ImagenTodasLivewire extends Component
 
         $storage = new StorageClient([
             'projectId' => env('GOOGLE_CLOUD_PROJECT_ID'),
-            'keyFilePath' => base_path('services/google-cloud/seismic-bonfire-468704-c4-76b27da92ee4.json'),
+            //'keyFilePath' => base_path('services/google-cloud/seismic-bonfire-468704-c4-76b27da92ee4.json'),
         ]);
 
         $bucket = $storage->bucket(env('GOOGLE_CLOUD_STORAGE_BUCKET'));
@@ -128,7 +128,7 @@ class ImagenTodasLivewire extends Component
 
         $storage = new StorageClient([
             'projectId' => env('GOOGLE_CLOUD_PROJECT_ID'),
-            'keyFilePath' => base_path('services/google-cloud/seismic-bonfire-468704-c4-76b27da92ee4.json'),
+            //'keyFilePath' => base_path('services/google-cloud/seismic-bonfire-468704-c4-76b27da92ee4.json'),
         ]);
 
         $bucket = $storage->bucket(env('GOOGLE_CLOUD_STORAGE_BUCKET'));
@@ -188,7 +188,7 @@ class ImagenTodasLivewire extends Component
 
         $storage = new StorageClient([
             'projectId' => env('GOOGLE_CLOUD_PROJECT_ID'),
-            'keyFilePath' => base_path('services/google-cloud/seismic-bonfire-468704-c4-76b27da92ee4.json'),
+            //'keyFilePath' => base_path('services/google-cloud/seismic-bonfire-468704-c4-76b27da92ee4.json'),
         ]);
         $bucket = $storage->bucket(env('GOOGLE_CLOUD_STORAGE_BUCKET'));
 
