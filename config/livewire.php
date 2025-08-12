@@ -65,8 +65,8 @@ return [
 
     'temporary_file_upload' => [
         //'disk' => null,        // Example: 'local', 's3'              | Default: 'default'
-        //'disk' => 'local', // Example: 'local', 's3'              | Default: 'default'
-        'disk' => env('FILESYSTEM_DISK', 'gcs'),
+        'disk' => 'local', // Example: 'local', 's3'              | Default: 'default'
+        //'disk' => env('FILESYSTEM_DISK', 'gcs'),
         //'rules' => null,       // Example: ['file', 'mimes:png,jpg']  | Default: ['required', 'file', 'max:12288'] (12MB)
         'rules' => 'mimes:jpg,jpeg,png,pdf|max:10240',
         'directory' => null, // Example: 'tmp'                      | Default: 'livewire-tmp'
