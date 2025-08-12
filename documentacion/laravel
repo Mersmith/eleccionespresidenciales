@@ -225,3 +225,14 @@ https://app.pe/plan-gobierno-app-2021.pdf
 
 votxmi.com
 votaxmi.com
+
+composer require spatie/laravel-google-cloud-storage
+
+php artisan vendor:publish --tag=livewire:config
+
+
+php artisan tinker
+Storage::disk('gcs')->put('test-folder/test.txt', 'Contenido de prueba');
+
+php -r "var_dump(file_exists('C:/xampp2/htdocs/elecciones/storage/app/google-cloud/seismic-bonfire-468704-c4-76b27da92ee4.json'));"
+composer remove spatie/laravel-google-cloud-storage

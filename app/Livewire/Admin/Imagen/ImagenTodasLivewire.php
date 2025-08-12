@@ -3,12 +3,12 @@
 namespace App\Livewire\Admin\Imagen;
 
 use App\Models\Imagen;
-use Livewire\Component;
+use Google\Cloud\Storage\StorageClient;
 use Livewire\Attributes\Layout;
-use Illuminate\Support\Facades\Storage;
+use Livewire\Attributes\On;
+use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
-use Livewire\Attributes\On;
 
 #[Layout('components.layouts.admin.layout-admin')]
 class ImagenTodasLivewire extends Component
@@ -25,7 +25,7 @@ class ImagenTodasLivewire extends Component
     protected $rules = [
         'titulo' => 'required|string|max:255',
         'descripcion' => 'required|string',
-        'imagen_edit' => 'nullable|image|max:2048',//JPEG, PNG, BMP, GIF, SVG, o WEBP //2048 kilobytes (2 MB)
+        'imagen_edit' => 'nullable|image|max:2048', //JPEG, PNG, BMP, GIF, SVG, o WEBP //2048 kilobytes (2 MB)
     ];
 
     protected $validationAttributes = [
@@ -60,20 +60,53 @@ class ImagenTodasLivewire extends Component
 
     public function guardar()
     {
+        if (empty($this->imagenes_final)) {
+            $this->addError('imagenes_final', 'Debe seleccionar al menos una imagen.');
+            return;
+        }
+
+        $storage = new StorageClient([
+            'projectId' => env('GOOGLE_CLOUD_PROJECT_ID'),
+            'keyFilePath' => storage_path('app/google-cloud/seismic-bonfire-468704-c4-76b27da92ee4.json'),
+        ]);
+
+        $bucket = $storage->bucket(env('GOOGLE_CLOUD_STORAGE_BUCKET'));
+
         foreach ($this->imagenes_final as $imagen) {
-            $path = $imagen->store('images', 'public');
-            $url = Storage::url($path);
+            $path = $imagen->getRealPath();
+
+            if (!$path || !file_exists($path)) {
+                $this->addError('imagenes_final', "No se pudo acceder al archivo temporal {$imagen->getClientOriginalName()}.");
+                continue;
+            }
+
+            $fileContents = file_get_contents($path);
+
+            if ($fileContents === false) {
+                $this->addError('imagenes_final', "No se pudo leer el archivo {$imagen->getClientOriginalName()}.");
+                continue;
+            }
+
+            $nombreArchivo = 'images/' . uniqid() . '_' . $imagen->getClientOriginalName();
+
+            $bucket->upload($fileContents, [
+                'name' => $nombreArchivo,
+            ]);
+
+            $url = "https://storage.googleapis.com/" . env('GOOGLE_CLOUD_STORAGE_BUCKET') . "/" . $nombreArchivo;
 
             Imagen::create([
-                'titulo' => $this->titulo,
-                'path' => $path,
+                'titulo' => null,
+                'path' => $nombreArchivo,
                 'url' => $url,
-                'descripcion' => $this->descripcion,
+                'descripcion' => null,
             ]);
         }
 
-        $this->reset();
+        $this->reset(['imagenes_inicial', 'imagenes_final', 'titulo', 'descripcion']);
         $this->imagenes = Imagen::all();
+
+        $this->dispatch('alertaLivewire', "Imágenes subidas correctamente.");
     }
 
     public function seleccionarImagen($id)
@@ -92,14 +125,51 @@ class ImagenTodasLivewire extends Component
         $this->validate();
 
         $imagen = Imagen::find($this->imagenId);
+
+        $storage = new StorageClient([
+            'projectId' => env('GOOGLE_CLOUD_PROJECT_ID'),
+            'keyFilePath' => storage_path('app/google-cloud/seismic-bonfire-468704-c4-76b27da92ee4.json'),
+        ]);
+
+        $bucket = $storage->bucket(env('GOOGLE_CLOUD_STORAGE_BUCKET'));
+
         $imagen->titulo = $this->titulo;
 
         if ($this->imagen_edit) {
-            Storage::delete($imagen->path);
-            $path = $this->imagen_edit->store('images', 'public');
-            $url = Storage::url($path);
-            $imagen->path = $path;
-            $imagen->url = $url;
+            // Borrar imagen vieja del bucket
+            if ($imagen->path) {
+                $object = $bucket->object($imagen->path);
+                if ($object->exists()) {
+                    $object->delete();
+                }
+            }
+
+            // Leer nuevo archivo
+            $path = $this->imagen_edit->getRealPath();
+
+            if (!$path || !file_exists($path)) {
+                $this->addError('imagen_edit', 'No se pudo acceder al archivo nuevo.');
+                return;
+            }
+
+            $fileContents = file_get_contents($path);
+
+            if ($fileContents === false) {
+                $this->addError('imagen_edit', 'No se pudo leer el archivo nuevo.');
+                return;
+            }
+
+            // Nombre único para el archivo nuevo
+            $nombreArchivo = 'images/' . uniqid() . '_' . $this->imagen_edit->getClientOriginalName();
+
+            // Subir nuevo archivo
+            $bucket->upload($fileContents, [
+                'name' => $nombreArchivo,
+            ]);
+
+            // Actualizar datos en DB
+            $imagen->path = $nombreArchivo;
+            $imagen->url = "https://storage.googleapis.com/" . env('GOOGLE_CLOUD_STORAGE_BUCKET') . "/" . $nombreArchivo;
         }
 
         $imagen->descripcion = $this->descripcion;
@@ -115,11 +185,25 @@ class ImagenTodasLivewire extends Component
     public function eliminarImagen($imagenId)
     {
         $imagen = Imagen::where('id', $imagenId)->first();
-        Storage::delete($imagen->path);
-        $imagen->delete();
-        $this->imagenes = Imagen::all();
 
-        $this->dispatch('alertaLivewire', "Eliminado");
+        $storage = new StorageClient([
+            'projectId' => env('GOOGLE_CLOUD_PROJECT_ID'),
+            'keyFilePath' => storage_path('app/google-cloud/seismic-bonfire-468704-c4-76b27da92ee4.json'),
+        ]);
+        $bucket = $storage->bucket(env('GOOGLE_CLOUD_STORAGE_BUCKET'));
+
+        // Borrar archivo del bucket
+        if ($imagen && $imagen->path) {
+            $object = $bucket->object($imagen->path);
+            if ($object->exists()) {
+                $object->delete();
+            }
+            $imagen->delete();
+
+            $this->imagenes = Imagen::all();
+
+            $this->dispatch('alertaLivewire', "Eliminado");
+        }
     }
 
     public function updatingPaginacion()
