@@ -3,6 +3,7 @@
 namespace App\Livewire\Web\Encuesta;
 
 use App\Models\Voto;
+use App\Models\Encuesta;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\Attributes\On;
@@ -15,9 +16,11 @@ class EncuestaVotoLivewire extends Component
     public bool $yaVoto = false;
     public $modal_votar = false;
     public $modal_voto = false;
+    public $estado_encuesta;
 
-    public function mount($encuesta_id, $candidatos)
+    public function mount($encuesta_id, $candidatos, $estado_encuesta)
     {
+        $this->estado_encuesta = $estado_encuesta;
         $this->encuesta_id = $encuesta_id;
         $this->candidatos = $candidatos;
 
@@ -35,6 +38,11 @@ class EncuestaVotoLivewire extends Component
 
     public function votar()
     {
+        if ($this->estado_encuesta) {
+            session()->flash('error', 'La encuesta no está activa.');
+            return;
+        }
+
         if (!Auth::check()) {
             $this->dispatch('modalSesion');
             return;

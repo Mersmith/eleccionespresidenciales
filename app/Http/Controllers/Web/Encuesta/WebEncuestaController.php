@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Web\Encuesta;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Encuesta;
 
 class WebEncuestaController extends Controller
@@ -12,12 +11,16 @@ class WebEncuestaController extends Controller
     {
         $encuesta = $this->getWebEncuesta($id);
 
+        $estado_encuesta = !$encuesta->activo
+        || $encuesta->estado === 'finalizada'
+        || $encuesta->ya_finalizo;
         //dd($encuesta);
 
         return view(
             'web.encuesta.index',
             compact(
                 'encuesta',
+                'estado_encuesta',
             )
         );
     }

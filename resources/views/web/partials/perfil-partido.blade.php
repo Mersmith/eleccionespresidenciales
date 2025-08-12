@@ -15,7 +15,7 @@
             </div>
 
             @if ($p_elemento->alianza)
-                <p>Está en una alianza: {{ $p_elemento->alianza->nombre ?? 'Sin nombre' }}</p>
+                <p><span class="g_texto_nivel_1">Está en una alianza con:</span> {{ $p_elemento->alianza->nombre ?? 'Sin nombre' }}</p>
             @endif
         </div>
     </div>

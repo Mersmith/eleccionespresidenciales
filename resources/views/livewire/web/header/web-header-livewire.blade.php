@@ -81,28 +81,32 @@
         <nav class="menu_principal_abajo">
             <!-- UBICACION -->
             <div class="contenedor_menu_ubicacion">
-                <i class="fa-solid fa-location-dot"></i>
-                <span>Ingresa tu ubicación</span>
+                {{--<i class="fa-solid fa-location-dot"></i>
+                <span>Ingresa tu ubicación</span>--}}
             </div>
 
             <!-- INFORMACION -->
             <ul class="contenedor_informacion">
+                @php
+                    $numero = '51916647675';
+                @endphp
+            
                 <li>
-                    <a href="#">
-                        Tu publicidad aquí
+                    <a href="https://wa.me/{{ $numero }}?text={{ urlencode('Hola VotaXmi, quiero poner mi publicidad aquí') }}" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-bullhorn"></i> Tu publicidad aquí
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        Participa como candidato
+                    <a href="https://wa.me/{{ $numero }}?text={{ urlencode('Hola VotaXmi, quiero participar como candidato') }}" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-user-check"></i> Participa como candidato
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        Contacto <i class="fa-solid fa-angle-down"></i>
+                    <a href="https://wa.me/{{ $numero }}?text={{ urlencode('Hola VotaXmi, deseo contactar con ustedes') }}" target="_blank" rel="noopener noreferrer">
+                        Contacto <i class="fa-brands fa-whatsapp"></i>
                     </a>
                 </li>
-            </ul>
+            </ul>                      
         </nav>
     </header>
 
@@ -223,11 +227,22 @@
     @if ($modal_sesion)
         <div class="modal_sesion_overlay" wire:click.self="cerrarModalSesion">
             <div class="modal_sesion_contenido">
-                <h2>Iniciar Sesión</h2>
-                <a href="{{ route('auth.redirect', 'google') }}" class="boton_sesion_red">Google</a>
-                <a href="{{ route('auth.redirect', 'github') }}" class="boton_sesion_red">GitHub</a>
-                <a href="{{ route('auth.redirect', 'facebook') }}" class="boton_sesion_red">Facebook</a>
-                <button wire:click="cerrarModalSesion" class="boton_cerrar_modal">Cerrar</button>
+                <div class="contenedor_login">
+                    <h2>🚀 Iniciar Sesión</h2>
+                    <a href="{{ route('auth.redirect', 'google') }}" class="boton_sesion_red google">
+                        <i class="fab fa-google"></i> Iniciar con Google
+                    </a>
+                    <a href="{{ route('auth.redirect', 'github') }}" class="boton_sesion_red github">
+                        <i class="fab fa-github"></i> Iniciar con GitHub
+                    </a>
+                    <a href="{{ route('auth.redirect', 'facebook') }}" class="boton_sesion_red facebook">
+                        <i class="fab fa-facebook-f"></i> Iniciar con Facebook
+                    </a>
+                    <button wire:click="cerrarModalSesion" class="boton_cerrar_modal">
+                        ✖ Cerrar
+                    </button>
+                </div>
+                
             </div>
         </div>
     @endif

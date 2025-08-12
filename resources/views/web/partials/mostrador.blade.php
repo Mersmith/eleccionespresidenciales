@@ -1,8 +1,8 @@
 @if (!empty($p_elemento) && $p_elemento['partidos']->isNotEmpty())
     <div>
         @include('web.partials.titulo', [
-            'p_contenido' => $p_elemento['titulo'],
-            'p_alineacion' => 'center',
+            'p_contenido' => 'Partidos que conforman la alianza',
+            'p_alineacion' => 'left',
         ])
 
         <div x-data="dataMostrador{{ $p_elemento['id'] }}()" class="partials_contenedor_mostrador">

@@ -15,8 +15,14 @@
 
                         <div class="g_card_panel g_card_flex_column">
                             <div class="g_centrar_elementos">
+                                @if ($estado_encuesta)
+                                    <span class="g_etiqueta g_etiqueta_desactivo">Finalizó</span>
+                                @else
+                                    <span class="g_etiqueta g_etiqueta_activo">Abierto</span>
+                                @endif
+
                                 <h4 class="g_texto_nivel_6">ENCUESTA</h4>
-                                {{--<h3 class="g_texto_nivel_6">{{ $encuesta->nombre }} </h3>--}}
+                                {{-- <h3 class="g_texto_nivel_6">{{ $encuesta->nombre }} </h3> --}}
                                 <p class="g_texto_nivel_2">
                                     <strong>Inicio:</strong> {{ $encuesta->fecha_inicio_formateada }} |
                                     <strong>Fin:</strong> {{ $encuesta->fecha_fin_formateada }}
@@ -35,12 +41,12 @@
                                         ->join(' / ');
                                 @endphp
 
-                                <span class="g_texto_nivel_3">
+                                <span class="g_texto_nivel_4">
                                     <i class="fas fa-map-marker-alt"></i> {{ $ubicacion }}
                                 </span>
                             </div>
 
-                            @livewire('web.encuesta.encuesta-voto-livewire', ['encuesta_id' => $encuesta->id, 'candidatos' => $encuesta->candidatoCargos])
+                            @livewire('web.encuesta.encuesta-voto-livewire', ['encuesta_id' => $encuesta->id, 'candidatos' => $encuesta->candidatoCargos, 'estado_encuesta' => $estado_encuesta])
 
                             <a class="boton_siguiente"
                                 href="{{ route('encuesta.resultado', ['id' => $encuesta->id, 'slug' => $encuesta->slug]) }}">

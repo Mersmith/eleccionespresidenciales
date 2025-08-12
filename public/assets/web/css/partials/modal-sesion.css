@@ -14,7 +14,7 @@
 }
 
 .modal_sesion_contenido {
-    background: white;
+    /*background: white;*/
     padding: 2rem;
     border-radius: 8px;
     width: 90%;
@@ -33,6 +33,7 @@
     width: 100%;
     transition: background 0.2s;
 }
+
 .boton_sesion_red:hover {
     background-color: #ddd;
 }
@@ -44,4 +45,108 @@
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 5px;
+}
+
+/*LOGIN*/
+.contenedor_login {
+    max-width: 350px;
+    margin: 40px auto;
+    background: linear-gradient(-45deg,
+            #852cac,
+            #5e208d,
+            #3d2386,
+            #2b257f,
+            #32469c,
+            #287eb9);
+    padding: 30px 25px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(109, 93, 252, 0.5);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.contenedor_login h2 {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.boton_sesion_red {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 50px;
+    margin: 12px 0;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.boton_sesion_red i {
+    font-size: 1.3rem;
+}
+
+/* Colores por red social */
+.boton_sesion_red.google {
+    background-color: #fff;
+    color: #db4437;
+    box-shadow: 0 4px 15px rgba(219, 68, 55, 0.6);
+}
+
+.boton_sesion_red.google:hover {
+    background-color: #db4437;
+    color: white;
+    transform: scale(1.05);
+}
+
+.boton_sesion_red.github {
+    background-color: #fff;
+    color: #333;
+    box-shadow: 0 4px 15px rgba(51, 51, 51, 0.6);
+}
+
+.boton_sesion_red.github:hover {
+    background-color: #333;
+    color: white;
+    transform: scale(1.05);
+}
+
+.boton_sesion_red.facebook {
+    background-color: #fff;
+    color: #1877f2;
+    box-shadow: 0 4px 15px rgba(24, 119, 242, 0.6);
+}
+
+.boton_sesion_red.facebook:hover {
+    background-color: #1877f2;
+    color: white;
+    transform: scale(1.05);
+}
+
+.boton_cerrar_modal {
+    margin-top: 30px;
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.boton_cerrar_modal:hover {
+    background-color: white;
+    color: #6d5dfc;
+    font-weight: 700;
 }

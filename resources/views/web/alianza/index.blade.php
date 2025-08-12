@@ -17,15 +17,21 @@
                             'p_elemento' => $alianza,
                         ])
 
-                        <ul>
-                            @foreach ($alianza->partidos as $item)
-                                <a href="{{ route('partido', ['id' => $item->id, 'slug' => $item->slug]) }}">
-                                    <!-- IMAGENES -->
-                                    <img src="{{ $item->logo }}" alt="" style="width: 150px;" />
-                                    <p class="g_texto_nivel_5">{{ $item->nombre }}</p>
-                                </a>
-                            @endforeach
-                        </ul>
+                        <div class="g_card_panel">
+                            @include('web.partials.mostrador', [
+                                'p_elemento' => $alianza,
+                            ])
+                        </div>
+
+                        @include('web.partials.lista-candidato', [
+                            'p_elemento' => $candidatos_presidenciales,
+                            'p_titulo' => 'Candidaturas presidencial',
+                        ])
+
+                        <!-- ENCUESTA ACTIVA -->
+                        @include('web.partials.temporizador', [
+                            'p_elemento' => $encuesta_presidencial_activa,
+                        ])
                     </div>
 
                     <!-- COLUMNA 2 -->
