@@ -4,16 +4,19 @@
 
         @foreach ($p_elemento as $index => $item)
             <div class="item">
-                <h4 class="g_texto_nivel_4"><i class="fas fa-vote-yea"></i> {{ $item->nombre }}</h4>
+                <h4 class="g_texto_nivel_4"><i class="fas fa-vote-yea"></i> <a
+                        href="{{ route('candidato', ['id' => $item->id, 'slug' => $item->slug]) }}">{{ $item->nombre }}</a>
+                </h4>
 
                 <p class="g_texto_nivel_2"><i class="fas fa-flag"></i>
-
                     @if ($item->partido)
-                        <strong>Partido:</strong> {{ $item->partido->nombre ?? '-' }}
+                        <strong>Partido:</strong> <a
+                            href="{{ route('partido', ['id' => $item->partido->id, 'slug' => $item->partido->slug]) }}">{{ $item->partido->nombre ?? '-' }}</a>
                     @elseif ($item->alianza)
-                        <strong>Alianza:</strong> {{ $item->alianza->nombre ?? '-' }}
+                        <strong>Alianza:</strong> <a
+                            href="{{ route('alianza', ['id' => $item->alianza->id, 'slug' => $item->alianza->slug]) }}">{{ $item->alianza->nombre ?? '-' }}</a>
                     @else
-                        Sin agrupación
+                        Sin Agrupación
                     @endif
                 </p>
             </div>

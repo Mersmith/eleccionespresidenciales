@@ -9,9 +9,11 @@
                     {{ $item->cargo->nombre }}</h5>
                 <p class="g_texto_nivel_2"><i class="fas fa-flag"></i>
                     @if ($item->partido)
-                        <strong>Partido:</strong> {{ $item->partido->nombre ?? '-' }}
+                        <strong>Partido:</strong> <a
+                            href="{{ route('partido', ['id' => $item->partido->id, 'slug' => $item->partido->slug]) }}">{{ $item->partido->nombre ?? '-' }}</a>
                     @elseif ($item->alianza)
-                        <strong>Alianza:</strong> {{ $item->alianza->nombre ?? '-' }}
+                        <strong>Alianza:</strong> <a
+                            href="{{ route('alianza', ['id' => $item->alianza->id, 'slug' => $item->alianza->slug]) }}">{{ $item->alianza->nombre ?? '-' }}</a>
                     @else
                         Sin Agrupación
                     @endif

@@ -15,7 +15,7 @@
             </div>
 
             @if ($p_elemento->alianza)
-                <p><span class="g_texto_nivel_1">Está en una alianza con:</span> {{ $p_elemento->alianza->nombre ?? 'Sin nombre' }}</p>
+                <p><span class="g_texto_nivel_1">Está en una alianza con:</span><a href="{{ route('alianza', ['id' => $p_elemento->alianza->id, 'slug' => $p_elemento->alianza->slug]) }}">{{ $p_elemento->alianza->nombre }}</a> </p>
             @endif
         </div>
     </div>

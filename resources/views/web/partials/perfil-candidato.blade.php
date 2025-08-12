@@ -41,7 +41,9 @@
 
             @if ($p_elemento->partido)
                 <div class="partido">
-                    <h3 class="g_texto_nivel_1">{{ $p_elemento->partido->nombre }} </h3>
+                    <a href="{{ route('partido', ['id' => $p_elemento->partido->id, 'slug' => $p_elemento->partido->slug]) }}">
+                        <h3 class="g_texto_nivel_1">{{ $p_elemento->partido->nombre }} </h3>
+                    </a>
                     <p class="g_texto_nivel_2">{{ $p_elemento->partido->descripcion }} </p>
                 </div>
             @endif
