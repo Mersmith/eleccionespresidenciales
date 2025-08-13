@@ -167,6 +167,15 @@
                 ]
             },
             {
+                "id": 18,
+                "nombre": "Anuncio",
+                "ruta": "admin.anuncio.vista.todas",
+                "url": "/admin/anuncio",
+                "icono": "fa-solid fa-lightbulb",
+                "nivel": 2,
+                "submenus": []
+            },
+            {
                 "id": 16,
                 "nombre": "Banner",
                 "ruta": "admin.banner.vista.todas",

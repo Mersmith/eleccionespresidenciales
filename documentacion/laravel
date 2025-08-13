@@ -84,6 +84,10 @@ php artisan make:livewire Admin/Banner/BannerTodasLivewire
 php artisan make:livewire Admin/Banner/BannerCrearLivewire
 php artisan make:livewire Admin/Banner/BannerEditarLivewire
 
+php artisan make:livewire Admin/Anuncio/AnuncioTodasLivewire
+php artisan make:livewire Admin/Anuncio/AnuncioCrearLivewire
+php artisan make:livewire Admin/Anuncio/AnuncioEditarLivewire
+
 php artisan make:livewire Admin/Slider/SliderEditarLivewire
 
 php artisan make:livewire Admin/Alianza/CrearAlianzaLivewire
@@ -127,6 +131,16 @@ php artisan make:controller Web/Encuesta/WebEncuestaController
 php artisan make:livewire Web/Encuestas/EncuestasLivewire
 php artisan make:livewire Web/Encuesta/EncuestaVotoLivewire
 php artisan make:livewire Web/Encuesta/EncuestaResultadoLivewire
+
+
+php artisan make:livewire Web/Header/WebHeaderLivewire
+php artisan make:livewire Web/Header/WebBuscarLivewire
+
+php artisan make:model Slider -mfsc
+
+php artisan make:model Banner -mfsc
+
+php artisan make:model Anuncio -mfsc
 
 --> Crear config constantes
 
@@ -173,12 +187,7 @@ Corregir crear encuesta ubigeo y en candidato cargo
 
 -----
 
-php artisan make:livewire Web/Header/WebHeaderLivewire
-php artisan make:livewire Web/Header/WebBuscarLivewire
 
-php artisan make:model Slider -mfsc
-
-php artisan make:model Banner -mfsc
 
 
 PARTIALS Y PAGINAS

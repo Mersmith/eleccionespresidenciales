@@ -5,11 +5,14 @@ namespace App\Livewire\Web\Encuesta;
 use App\Models\Encuesta;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use App\Models\Banner;
 
 #[Layout('components.layouts.web.layout-ecommerce')]
 class EncuestaResultadoLivewire extends Component
 {
     public Encuesta $encuesta;
+
+    public  $data_baner_1;
 
     public function mount($id)
     {
@@ -18,7 +21,19 @@ class EncuestaResultadoLivewire extends Component
             'votos',
         ])->findOrFail($id);
 
+        $this->data_baner_1 =  $this->getWebBanner(6);
+
+
         //dd($this->encuesta);
+    }
+
+    public function getWebBanner($id)
+    {
+        $banner = Banner::where('id', $id)
+            ->where('activo', true)
+            ->first();
+
+        return $banner;
     }
 
     public function render()

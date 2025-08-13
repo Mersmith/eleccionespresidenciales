@@ -307,9 +307,9 @@
         padding: 0px var(--ancho-espacio-pagina-movil);
     }
 
-    .ecommerce_menu_principal .menu_principal_abajo .contenedor_informacion {
+    /*.ecommerce_menu_principal .menu_principal_abajo .contenedor_informacion {
         display: none;
-    }
+    }*/
 
     /* BUSCADOR PRINCIPAL */
     .ecommerce_menu_principal .buscador_principal {

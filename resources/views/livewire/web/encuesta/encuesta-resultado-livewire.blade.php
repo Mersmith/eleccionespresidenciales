@@ -8,6 +8,9 @@
 @section('meta_image', $encuesta->imagen_url ? url($encuesta->imagen_url) : asset('assets/images/imagen-defecto.jpg'))
 
 <div class="g_contenedor_pagina">
+
+    @include('web.partials.banner', ['p_elemento' => $data_baner_1])
+
     <div class="g_centrar_pagina">
 
         <div class="g_pading_pagina g_gap_pagina">

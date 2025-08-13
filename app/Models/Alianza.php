@@ -31,4 +31,9 @@ class Alianza extends Model
     {
         return $this->belongsTo(Eleccion::class);
     }
+
+    public function anuncios()
+    {
+        return $this->hasMany(Anuncio::class);
+    }
 }

@@ -7,6 +7,9 @@ use App\Livewire\Admin\Alianza\CrearAlianzaLivewire;
 use App\Livewire\Admin\Banner\BannerCrearLivewire;
 use App\Livewire\Admin\Banner\BannerEditarLivewire;
 use App\Livewire\Admin\Banner\BannerTodasLivewire;
+use App\Livewire\Admin\Anuncio\AnuncioCrearLivewire;
+use App\Livewire\Admin\Anuncio\AnuncioEditarLivewire;
+use App\Livewire\Admin\Anuncio\AnuncioTodasLivewire;
 use App\Livewire\Admin\Candidato\CandidatoCargoEquipoCrearLivewire;
 use App\Livewire\Admin\Candidato\CandidatoCargoEquipoTodasLivewire;
 use App\Livewire\Admin\Candidato\CandidatoCargoLivewire;
@@ -100,6 +103,10 @@ Route::get('/reporte', ReporteInicioLivewire::class)->name('reporte.todas');
 Route::get('/banner', BannerTodasLivewire::class)->name('banner.vista.todas');
 Route::get('/banner/crear', BannerCrearLivewire::class)->name('banner.vista.crear');
 Route::get('/banner/editar/{id}', BannerEditarLivewire::class)->name('banner.vista.editar');
+
+Route::get('/anuncio', AnuncioTodasLivewire::class)->name('anuncio.vista.todas');
+Route::get('/anuncio/crear', AnuncioCrearLivewire::class)->name('anuncio.vista.crear');
+Route::get('/anuncio/editar/{id}', AnuncioEditarLivewire::class)->name('anuncio.vista.editar');
 
 Route::get('/slider', SliderEditarLivewire::class)->name('slider.vista.todas');
 

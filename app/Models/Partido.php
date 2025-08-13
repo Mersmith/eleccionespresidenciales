@@ -36,6 +36,11 @@ class Partido extends Model
         return $this->belongsToMany(Alianza::class, 'alianza_partidos');
     }
 
+    public function anuncios()
+    {
+        return $this->hasMany(Anuncio::class);
+    }
+
     //URL AMIGABLE
     public function getRouteKeyName()
     {

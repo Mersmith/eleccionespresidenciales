@@ -103,7 +103,7 @@
                 </li>
                 <li>
                     <a href="https://wa.me/{{ $numero }}?text={{ urlencode('Hola VotaXmi, deseo contactar con ustedes') }}" target="_blank" rel="noopener noreferrer">
-                        Contacto <i class="fa-brands fa-whatsapp"></i>
+                        <i class="fa-brands fa-whatsapp"></i> Contacto 
                     </a>
                 </li>
             </ul>                      

@@ -2,9 +2,10 @@
 
 @section('tituloPagina', 'VotaXmi - Sistema web de encuestas y elecciones en Perú')
 
-@section('descripcion', 'VotaXmi es un sistema web especializado en encuestas y procesos electorales para elecciones
+@section('descripcion',
+    'VotaXmi es un sistema web especializado en encuestas y procesos electorales para elecciones
     presidenciales, municipales y regionales en Perú. Participa y vota fácilmente.')
-    
+
 @section('meta_image', asset('assets/images/imagen-defecto.jpg'))
 
 @section('content')
@@ -26,6 +27,8 @@
                     'p_elemento' => $data_encuesta_presidencial,
                 ])
 
+                @include('web.partials.banner', ['p_elemento' => $data_banner_2])
+
                 @include('web.partials.slider-candidato', [
                     'p_elemento' => $data_candidatos_alcaldia_lima,
                 ])
@@ -34,15 +37,17 @@
                     'p_elemento' => $data_encuesta_alcaldia_provincial_lima,
                 ])
 
+                @include('web.partials.banner', ['p_elemento' => $data_banner_3])
+
                 @include('web.partials.slider-encuesta', [
                     'p_elemento' => $data_encuestas_alcaldia_distritos_lima,
                 ])
 
-                @include('web.partials.banner', ['p_elemento' => $data_banner_2])
-
                 @include('web.partials.mostrador', [
                     'p_elemento' => $data_partidos_politicos,
                 ])
+
+                @include('web.partials.banner', ['p_elemento' => $data_banner_4])
 
                 @include('web.partials.mostrador-alianza', [
                     'p_elemento' => $data_alianzas_electorales,

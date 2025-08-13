@@ -35,4 +35,9 @@ class Auspiciador extends Model
             ->where('mes', now()->startOfMonth())
             ->where('pagado', true);
     }
+
+    public function anuncios()
+    {
+        return $this->hasMany(Anuncio::class);
+    }
 }

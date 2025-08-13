@@ -71,6 +71,11 @@ class Candidato extends Model
             ->where('pagado', true);
     }
 
+    public function anuncios()
+    {
+        return $this->hasMany(Anuncio::class);
+    }
+
     //URL AMIGABLE
     public function getRouteKeyName()
     {

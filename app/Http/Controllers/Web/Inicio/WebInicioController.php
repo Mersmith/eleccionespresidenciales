@@ -21,6 +21,8 @@ class WebInicioController extends Controller
     {
         $data_baner_1 = $this->getWebBanner(1);
         $data_banner_2 = $this->getWebBanner(2);
+        $data_banner_3 = $this->getWebBanner(3);
+        $data_banner_4 = $this->getWebBanner(4);        
 
         $data_sliders_principal_1 = $this->getWebSlidersPrincipal(1);
 
@@ -43,6 +45,8 @@ class WebInicioController extends Controller
             compact(
                 'data_baner_1', //ok
                 'data_banner_2', //ok
+                'data_banner_3', //ok
+                'data_banner_4', //ok
                 'data_sliders_principal_1', //ok
                 'data_candidatos_presidenciales', //ok
                 'data_candidatos_alcaldia_lima', //ok
