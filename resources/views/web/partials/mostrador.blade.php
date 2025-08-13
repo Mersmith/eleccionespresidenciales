@@ -1,7 +1,7 @@
 @if (!empty($p_elemento) && $p_elemento['partidos']->isNotEmpty())
     <div>
         @include('web.partials.titulo', [
-            'p_contenido' => 'Partidos que conforman la alianza',
+            'p_contenido' => $p_elemento['titulo'],
             'p_alineacion' => 'left',
         ])
 
