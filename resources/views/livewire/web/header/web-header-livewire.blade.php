@@ -232,9 +232,9 @@
                     <a href="{{ route('auth.redirect', 'google') }}" class="boton_sesion_red google">
                         <i class="fab fa-google"></i> Iniciar con Google
                     </a>
-                    <a href="{{ route('auth.redirect', 'github') }}" class="boton_sesion_red github">
+                    {{--<a href="{{ route('auth.redirect', 'github') }}" class="boton_sesion_red github">
                         <i class="fab fa-github"></i> Iniciar con GitHub
-                    </a>
+                    </a>--}}
                     <a href="{{ route('auth.redirect', 'facebook') }}" class="boton_sesion_red facebook">
                         <i class="fab fa-facebook-f"></i> Iniciar con Facebook
                     </a>

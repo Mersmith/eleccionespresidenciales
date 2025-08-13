@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         // Crear 5 administradores
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 1; $i <= 1; $i++) {
             User::create([
                 'name' => "Admin $i",
                 'email' => "admin$i@example.com",
