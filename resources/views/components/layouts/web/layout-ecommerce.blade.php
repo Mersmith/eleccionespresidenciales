@@ -31,6 +31,21 @@
     <!-- STYLES -->
     @livewireStyles
     @include('components.layouts.web.assets.css')
+
+    <!-- Google tag (gtag.js) -->
+    @if (app()->environment('production'))
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-KN7R7YC98Z"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'G-KN7R7YC98Z');
+        </script>
+    @endif
 </head>
 
 <body class="contenedor_layout_web">
