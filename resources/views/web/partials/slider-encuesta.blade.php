@@ -14,12 +14,17 @@
                             <div>
                                 <a href="{{ route('encuesta', ['id' => $item->id, 'slug' => $item->slug]) }}">
                                     <div class="contenedor_imagen">
-                                        <img src="{{ $item->eleccion->imagen_ruta }}" alt="">
+                                        @if ($item->imagen_url)
+                                            <img src="{{ $item->imagen_url }}" alt="Imagen">
+                                        @else
+                                            <img src="{{ $item->eleccion->imagen_ruta }}" alt="Imagen">
+                                        @endif
 
                                         @if ($item->ya_finalizo)
                                             <span class="g_etiqueta g_etiqueta_desactivo">Finalizada</span>
                                         @else
-                                            <span class="g_etiqueta g_etiqueta_activo">{{ $item->fecha_fin_formateada }}</span>
+                                            <span
+                                                class="g_etiqueta g_etiqueta_activo">{{ $item->fecha_fin_formateada }}</span>
                                         @endif
                                     </div>
                                 </a>
