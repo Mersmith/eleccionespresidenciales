@@ -54,7 +54,7 @@
 
                     <!-- COLUMNA 2 -->
                     <div class="g_grid_columna_2">
-                        @include('web.partials.columna-publicidad')
+                        @include('web.partials.columna-publicidad', ['anuncios' => $anuncios])
                     </div>
 
                 </div>

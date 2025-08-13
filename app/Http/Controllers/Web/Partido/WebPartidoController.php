@@ -7,6 +7,7 @@ use App\Models\Candidato;
 use App\Models\Encuesta;
 use App\Models\Partido;
 use Carbon\Carbon;
+use App\Models\Anuncio;
 
 class WebPartidoController extends Controller
 {
@@ -20,6 +21,8 @@ class WebPartidoController extends Controller
 
         $encuesta_presidencial_activa = $this->getWebPartidoEncuestaPresidencialActiva($id);
 
+        $anuncios = $this->getAnunciosPorPartidoOCasoAuspiciadores($id);
+
         //dd($partido);
 
         return view(
@@ -29,6 +32,7 @@ class WebPartidoController extends Controller
                 'candidatos_presidenciales', //ok
                 'candidatos_alcaldia_lima', //ok
                 'encuesta_presidencial_activa', //ok
+                'anuncios'
             )
         );
     }
@@ -38,9 +42,9 @@ class WebPartidoController extends Controller
         $partido = Partido::with(['alianzas' => function ($query) {
             $query->where('eleccion_id', 1);
         }])->findOrFail($id);
-    
+
         $partido->alianza = $partido->alianzas->first(); // añade la propiedad directamente
-    
+
         return $partido;
     }
 
@@ -135,5 +139,29 @@ class WebPartidoController extends Controller
         }
 
         return $encuesta_activa;
+    }
+
+    public function getAnunciosPorPartidoOCasoAuspiciadores($partido_id)
+    {
+        $now = Carbon::now();
+
+        $anunciosCandidato = Anuncio::where('partido_id', $partido_id)
+            ->where('activo', 1)
+            ->where(function ($query) use ($now) {
+                // Validar que no haya vencido
+                $query->whereNull('fecha_fin')->orWhere('fecha_fin', '>=', $now);
+            })
+            ->get();
+
+        if ($anunciosCandidato->isEmpty()) {
+            return Anuncio::whereNotNull('auspiciador_id')
+                ->where('activo', 1)
+                ->where(function ($query) use ($now) {
+                    $query->whereNull('fecha_fin')->orWhere('fecha_fin', '>=', $now);
+                })
+                ->get();
+        }
+
+        return $anunciosCandidato;
     }
 }

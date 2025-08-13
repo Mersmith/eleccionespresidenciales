@@ -2,17 +2,20 @@
 
 namespace App\Livewire\Web\Encuesta;
 
+use App\Models\Banner;
 use App\Models\Encuesta;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
-use App\Models\Banner;
+use Carbon\Carbon;
+use App\Models\Anuncio;
 
 #[Layout('components.layouts.web.layout-ecommerce')]
 class EncuestaResultadoLivewire extends Component
 {
     public Encuesta $encuesta;
 
-    public  $data_baner_1;
+    public $data_baner_1;
+    public $anuncios;
 
     public function mount($id)
     {
@@ -21,9 +24,9 @@ class EncuestaResultadoLivewire extends Component
             'votos',
         ])->findOrFail($id);
 
-        $this->data_baner_1 =  $this->getWebBanner(6);
+        $this->data_baner_1 = $this->getWebBanner(6);
 
-
+        $this->anuncios = $this->getAnunciosPorAuspiciadorPagina();
         //dd($this->encuesta);
     }
 
@@ -34,6 +37,22 @@ class EncuestaResultadoLivewire extends Component
             ->first();
 
         return $banner;
+    }
+
+    public function getAnunciosPorAuspiciadorPagina()
+    {
+        $now = Carbon::now();
+
+        $anuncios = Anuncio::whereNotNull('auspiciador_id')
+            ->where('pagina', 'resultado')
+            ->where('activo', 1)
+            ->where(function ($query) use ($now) {
+                // Validar que no haya vencido
+                $query->whereNull('fecha_fin')->orWhere('fecha_fin', '>=', $now);
+            })
+            ->get();
+
+        return $anuncios;
     }
 
     public function render()

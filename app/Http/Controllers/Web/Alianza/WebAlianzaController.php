@@ -7,6 +7,7 @@ use App\Models\Alianza;
 use App\Models\Candidato;
 use App\Models\Encuesta;
 use Carbon\Carbon;
+use App\Models\Anuncio;
 
 class WebAlianzaController extends Controller
 {
@@ -18,12 +19,15 @@ class WebAlianzaController extends Controller
 
         $encuesta_presidencial_activa = $this->getWebPartidoEncuestaPresidencialActiva($id);
 
+        $anuncios = $this->getAnunciosPorAlianzaOCasoAuspiciadores($id);
+
         return view(
             'web.alianza.index',
             compact(
                 'alianza', //ok
                 'candidatos_presidenciales', //ok
                 'encuesta_presidencial_activa', //ok
+                'anuncios'
             )
         );
     }
@@ -72,6 +76,30 @@ class WebAlianzaController extends Controller
         }
 
         return $encuesta_activa;
+    }
+
+    public function getAnunciosPorAlianzaOCasoAuspiciadores($alianza_id)
+    {
+        $now = Carbon::now();
+
+        $anunciosCandidato = Anuncio::where('alianza_id', $alianza_id)
+            ->where('activo', 1)
+            ->where(function ($query) use ($now) {
+                // Validar que no haya vencido
+                $query->whereNull('fecha_fin')->orWhere('fecha_fin', '>=', $now);
+            })
+            ->get();
+
+        if ($anunciosCandidato->isEmpty()) {
+            return Anuncio::whereNotNull('auspiciador_id')
+                ->where('activo', 1)
+                ->where(function ($query) use ($now) {
+                    $query->whereNull('fecha_fin')->orWhere('fecha_fin', '>=', $now);
+                })
+                ->get();
+        }
+
+        return $anunciosCandidato;
     }
 
 }

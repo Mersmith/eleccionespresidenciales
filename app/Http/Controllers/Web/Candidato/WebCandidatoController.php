@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web\Candidato;
 use App\Http\Controllers\Controller;
 use App\Models\Candidato;
 use App\Models\CandidatoCargo;
+use App\Models\Anuncio;
 use App\Models\Encuesta;
 use Carbon\Carbon;
 
@@ -14,21 +15,24 @@ class WebCandidatoController extends Controller
     {
         $candidato_partido = $this->getWebCandidatoPartido($id);
 
+        $anuncios = $this->getAnunciosPorCandidatoOCasoAuspiciadores($id);
+
         $candidato_encuesta_activa = $this->getWebCandidatoEncuestaActiva($id);
 
         $candidato_cargos = $this->getWebCandidatoCargos($id);
 
         $candidato_encuestas_participaciones = $this->getWebCandidatoEncuestas($id);
 
-        //dd($candidato_cargos);
+        //dd($anuncios);
 
         return view(
             'web.candidato.index',
             compact(
-                'candidato_partido',//ok
-                'candidato_encuesta_activa',//ok
-                'candidato_cargos',//ok
-                'candidato_encuestas_participaciones',//ok
+                'candidato_partido', //ok
+                'candidato_encuesta_activa', //ok
+                'candidato_cargos', //ok
+                'candidato_encuestas_participaciones', //ok
+                'anuncios'
             )
         );
     }
@@ -85,6 +89,30 @@ class WebCandidatoController extends Controller
             ->get();
 
         return $encuestas;
+    }
+
+    public function getAnunciosPorCandidatoOCasoAuspiciadores($candidato_id)
+    {
+        $now = Carbon::now();
+    
+        $anunciosCandidato = Anuncio::where('candidato_id', $candidato_id)
+            ->where('activo', 1)
+            ->where(function ($query) use ($now) {
+                // Validar que no haya vencido
+                $query->whereNull('fecha_fin')->orWhere('fecha_fin', '>=', $now);
+            })
+            ->get();
+    
+        if ($anunciosCandidato->isEmpty()) {
+            return Anuncio::whereNotNull('auspiciador_id')
+                ->where('activo', 1)
+                ->where(function ($query) use ($now) {
+                    $query->whereNull('fecha_fin')->orWhere('fecha_fin', '>=', $now);
+                })
+                ->get();
+        }
+    
+        return $anunciosCandidato;
     }
 
 }

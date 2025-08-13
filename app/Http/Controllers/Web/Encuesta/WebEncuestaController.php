@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Web\Encuesta;
 
 use App\Http\Controllers\Controller;
-use App\Models\Encuesta;
 use App\Models\Banner;
+use App\Models\Encuesta;
+use Carbon\Carbon;
+use App\Models\Anuncio;
 
 class WebEncuestaController extends Controller
 {
@@ -17,6 +19,9 @@ class WebEncuestaController extends Controller
         $estado_encuesta = !$encuesta->activo
         || $encuesta->estado === 'finalizada'
         || $encuesta->ya_finalizo;
+
+        $anuncios = $this->getAnunciosPorAuspiciadorPagina();
+
         //dd($encuesta);
 
         return view(
@@ -25,6 +30,7 @@ class WebEncuestaController extends Controller
                 'encuesta',
                 'estado_encuesta',
                 'data_baner_1',
+                'anuncios'
             )
         );
     }
@@ -43,5 +49,21 @@ class WebEncuestaController extends Controller
             ->first();
 
         return $banner;
+    }
+
+    public function getAnunciosPorAuspiciadorPagina()
+    {
+        $now = Carbon::now();
+
+        $anuncios = Anuncio::whereNotNull('auspiciador_id')
+            ->where('pagina', 'encuesta')
+            ->where('activo', 1)
+            ->where(function ($query) use ($now) {
+                // Validar que no haya vencido
+                $query->whereNull('fecha_fin')->orWhere('fecha_fin', '>=', $now);
+            })
+            ->get();
+
+        return $anuncios;
     }
 }
