@@ -196,6 +196,34 @@
         ]
     },
     {
+        "id": 5,
+        "nombre": "3",
+        "ruta": "#",
+        "url": "#",
+        "icono": "fa-solid fa-address-card",
+        "nivel": 1,
+        "submenus": [
+            {
+                "id": 41,
+                "nombre": "Posts",
+                "ruta": "admin.post.vista.todas",
+                "url": "/admin/post",
+                "icono": "fa-solid fa-list-check",
+                "nivel": 2,
+                "submenus": []
+            },
+            {
+                "id": 112,
+                "nombre": "Crear",
+                "ruta": "admin.post.vista.crear",
+                "url": "/admin/post/crear",
+                "icono": "fa-solid fa-square-plus",
+                "nivel": 2,
+                "submenus": []
+            }
+        ]
+    },
+    {
         "id": 6,
         "nombre": "4",
         "ruta": "#",

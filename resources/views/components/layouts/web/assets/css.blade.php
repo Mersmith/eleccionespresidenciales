@@ -29,6 +29,7 @@
 <link rel="stylesheet" href="{{ asset('assets/web/css/partials/banner.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/web/css/partials/slider-principal.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/web/css/partials/slider-candidato.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/web/css/partials/slider-post.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/web/css/partials/temporizador.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/web/css/partials/slider-encuesta.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/web/css/partials/mostrador.css') }}">
@@ -43,5 +44,6 @@
 
 <!--PAGINA-->
 <link rel="stylesheet" href="{{ asset('assets/web/css/pagina/candidato.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/web/css/pagina/post.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/web/css/pagina/encuesta.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/web/css/pagina/encuesta-resultado.css') }}">

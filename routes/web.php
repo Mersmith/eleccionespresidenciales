@@ -8,6 +8,7 @@ use App\Http\Controllers\Web\Encuesta\WebEncuestaController;
 use App\Http\Controllers\Web\Inicio\WebInicioController;
 use App\Http\Controllers\Web\Login\WebLoginAdminController;
 use App\Http\Controllers\Web\Partido\WebPartidoController;
+use App\Http\Controllers\Web\Post\WebPostController;
 use App\Livewire\Web\Encuestas\EncuestasLivewire;
 use App\Livewire\Web\Encuesta\EncuestaResultadoLivewire;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,9 @@ Route::get('/encuestas', EncuestasLivewire::class)->name('encuestas'); //ok
 
 Route::get('/jefe', [WebLoginAdminController::class, 'showLoginForm'])->name('jefe.login');
 Route::post('/jefe', [WebLoginAdminController::class, 'login'])->name('jefe.login.post');
+
+Route::get('/post/{id}/{slug?}', WebPostController::class)->name('post'); //ok
+
 
 /*Route::get('/', function () {
 return view('welcome');

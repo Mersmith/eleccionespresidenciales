@@ -47,7 +47,7 @@
                             class="logo_partido">
                     @endif
 
-                    @if ($candidatoCargo->numero )
+                    @if ($candidatoCargo->numero)
                         <div class="numero_candidato">
                             <span>{{ $candidatoCargo->numero }}</span>
                         </div>
@@ -56,6 +56,8 @@
 
                 <input type="radio" wire:model.live="candidato_cargo_id" value="{{ $candidatoCargo->id }}">
 
+                {{-- <a class="info_candidato"
+                    href="{{ route('candidato', ['id' => $candidatoCargo->candidato->id, 'slug' => $candidatoCargo->candidato->slug]) }}"> --}}
                 <div class="info_candidato">
                     <strong>{{ $candidatoCargo->candidato->nombre }}</strong>
                     <p>

@@ -76,6 +76,11 @@ class Candidato extends Model
         return $this->hasMany(Anuncio::class);
     }
 
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
     //URL AMIGABLE
     public function getRouteKeyName()
     {

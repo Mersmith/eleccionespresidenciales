@@ -36,6 +36,7 @@ php artisan make:model AlianzaPartido -mfsc
 php artisan make:model Plan -mfsc
 php artisan make:model Membresia -mfsc
 php artisan make:model Auspiciador -mfsc
+php artisan make:model Post -mfsc
 
 php artisan make:model CandidatoCargoEquipo -mfsc
 
@@ -87,6 +88,10 @@ php artisan make:livewire Admin/Banner/BannerEditarLivewire
 php artisan make:livewire Admin/Anuncio/AnuncioTodasLivewire
 php artisan make:livewire Admin/Anuncio/AnuncioCrearLivewire
 php artisan make:livewire Admin/Anuncio/AnuncioEditarLivewire
+
+php artisan make:livewire Admin/Post/PostTodasLivewire
+php artisan make:livewire Admin/Post/PostCrearLivewire
+php artisan make:livewire Admin/Post/PostEditarLivewire
 
 php artisan make:livewire Admin/Slider/SliderEditarLivewire
 

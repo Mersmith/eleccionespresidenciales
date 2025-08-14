@@ -1,0 +1,134 @@
+.partials_contenedor_slider_post {
+    position: relative;
+    width: 100%;
+}
+
+/* SLIDER */
+.partials_contenedor_slider_post .swiper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.partials_contenedor_slider_post .swiper-wrapper {
+    display: flex;
+}
+
+.partials_contenedor_slider_post .swiper-slide {
+    width: 25%;
+    /*padding: 5px;*/
+}
+
+/* LINK */
+.partials_contenedor_slider_post a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.post_imagen_contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /*align-items: center;*/
+    /*text-align: center;*/
+    padding: 10px;
+    box-sizing: border-box;
+    height: 320px;
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: var(--sombra);
+}
+
+/* Título: máximo 2 líneas */
+.post_imagen_contenedor p.titulo {
+    margin: 5px 0;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.3;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+/* Fecha */
+.post_imagen_contenedor p.fecha {
+    margin: 2px 0;
+    font-size: 12px;
+    color: #666;
+}
+
+/* Descripción: máximo 3 líneas */
+.post_imagen_contenedor p.descripcion {
+    margin: 5px 0;
+    font-size: 13px;
+    color: #444;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+/* Imagen con altura fija y que ocupe todo el ancho */
+.post_imagen_contenedor img {
+    width: 100%;
+    height: 150px; /* altura fija */
+    object-fit: cover; /* mantiene proporción y recorta si es necesario */
+    margin-top: auto; /* la imagen queda abajo */
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+
+/* CONTROLES */
+.partials_contenedor_slider_post .swiper-button-next,
+.partials_contenedor_slider_post .swiper-button-prev {
+    background: transparent;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: var(--color-control-slider-texto);
+}
+
+.partials_contenedor_slider_post .swiper-button-next:hover,
+.partials_contenedor_slider_post .swiper-button-prev:hover {
+    background: var(--fondo-control-slider-fondo);
+    color: var(--color-control-slider-texto-hover);
+}
+
+.partials_contenedor_slider_post .swiper-button-next:after,
+.partials_contenedor_slider_post .swiper-button-prev:after {
+    font-size: 16px;
+}
+
+.partials_contenedor_slider_post .swiper-button-prev {
+    left: 10px;
+    box-shadow: var(--sombra-control-slider-izquierda)
+}
+
+.partials_contenedor_slider_post .swiper-button-next {
+    right: 10px;
+    box-shadow: var(--sombra-control-slider-derecha)
+}
+
+/* SLIDER THUMBNAILS */
+.partials_contenedor_slider_post .swiper-pagination {
+    position: initial;
+}
+
+.partials_contenedor_slider_post .swiper-pagination-bullet {
+    background-color: var(--fondo-control-slider-fondo);
+    width: 8px;
+    height: 8px;
+    opacity: 1;
+    border-radius: 50%;
+}
+
+.partials_contenedor_slider_post .swiper-pagination-bullet-active {
+    background-color: var(--fondo-control-slider-fondo-active);
+}

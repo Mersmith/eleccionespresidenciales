@@ -11,7 +11,7 @@
 
 @section('content')
     <div class="g_contenedor_pagina">
-        
+
         @include('web.partials.banner', ['p_elemento' => $data_baner_1])
 
         <div class="g_centrar_pagina">
@@ -52,6 +52,12 @@
                                 <span class="g_texto_nivel_4">
                                     <i class="fas fa-map-marker-alt"></i> {{ $ubicacion }}
                                 </span>
+
+                                <span class="g_ver_mas_btn">¡Selecciona un candidato y vota!</span>
+                                @if (!Auth::check())
+                                    <span class="g_ver_mas_btn">Si no iniciaste sesión, ingresa con Google o Facebook y
+                                        vota.</span>
+                                @endif
                             </div>
 
                             @livewire('web.encuesta.encuesta-voto-livewire', ['encuesta_id' => $encuesta->id, 'candidatos' => $encuesta->candidatoCargos, 'estado_encuesta' => $estado_encuesta])
@@ -66,8 +72,11 @@
                             @include('web.partials.social-share', [
                                 'url' => url()->current(),
                                 'title' => $encuesta->nombre ?? 'VotaXmi',
-                                'description' => $encuesta->descripcion ?? 'Participa y apoya a tu candidato favorito.',
-                                'image' => $encuesta->imagen_url ? url($encuesta->imagen_url) : asset('assets/images/imagen-defecto.jpg'),
+                                'description' =>
+                                    $encuesta->descripcion ?? 'Participa y apoya a tu candidato favorito.',
+                                'image' => $encuesta->imagen_url
+                                    ? url($encuesta->imagen_url)
+                                    : asset('assets/images/imagen-defecto.jpg'),
                             ])
                         </div>
                     </div>

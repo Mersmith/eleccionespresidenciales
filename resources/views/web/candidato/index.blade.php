@@ -25,6 +25,11 @@
                             'p_elemento' => $candidato_partido,
                         ])
 
+                        <!-- POST -->
+                        @include('web.partials.slider-post', [
+                            'p_elemento' => $posts,
+                        ])
+
                         <!-- VIDEO PRESENTACION -->
                         @if ($candidato_partido->video_presentacion)
                             @php

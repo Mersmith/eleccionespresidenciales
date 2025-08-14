@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Web\Candidato;
 
 use App\Http\Controllers\Controller;
+use App\Models\Anuncio;
 use App\Models\Candidato;
 use App\Models\CandidatoCargo;
-use App\Models\Anuncio;
 use App\Models\Encuesta;
+use App\Models\Post;
 use Carbon\Carbon;
 
 class WebCandidatoController extends Controller
@@ -16,6 +17,8 @@ class WebCandidatoController extends Controller
         $candidato_partido = $this->getWebCandidatoPartido($id);
 
         $anuncios = $this->getAnunciosPorCandidatoOCasoAuspiciadores($id);
+
+        $posts = $this->getPosts($id);
 
         $candidato_encuesta_activa = $this->getWebCandidatoEncuestaActiva($id);
 
@@ -32,7 +35,8 @@ class WebCandidatoController extends Controller
                 'candidato_encuesta_activa', //ok
                 'candidato_cargos', //ok
                 'candidato_encuestas_participaciones', //ok
-                'anuncios'
+                'anuncios',
+                'posts'
             )
         );
     }
@@ -94,7 +98,7 @@ class WebCandidatoController extends Controller
     public function getAnunciosPorCandidatoOCasoAuspiciadores($candidato_id)
     {
         $now = Carbon::now();
-    
+
         $anunciosCandidato = Anuncio::where('candidato_id', $candidato_id)
             ->where('activo', 1)
             ->where(function ($query) use ($now) {
@@ -102,7 +106,7 @@ class WebCandidatoController extends Controller
                 $query->whereNull('fecha_fin')->orWhere('fecha_fin', '>=', $now);
             })
             ->get();
-    
+
         if ($anunciosCandidato->isEmpty()) {
             return Anuncio::whereNotNull('auspiciador_id')
                 ->where('activo', 1)
@@ -111,8 +115,23 @@ class WebCandidatoController extends Controller
                 })
                 ->get();
         }
-    
+
         return $anunciosCandidato;
+    }
+
+    public function getPosts($candidato_id)
+    {
+        $titulo = 'Destacado';
+
+        $posts = Post::where('candidato_id', $candidato_id)
+            ->where('activo', 1)
+            ->get();
+
+        return [
+            'id' => $candidato_id,
+            'titulo' => $titulo,
+            'posts' => $posts,
+        ];       
     }
 
 }

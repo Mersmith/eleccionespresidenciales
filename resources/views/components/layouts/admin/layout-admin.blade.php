@@ -13,6 +13,8 @@
 
     <!-- SCRIPTS -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.0.0/classic/ckeditor.js"></script>
+   
 
     <!-- STYLES -->
     @livewireStyles

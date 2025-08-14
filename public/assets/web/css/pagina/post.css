@@ -1,0 +1,189 @@
+.contenedor_post {
+    color: #333;
+}
+
+.contenedor_post .titulo {
+    font-size: 24px;
+    line-height: 24px;
+    margin: 30px 0;
+    font-weight: 700;
+    color: var(--color-texto-terciario);
+    text-align: center;
+}
+
+.contenedor_post .fecha {
+    display: flex;
+    gap: 4px;
+    overflow: hidden;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--color-texto-terciario);
+    align-items: center;
+    width: 100%;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+
+.contenedor_post .contenedor_autor {
+    display: flex;
+    margin: 20px 0px;
+    align-items: center;
+    gap: 8px;
+    width: max-content;
+}
+
+.contenedor_post .imagen {
+    width: 60px;
+    height: 60px;
+}
+
+.contenedor_post .datos {
+    line-height: 14px;
+}
+
+.contenedor_post .datos p {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--color-texto-terciario);
+}
+
+.contenedor_post .datos span {
+    font-size: 14px;
+}
+
+.contenedor_post .contenido_post h1 {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.5;
+}
+
+.contenedor_post .contenido_post h2 {
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 1.5;
+}
+
+.contenedor_post .contenido_post h3 {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Párrafos */
+.contenedor_post .contenido_post p {
+    font-size: 17px;
+    color: var(--color-texto-terciario);
+}
+
+/* Listas generales */
+.contenedor_post ul,
+.contenedor_post ol {
+    padding-left: 2em;
+    /* espacio desde el borde */
+    margin-bottom: 1em;
+}
+
+/* Items de lista */
+.contenedor_post ul li {
+    margin-bottom: 0.5em;
+    list-style-type: disc;
+}
+
+.contenedor_post ol li {
+    margin-bottom: 0.5em;
+    list-style-type: decimal;
+}
+
+.contenedor_post ol li::marker {
+    font-weight: 600;
+    color: #333;
+}
+
+/* Listas anidadas */
+.contenedor_post ul ul,
+.contenedor_post ul ol,
+.contenedor_post ol ul,
+.contenedor_post ol ol {
+    margin-bottom: 0;
+    margin-left: 1.5em;
+}
+
+/* Imágenes */
+.contenedor_post .contenido_post img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1em 0;
+}
+
+/* Blockquotes */
+.contenedor_post blockquote {
+    border-left: 4px solid #ccc;
+    padding-left: 1em;
+    color: #555;
+    margin: 1em 0;
+    font-style: italic;
+}
+
+/* Tablas básicas */
+.contenedor_post table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+}
+
+.contenedor_post th,
+.contenedor_post td {
+    border: 1px solid #ccc;
+    padding: 0.5em;
+    text-align: left;
+}
+
+.contenedor_post th {
+    background-color: #f5f5f5;
+}
+
+/* Imágenes centradas y responsive */
+.contenedor_post .contenido_post img {
+    display: block;
+    margin: 1em auto;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Videos centrados y responsive */
+.contenedor_post iframe {
+    display: block;
+    margin: 1em auto;
+    max-width: 100%;
+}
+
+/* Contenedor general del post */
+.contenedor_post figure {
+    display: table;
+    margin: 1em auto;
+    text-align: center;
+    max-width: 100%;
+}
+
+/* La imagen dentro de la figura */
+.contenedor_post figure img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+/* El caption de la figura */
+.contenedor_post figure figcaption {
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: 0.5em;
+    text-align: center;
+    font-style: italic;
+}

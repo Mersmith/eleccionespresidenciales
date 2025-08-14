@@ -31,6 +31,7 @@
 }
 
 .partials_lista_cuadricula_candidatos .card_candidato:hover {
+/*.partials_lista_cuadricula_candidatos .card_candidato:has(.imagen_contenedor:hover) {*/
     border-color: var(--color-borde-card-hober);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

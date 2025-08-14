@@ -1,22 +1,26 @@
 <?php
 
+use App\Http\Controllers\Admin\Post\AdminPostController;
 use App\Livewire\Admin\Alianza\AlianzaEditarLivewire;
 use App\Livewire\Admin\Alianza\AlianzaSocialLivewire;
 use App\Livewire\Admin\Alianza\AlianzaTodasLivewire;
 use App\Livewire\Admin\Alianza\CrearAlianzaLivewire;
-use App\Livewire\Admin\Banner\BannerCrearLivewire;
-use App\Livewire\Admin\Banner\BannerEditarLivewire;
-use App\Livewire\Admin\Banner\BannerTodasLivewire;
 use App\Livewire\Admin\Anuncio\AnuncioCrearLivewire;
 use App\Livewire\Admin\Anuncio\AnuncioEditarLivewire;
 use App\Livewire\Admin\Anuncio\AnuncioTodasLivewire;
+use App\Livewire\Admin\Auspiciador\AuspiciadorCrearLivewire;
+use App\Livewire\Admin\Auspiciador\AuspiciadorEditarLivewire;
+use App\Livewire\Admin\Auspiciador\AuspiciadorTodasLivewire;
+use App\Livewire\Admin\Banner\BannerCrearLivewire;
+use App\Livewire\Admin\Banner\BannerEditarLivewire;
+use App\Livewire\Admin\Banner\BannerTodasLivewire;
+use App\Livewire\Admin\Candidato\CandidatoCargoEditarLivewire;
 use App\Livewire\Admin\Candidato\CandidatoCargoEquipoCrearLivewire;
 use App\Livewire\Admin\Candidato\CandidatoCargoEquipoTodasLivewire;
 use App\Livewire\Admin\Candidato\CandidatoCargoLivewire;
-use App\Livewire\Admin\Candidato\CandidatoCrearLivewire;
 use App\Livewire\Admin\Candidato\CandidatoCargoTodasLivewire;
+use App\Livewire\Admin\Candidato\CandidatoCrearLivewire;
 use App\Livewire\Admin\Candidato\CandidatoEditarLivewire;
-use App\Livewire\Admin\Candidato\CandidatoCargoEditarLivewire;
 use App\Livewire\Admin\Candidato\CandidatoSocialLivewire;
 use App\Livewire\Admin\Candidato\CandidatoTodasLivewire;
 use App\Livewire\Admin\Eleccion\EleccionCrearLivewire;
@@ -27,10 +31,10 @@ use App\Livewire\Admin\Encuesta\EncuestaCrearLivewire;
 use App\Livewire\Admin\Encuesta\EncuestaEditarLivewire;
 use App\Livewire\Admin\Encuesta\EncuestaTodasLivewire;
 use App\Livewire\Admin\Imagen\ImagenTodasLivewire;
-use App\Livewire\Admin\Membresia\MembresiaGestionLivewire;
-use App\Livewire\Admin\Membresia\MembresiaHistorialLivewire;
 use App\Livewire\Admin\Membresia\MembresiaAuspiciadorGestionLivewire;
 use App\Livewire\Admin\Membresia\MembresiaAuspiciadorHistorialLivewire;
+use App\Livewire\Admin\Membresia\MembresiaGestionLivewire;
+use App\Livewire\Admin\Membresia\MembresiaHistorialLivewire;
 use App\Livewire\Admin\Membresia\MembresiaTodasLivewire;
 use App\Livewire\Admin\Partido\PartidoCrearLivewire;
 use App\Livewire\Admin\Partido\PartidoEditarLivewire;
@@ -39,12 +43,11 @@ use App\Livewire\Admin\Partido\PartidoTodasLivewire;
 use App\Livewire\Admin\Plan\PlanCrearLivewire;
 use App\Livewire\Admin\Plan\PlanEditarLivewire;
 use App\Livewire\Admin\Plan\PlanTodasLivewire;
-use App\Livewire\Admin\Slider\SliderEditarLivewire;
-use App\Livewire\Admin\Auspiciador\AuspiciadorCrearLivewire;
-use App\Livewire\Admin\Auspiciador\AuspiciadorEditarLivewire;
-use App\Livewire\Admin\Auspiciador\AuspiciadorTodasLivewire;
+use App\Livewire\Admin\Post\PostCrearLivewire;
+use App\Livewire\Admin\Post\PostEditarLivewire;
+use App\Livewire\Admin\Post\PostTodasLivewire;
 use App\Livewire\Admin\Reporte\ReporteInicioLivewire;
-
+use App\Livewire\Admin\Slider\SliderEditarLivewire;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/eleccion', EleccionTodasLivewire::class)->name('eleccion.vista.todas');
@@ -108,6 +111,12 @@ Route::get('/anuncio', AnuncioTodasLivewire::class)->name('anuncio.vista.todas')
 Route::get('/anuncio/crear', AnuncioCrearLivewire::class)->name('anuncio.vista.crear');
 Route::get('/anuncio/editar/{id}', AnuncioEditarLivewire::class)->name('anuncio.vista.editar');
 
+Route::get('/post', PostTodasLivewire::class)->name('post.vista.todas');
+Route::get('/post/crear', PostCrearLivewire::class)->name('post.vista.crear');
+Route::get('/post/editar/{id}', PostEditarLivewire::class)->name('post.vista.editar');
+
 Route::get('/slider', SliderEditarLivewire::class)->name('slider.vista.todas');
 
 Route::get('/imagen', ImagenTodasLivewire::class)->name('imagen.vista.todas');
+
+Route::post('/post/upload', [AdminPostController::class, 'upload'])->name('post.upload');
