@@ -10,11 +10,14 @@
                 </span>
 
                 <a href="{{ url('/') }}">
-                    <img src="{{ asset('assets/images/logo-votmi-computadora.svg') }}" alt="Tendencias Market"
+                    <img src="{{ asset('assets/images/logo-votmi-computadora.svg') }}" alt="VotaXmi.com"
                         class="imagen_logo_computadora" />
 
-                    <img src="{{ asset('assets/images/logo-votmi-movil.svg') }}" alt="Tendencias Market"
+                    <img src="{{ asset('assets/images/logo-votmi-movil.svg') }}" alt="VotaXmi.com"
                         class="imagen_logo_movil" />
+
+                    <img src="{{ asset('assets/images/logo-votmi-movil-2.svg') }}" alt="VotaXmi.com"
+                        class="imagen_logo_movil_2" />
                 </a>
             </div>
 
@@ -216,7 +219,7 @@
                     <div class="sidebar_cotenido_item sidebar_pie">
                         <a href="#">
                             <img src="{{ asset('assets/images/logo-votmi-computadora.svg') }}"
-                                alt="Tendencias Market" />
+                                alt="VotaXmi.com" />
                         </a>
                     </div>
                 </div>

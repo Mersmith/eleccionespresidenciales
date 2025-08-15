@@ -147,6 +147,7 @@ php artisan make:model Banner -mfsc
 
 php artisan make:model Anuncio -mfsc
 
+php artisan config:publish cors
 --> Crear config constantes
 
 MENU

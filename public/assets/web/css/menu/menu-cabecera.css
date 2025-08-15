@@ -41,6 +41,11 @@
     width: 110px;
 }
 
+.ecommerce_menu_principal .logo_computadora .imagen_logo_movil_2 {
+    display: none;
+    width: 200px;
+}
+
 /* MENU HAMBURGUESA MOVIL */
 .ecommerce_menu_principal .menu_hamburguesa_movil {
     display: none;
@@ -258,6 +263,14 @@
 /* RESPONSIVE TABLET */
 @media (max-width: 1000px) {
 
+    .ecommerce_menu_principal .logo_computadora .imagen_logo_movil {
+        display: none;
+    }
+
+    .ecommerce_menu_principal .logo_computadora .imagen_logo_movil_2 {
+        display: block;
+    }
+
     /* MENU PRINCIPAL */
     .ecommerce_menu_principal {
         height: var(--altura-header-principal-movil);
@@ -272,7 +285,7 @@
         height: var(--altura-menu-principal-arriba-movil);
         grid-template-areas: "logo_computadora  menu_principal_usuarios"
             "buscador_principal buscador_principal ";
-        grid-template-columns: 120px auto;
+        grid-template-columns: 300px auto;
         grid-gap: 0px;
     }
 
