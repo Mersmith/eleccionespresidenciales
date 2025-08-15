@@ -53,10 +53,9 @@
                                     <i class="fas fa-map-marker-alt"></i> {{ $ubicacion }}
                                 </span>
 
-                                <span class="g_ver_mas_btn">¡Selecciona un candidato y vota!</span>
                                 @if (!Auth::check())
-                                    <span class="g_ver_mas_btn">Si no iniciaste sesión, ingresa con Google o Facebook y
-                                        vota.</span>
+                                    <span class="g_ver_mas_btn">Primero inicia sesión con Google o Facebook, para que puedas votar.</span>
+                                    <span class="g_ver_mas_btn">¡Selecciona un candidato y vota!</span>
                                 @endif
                             </div>
 

@@ -31,6 +31,11 @@ class EncuestaVotoLivewire extends Component
         }
     }
 
+    public function updatedCandidatoCargoId()
+    {
+        $this->dispatch('modalSesion');
+    }
+
     public function cerrar()
     {
         $this->candidato_cargo_id = null;

@@ -67,6 +67,7 @@
 }
 
 .contenedor_login h2 {
+    line-height: 26px;
     font-size: 1.8rem;
     margin-bottom: 25px;
     font-weight: 700;

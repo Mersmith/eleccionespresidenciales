@@ -230,14 +230,15 @@
                 <div class="contenedor_login">
                     <h2>🚀 Iniciar Sesión</h2>
                     <a href="{{ route('auth.redirect', 'google') }}" class="boton_sesion_red google">
-                        <i class="fab fa-google"></i> Iniciar con Google
+                        <i class="fab fa-google"></i> Con Google
                     </a>
                     {{--<a href="{{ route('auth.redirect', 'github') }}" class="boton_sesion_red github">
                         <i class="fab fa-github"></i> Iniciar con GitHub
                     </a>--}}
                     <a href="{{ route('auth.redirect', 'facebook') }}" class="boton_sesion_red facebook">
-                        <i class="fab fa-facebook-f"></i> Iniciar con Facebook
+                        <i class="fab fa-facebook-f"></i> Con Facebook
                     </a>
+                    <p>Primero inicia sesión para que puedas votar.</p>
                     <button wire:click="cerrarModalSesion" class="boton_cerrar_modal">
                         ✖ Cerrar
                     </button>
