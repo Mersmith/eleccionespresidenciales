@@ -150,6 +150,11 @@ php artisan make:model Anuncio -mfsc
 php artisan config:publish cors
 --> Crear config constantes
 
+
+composer require spatie/laravel-sitemap
+php artisan make:command GenerarSitemap
+php artisan sitemap:generar
+
 MENU
 LOGO
 PRESIDENCIAL

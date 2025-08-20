@@ -46,6 +46,37 @@
             gtag('config', 'G-KN7R7YC98Z');
         </script>
     @endif
+
+    <!-- JSON-LD para Google -->
+    <script type="application/ld+json">
+        @verbatim
+        {
+
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "VotaXmi",
+          "url": "https://votaxmi.com",
+          "logo": "https://votaxmi.com/assets/images/logo-votmi-movil.svg",
+          "sameAs": [
+            "https://www.facebook.com/VotaXmi",
+            "https://www.tiktok.com/@votaxmi"
+          ],
+          "contactPoint": [{
+            "@type": "ContactPoint",
+            "telephone": "+51 916 647 675", 
+            "contactType": "customer service",
+            "areaServed": "PE",
+            "availableLanguage": ["Spanish"]
+          }],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Lima",
+            "addressRegion": "Lima",
+            "addressCountry": "PE"
+          }
+        }
+        @endverbatim
+    </script>
 </head>
 
 <body class="contenedor_layout_web">
