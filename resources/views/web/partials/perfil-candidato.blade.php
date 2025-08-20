@@ -1,5 +1,5 @@
 @if (!empty($p_elemento))
-    <div class="partials_contenedor_perfil_candidato g_card_panel">
+    <div class="partials_contenedor_perfil_candidato">
         <div class="candidato_imagen_contenedor">
             @if ($p_elemento->foto)
                 <img class="imagen_candidato" src="{{ $p_elemento->foto }}" alt="" />
@@ -39,14 +39,14 @@
                 </div>
             @endif
 
-            @if ($p_elemento->partido)
+            {{--@if ($p_elemento->partido)
                 <div class="partido">
                     <a href="{{ route('partido', ['id' => $p_elemento->partido->id, 'slug' => $p_elemento->partido->slug]) }}">
                         <h3 class="g_texto_nivel_1">{{ $p_elemento->partido->nombre }} </h3>
                     </a>
                     <p class="g_texto_nivel_2">{{ $p_elemento->partido->descripcion }} </p>
                 </div>
-            @endif
+            @endif--}}
         </div>
     </div>
 @endif

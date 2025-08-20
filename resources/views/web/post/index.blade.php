@@ -109,10 +109,45 @@
                             </div>
 
                         </article>
+
+                        <div class="g_card_panel g_card_partial_column">
+                            @include('web.partials.social-share', [
+                                'url' => url()->current(),
+                                'title' => $post->titulo ?? 'VotaXmi',
+                                'description' =>
+                                    $post->meta_description ??
+                                    'Participa y apoya a tu candidato favorito.',
+                                'image' => $post->image
+                                    ? url($post->image)
+                                    : asset('assets/images/imagen-defecto.jpg'),
+                            ])
+                        </div>
                     </div>
 
                     <!-- COLUMNA 2: Sidebar o contenido adicional -->
                     <div class="g_grid_columna_2">
+                        @if ($otrosPosts->count())
+                            <div class="contenedor_lista_post">
+                                <h3 class="g_texto_nivel_1">Más publicaciones </h3>
+
+                                @foreach ($otrosPosts as $post)
+                                    <div class="post_item">
+                                        <a href="{{ route('post', ['id' => $post->id, 'slug' => $post->slug]) }}">
+                                            <img src="{{ $post->image }}">
+                                            <p class="titulo">{{ $post->meta_title }}</p>
+                                            <p class="fecha">{{ $post->created_at->format('d M Y') }}</p>
+                                            <p class="descripcion">{{ $post->meta_description }}</p>
+                                        </a>
+                                    </div>
+                                @endforeach
+
+                                <!-- links de paginación -->
+                                <div class="paginacion">
+                                    {{ $otrosPosts->links() }}
+                                </div>
+                            </div>
+                        @endif
+
                     </div>
 
                 </div>

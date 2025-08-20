@@ -1,5 +1,6 @@
 .partials_contenedor_perfil_candidato {
     display: flex;
+    gap: 10px;
 }
 
 .partials_contenedor_perfil_candidato .candidato_imagen_contenedor {
@@ -94,6 +95,10 @@
     .partials_contenedor_perfil_candidato .nombres_partido .nombres p,
     .partials_contenedor_perfil_candidato .nombres_partido .partido h3,
     .partials_contenedor_perfil_candidato .nombres_partido .partido p {
+        text-align: center;
+    }
+
+    .partials_contenedor_perfil_candidato .plan_gobierno {
         text-align: center;
     }
 }

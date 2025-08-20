@@ -1,6 +1,6 @@
 @if (!empty($p_elemento) && $p_elemento['posts']->isNotEmpty())
 
-    <div>
+    <div class="g_card_panel">
         @include('web.partials.titulo', [
             'p_contenido' => $p_elemento['titulo'],
             'p_alineacion' => 'left',
@@ -14,10 +14,11 @@
                         <div class="swiper-slide">
                             <a href="{{ route('post', ['id' => $post->id, 'slug' => $post->slug]) }}">
                                 <div class="post_imagen_contenedor">
+                                 
+                                    <img src="{{ $post->image }}">
                                     <p class="titulo">{{ $post->meta_title }}</p>
                                     <p class="fecha">{{ $post->created_at->format('d M Y') }}</p>
                                     <p class="descripcion">{{ $post->meta_description }}</p>
-                                    <img src="{{ $post->image }}">
                                 </div>
 
                             </a>

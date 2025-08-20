@@ -42,6 +42,7 @@
     display: grid;
     grid-template-areas: "g_grid_columna_1 g_grid_columna_2";
     grid-template-columns: 70% 30%;
+    gap: 15px;
 }
 
 .g_grid_pagina_2_columnas .g_grid_columna_1 {
@@ -94,7 +95,7 @@
     display: block;
 }
 
-.g_centrar_elementos{
+.g_centrar_elementos {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -300,11 +301,13 @@
 .g_video_container {
     position: relative;
     width: 100%;
-    padding-bottom: 40%; /* 16:9 */
+    padding-bottom: 40%;
+    /* 16:9 */
     height: 0;
     overflow: hidden;
     background: #000;
-    border-radius: 10px; /* opcional, para esquinas redondeadas */
+    border-radius: 10px;
+    /* opcional, para esquinas redondeadas */
 }
 
 .g_video_container iframe {
@@ -325,22 +328,23 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     color: #392385;
-  }
-  
-  .compartir_redes > p {
+}
+
+.compartir_redes>p {
     flex: 0 0 100%;
     font-size: 16px;
-    color: #5e208d; /* morado más suave */
+    color: #5e208d;
+    /* morado más suave */
     user-select: none;
-  }
-  
-  .compartir_redes > div {
+}
+
+.compartir_redes>div {
     display: flex;
     gap: 12px;
     width: 100%;
-  }
-  
-  .compartir_redes a.btn-compartir {
+}
+
+.compartir_redes a.btn-compartir {
     display: inline-flex;
     align-items: center;
     gap: 2px;
@@ -353,45 +357,64 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     user-select: none;
     justify-content: center;
-  }
-  
-  .compartir_redes a.btn-compartir:hover,
-  .compartir_redes a.btn-compartir:focus {
+}
+
+.compartir_redes a.btn-compartir:hover,
+.compartir_redes a.btn-compartir:focus {
     transform: scale(1.07);
     outline: none;
-  }
-  
-  /* Colores y sombras para cada red */
-  .compartir_redes a.facebook {
+}
+
+/* Colores y sombras para cada red */
+.compartir_redes a.facebook {
     background: #3b5998;
-  }
-  
-  .compartir_redes a.facebook:hover {
+}
+
+.compartir_redes a.facebook:hover {
     background: #2d4373;
-  }
-  
-  .compartir_redes a.twitter {
+}
+
+.compartir_redes a.twitter {
     background: #1da1f2;
-  }
-  
-  .compartir_redes a.twitter:hover {
+}
+
+.compartir_redes a.twitter:hover {
     background: #0d95e8;
-  }
-  
-  .compartir_redes a.whatsapp {
+}
+
+.compartir_redes a.whatsapp {
     background: #25d366;
-  }
-  
-  .compartir_redes a.whatsapp:hover {
+}
+
+.compartir_redes a.whatsapp:hover {
     background: #1ebe57;
-  }
-  
-  /* Iconos */
-  .compartir_redes i.fab {
+}
+
+/* Iconos */
+.compartir_redes i.fab {
     font-size: 1.4rem;
     filter: drop-shadow(0 0 0.2px rgba(0, 0, 0, 0.25));
-  }
-  
+}
+
+.g_menu_card {
+    padding-top: 15px;
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.g_menu_card .menu-item {
+    font-weight: normal;
+    color: #555;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.g_menu_card .menu-item.activo {
+    font-weight: bold;
+    color: #392385;
+    border-bottom: 2px solid #392385;
+}
 
 
 @media (max-width: 1024px) {

@@ -16,40 +16,73 @@
 
             <div class="g_pading_pagina g_gap_pagina">
 
-                <div class="g_grid_pagina_2_columnas">
+                <div class="g_grid_pagina_2_columnas" x-data="{ menuActivo: 'inicio' }">
                     <!-- COLUMNA 1 -->
                     <div class="g_grid_columna_1">
 
                         <!-- PERFIL -->
-                        @include('web.partials.perfil-candidato', [
-                            'p_elemento' => $candidato_partido,
-                        ])
+                        <div class="g_card_panel">
 
-                        <!-- POST -->
-                        @include('web.partials.slider-post', [
-                            'p_elemento' => $posts,
-                        ])
+                            @include('web.partials.perfil-candidato', [
+                                'p_elemento' => $candidato_partido,
+                            ])
 
-                        <!-- VIDEO PRESENTACION -->
-                        @if ($candidato_partido->video_presentacion)
-                            @php
-                                preg_match(
-                                    '/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([^\&\?\/]+)/',
-                                    $candidato_partido->video_presentacion,
-                                    $matches,
-                                );
-                                $videoId = $matches[1] ?? null;
-                            @endphp
+                            <!-- Menu -->
+                            <div class="g_menu_card">
+                                <span :class="menuActivo === 'inicio' ? 'menu-item activo' : 'menu-item'"
+                                    @click="menuActivo = 'inicio'">
+                                    Inicio
+                                </span>
+                                <span :class="menuActivo === 'partido' ? 'menu-item activo' : 'menu-item'"
+                                    @click="menuActivo = 'partido'">
+                                    Partido
+                                </span>
+                            </div>
+                        </div>
 
-                            @if ($videoId)
-                                <div class="g_video_container">
-                                    <iframe width="560" height="315"
-                                        src="https://www.youtube.com/embed/{{ $videoId }}" title="YouTube video player"
-                                        frameborder="0" allowfullscreen>
-                                    </iframe>
-                                </div>
-                            @endif
-                        @endif
+                        <!-- Contenido -->
+                        <div>
+                            <!-- Inicio -->
+                            <div x-show="menuActivo === 'inicio'">
+                                @include('web.partials.slider-post', [
+                                    'p_elemento' => $posts,
+                                ])
+
+                                <!-- VIDEO PRESENTACION -->
+                                @if ($candidato_partido->video_presentacion)
+                                    @php
+                                        preg_match(
+                                            '/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([^\&\?\/]+)/',
+                                            $candidato_partido->video_presentacion,
+                                            $matches,
+                                        );
+                                        $videoId = $matches[1] ?? null;
+                                    @endphp
+
+                                    @if ($videoId)
+                                        <div class="g_video_container">
+                                            <iframe width="560" height="315"
+                                                src="https://www.youtube.com/embed/{{ $videoId }}"
+                                                title="YouTube video player" frameborder="0" allowfullscreen>
+                                            </iframe>
+                                        </div>
+                                    @endif
+                                @endif
+                            </div>
+
+                            <!-- Partido -->
+                            <div x-show="menuActivo === 'partido'">
+                                @if ($candidato_partido->partido)
+                                    <div class="g_card_panel">
+                                        <a
+                                            href="{{ route('partido', ['id' => $candidato_partido->partido->id, 'slug' => $candidato_partido->partido->slug]) }}">
+                                            <h3 class="g_texto_nivel_1">{{ $candidato_partido->partido->nombre }}</h3>
+                                        </a>
+                                        <p class="g_texto_nivel_2">{{ $candidato_partido->partido->descripcion }}</p>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
 
                         <!-- ENCUESTA ACTIVA -->
                         @if ($candidato_encuesta_activa)

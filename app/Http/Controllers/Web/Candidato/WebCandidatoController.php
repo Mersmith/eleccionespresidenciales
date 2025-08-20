@@ -121,10 +121,11 @@ class WebCandidatoController extends Controller
 
     public function getPosts($candidato_id)
     {
-        $titulo = 'Destacado';
+        $titulo = 'Publicaciones';
 
         $posts = Post::where('candidato_id', $candidato_id)
             ->where('activo', 1)
+            ->limit(5) // aquí limitas a 5 registros
             ->get();
 
         return [
