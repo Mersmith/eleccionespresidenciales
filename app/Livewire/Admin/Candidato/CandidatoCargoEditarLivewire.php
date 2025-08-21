@@ -186,12 +186,15 @@ class CandidatoCargoEditarLivewire extends Component
     public function actualizarCandidatoCargo()
     {
         $this->validate();       
+        $partido_id = $this->partido_id !== '' ? $this->partido_id : null;
 
         $this->candidato_cargo->update([
             'numero' => $this->numero,
             'principal' => $this->principal,
             'electo' => $this->electo,
             'activo' => $this->activo,
+            'partido_id' => $partido_id,
+            'alianza_id' => $this->alianza_id ?: null,
         ]);
 
         $this->dispatch('alertaLivewire', "Actualizado");

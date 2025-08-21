@@ -1,4 +1,4 @@
-@section('tituloPagina', 'Red Social')
+@section('tituloPagina', 'Información')
 
 @section('anchoPantalla', '100%')
 
