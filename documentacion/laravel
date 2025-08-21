@@ -80,6 +80,7 @@ php artisan make:livewire Admin/Candidato/CandidatoCargoEquipoLivewire
 php artisan make:livewire Admin/Candidato/CandidatoCargoEquipoCrearLivewire
 php artisan make:livewire Admin/Candidato/CandidatoCargoEquipoTodasLivewire
 php artisan make:livewire Admin/Candidato/CandidatoSocialLivewire
+php artisan make:livewire Admin/Candidato/CandidatoInformacionLivewire
 
 php artisan make:livewire Admin/Banner/BannerTodasLivewire
 php artisan make:livewire Admin/Banner/BannerCrearLivewire
@@ -118,6 +119,8 @@ php artisan storage:link
 
 php artisan make:migration create_candidato_encuesta_table
 php artisan make:seeder CandidatoEncuestaSeeder
+
+php artisan make:migration add_json_fields_to_candidatos_table --table=candidatos
 
 PAGINAS
 ELECCION OK

@@ -16,6 +16,9 @@
             <a href="{{ route('admin.candidato.social.editar', $candidato->id) }}" class="g_boton g_boton_info">
                 Social <i class="fa-solid fa-square-plus"></i></a>
 
+            <a href="{{ route('admin.candidato.informacion.editar', $candidato->id) }}" class="g_boton g_boton_success">
+                Información <i class="fa-solid fa-square-plus"></i></a>
+
             <a href="{{ route('admin.candidato.vista.todas') }}" class="g_boton g_boton_darkt">
                 <i class="fa-solid fa-arrow-left"></i> Regresar</a>
         </div>

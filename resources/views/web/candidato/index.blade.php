@@ -37,6 +37,14 @@
                                     @click="menuActivo = 'partido'">
                                     Partido
                                 </span>
+                                <span :class="menuActivo === 'informacion' ? 'menu-item activo' : 'menu-item'"
+                                    @click="menuActivo = 'informacion'">
+                                    Informacion
+                                </span>
+                                <span :class="menuActivo === 'propuestas' ? 'menu-item activo' : 'menu-item'"
+                                    @click="menuActivo = 'propuestas'">
+                                    Propuestas
+                                </span>
                             </div>
                         </div>
 
@@ -73,12 +81,120 @@
                             <!-- Partido -->
                             <div x-show="menuActivo === 'partido'">
                                 @if ($candidato_partido->partido)
-                                    <div class="g_card_panel">
+                                    <div class="g_card_panel g_margin_bottom_20">
                                         <a
                                             href="{{ route('partido', ['id' => $candidato_partido->partido->id, 'slug' => $candidato_partido->partido->slug]) }}">
                                             <h3 class="g_texto_nivel_1">{{ $candidato_partido->partido->nombre }}</h3>
                                         </a>
                                         <p class="g_texto_nivel_2">{{ $candidato_partido->partido->descripcion }}</p>
+                                    </div>
+                                @endif
+                            </div>
+
+                            <!-- Informacion -->
+                            <div x-show="menuActivo === 'informacion'">
+                                @if (!empty($candidato_partido->datos_personales))
+                                    <div class="g_card_panel g_margin_bottom_20">
+                                        <h3 class="g_texto_nivel_4">INFORMACIÓN PERSONAL</h3>
+
+                                        @if (!empty($candidato_partido->datos_personales['Nombre']))
+                                            <p><strong>Nombre:</strong> {{ $candidato_partido->datos_personales['Nombre'] }}
+                                            </p>
+                                        @endif
+
+                                        @if (!empty($candidato_partido->datos_personales['Edad']))
+                                            <p><strong>Edad:</strong> {{ $candidato_partido->datos_personales['Edad'] }}</p>
+                                        @endif
+
+                                        @if (!empty($candidato_partido->datos_personales['Profesión']))
+                                            <p><strong>Profesión:</strong>
+                                                {{ $candidato_partido->datos_personales['Profesión'] }}</p>
+                                        @endif
+
+                                        @if (!empty($candidato_partido->datos_personales['Ciudad']))
+                                            <p><strong>Ciudad:</strong> {{ $candidato_partido->datos_personales['Ciudad'] }}
+                                            </p>
+                                        @endif
+                                    </div>
+                                @endif
+
+                                @if (!empty($candidato_partido->datos_educativos))
+                                    <div class="g_card_panel g_margin_bottom_20">
+                                        <h3 class="g_texto_nivel_4">DATOS EDUCATIVOS</h3>
+
+                                        {{-- Formaciones --}}
+                                        @if (!empty($candidato_partido->datos_educativos['formaciones']))
+                                            <h4 class="g_texto_nivel_1">Formaciones</h4>
+                                            <ul>
+                                                @foreach ($candidato_partido->datos_educativos['formaciones'] as $formacion)
+                                                    @if (!empty($formacion['formacion']) || !empty($formacion['universidad']))
+                                                        <li> <i class="fa-solid fa-user-graduate"></i>
+                                                            {{ $formacion['formacion'] ?? 'Sin formación' }}
+                                                            - {{ $formacion['universidad'] ?? 'Sin universidad' }}
+                                                        </li>
+                                                    @endif
+                                                @endforeach
+                                            </ul>
+                                        @endif
+
+                                        <br>
+
+                                        {{-- Cursos adicionales --}}
+                                        @if (!empty($candidato_partido->datos_educativos['cursos_adicionales']))
+                                            <h4 class="g_texto_nivel_1">Cursos adicionales</h4>
+                                            <ul>
+                                                @foreach ($candidato_partido->datos_educativos['cursos_adicionales'] as $curso)
+                                                    @if (!empty($curso))
+                                                        <li> <i class="fa-solid fa-brain"></i> {{ $curso }}</li>
+                                                    @endif
+                                                @endforeach
+                                            </ul>
+                                        @endif
+
+                                    </div>
+                                @endif
+
+                                @if (!empty($candidato_partido->experiencia_laboral))
+                                    <div class="g_card_panel g_margin_bottom_20">
+                                        <h3 class="g_texto_nivel_4">EXPERIENCIA LABORAL</h3>
+
+                                        @foreach ($candidato_partido->experiencia_laboral as $tipo => $items)
+                                            @if (!empty($items))
+                                                <h4 class="g_texto_nivel_1">{{ $tipo }}</h4>
+                                                <ul>
+                                                    @foreach ($items as $item)
+                                                        @if (!empty($item))
+                                                            <li><i class="fa-solid fa-briefcase"></i> {{ $item }}
+                                                            </li>
+                                                        @endif
+                                                    @endforeach
+                                                </ul>
+                                            @endif
+                                            <br>
+                                        @endforeach
+                                    </div>
+                                @endif
+                            </div>
+
+                            <!-- Propuestas -->
+                            <div x-show="menuActivo === 'propuestas'">
+                                @if (!empty($candidato_partido->propuestas))
+                                    <div class="g_card_panel g_margin_bottom_20">
+                                        <h3 class="g_texto_nivel_4">PROPUESTAS</h3>
+
+                                        @foreach ($candidato_partido->propuestas as $tema => $items)
+                                            @if (!empty($items))
+                                                <h4 class="g_texto_nivel_1">{{ $tema }}</h4>
+                                                <ul>
+                                                    @foreach ($items as $item)
+                                                        @if (!empty($item))
+                                                            <li><i class="fa-solid fa-circle-check"></i> {{ $item }}</li>
+                                                        @endif
+                                                    @endforeach
+                                                </ul>
+                                                <br>
+                                            @endif
+                                        @endforeach
                                     </div>
                                 @endif
                             </div>

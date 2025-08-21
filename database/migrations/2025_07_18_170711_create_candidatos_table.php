@@ -24,6 +24,11 @@ return new class extends Migration
             $table->string('plan_gobierno')->nullable();
             $table->json('redes_sociales')->nullable();
 
+            $table->json('datos_personales')->nullable();
+            $table->json('datos_educativos')->nullable();
+            $table->json('experiencia_laboral')->nullable();
+            $table->json('propuestas')->nullable();
+
             $table->foreignId('partido_id')->nullable()->constrained()->onDelete('set null');
             $table->foreignId('plan_id')->nullable()->constrained('plans')->nullOnDelete();
 

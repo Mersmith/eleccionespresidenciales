@@ -20,6 +20,10 @@ class Candidato extends Model
         'video_presentacion',
         'redes_sociales',
         'plan_gobierno',
+        'datos_personales',
+        'datos_educativos',
+        'experiencia_laboral',
+        'propuestas',
         'partido_id',
         'plan_id',
         'region_id',
@@ -27,6 +31,13 @@ class Candidato extends Model
         'distrito_id',
         'candidato_oficial',
         'activo',
+    ];
+
+    protected $casts = [
+        'datos_personales' => 'array',
+        'datos_educativos' => 'array',
+        'experiencia_laboral' => 'array',
+        'propuestas' => 'array',
     ];
 
     public function partido() //ok
