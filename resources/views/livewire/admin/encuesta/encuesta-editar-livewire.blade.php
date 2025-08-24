@@ -18,6 +18,18 @@
         </div>
     </div>
 
+    @if (session()->has('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session()->has('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <!--FORMULARIO-->
     <div class="formulario">
         <div class="g_fila">
@@ -178,15 +190,21 @@
                     <h4 class="g_panel_titulo">Estado</h4>
 
                     <!--ESTADO-->
-                    <select id="estado" name="estado" wire:model.live="estado" required>
+                    <select id="estado" name="estado" wire:model.live="estado" @if($encuesta->estado === 'finalizada') disabled @endif required>
                         <option value="pendiente">PENDIENTE</option>
                         <option value="iniciada">INICIADA</option>
-                        <option value="finalizada">FINALIZADA</option>
-                    </select>
+                        <option value="finalizada" disabled>FINALIZADA</option>
                     </select>
                     @error('estado')
                         <p class="mensaje_error">{{ $message }}</p>
                     @enderror
+                    <br>
+
+                    @if ($encuesta->estado !== 'finalizada')
+                        <div class="formulario_botones">
+                            <button wire:click="cerrarEncuesta" class="guardar">Cerrar encuesta</button>
+                        </div>
+                    @endif
                 </div>
 
                 <div class="g_panel">

@@ -82,6 +82,11 @@ class Encuesta extends Model
         return $this->hasMany(Voto::class);
     }
 
+    public function resultadoEncuestas()
+    {
+        return $this->hasMany(ResultadoEncuesta::class);
+    }
+
     public function candidatoEncuestas() //ok
     {
         return $this->hasMany(CandidatoEncuesta::class);
@@ -95,7 +100,7 @@ class Encuesta extends Model
 
     public function getFechaInicioFormateadaAttribute()
     {
-        return Carbon::parse($this->fecha_inicio )->format('Y-m-d');
+        return Carbon::parse($this->fecha_inicio)->format('Y-m-d');
     }
 
     public function getFechaFinFormateadaAttribute()

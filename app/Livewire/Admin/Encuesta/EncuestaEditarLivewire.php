@@ -15,6 +15,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use Illuminate\Support\Facades\Artisan;
 
 #[Layout('components.layouts.admin.layout-admin')]
 class EncuestaEditarLivewire extends Component
@@ -300,10 +301,10 @@ class EncuestaEditarLivewire extends Component
             'nivel_id' => $this->nivel_id,
             'cargo_id' => $this->cargo_id,
             'eleccion_id' => $this->eleccion_id,
-            'pais_id' =>  $pais_id,
-            'region_id' =>  $region_id,
-            'provincia_id' =>  $provincia_id,
-            'distrito_id' =>  $distrito_id,
+            'pais_id' => $pais_id,
+            'region_id' => $region_id,
+            'provincia_id' => $provincia_id,
+            'distrito_id' => $distrito_id,
             'fecha_inicio' => $this->fecha_inicio,
             'fecha_fin' => $this->fecha_fin,
             'estado' => $this->estado,
@@ -313,6 +314,15 @@ class EncuestaEditarLivewire extends Component
         $this->dispatch('alertaLivewire', "Actualizado");
 
         //return redirect()->route('admin.encuesta.vista.todas');
+    }
+
+    public function cerrarEncuesta()
+    {
+        Artisan::call('encuesta:cerrar', [
+            'encuesta_id' => $this->encuesta->id,
+        ]);
+
+        session()->flash('success', 'Encuesta cerrada correctamente.');
     }
 
     public function render()

@@ -21,7 +21,7 @@ class EncuestaResultadoLivewire extends Component
     {
         $this->encuesta = Encuesta::with([
             'candidatoEncuestas.candidatoCargo.candidato',
-            'votos',
+            'resultadoEncuestas', // Nueva relación
         ])->findOrFail($id);
 
         $this->data_baner_1 = $this->getWebBanner(6);
@@ -57,19 +57,19 @@ class EncuestaResultadoLivewire extends Component
 
     public function render()
     {
-        $votosPorCandidato = $this->encuesta->votos
-            ->groupBy('candidato_cargo_id')
-            ->map->count();
-
-        $resultados = $this->encuesta->candidatoEncuestas->map(function ($candidatoEncuesta) use ($votosPorCandidato) {
+        $resultados = $this->encuesta->candidatoEncuestas->map(function ($candidatoEncuesta) {
             $candidatoCargo = $candidatoEncuesta->candidatoCargo;
+            $resultado = $candidatoCargo->resultadoEncuestas
+                ->where('encuesta_id', $this->encuesta->id)
+                ->first();
+        
             return [
                 'candidato_nombre' => $candidatoCargo->candidato->nombre,
                 'numero' => $candidatoCargo->numero,
                 'candidato_foto' => $candidatoCargo->candidato->foto,
                 'partido_nombre' => $candidatoCargo->partido ? $candidatoCargo->partido->nombre : ($candidatoCargo->alianza->nombre ?? 'Sin partido'),
                 'partido_foto' => $candidatoCargo->partido ? $candidatoCargo->partido->logo : ($candidatoCargo->alianza->logo ?? null),
-                'votos' => $votosPorCandidato[$candidatoCargo->id] ?? 0,
+                'votos' => $resultado->total_votos ?? 0,
             ];
         })->sortByDesc('votos')->values();
 

@@ -2,11 +2,12 @@
 
 namespace App\Livewire\Web\Encuesta;
 
+use App\Models\ResultadoEncuesta;
 use App\Models\Voto;
-use App\Models\Encuesta;
 use Illuminate\Support\Facades\Auth;
-use Livewire\Component;
 use Livewire\Attributes\On;
+use Livewire\Component;
+use Illuminate\Support\Facades\DB; 
 
 class EncuestaVotoLivewire extends Component
 {
@@ -51,25 +52,39 @@ class EncuestaVotoLivewire extends Component
         if (!Auth::check()) {
             $this->dispatch('modalSesion');
             return;
-        }     
+        }
 
         if (!$this->candidato_cargo_id) {
             session()->flash('error', 'Selecciona un candidato para votar.');
             return;
         }
 
-        if(!$this->yaVoto){
-            Voto::create([
-                'user_id' => Auth::id(),
-                'encuesta_id' => $this->encuesta_id,
-                'candidato_cargo_id' => $this->candidato_cargo_id,
-                'fecha_voto' => now(),
-            ]);
-    
+        if (!$this->yaVoto) {
+            DB::transaction(function () {
+                // 1. Guardar voto
+                Voto::create([
+                    'user_id' => Auth::id(),
+                    'encuesta_id' => $this->encuesta_id,
+                    'candidato_cargo_id' => $this->candidato_cargo_id,
+                    'fecha_voto' => now(),
+                ]);
+
+                // 2. Incrementar resultado en tiempo real
+                ResultadoEncuesta::updateOrCreate(
+                    [
+                        'encuesta_id' => $this->encuesta_id,
+                        'candidato_cargo_id' => $this->candidato_cargo_id,
+                    ],
+                    [
+                        'total_votos' => DB::raw('total_votos + 1'),
+                    ]
+                );
+            });
+
             $this->yaVoto = true;
-    
+
             $this->modal_votar = true;
-        }else{
+        } else {
             $this->modal_voto = true;
         }
     }

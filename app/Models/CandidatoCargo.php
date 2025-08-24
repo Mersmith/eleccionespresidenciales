@@ -82,6 +82,11 @@ class CandidatoCargo extends Model
         return $this->hasMany(Voto::class);
     }
 
+    public function resultadoEncuestas()
+    {
+        return $this->hasMany(ResultadoEncuesta::class, 'candidato_cargo_id');
+    }
+
     public function alianza()
     {
         return $this->belongsTo(Alianza::class);

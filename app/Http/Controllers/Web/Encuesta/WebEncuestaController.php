@@ -18,6 +18,7 @@ class WebEncuestaController extends Controller
 
         $estado_encuesta = !$encuesta->activo
         || $encuesta->estado === 'finalizada'
+        || $encuesta->estado === 'pendiente'
         || $encuesta->ya_finalizo;
 
         $anuncios = $this->getAnunciosPorAuspiciadorPagina();

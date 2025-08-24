@@ -37,6 +37,9 @@ php artisan make:model Plan -mfsc
 php artisan make:model Membresia -mfsc
 php artisan make:model Auspiciador -mfsc
 php artisan make:model Post -mfsc
+php artisan make:model ResultadoEncuesta -mfsc
+php artisan make:model VotoHistorial
+php artisan make:migration create_votos_historial_table
 
 php artisan make:model CandidatoCargoEquipo -mfsc
 
@@ -158,6 +161,12 @@ php artisan config:publish cors
 composer require spatie/laravel-sitemap
 php artisan make:command GenerarSitemap
 php artisan sitemap:generar
+
+php artisan make:command CerrarEncuesta
+php artisan encuesta:cerrar 15
+
+php artisan make:command MigrarVotosAResultados
+php artisan encuesta:migrar-votos-a-resultados
 
 MENU
 LOGO
