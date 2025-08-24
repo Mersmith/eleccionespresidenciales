@@ -121,6 +121,7 @@ php artisan make:migration create_candidato_encuesta_table
 php artisan make:seeder CandidatoEncuestaSeeder
 
 php artisan make:migration add_json_fields_to_candidatos_table --table=candidatos
+php artisan make:migration add_material_and_contacto_to_candidatos_table --table=candidatos
 
 PAGINAS
 ELECCION OK

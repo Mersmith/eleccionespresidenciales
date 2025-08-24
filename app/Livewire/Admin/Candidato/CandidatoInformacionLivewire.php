@@ -12,10 +12,32 @@ class CandidatoInformacionLivewire extends Component
     public $candidato;
 
     public $datos_personales = [
-        'Nombre' => '',
-        'Edad' => '',
-        'Profesión' => '',
-        'Ciudad' => '',
+        'personales' => [
+            'Nombre'     => '',
+            'Edad'       => '',
+            'Profesión'  => '',
+            'Ciudad'     => '',
+        ],
+        'antecedentes' => [
+            'Policiales' => '', // URL o ruta del PDF
+            'Penales'    => '', // URL o ruta del PDF
+            'Judiciales' => '', // URL o ruta del PDF
+        ],
+    ];
+
+    public $material = [
+        'Manual' => '',
+        'Banner' => '',
+        'Gorras' => '',
+        'General' => '',
+    ];
+
+    public $contacto = [
+        'Celular' => '',
+        'WhatsApp' => '',
+        'Teléfono' => '',
+        'Correo' => '',
+        'Dirección' => '',
     ];
 
     public $datos_educativos = [
@@ -32,11 +54,60 @@ class CandidatoInformacionLivewire extends Component
     ];
 
     public $propuestas = [
-        'Educación' => [],
-        'Salud' => [],
-        'Trabajo' => [],
-        'Economía' => [],
-        'Seguridad' => [],
+        'Educación' => [
+            ['texto' => '', 'icono' => 'fa-book'],
+        ],
+        'Salud' => [
+            ['texto' => '', 'icono' => 'fa-heartbeat'],
+        ],
+        'Trabajo' => [
+            ['texto' => '', 'icono' => 'fa-briefcase'],
+        ],
+        'Economía' => [
+            ['texto' => '', 'icono' => 'fa-coins'],
+        ],
+        'Seguridad' => [
+            ['texto' => '', 'icono' => 'fa-shield-halved'],
+        ],
+        'Lucha contra la corrupción' => [
+            ['texto' => '', 'icono' => 'fa-user-secret'],
+        ],
+        'Justicia y Estado de derecho' => [
+            ['texto' => '', 'icono' => 'fa-gavel'],
+        ],
+        'Medio ambiente y cambio climático' => [
+            ['texto' => '', 'icono' => 'fa-leaf'],
+        ],
+        'Tecnología e innovación' => [
+            ['texto' => '', 'icono' => 'fa-laptop-code'],
+        ],
+        'Infraestructura y transporte' => [
+            ['texto' => '', 'icono' => 'fa-train'],
+        ],
+        'Política exterior y relaciones internacionales' => [
+            ['texto' => '', 'icono' => 'fa-globe'],
+        ],
+        'Agricultura y desarrollo rural' => [
+            ['texto' => '', 'icono' => 'fa-tractor'],
+        ],
+        'Igualdad de género y derechos humanos' => [
+            ['texto' => '', 'icono' => 'fa-venus-mars'],
+        ],
+        'Juventud y deporte' => [
+            ['texto' => '', 'icono' => 'fa-futbol'],
+        ],
+        'Turismo y cultura' => [
+            ['texto' => '', 'icono' => 'fa-theater-masks'],
+        ],
+        'Vivienda y urbanismo' => [
+            ['texto' => '', 'icono' => 'fa-house'],
+        ],
+        'Energía y recursos naturales' => [
+            ['texto' => '', 'icono' => 'fa-bolt'],
+        ],
+        'Pueblos indígenas y comunidades originarias' => [
+            ['texto' => '', 'icono' => 'fa-feather'],
+        ],
     ];
 
     public function mount($id)
@@ -46,6 +117,16 @@ class CandidatoInformacionLivewire extends Component
         $this->datos_personales = array_merge(
             $this->datos_personales,
             is_array($this->candidato->datos_personales) ? $this->candidato->datos_personales : []
+        );
+
+        $this->material = array_merge(
+            $this->material,
+            is_array($this->candidato->material) ? $this->candidato->material : []
+        );
+
+        $this->contacto = array_merge(
+            $this->contacto,
+            is_array($this->candidato->contacto) ? $this->candidato->contacto : []
         );
 
         $this->datos_educativos = array_merge(
@@ -99,19 +180,21 @@ class CandidatoInformacionLivewire extends Component
 
     public function agregarPropuesta($tema)
     {
-        $this->propuestas[$tema][] = '';
+        $this->propuestas[$tema][] = ['texto' => '', 'icono' => 'fa-circle-check'];
     }
 
     public function eliminarPropuesta($tema, $index)
     {
         unset($this->propuestas[$tema][$index]);
-        $this->propuestas[$tema] = array_values($this->propuestas[$tema]); // Reindexa
+        $this->propuestas[$tema] = array_values($this->propuestas[$tema]);
     }
 
     public function guardar()
     {
         $this->candidato->update([
             'datos_personales' => $this->datos_personales,
+            'material' => $this->material,
+            'contacto' => $this->contacto,
             'datos_educativos' => $this->datos_educativos,
             'experiencia_laboral' => $this->experiencia_laboral,
             'propuestas' => $this->propuestas,

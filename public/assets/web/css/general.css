@@ -405,6 +405,14 @@
     display: flex;
     gap: 10px;
     cursor: pointer;
+
+    overflow-x: auto;   /* Activa scroll horizontal */
+    white-space: nowrap; /* Evita que se corten las opciones */
+    -webkit-overflow-scrolling: touch; /* Suaviza el scroll en iOS */
+}
+
+.g_menu_card::-webkit-scrollbar {
+    display: none; /* Opcional: ocultar scrollbar en móviles */
 }
 
 .g_menu_card .menu-item {

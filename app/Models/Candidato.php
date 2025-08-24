@@ -24,6 +24,8 @@ class Candidato extends Model
         'datos_educativos',
         'experiencia_laboral',
         'propuestas',
+        'material',
+        'contacto',
         'partido_id',
         'plan_id',
         'region_id',
@@ -38,6 +40,8 @@ class Candidato extends Model
         'datos_educativos' => 'array',
         'experiencia_laboral' => 'array',
         'propuestas' => 'array',
+        'material' => 'array',
+        'contacto' => 'array',
     ];
 
     public function partido() //ok

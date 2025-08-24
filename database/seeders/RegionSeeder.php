@@ -38,7 +38,11 @@ class RegionSeeder extends Seeder
         (21, 'SAN MARTIN', 1),
         (22, 'TACNA', 1),
         (23, 'TUMBES', 1),
-        (24, 'UCAYALI', 1);
+        (24, 'UCAYALI', 1),
+        (25, 'LIMA PROVINCIAS', 1),
+        (26, 'CALLAO', 1),
+        (27, 'RESIDENTES EN EL EXTRANJERO', 1),
+        (28, 'NACIONAL (PERU)', 1);
     ");
     }
 }

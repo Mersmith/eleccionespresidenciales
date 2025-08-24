@@ -1844,7 +1844,8 @@ class DistritoSeeder extends Seeder
         (1827, 'CURIMANA', 193),
         (1828, 'IRAZOLA', 193),
         (1829, 'PADRE ABAD', 193),
-        (1830, 'PURUS', 194);
+        (1830, 'PURUS', 194),
+        (1831, 'MI PERU', 129);
     ");
     }
 }

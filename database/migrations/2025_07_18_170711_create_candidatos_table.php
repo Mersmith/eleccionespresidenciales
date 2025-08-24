@@ -28,6 +28,8 @@ return new class extends Migration
             $table->json('datos_educativos')->nullable();
             $table->json('experiencia_laboral')->nullable();
             $table->json('propuestas')->nullable();
+            $table->json('material')->nullable();
+            $table->json('contacto')->nullable();
 
             $table->foreignId('partido_id')->nullable()->constrained()->onDelete('set null');
             $table->foreignId('plan_id')->nullable()->constrained('plans')->nullOnDelete();
