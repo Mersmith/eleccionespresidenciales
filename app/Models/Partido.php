@@ -18,6 +18,7 @@ class Partido extends Model
         'redes_sociales',
         'plan_gobierno',
         'descripcion',
+        'color',
         'activo',
     ];
 

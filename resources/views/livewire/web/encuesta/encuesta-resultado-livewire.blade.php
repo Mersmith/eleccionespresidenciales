@@ -20,30 +20,37 @@
             @endphp
 
             <div class="g_card_panel">
-                <div>
-                    <h4 class="g_texto_nivel_6">ENCUESTA</h4>
-                    {{-- <h3 class="g_texto_nivel_6">{{ $encuesta->nombre }} </h3> --}}
-                    <p class="g_texto_nivel_2">
-                        <strong>Inicio:</strong> {{ $encuesta->fecha_inicio_formateada }} |
-                        <strong>Fin:</strong> {{ $encuesta->fecha_fin_formateada }}
-                    </p>
-                    <p class="g_texto_nivel_1"><i class="fas fa-user-tie"></i>
-                        {{ $encuesta->cargo->nombre ?? '-' }}</p>
+                <div class="grafico_titular">
+                    <div>
+                        @php
+                            $ubicaciones = collect([
+                                $encuesta->pais?->nombre,
+                                $encuesta->region?->nombre,
+                                $encuesta->provincia?->nombre,
+                                $encuesta->distrito?->nombre,
+                            ])->filter();
+                            $ubicacion_last = $ubicaciones->last();
+                        @endphp
 
-                    @php
-                        $ubicacion = collect([
-                            $encuesta->pais?->nombre,
-                            $encuesta->region?->nombre,
-                            $encuesta->provincia?->nombre,
-                            $encuesta->distrito?->nombre,
-                        ])
-                            ->filter()
-                            ->join(' / ');
-                    @endphp
-
-                    <span class="g_texto_nivel_3">
-                        <i class="fas fa-map-marker-alt"></i> {{ $ubicacion }}
-                    </span>
+                        <span class="g_texto_nivel_3">
+                            <i class="fas fa-map-marker-alt"></i> DISTRITO ELECTORAL: {{ $ubicacion_last }}
+                        </span>
+                        <h4 class="g_texto_nivel_6" style="text-transform: uppercase;">ENCUESTA
+                            {{ $encuesta->cargo->nombre ?? '-' }} </h4>
+                        {{-- <h3 class="g_texto_nivel_6">{{ $encuesta->nombre }} </h3> --}}
+                        <p class="g_texto_nivel_2">
+                            <strong><i class="fas fa-play"></i> Inicio:</strong>
+                            {{ $encuesta->fecha_inicio_formateada }}
+                            |
+                            <strong><i class="fas fa-stop"></i> Fin:</strong> {{ $encuesta->fecha_fin_formateada }}
+                        </p>
+                        {{-- <p class="g_texto_nivel_1"><i class="fas fa-user-tie"></i>
+                    {{ $encuesta->cargo->nombre ?? '-' }}</p> --}}
+                    </div>
+                    <div class="grafico_titular_logo">
+                        <img src="{{ asset('assets/images/logo-votmi-computadora-color.svg') }}" alt="VotaXmi.com"
+                            class="imagen_logo_computadora" />
+                    </div>
                 </div>
 
                 <div class="grafico_vertical">
@@ -56,7 +63,7 @@
                                     $porcentaje = $totalVotos > 0 ? round(($item['votos'] / $totalVotos) * 100, 2) : 0;
                                 @endphp
                                 <div class="barra_container">
-                                    <div class="barra" style="height: {{ $porcentaje }}%">
+                                    <div class="barra" style="height: {{ $porcentaje }}%; background-color: {{$item['partido_color']}};">
                                         <div class="foto_contenedor">
                                             @if (!empty($item['candidato_foto']))
                                                 <img src="{{ $item['candidato_foto'] }}" alt="Candidato"

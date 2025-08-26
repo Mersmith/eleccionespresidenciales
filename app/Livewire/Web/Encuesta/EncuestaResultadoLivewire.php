@@ -69,6 +69,7 @@ class EncuestaResultadoLivewire extends Component
                 'candidato_foto' => $candidatoCargo->candidato->foto,
                 'partido_nombre' => $candidatoCargo->partido ? $candidatoCargo->partido->nombre : ($candidatoCargo->alianza->nombre ?? 'Sin partido'),
                 'partido_foto' => $candidatoCargo->partido ? $candidatoCargo->partido->logo : ($candidatoCargo->alianza->logo ?? null),
+                'partido_color' =>  $candidatoCargo->partido ? $candidatoCargo->partido->color : ($candidatoCargo->alianza->color ?? '#3498db'),
                 'votos' => $resultado->total_votos ?? 0,
             ];
         })->sortByDesc('votos')->values();

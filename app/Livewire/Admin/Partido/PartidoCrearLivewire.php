@@ -10,7 +10,7 @@ use Livewire\Component;
 #[Layout('components.layouts.admin.layout-admin')]
 class PartidoCrearLivewire extends Component
 {
-    public $nombre, $slug, $sigla, $descripcion, $logo, $plan_gobierno, $activo = "0";
+    public $nombre, $slug, $sigla, $descripcion, $logo, $plan_gobierno, $color = "#3498db", $activo = "0";
 
     protected $validationAttributes = [
         'nombre' => 'nombre',
@@ -19,6 +19,7 @@ class PartidoCrearLivewire extends Component
         'descripcion' => 'descripción',
         'logo' => 'logo',
         'plan_gobierno' => 'plan de gobierno',
+        'color' => 'color',
         'activo' => 'estado',
     ];
 
@@ -31,6 +32,7 @@ class PartidoCrearLivewire extends Component
             'descripcion' => 'nullable|min:3|max:255',
             'logo' => 'nullable|url',
             'plan_gobierno' => 'nullable|url',
+            'color' => 'nullable',
             'activo' => 'required|numeric|regex:/^\d{1}$/',
         ];
     } 
@@ -51,6 +53,7 @@ class PartidoCrearLivewire extends Component
             'descripcion' => $this->descripcion,
             'logo' => $this->logo,
             'plan_gobierno' => $this->plan_gobierno,
+            'color' => $this->color,
             'activo' => $this->activo,
         ]);
 

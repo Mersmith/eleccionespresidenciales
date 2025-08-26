@@ -49,6 +49,16 @@
                         @enderror
                     </div>
 
+                    <!--COLOR-->
+                    <div class="g_margin_bottom_20">
+                        <label for="color">Color <span class="obligatorio"><i
+                                    class="fa-solid fa-asterisk"></i></span></label>
+                        <input type="color" id="color" name="color" wire:model.live="color" required>
+                        @error('color')
+                            <p class="mensaje_error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
                     <!--DESCRIPCION-->
                     <div class="g_margin_bottom_20">
                         <label for="descripcion">Descripción</label>
@@ -105,4 +115,4 @@
             </div>
         </div>
     </div>
-    </div>
+</div>

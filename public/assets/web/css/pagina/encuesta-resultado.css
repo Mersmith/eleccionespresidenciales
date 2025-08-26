@@ -1,3 +1,8 @@
+.grafico_titular{
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+
 .grafico_horizontal .candidato-item {
     display: flex;
     align-items: center;
@@ -209,4 +214,12 @@
     text-align: center;
     line-height: 12px;
     width: 80px;
+}
+
+@media (max-width: 700px) {  
+
+    .grafico_titular_logo {
+        display: none;
+    }
+
 }

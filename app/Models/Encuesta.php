@@ -100,12 +100,22 @@ class Encuesta extends Model
 
     public function getFechaInicioFormateadaAttribute()
     {
-        return Carbon::parse($this->fecha_inicio)->format('Y-m-d');
+        return Carbon::parse($this->fecha_inicio)->format('d-m-Y');
     }
 
     public function getFechaFinFormateadaAttribute()
     {
-        return Carbon::parse($this->fecha_fin)->format('Y-m-d');
+        return Carbon::parse($this->fecha_fin)->format('d-m-Y');
+    }
+
+    public function getFechaInicioMesAttribute()
+    {
+        return Carbon::parse($this->fecha_inicio)->translatedFormat('F Y');
+    }
+
+    public function getFechaFinMesAttribute()
+    {
+        return Carbon::parse($this->fecha_fin)->translatedFormat('F Y');
     }
 
     // Accesor para saber si la encuesta ya finalizó

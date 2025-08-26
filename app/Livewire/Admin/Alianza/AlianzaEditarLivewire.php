@@ -20,6 +20,7 @@ class AlianzaEditarLivewire extends Component
     public $descripcion;
     public $logo;
     public $plan_gobierno;
+    public $color;
     public $activo;
 
     public $redes_sociales;
@@ -39,6 +40,7 @@ class AlianzaEditarLivewire extends Component
             'logo' => 'nullable|url',
             'plan_gobierno' => 'nullable|url',
             'eleccion_id' => 'required',
+            'color' => 'nullable',
             'activo' => 'required|numeric|regex:/^\d{1}$/',
         ];
     }
@@ -55,6 +57,7 @@ class AlianzaEditarLivewire extends Component
         $this->plan_gobierno = $this->alianza->plan_gobierno;
         $this->activo = $this->alianza->activo;
         $this->eleccion_id = $this->alianza->eleccion_id;
+        $this->color = $this->alianza->color;
 
         $this->redes_sociales = json_decode($this->alianza->redes_sociales, true);
 
@@ -83,6 +86,7 @@ class AlianzaEditarLivewire extends Component
             'plan_gobierno' => $this->plan_gobierno,
             'activo' => $this->activo,
             'eleccion_id' => $this->eleccion_id,
+            'color' => $this->color,
         ]);
 
         // Sincronizar los partidos seleccionados

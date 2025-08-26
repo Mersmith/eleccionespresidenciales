@@ -19,6 +19,7 @@ class Alianza extends Model
         'plan_gobierno',
         'descripcion',
         'eleccion_id',
+        'color',
         'activo',
     ];
 

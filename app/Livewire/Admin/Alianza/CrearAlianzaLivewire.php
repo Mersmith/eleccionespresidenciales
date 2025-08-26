@@ -12,7 +12,7 @@ use Livewire\Component;
 #[Layout('components.layouts.admin.layout-admin')]
 class CrearAlianzaLivewire extends Component
 {
-    public $nombre, $slug, $sigla, $descripcion, $logo, $plan_gobierno, $activo = "0";
+    public $nombre, $slug, $sigla, $descripcion, $logo, $plan_gobierno, $color = "#3498db", $activo = "0";
     public $eleccion_id;
     public $partidosSeleccionados = [];
 
@@ -26,6 +26,7 @@ class CrearAlianzaLivewire extends Component
         'logo' => 'logo',
         'plan_gobierno' => 'plan de gobierno',
         'eleccion_id' => 'elección',
+        'color' => 'color',
         'activo' => 'estado',
     ];
 
@@ -37,6 +38,7 @@ class CrearAlianzaLivewire extends Component
         'logo' => 'nullable|url',
         'plan_gobierno' => 'nullable|url',
         'eleccion_id' => 'required|exists:eleccions,id',
+        'color' => 'nullable',
         'activo' => 'required|numeric|regex:/^\d{1}$/',
         'partidosSeleccionados' => 'required|array|min:1',
     ];
@@ -64,6 +66,7 @@ class CrearAlianzaLivewire extends Component
             'logo' => $this->logo,
             'plan_gobierno' => $this->plan_gobierno,
             'eleccion_id' => $this->eleccion_id,
+            'color' => $this->color,
             'activo' => true,
         ]);
 

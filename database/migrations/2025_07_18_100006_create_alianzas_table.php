@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('logo')->nullable();
             $table->string('plan_gobierno')->nullable();
             $table->json('redes_sociales')->nullable();
+            $table->string('color')->nullable()->default('#3498db');
             $table->foreignId('eleccion_id')->constrained()->onDelete('cascade');
             $table->boolean('activo')->default(false)->comment('1 ACTIVADO, 0 DESACTIVADO');
 

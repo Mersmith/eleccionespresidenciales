@@ -18,6 +18,7 @@ class PartidoEditarLivewire extends Component
     public $descripcion;
     public $logo;
     public $plan_gobierno;
+    public $color;
     public $activo;
 
     public $redes_sociales;
@@ -29,6 +30,7 @@ class PartidoEditarLivewire extends Component
         'descripcion' => 'descripción',
         'logo' => 'logo',
         'plan_gobierno' => 'plan de gobierno',
+        'color' => 'color',
         'activo' => 'estado',
     ];
 
@@ -41,6 +43,7 @@ class PartidoEditarLivewire extends Component
             'descripcion' => 'nullable|min:3|max:255',
             'logo' => 'nullable|url',
             'plan_gobierno' => 'nullable|url',
+            'color' => 'nullable',
             'activo' => 'required|numeric|regex:/^\d{1}$/',
         ];
     }
@@ -60,6 +63,7 @@ class PartidoEditarLivewire extends Component
         $this->descripcion = $this->partido->descripcion;
         $this->logo = $this->partido->logo;
         $this->plan_gobierno = $this->partido->plan_gobierno;
+        $this->color = $this->partido->color;
         $this->activo = $this->partido->activo;
 
         $this->redes_sociales = json_decode($this->partido->redes_sociales, true);
@@ -76,6 +80,7 @@ class PartidoEditarLivewire extends Component
             'descripcion' => $this->descripcion,
             'logo' => $this->logo,
             'plan_gobierno' => $this->plan_gobierno,
+            'color' => $this->color,
             'activo' => $this->activo,
         ]);
 

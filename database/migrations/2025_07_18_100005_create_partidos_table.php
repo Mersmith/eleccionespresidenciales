@@ -20,8 +20,8 @@ return new class extends Migration
             $table->text('descripcion')->nullable();
             $table->string('logo')->nullable();
             $table->string('plan_gobierno')->nullable();
+            $table->string('color')->nullable()->default('#3498db');
             $table->json('redes_sociales')->nullable();
-
             $table->boolean('activo')->default(false)->comment('1 ACTIVADO, 0 DESACTIVADO');
 
             $table->timestamps();
