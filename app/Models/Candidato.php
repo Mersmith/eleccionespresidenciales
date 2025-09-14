@@ -19,6 +19,7 @@ class Candidato extends Model
         'foto',
         'video_presentacion',
         'redes_sociales',
+        'slider',
         'plan_gobierno',
         'datos_personales',
         'datos_educativos',

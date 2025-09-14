@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('video_presentacion')->nullable();
             $table->string('plan_gobierno')->nullable();
             $table->json('redes_sociales')->nullable();
+            $table->json('slider')->nullable();
 
             $table->json('datos_personales')->nullable();
             $table->json('datos_educativos')->nullable();

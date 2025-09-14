@@ -218,6 +218,10 @@
 
 @media (max-width: 700px) {  
 
+    .grafico_titular{
+        grid-template-columns: 1fr;
+    }
+
     .grafico_titular_logo {
         display: none;
     }

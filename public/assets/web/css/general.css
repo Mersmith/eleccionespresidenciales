@@ -46,7 +46,7 @@
     display: grid;
     grid-template-areas: "g_grid_columna_1 g_grid_columna_2";
     grid-template-columns: 70% 30%;
-    gap: 15px;
+    /*gap: 15px;*/
 }
 
 .g_grid_pagina_2_columnas .g_grid_columna_1 {
@@ -452,6 +452,10 @@
 }
 
 @media (max-width: 700px) {
+    .compartir_redes div{
+        flex-direction: column;
+    }
+
     .g_gap_pagina {
         gap: 20px;
     }
