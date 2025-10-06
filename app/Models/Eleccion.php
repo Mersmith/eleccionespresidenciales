@@ -38,6 +38,20 @@ class Eleccion extends Model
         return $this->hasMany(CandidatoCargo::class);
     }
 
+    public function partidos()
+    {
+        return $this->belongsToMany(Partido::class, 'partido_eleccion')
+            ->withPivot(['numero_en_papeleta', 'activo'])
+            ->withTimestamps();
+    }
+
+    public function alianzas()
+    {
+        return $this->belongsToMany(Alianza::class, 'alianza_eleccion')
+            ->withPivot(['numero_en_papeleta', 'activo'])
+            ->withTimestamps();
+    }
+
     //URL AMIGABLE
     public function getRouteKeyName()
     {

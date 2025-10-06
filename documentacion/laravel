@@ -48,6 +48,7 @@ php artisan make:livewire Admin/Header/AdminHeaderLivewire
 php artisan make:livewire Admin/Eleccion/EleccionTodasLivewire
 php artisan make:livewire Admin/Eleccion/EleccionCrearLivewire
 php artisan make:livewire Admin/Eleccion/EleccionEditarLivewire
+php artisan make:livewire Admin/Eleccion/EleccionPartidoAlianzaLivewire
 
 php artisan make:livewire Admin/Cargo/CargoTodasLivewire
 php artisan make:livewire Admin/Cargo/CargoCrearLivewire
@@ -167,6 +168,9 @@ php artisan encuesta:cerrar 15
 
 php artisan make:command MigrarVotosAResultados
 php artisan encuesta:migrar-votos-a-resultados
+
+php artisan make:migration create_partido_eleccion_table
+php artisan make:migration create_alianza_eleccion_table
 
 MENU
 LOGO

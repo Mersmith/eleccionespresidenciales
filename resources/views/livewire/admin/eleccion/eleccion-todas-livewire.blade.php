@@ -64,6 +64,10 @@
                                             class="g_accion_editar">
                                             <span><i class="fa-solid fa-pencil"></i></span>
                                         </a>
+                                        <a href="{{ route('admin.eleccion.partido-alianza.editar', $item->id) }}"
+                                            class="g_resaltar">
+                                            <span><i class="fa-solid fa-flag"></i></span>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

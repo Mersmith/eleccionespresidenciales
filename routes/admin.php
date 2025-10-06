@@ -27,6 +27,7 @@ use App\Livewire\Admin\Candidato\CandidatoTodasLivewire;
 use App\Livewire\Admin\Eleccion\EleccionCrearLivewire;
 use App\Livewire\Admin\Eleccion\EleccionEditarLivewire;
 use App\Livewire\Admin\Eleccion\EleccionTodasLivewire;
+use App\Livewire\Admin\Eleccion\EleccionPartidoAlianzaLivewire;
 use App\Livewire\Admin\Encuesta\EncuestaCandidatoLivewire;
 use App\Livewire\Admin\Encuesta\EncuestaCrearLivewire;
 use App\Livewire\Admin\Encuesta\EncuestaEditarLivewire;
@@ -54,6 +55,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/eleccion', EleccionTodasLivewire::class)->name('eleccion.vista.todas');
 Route::get('/eleccion/crear', EleccionCrearLivewire::class)->name('eleccion.vista.crear');
 Route::get('/eleccion/editar/{id}', EleccionEditarLivewire::class)->name('eleccion.vista.editar');
+Route::get('/eleccion/{id}/partido-alianza', EleccionPartidoAlianzaLivewire::class)->name('eleccion.partido-alianza.editar');
 
 //Route::get('/cargo', CargoTodasLivewire::class)->name('cargo.vista.todas');
 //Route::get('/cargo/crear', CargoCrearLivewire::class)->name('cargo.vista.crear');

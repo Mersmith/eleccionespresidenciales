@@ -47,6 +47,13 @@ class Partido extends Model
         return $this->hasMany(Post::class);
     }
 
+    public function elecciones()
+    {
+        return $this->belongsToMany(Eleccion::class, 'partido_eleccion_tables')
+            ->withPivot(['numero_en_papeleta', 'activo'])
+            ->withTimestamps();
+    }
+
     //URL AMIGABLE
     public function getRouteKeyName()
     {
